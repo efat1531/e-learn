@@ -1,0 +1,30 @@
+{
+  "name": "e-learn",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "This is my university project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "client:dev": "npm run dev --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client:dev\"",
+    "data:import": "node backend/seeder",
+    "data:destroy": "node backend/seeder -d",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
+    "generate-toc": "markdown-toc -i readme.md"
+  },
+  "author": "Efat Sikder",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.4.4"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.4"
+  }
+}
