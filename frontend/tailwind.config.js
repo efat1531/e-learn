@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+import daisyui from "daisyui";
+
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./index.html"],
   theme: {
@@ -92,5 +95,49 @@ export default {
       sans: "Inter, sans-serif",
     },
   },
-  plugins: [],
+  plugins: [daisyui],
+  daisyui: {
+    themes: [
+      {
+        CustomTheme: {
+          primary: "#FF6636",
+          "primary-focus": "#CC522B",
+          "primary-content": "#ffffff",
+
+          secondary: "#564FFD",
+          "secondary-focus": "#453FCA",
+          "secondary-content": "#ffffff",
+
+          accent: "#37cdbe",
+          "accent-focus": "#2aa79b",
+          "accent-content": "#ffffff",
+
+          neutral: "#3d4451",
+          "neutral-focus": "#2a2e37",
+          "neutral-content": "#ffffff",
+
+          "base-100": "#ffffff",
+          "base-200": "#F5F7FA",
+          "base-300": "#E9EAF0",
+          "base-content": "#1D2026",
+
+          info: "#2094f3",
+          success: "#23BD33",
+          warning: "#FD8E1F",
+          error: "#E34444",
+
+          "--rounded-box": "1rem",
+          "--rounded-btn": "0.5rem",
+          "--rounded-badge": "1.9rem",
+
+          "--animation-btn": "0.25s",
+          "--animation-input": "0.2s",
+
+          "--btn-text-case": "uppercase",
+          "--navbar-padding": "0.5rem",
+          "--border-btn": "1px",
+        },
+      },
+    ],
+  },
 };
