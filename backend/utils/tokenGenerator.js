@@ -23,7 +23,7 @@ const generateOTPToken = async (user, useCase) => {
     validTo: new Date(Date.now() + 10 * 60 * 1000),
     TokenType: useCase,
   });
-  return token;
+  return otp;
 };
 
 export { generateOTPToken };

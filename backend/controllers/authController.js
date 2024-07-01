@@ -1,9 +1,13 @@
-import userModel from "../models/userModel";
-import asyncHandler from "../middlewere/asyncHandler";
-import { generateOTPToken } from "../utils/tokenGenerator";
-import { decryptEmail } from "../utils/textCypher";
-import tokenModel from "../models/tokenModel";
-import { generateToken } from "../utils/generateJWTToken";
+import userModel from "../models/userModel.js";
+import asyncHandler from "../middlewere/asyncHandler.js";
+import { generateOTPToken } from "../utils/tokenGenerator.js";
+import { decryptEmail, encrypt } from "../utils/textCypher.js";
+import tokenModel from "../models/tokenModel.js";
+import { generateToken } from "../utils/generateJWTToken.js";
+import {
+  sendWelcomeEmail,
+  resendVerificationEmail,
+} from "../utils/emailSender.js";
 
 // @desc    Register user
 // @route   POST /api/auth/register
@@ -29,6 +33,10 @@ const register = asyncHandler(async (req, res) => {
   const token = await generateOTPToken(newUser, "verify");
 
   // Send email
+  const url = `${req.protocol}://${req.get("host")}/api/auth/verify/${encrypt(
+    email
+  )}`;
+  await sendWelcomeEmail(newUser.email, newUser.name, token, url);
 
   // Send response
   res.status(201).json({
@@ -57,13 +65,11 @@ const verifyUser = asyncHandler(async (req, res) => {
 
   const oldToken = await tokenModel.findOne({
     email,
-    token,
     TokenType: "verify",
-    active: true,
   });
 
   if (!oldToken) {
-    throw new Error("Invalid token");
+    throw new Error("Invalid token. Please request a new one.");
   }
 
   const isMatch = await oldToken.isCorrect(token);
@@ -103,17 +109,19 @@ const resendToken = asyncHandler(async (req, res) => {
   const email = decryptEmail(encryptedEmail);
   const user = await userModel.findOne({
     email,
-    isVerified: false,
   });
 
   if (!user) {
     throw new Error("User not found");
   }
 
+  if (user.isVerified) {
+    throw new Error("User already verified");
+  }
+
   const oldToken = await tokenModel.findOne({
     email,
     TokenType: "verify",
-    active: true,
   });
 
   if (oldToken) {
@@ -123,6 +131,10 @@ const resendToken = asyncHandler(async (req, res) => {
   const newToken = await generateOTPToken(user, "verify");
 
   // Send email
+  const url = `${req.protocol}://${req.get(
+    "host"
+  )}/api/auth/verify/${encryptedEmail}`;
+  await resendVerificationEmail(user.email, user.name, newToken, url);
 
   // Send response
   res.status(200).json({
@@ -137,9 +149,9 @@ const resendToken = asyncHandler(async (req, res) => {
 const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
-  const user = await userModel.findOne({ email });
+  const user = await userModel.findOne({ email }).select("+password");
 
-  const isMatch = await user.matchPassword(password);
+  const isMatch = await user.matchPassword(password, user.password);
 
   if (!user || !isMatch) {
     throw new Error("Invalid credentials");

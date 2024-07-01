@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 
 const generateToken = (res, userId, role = false) => {
-  const token = jwt.sign({ userId, isAdmin }, process.env.JWT_SECRET, {
+  const token = jwt.sign({ userId, role }, process.env.JWT_SECRET, {
     expiresIn: "15d",
   });
   // Set JWT as an HTTP-Only cookie
@@ -13,4 +13,4 @@ const generateToken = (res, userId, role = false) => {
   });
 };
 
-export default generateToken;
+export { generateToken };

@@ -7,6 +7,7 @@ import cors from "cors";
 
 import { errorHandler, notFound } from "./middlewere/errorHandler.js";
 import connectionDB from "./config/database.js";
+import authRoutes from "./routes/authRoutes.js";
 
 dotenv.config();
 
@@ -24,8 +25,6 @@ app.use(express.json());
 
 app.use(cookieParser());
 
-// Routes
-
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();
   app.use("/uploads", express.static("/var/data/uploads"));
@@ -41,6 +40,9 @@ if (process.env.NODE_ENV === "production") {
     res.send("API is running....");
   });
 }
+
+// Routes
+app.use("/api/auth", authRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
