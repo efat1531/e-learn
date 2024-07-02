@@ -1,4 +1,4 @@
-import { randomBytes, createCipheriv, createDecipheriv } from "crypto";
+import { randomBytes, createCipheriv, createDecipheriv, createHash } from "crypto";
 
 function encrypt(text) {
   // Secret key for encryption
@@ -48,5 +48,11 @@ function decrypt(encryptedData, iv) {
   return decrypted;
 }
 
+const cryptoHash = (text) => {
+  const hash = createHash("sha256");
+  hash.update(text);
+  return hash.digest("hex");
+}
+
 // Export the functions
-export { encrypt, decrypt, decryptEmail };
+export { encrypt, decrypt, decryptEmail, cryptoHash };

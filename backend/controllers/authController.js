@@ -167,4 +167,86 @@ const login = asyncHandler(async (req, res) => {
   });
 });
 
-export { register, verifyUser, login, resendToken };
+// @desc    Forgot password
+// @route   POST /api/auth/forgot
+// @access  Public
+const forgotPassword = asyncHandler(async (req, res) => {
+  const { email } = req.body;
+
+  const existingUser = await userModel.findOne({
+    email,
+  });
+
+  if (!existingUser) {
+    throw new Error("User not found with this email");
+  }
+
+  const token = await generateOTPToken(existingUser, "reset");
+
+  // Send email
+  const url = `${req.protocol}://${req.get("host")}/api/auth/reset/${encrypt(
+    email
+  )}/${token}`;
+
+  // Send response
+  res.status(200).json({
+    status: "success",
+    message: "Password reset token sent successfully",
+  });
+});
+
+// @desc   Reset password
+// @route  POST /api/auth/reset/:email/:token
+// @access Public
+const resetPassword = (password) =>
+  asyncHandler(async (req, res) => {
+    const encryptedEmail = req.params.email;
+    const token = req.params.token;
+
+    const email = decryptEmail(encryptedEmail);
+    const user = await userModel.findOne({
+      email,
+    });
+
+    if (!user) {
+      throw new Error("User not found with this email");
+    }
+
+    const existingToken = await tokenModel.findOne({
+      email,
+      TokenType: "reset",
+    });
+    const isMatch = await existingToken.isCorrect(token);
+
+    if (!existingToken || !isMatch) {
+      throw new Error("Invalid token. Please request a new one.");
+    }
+
+    const isValid = existingToken.isValid();
+
+    if (!isValid) {
+      throw new Error("Token expired");
+    }
+
+    // Delete token
+    await tokenModel.findByIdAndDelete(existingToken._id);
+
+    // Update password
+    user.password = password;
+    await user.save();
+
+    // Send response
+    res.status(200).json({
+      status: "success",
+      message: "Password reset successfully",
+    });
+  });
+
+export {
+  register,
+  verifyUser,
+  login,
+  resendToken,
+  forgotPassword,
+  resetPassword,
+};

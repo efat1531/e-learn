@@ -22,6 +22,9 @@ const userSchema = mongoose.Schema(
       type: String,
       select: false,
     },
+    address: {
+      type: String,
+    },
     profilePicture: {
       type: String,
     },
