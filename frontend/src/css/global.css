@@ -23,8 +23,8 @@ img {
 
 /* Utility */
 .container {
-  margin: auto;
-  padding: 0 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-img {

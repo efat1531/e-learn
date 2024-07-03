@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import HeroBanner1 from "../../assets/images/hero-banner-1.png";
 import HeroBanner2 from "../../assets/images/hero-banner-2.png";
 import HeroBanner3 from "../../assets/images/hero-banner-3.png";
@@ -86,9 +87,9 @@ const Hero = () => {
               <p className="mt-8 mb-4">
                 Hear words whisper secrets? Unlock phonics, unlock their magic!
               </p>
-              <a href="#" className="btn-primary w-fit">
+              <Link href="#" className="btn-primary w-fit">
                 Create Account
-              </a>
+              </Link>
             </div>
           </div>
           {/* <!-- Hero Section Details End --> */}

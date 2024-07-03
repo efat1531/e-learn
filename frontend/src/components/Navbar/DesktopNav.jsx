@@ -1,32 +1,33 @@
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink, Link } from "react-router-dom";
+import { ReactSVG } from "react-svg";
 import Logo from "../..//assets/svg/GraduationCap.svg";
 import CartIcon from "../../assets/Icon/CartIcon";
 import FollowIcon from "../../assets/Icon/FollowIcon";
 import NotificationIcon from "../../assets/Icon/NotificationIcon";
 import Button from "../ui/Button";
-import NavLinks from "./NavLinks";
+import NavLinks from "./NavLinksDesktop";
 
 const DesktopNav = () => {
+  const [isLogged, setIsLogged] = useState(true);
   return (
     <nav className="hidden tablet:block">
-      <div className="flex justify-between bg-CustomGray-900 text-CustomGray-500 px-8 items-center">
-        {/* <!-- Nav Menu  --> */}
-        <NavLinks />
-        {/* <!-- Language Selection --> */}
-      </div>
-      {/* <!-- Logo + Account --> */}
-      <div className="flex mx-8 my-7 items-center justify-between">
-        {/* <!-- Logo --> */}
-        <Link to="/">
-          <div className="flex items-center select-none">
-            <img src={Logo} alt="Logo" className="mx-2" />
-            <div className="text-[32px] font-semibold text-neutral-800">
-              Sonorous
-            </div>
-          </div>
-        </Link>
-        {/* <!-- Account Creation Notification Icon etc --> */}
-        <div className="flex gap-6 items-center h-12">
+      <NavLinks />
+      <div className="flex px-8 py-[1.81rem] items-center justify-between shadow-[inset_0px_-1px_0px_0px_#E9EAF0]">
+        {/* Logo */}
+        <NavLink className="flex items-center gap-2 justify-center">
+          <ReactSVG
+            src={Logo}
+            beforeInjection={(svg) => {
+              svg.setAttribute("style", "width: 2.5rem; height: 2.5rem");
+            }}
+          />
+          <span className="text-[2rem] font-[600] text-CustomGray-900 leading-9 tracking-tighter">
+            Sonorus
+          </span>
+        </NavLink>
+        {/* Right Side */}
+        <div className="flex items-center gap-6">
           {/* <!-- notification Button --> */}
           <div className="group">
             <button className="noti-btn" name="notification-btn">
@@ -46,15 +47,22 @@ const DesktopNav = () => {
             </button>
           </div>
           {/* <!-- Create Account Button --> */}
-          <div className="flex gap-3">
-            <Link to="/register" className="group">
-              <Button title="Create Account" />
-            </Link>
+          {!isLogged && (
+            <div className="flex gap-3">
+              <Link to="/register" className="group">
+                <Button title="Create Account" />
+              </Link>
 
-            {/* <!-- Sign In Button --> */}
-            <Link to="/login" className="group">
-              <Button title="Sign In" />
-            </Link>
+              {/* <!-- Sign In Button --> */}
+              <Link to="/login" className="group">
+                <Button title="Sign In" />
+              </Link>
+            </div>
+          )}
+          <div className="avatar">
+            <div className="w-12 rounded-full">
+              <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+            </div>
           </div>
         </div>
       </div>

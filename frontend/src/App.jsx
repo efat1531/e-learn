@@ -1,4 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Navigate } from "react-router";
+
 import DashboardLayout from "./components/DashboardLayout";
 import Layout from "./components/Layout";
 import AboutUs from "./pages/AboutUs";
@@ -13,8 +15,9 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<Navigate replace to="/home" />} index />
         <Route
-          path="/"
+          path="/home"
           element={
             <Layout>
               <Home />

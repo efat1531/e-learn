@@ -30,7 +30,7 @@ const testimonials = [
 
 const TestimonialSection = () => {
   return (
-    <section className="container py-24">
+    <section className="container !py-24">
       <Swiper
         effect={"ease"}
         autoplay={{
