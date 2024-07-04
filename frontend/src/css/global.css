@@ -54,34 +54,3 @@ img {
 .section-header .section-header-after {
   background: red;
 }
-
-/* Footer */
-.footer-social-links a {
-  background: var(--secondary-color);
-  font-size: 1.2rem;
-  padding: 1rem;
-}
-
-.footer-social-links a:hover {
-  scale: 0.9;
-}
-
-.footer-social-links a.highlight {
-  background: var(--primary-color);
-  padding: 1rem;
-}
-
-footer ul {
-  margin-top: 2rem;
-  display: grid;
-  gap: 1rem;
-  color: var(--secondary-text-color);
-}
-
-footer ul a {
-  color: var(--secondary-text-color);
-}
-
-footer ul a:hover {
-  color: var(--primary-color);
-}

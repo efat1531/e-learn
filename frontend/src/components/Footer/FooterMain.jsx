@@ -11,7 +11,7 @@ const FooterMain = () => {
       className="bg-CustomGray-900 flex pt-[5rem] flex-col justify-center items-center gap-5 text-white"
     >
       {/* <!-- Main Footer Start --> */}
-      <div className="flex items-start gap-[15rem]">
+      <div className="flex flex-col laptop:flex-row items-start gap-8 laptop:gap-[10rem] desktop:gap-[15rem]">
         {/* <!-- Footer Column 1 Start --> */}
         <div className="flex flex-col justify-center items-start gap-[1.62rem]">
           <div className="flex flex-col items-start gap-[1.25rem]">
@@ -47,19 +47,19 @@ const FooterMain = () => {
           links={[
             {
               name: "About",
-              link: "#",
+              link: "/about",
             },
             {
               name: "Contact",
-              link: "#",
+              link: "/contact",
             },
             {
               name: "Carrier",
-              link: "#",
+              link: "/become-an-instructor",
             },
             {
               name: "Courses",
-              link: "#",
+              link: "/courses",
             },
           ]}
         />
@@ -75,15 +75,15 @@ const FooterMain = () => {
             },
             {
               name: "Help Center",
-              link: "#",
+              link: "/help",
             },
             {
               name: "Terms & Condition",
-              link: "#",
+              link: "/terms-and-conditions",
             },
             {
               name: "Privacy Policy",
-              link: "#",
+              link: "/privacy-policy",
             },
           ]}
         />

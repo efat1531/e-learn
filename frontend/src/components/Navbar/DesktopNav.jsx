@@ -9,7 +9,7 @@ import Button from "../ui/Button";
 import NavLinks from "./NavLinksDesktop";
 
 const DesktopNav = () => {
-  const [isLogged, setIsLogged] = useState(true);
+  const [isLogged, setIsLogged] = useState(false);
   return (
     <nav className="hidden tablet:block">
       <NavLinks />
@@ -36,7 +36,14 @@ const DesktopNav = () => {
           </div>
           {/* <!-- Follow Button --> */}
           <div className="group">
-            <button type="button" className="follow-btn" name="follow-btn">
+            <button
+              type="button"
+              className="follow-btn"
+              name="follow-btn"
+              onClick={(e) => {
+                setIsLogged(!isLogged);
+              }}
+            >
               <FollowIcon />
             </button>
           </div>
@@ -59,11 +66,13 @@ const DesktopNav = () => {
               </Link>
             </div>
           )}
-          <div className="avatar">
-            <div className="w-12 rounded-full">
-              <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+          {isLogged && (
+            <div className="avatar">
+              <div className="w-12 rounded-full">
+                <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </nav>

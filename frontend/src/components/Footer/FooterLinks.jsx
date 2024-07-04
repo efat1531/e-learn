@@ -22,8 +22,8 @@ const FooterLinks = ({ title, links }) => {
       <div className="flex flex-col items-start">
         {links.map((link, index) => (
           <Link
+            to={link.link}
             key={index}
-            href={link.link}
             className="group py-[0.375rem] flex justify-center items-center gap-[0.75rem] hover:bg-[#1D2026] hover:shadow-[inset_0_-1.5px_0_0_#FF6636] duration-200"
             onMouseEnter={() => setActiveLink(index)}
             onMouseLeave={() => setInactiveLink()}
