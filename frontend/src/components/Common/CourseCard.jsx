@@ -7,7 +7,7 @@ const CourseCard = ({ course }) => {
   const { imageSrc, title, category, rating, price, discount, students } =
     course;
   return (
-    <div className="inline-flex pb-[0.875rem] flex-col justify-center items-center gap-[0.88rem] bg-white">
+    <div className="inline-flex pb-[0.875rem] flex-col justify-center items-center gap-[0.88rem] bg-white max-w-[15.25rem] border-gray-100 border drop-shadow-lg hover:scale-105">
       <div
         className="w-[15.25rem] h-[11.4375rem]"
         style={{
@@ -22,7 +22,7 @@ const CourseCard = ({ course }) => {
             style={{ backgroundColor: category.backgroundColor }}
           >
             <span
-              className="text-[0.60rem] font-[500] leading-[0.6rem] uppercase"
+              className="text-[0.60rem] font-[500] leading-[0.6rem] uppercase text-left"
               style={{ color: category.color }}
             >
               {category.name}
@@ -45,7 +45,7 @@ const CourseCard = ({ course }) => {
             </span>
           </div>
         </div>
-        <div className="text-sm font-[500] max-w-[13.5rem] h-11 line-clamp-2">
+        <div className="text-sm font-[500] w-[13.5rem] h-11 line-clamp-2">
           {title}
         </div>
       </div>

@@ -1,4 +1,6 @@
 import React from "react";
+import { numberToEnFormat } from "../../utils/Transformations";
+import { Link } from "react-router-dom";
 
 const rating = 5;
 const count = 2759;
@@ -7,6 +9,40 @@ const imageURL =
   "https://cdn.builder.io/api/v1/image/assets/TEMP/f50fdda79c58e6003124c096bb51d2502f636c820f1fbd1bda8c0089e11a7df7?apiKey=23afa202bc2b43d8bffafdcae0891485&";
 const name = "Mahadi Ahmed";
 const title = "English Lecturer";
+
+const InstructorCard = () => {
+  const formattedCount = numberToEnFormat(count);
+  const slug = name.toLowerCase().replace(" ", "-");
+
+  return (
+    <Link to={`/instructor/${slug}`} style={{ textDecoration: "none" }}>
+      <section style={style.profileCard}>
+        <img
+          loading="lazy"
+          src={imageURL}
+          style={style.profileImage}
+          alt={`Profile picture of ${name}`}
+        />
+        <div style={style.profileInfo}>
+          <h2 style={style.profileName}>{name}</h2>
+          <p style={style.profileTitle}>{title}</p>
+        </div>
+        <hr style={style.divider} />
+        <div style={style.profileDetails}>
+          <div style={style.rating}>
+            ⭐ <div>{rating}</div>
+          </div>
+          <div style={style.stats}>
+            <div style={style.statsCount}>{formattedCount}</div>
+            <div style={style.statsDescription}>&nbsp;{description}</div>
+          </div>
+        </div>
+      </section>
+    </Link>
+  );
+};
+
+export default InstructorCard;
 
 const style = {
   profileCard: {
@@ -95,32 +131,3 @@ const style = {
     fontFamily: "Inter, sans-serif",
   },
 };
-
-const InstructorCard = () => {
-  return (
-    <section style={style.profileCard}>
-      <img
-        loading="lazy"
-        src={imageURL}
-        style={style.profileImage}
-        alt={`Profile picture of ${name}`}
-      />
-      <div style={style.profileInfo}>
-        <h2 style={style.profileName}>{name}</h2>
-        <p style={style.profileTitle}>{title}</p>
-      </div>
-      <hr style={style.divider} />
-      <div style={style.profileDetails}>
-        <div style={style.rating}>
-          ⭐ <div>{rating}</div>
-        </div>
-        <div style={style.stats}>
-          <div style={style.statsCount}>{count}</div>
-          <div style={style.statsDescription}>&nbsp;{description}</div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default InstructorCard;
