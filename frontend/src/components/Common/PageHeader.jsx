@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 const PageHeader = ({ title, breadcrumb }) => {
   return (
     <div className="bg-gray-100 p-8 text-center">
@@ -17,4 +18,10 @@ const PageHeader = ({ title, breadcrumb }) => {
     </div>
   );
 };
+
+PageHeader.propTypes = {
+  title: PropTypes.string.isRequired,
+  breadcrumb: PropTypes.array.isRequired,
+};
+
 export default PageHeader;
