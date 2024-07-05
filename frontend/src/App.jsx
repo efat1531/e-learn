@@ -11,7 +11,6 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import UserDashboard from "./pages/UserDashboard";
 import ScrollToTop from "./components/ui/ScrollToTop";
-import SingleCourseLayout from "./components/SingleCourseLayout";
 import SingleCourse from "./pages/SingleCourse";
 import Courses from "./pages/Coursrs";
 import Error from "./pages/Error";
@@ -81,9 +80,9 @@ function App() {
         <Route
           path="/courses/:slug"
           element={
-            <SingleCourseLayout>
+            <Layout>
               <SingleCourse />
-            </SingleCourseLayout>
+            </Layout>
           }
         />
         <Route
