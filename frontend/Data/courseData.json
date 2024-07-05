@@ -25,22 +25,10 @@
     "description": "This course is designed to take your CSS skills to the next level by diving deep into advanced CSS techniques, specifically focusing on Flexbox and Grid. You'll learn how to build responsive layouts with ease, creating complex layouts with simple, clean code. By the end of the course, you'll be able to use Flexbox and Grid to their full potential, making your web designs more flexible and efficient.",
     "summary": "Master advanced CSS techniques with Flexbox and Grid in this comprehensive course.",
     "requirements": [
-      {
-        "text": "Basic understanding of HTML and CSS",
-        "need": true
-      },
-      {
-        "text": "A computer with internet connection",
-        "need": true
-      },
-      {
-        "text": "A modern web browser",
-        "need": false
-      },
-      {
-        "text": "A text editor",
-        "need": false
-      }
+      "Basic understanding of HTML and CSS",
+      "A computer with internet connection",
+      "A modern web browser",
+      "A text editor"
     ],
     "whatYouWillLearn": [
       "Advanced layout techniques using Flexbox",
@@ -48,7 +36,7 @@
       "Responsive design principles",
       "Efficient use of CSS for flexible web layouts"
     ],
-    "curriculam": [
+    "curriculum": [
       {
         "title": "Getting Started with Flexbox",
         "lessons": [
@@ -120,22 +108,10 @@
     "description": "This course provides a comprehensive introduction to Python programming, one of the most popular and versatile programming languages today. Starting from the basics, you'll learn how to write simple programs, work with data structures, and handle files. By the end of the course, you'll be equipped with the skills needed to develop real-world applications and further your programming journey.",
     "summary": "Learn the basics of Python programming in this comprehensive introductory course.",
     "requirements": [
-      {
-        "text": "No prior programming experience required",
-        "need": true
-      },
-      {
-        "text": "A computer with internet connection",
-        "need": true
-      },
-      {
-        "text": "Basic knowledge of using a computer",
-        "need": false
-      },
-      {
-        "text": "A willingness to learn",
-        "need": false
-      }
+      "No prior programming experience required",
+      "A computer with internet connection",
+      "Basic knowledge of using a computer",
+      "A willingness to learn"
     ],
     "whatYouWillLearn": [
       "Basic syntax and structure of Python",
@@ -144,7 +120,7 @@
       "Functions and modules",
       "Working with files"
     ],
-    "curriculam": [
+    "curriculum": [
       {
         "title": "Getting Started with Python",
         "lessons": [
@@ -235,25 +211,13 @@
     },
     "createAt": "2024-06-15",
     "instructor": "ins003",
-    "description": "This course offers an in-depth exploration of advanced Python programming techniques. You'll delve into complex data structures, algorithm optimization, and learn how to develop sophisticated applications. Perfect for those looking to elevate their Python skills to the next level.",
+    "description": "This advanced Python programming course offers a comprehensive exploration of complex data structures, algorithm optimization, and the development of sophisticated applications. Delve into advanced Python techniques beyond the basics, including in-depth studies of algorithm optimization principles and practical implementations. Master the art of designing scalable and maintainable code, explore frameworks for advanced application development, and engage in hands-on projects and case studies to enhance problem-solving skills. Additionally, delve into advanced Python topics like decorators, metaprogramming, and concurrency, while staying updated on the latest trends in the Python ecosystem for writing clean, efficient, and Pythonic code. Elevate your Python skills to the next level with this course designed for those seeking to expand their expertise in Python programming. ",
     "summary": "Master advanced Python programming concepts and techniques.",
     "requirements": [
-      {
-        "text": "Basic understanding of Python programming",
-        "need": true
-      },
-      {
-        "text": "A computer with internet connection",
-        "need": true
-      },
-      {
-        "text": "Ability to read and understand code",
-        "need": false
-      },
-      {
-        "text": "Motivation to improve coding skills",
-        "need": false
-      }
+      "Basic understanding of Python programming",
+      "A computer with internet connection",
+      "Ability to read and understand code",
+      "Motivation to improve coding skills"
     ],
     "whatYouWillLearn": [
       "Advanced data structures and algorithms",
@@ -262,7 +226,7 @@
       "Concurrency and parallelism",
       "Advanced file handling"
     ],
-    "curriculam": [
+    "curriculum": [
       {
         "title": "Advanced Data Structures",
         "lessons": [

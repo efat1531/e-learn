@@ -1,12 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { TextToParagraphs } from "../../../utils/Transformations";
+import { textToParagraphs } from "../../../utils/Transformations";
 
 const CourseDescription = ({ desc }) => {
-  const description = TextToParagraphs(desc);
-
+  const description = textToParagraphs(desc);
   return (
-    <div className="max-w-[54.5rem] w-full flex flex-col gap-6 items-start">
+    <div className="w-full flex flex-col gap-6 items-start">
       <div className="text-CustomGray-900 font-inter text-[1.5rem] font-semibold leading-[2rem] -tracking-[0.015rem]">
         Description
       </div>

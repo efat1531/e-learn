@@ -5,10 +5,17 @@ import CourseTitle from "../components/SingleCourse/CourseContainer/CourseTitle"
 import IntroVideo from "../components/SingleCourse/CourseContainer/IntroVideo";
 import SideBar from "../components/SingleCourse/SideBar/SideBar";
 import CourseDescription from "../components/SingleCourse/CourseContainer/CourseDescription";
+import WhatYouWillLearn from "../components/SingleCourse/CourseContainer/WhatYouWillLearn";
+import CourseRequirement from "../components/SingleCourse/CourseContainer/CourseRequirement";
+import Curriculum from "../components/SingleCourse/CourseContainer/Curriculum";
+import InstructorInfo from "../components/SingleCourse/CourseContainer/InstructorInfo";
+import ReviewInput from "../components/SingleCourse/CourseContainer/ReviewInput";
+import CourseRating from "../components/SingleCourse/CourseContainer/CourseRating";
 
 const SingleCourse = () => {
   const courseSlug = useParams().slug;
   const course = Courses.find((course) => course.slug === courseSlug);
+  console.log(course);
   return (
     <div className="relative w-full">
       {/* Background */}
@@ -20,6 +27,12 @@ const SingleCourse = () => {
           <CourseTitle course={course} />
           <IntroVideo link={course.introVideo} />
           <CourseDescription desc={course.description} />
+          <WhatYouWillLearn learning={course.whatYouWillLearn} />
+          <CourseRequirement requirements={course.requirements} />
+          <Curriculum curriculum={course.curriculum} />
+          <InstructorInfo instructorID={course.instructor} />
+          <ReviewInput />
+          <CourseRating courseID={course.id} />
         </div>
         {/* Side Bar */}
         <SideBar course={course} />

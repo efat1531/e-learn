@@ -8,13 +8,13 @@ const numberToEnFormat = (number) => {
   }
 };
 
-const TextToParagraphs = (text) => {
+const textToParagraphs = (text) => {
   const words = text.split(" ");
   const paragraphs = [];
 
   let i = 0;
   while (i < words.length) {
-    let end = Math.min(i + 130, words.length);
+    let end = Math.min(i + 110, words.length);
     while (end > i && !words[end - 1].endsWith(".")) {
       end--;
     }
@@ -27,4 +27,10 @@ const TextToParagraphs = (text) => {
   return paragraphs;
 };
 
-export { numberToEnFormat, TextToParagraphs };
+const durationConversion = (duration) => {
+  const hours = Math.floor(duration / 60);
+  const minutes = duration % 60;
+  return `${hours}h ${minutes}m`;
+};
+
+export { numberToEnFormat, textToParagraphs, durationConversion };
