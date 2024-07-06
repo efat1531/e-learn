@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import userData from "../../../../Data/userData.json";
 import { Link } from "react-router-dom";
-import StarRatingCard from "../../ui/RatingCard";
+import StarRatingCard from "../../ui/StarRatingCard";
 
 const CourseTitle = ({ course }) => {
   const instructorInfo = userData.find(

@@ -12,7 +12,7 @@ import Register from "./pages/Register";
 import UserDashboard from "./pages/UserDashboard";
 import ScrollToTop from "./components/ui/ScrollToTop";
 import SingleCourse from "./pages/SingleCourse";
-import Courses from "./pages/Coursrs";
+import Courses from "./pages/Courses";
 import Error from "./pages/Error";
 
 function App() {

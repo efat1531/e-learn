@@ -11,6 +11,7 @@ import Curriculum from "../components/SingleCourse/CourseContainer/Curriculum";
 import InstructorInfo from "../components/SingleCourse/CourseContainer/InstructorInfo";
 import ReviewInput from "../components/SingleCourse/CourseContainer/ReviewInput";
 import CourseRating from "../components/SingleCourse/CourseContainer/CourseRating";
+import StudentsReview from "../components/SingleCourse/CourseContainer/StudentsReview";
 
 const SingleCourse = () => {
   const courseSlug = useParams().slug;
@@ -33,6 +34,7 @@ const SingleCourse = () => {
           <InstructorInfo instructorID={course.instructor} />
           <ReviewInput />
           <CourseRating courseID={course.id} />
+          <StudentsReview courseID={course.id} />
         </div>
         {/* Side Bar */}
         <SideBar course={course} />

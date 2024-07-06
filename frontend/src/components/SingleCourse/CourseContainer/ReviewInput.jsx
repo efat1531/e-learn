@@ -3,7 +3,7 @@ import React, { useState, useReducer } from "react";
 import { FaChevronCircleDown } from "react-icons/fa";
 import { FaCircleXmark } from "react-icons/fa6";
 import { PiPaperPlaneRightFill } from "react-icons/pi";
-import RatingInput from "../../ui/RatingInput";
+import RatingInput from "../../ui/StarRatingInput";
 
 const initials = {
   rating: 0,
