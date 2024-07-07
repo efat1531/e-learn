@@ -1,5 +1,9 @@
 import nodemailer from "nodemailer";
-import { welcomeVerificationEmailTemplate } from "./emailTemplate.js";
+import {
+  welcomeVerificationEmailTemplate,
+  otpResendEmailTemplate,
+  resetPasswordEmailTemplate,
+} from "./emailTemplate.js";
 
 const createTransporter = () => {
   return nodemailer.createTransport({
@@ -25,11 +29,10 @@ const sendWelcomeEmail = async (email, name, otp, url) => {
   await transporter.sendMail(mailOptions);
 };
 
-const resendVerificationEmail = async (email, name, otp, url) => {
+const resendVerificationEmail = async (email, name, otp) => {
   const transporter = createTransporter();
 
-  const emailBody = welcomeVerificationEmailTemplate(name, otp, url);
-
+  const emailBody = otpResendEmailTemplate(name, otp);
   const mailOptions = {
     from: process.env.EMAIL,
     to: email,
@@ -39,4 +42,17 @@ const resendVerificationEmail = async (email, name, otp, url) => {
   await transporter.sendMail(mailOptions);
 };
 
-export { sendWelcomeEmail, resendVerificationEmail };
+const sendResetPasswordEmail = async (email, name, url) => {
+  const transporter = createTransporter();
+
+  const emailBody = resetPasswordEmailTemplate(name, url);
+  const mailOptions = {
+    from: process.env.EMAIL,
+    to: email,
+    subject: "Reset Password",
+    html: emailBody,
+  };
+  await transporter.sendMail(mailOptions);
+};
+
+export { sendWelcomeEmail, resendVerificationEmail, sendResetPasswordEmail };

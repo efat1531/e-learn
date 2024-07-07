@@ -7,6 +7,7 @@ import { generateToken } from "../utils/generateJWTToken.js";
 import {
   sendWelcomeEmail,
   resendVerificationEmail,
+  sendResetPasswordEmail,
 } from "../utils/emailSender.js";
 
 // @desc    Register user
@@ -188,6 +189,8 @@ const forgotPassword = asyncHandler(async (req, res) => {
     email
   )}/${token}`;
 
+  await sendResetPasswordEmail(existingUser.email, existingUser.name, url);
+
   // Send response
   res.status(200).json({
     status: "success",
@@ -195,52 +198,77 @@ const forgotPassword = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc   Reset password
-// @route  POST /api/auth/reset/:email/:token
+// @desc   Reset password verification
+// @route  GET /api/auth/reset/:email/:token
 // @access Public
-const resetPassword = (password) =>
-  asyncHandler(async (req, res) => {
-    const encryptedEmail = req.params.email;
-    const token = req.params.token;
+const verifyResetPasswordRequest = asyncHandler(async (req, res) => {
+  const encryptedEmail = req.params.email;
+  const token = req.params.token;
 
-    const email = decryptEmail(encryptedEmail);
-    const user = await userModel.findOne({
-      email,
-    });
-
-    if (!user) {
-      throw new Error("User not found with this email");
-    }
-
-    const existingToken = await tokenModel.findOne({
-      email,
-      TokenType: "reset",
-    });
-    const isMatch = await existingToken.isCorrect(token);
-
-    if (!existingToken || !isMatch) {
-      throw new Error("Invalid token. Please request a new one.");
-    }
-
-    const isValid = existingToken.isValid();
-
-    if (!isValid) {
-      throw new Error("Token expired");
-    }
-
-    // Delete token
-    await tokenModel.findByIdAndDelete(existingToken._id);
-
-    // Update password
-    user.password = password;
-    await user.save();
-
-    // Send response
-    res.status(200).json({
-      status: "success",
-      message: "Password reset successfully",
-    });
+  const email = decryptEmail(encryptedEmail);
+  const user = await userModel.findOne({
+    email,
   });
+
+  if (!user) {
+    throw new Error("User not found with this email");
+  }
+
+  const existingToken = await tokenModel.findOne({
+    email,
+    TokenType: "reset",
+  });
+  const isMatch = await existingToken.isCorrect(token);
+
+  if (!existingToken || !isMatch) {
+    throw new Error("Invalid token. Please request a new one.");
+  }
+
+  const isValid = existingToken.isValid();
+
+  if (!isValid) {
+    throw new Error("Token expired");
+  }
+
+  // Delete token
+  await tokenModel.findByIdAndDelete(existingToken._id);
+
+  // Send response
+  res.status(200).json({
+    status: "success",
+    message: "Token verified successfully. Please reset your password.",
+  });
+});
+
+// @desc   Reset password
+// @route  PUT /api/auth/reset/:email
+// @access Public
+
+const resetPassword = asyncHandler(async (req, res) => {
+  const encryptedEmail = req.params.email;
+  const { password } = req.body;
+
+  const email = decryptEmail(encryptedEmail);
+  const existingUser = await userModel.findOne({
+    email,
+  });
+
+  if (!existingUser) {
+    throw new Error(
+      "No user found with this email. Please check your verification link."
+    );
+  }
+
+  // Update password
+  existingUser.password = password;
+  await existingUser.save();
+
+  // Send response
+  res.status(200).json({
+    status: "success",
+    message: "Password reset successfully",
+  });
+});
 
 export {
   register,
@@ -249,4 +277,5 @@ export {
   resendToken,
   forgotPassword,
   resetPassword,
+  verifyResetPasswordRequest,
 };

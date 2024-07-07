@@ -33,6 +33,10 @@ const userSchema = mongoose.Schema(
       default: "student",
       enum: ["student", "admin", "instructor"],
     },
+    numOfCourses: {
+      type: Number,
+      default: 0,
+    },
     isVerified: {
       type: Boolean,
       default: false,
