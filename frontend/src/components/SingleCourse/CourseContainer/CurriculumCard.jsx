@@ -6,8 +6,16 @@ import { FaRegCirclePlay } from "react-icons/fa6";
 import { LuClock4 } from "react-icons/lu";
 import CourseCurriculumList from "./CurriculumList";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const CourseCurriculamCard = ({ courseSection }) => {
+const CourseCurriculumCard = ({ courseSection }) => {
+  const navigate = useNavigate();
+  const currentPath = window.location.pathname;
+
+  const navigateToLecture = (lectureID) => {
+    navigate(`${currentPath}/lecture/${lectureID}`);
+  };
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = () => {
@@ -49,7 +57,11 @@ const CourseCurriculamCard = ({ courseSection }) => {
       {isOpen && (
         <div className="flex flex-col items-center gap-4 transition-all w-full ease-in-out duration-300 py-4">
           {courseSection.lessons.map((lesson, index) => (
-            <div className="w-full" key={index}>
+            <div
+              className="w-full"
+              key={index}
+              onClick={() => navigateToLecture(index)}
+            >
               <CourseCurriculumList lesson={lesson} />
             </div>
           ))}
@@ -59,11 +71,11 @@ const CourseCurriculamCard = ({ courseSection }) => {
   );
 };
 
-CourseCurriculamCard.propTypes = {
+CourseCurriculumCard.propTypes = {
   courseSection: PropTypes.object.isRequired,
 };
 
-export default CourseCurriculamCard;
+export default CourseCurriculumCard;
 
 const totalDuration = (courseSection) => {
   return courseSection.lessons

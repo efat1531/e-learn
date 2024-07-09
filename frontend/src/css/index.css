@@ -40,3 +40,11 @@ h4 {
     clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
   }
 }
+
+/* Dashboard */
+.dashboardNavLinks {
+  @apply flex gap-2 items-center ps-8 pe-24 py-2 text-CustomGray-600 hover:text-white hover:bg-Primary-500;
+}
+.dashboardNavLinks svg {
+  @apply text-xl;
+}
