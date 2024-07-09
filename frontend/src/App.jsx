@@ -15,6 +15,8 @@ import SingleCourse from "./pages/SingleCourse";
 import WatchLecture from "./pages/WatchLecture";
 import Courses from "./pages/Courses";
 import Error from "./pages/Error";
+import StudentDashboard from "./pages/StudentDashboard";
+import StuDashboard from "./components/StudentDashboard/Dashboard";
 
 function App() {
   return (
@@ -102,6 +104,17 @@ function App() {
             </DashboardLayout>
           }
         />
+        <Route
+          path="/student"
+          element={
+            <Layout>
+              <StudentDashboard />
+            </Layout>
+          }
+        >
+          <Route index element={<Navigate to="dashboard" replace />} />
+          <Route path="dashboard" element={<StuDashboard />} />
+        </Route>
         <Route
           path="*"
           element={
