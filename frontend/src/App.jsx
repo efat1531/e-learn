@@ -12,7 +12,8 @@ import Register from "./pages/Register";
 import UserDashboard from "./pages/UserDashboard";
 import ScrollToTop from "./components/ui/ScrollToTop";
 import SingleCourse from "./pages/SingleCourse";
-import Courses from "./pages/Coursrs";
+import WatchLecture from "./pages/WatchLecture";
+import Courses from "./pages/Courses";
 import Error from "./pages/Error";
 
 function App() {
@@ -82,6 +83,14 @@ function App() {
           element={
             <Layout>
               <SingleCourse />
+            </Layout>
+          }
+        />
+        <Route
+          path="/courses/:slug/lecture/:lectureId"
+          element={
+            <Layout>
+              <WatchLecture />
             </Layout>
           }
         />

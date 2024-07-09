@@ -26,7 +26,15 @@ const Courses = () => {
         )
     );
 
-  console.log(categoryOptions);
+  useEffect(() => {
+    if (selectedCategory) {
+      setNewCourses(
+        courses.filter(
+          (course) => course.category.name === selectedCategory.value
+        )
+      );
+    }
+  }, [selectedCategory]);
 
   useEffect(() => {
     setNewCourses((prevCourses) => {
@@ -59,14 +67,6 @@ const Courses = () => {
       });
     });
   }, [selectedOption]);
-
-  useEffect(() => {
-    if (selectedCategory) {
-      setNewCourses(
-        courses.filter((course) => course.category.name === selectedCategory)
-      );
-    }
-  }, [selectedCategory]);
 
   return (
     <section className="inline-flex flex-col justify-center items-center w-screen gap-10 py-14">
@@ -102,7 +102,7 @@ const Courses = () => {
             <CustomSelect
               customPlaceholder={"Select an option"}
               options={categoryOptions}
-              setSelectedOption={setSelectedOption}
+              setSelectedOption={setSelectedCategory}
               selectedOption={selectedCategory}
             />
           </div>

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import RatingCard from "../../ui/RatingCard";
+import RatingCard from "../../ui/StarRatingCard";
 
 const RatingProgressBar = ({ reviews, value }) => {
   const ratingQuantity = reviews.filter(

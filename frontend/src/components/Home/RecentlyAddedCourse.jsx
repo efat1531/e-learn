@@ -1,4 +1,4 @@
-import CourseData from "../../../Data/MOCK_DATA.json";
+import CourseData from "../../../Data/courseData.json";
 import CourseCard from "../Common/CourseCard";
 import { Link } from "react-router-dom";
 import Button from "../ui/Button";
@@ -17,7 +17,7 @@ const RecentlyAddedCourse = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 desktop:grid-cols-4 gap-4">
           {recentlyAdded.map((course, index) => (
-            <Link to={`/course/${course.slug}`} key={index}>
+            <Link to={`/courses/${course.slug}`} key={index}>
               <CourseCard key={index} course={course} />
             </Link>
           ))}

@@ -2,7 +2,7 @@ import React from "react";
 // import StarRatingCard from "../../components/uitls/Cards/StarRatingCard";
 // import RatingProgressBar from "../../components/uitls/Label/RatingProgressBar";
 import reviewData from "../../../../Data/reviewData.json";
-import RatingCard from "../../ui/RatingCard";
+import RatingCard from "../../ui/StarRatingCard";
 import RatingProgressBar from "./RatingProgressBar";
 import PropTypes from "prop-types";
 
