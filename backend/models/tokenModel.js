@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
+import { token } from "morgan";
 
 const tokenSchema = mongoose.Schema(
   {
@@ -25,6 +26,8 @@ const tokenSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+
+tokenSchema.index({ validTo: -1 });
 
 // Encrypt token
 tokenSchema.pre("save", async function (next) {

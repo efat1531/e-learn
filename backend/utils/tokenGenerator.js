@@ -15,6 +15,15 @@ const otpGenerator = (length) => {
 };
 
 const generateOTPToken = async (user, useCase) => {
+  const oldOTP = await tokenModel.findOne({
+    email: user.email,
+    TokenType: useCase,
+  });
+
+  if (oldOTP) {
+    await tokenModel.findByIdAndDelete(oldOTP._id);
+  }
+
   const len = useCase === "verify" ? 6 : 16;
   const otp = otpGenerator(len);
   const token = await tokenModel.create({

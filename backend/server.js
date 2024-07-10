@@ -8,6 +8,9 @@ import cors from "cors";
 import { errorHandler, notFound } from "./middlewere/errorHandler.js";
 import connectionDB from "./config/database.js";
 import authRoutes from "./routes/authRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
+import authMiddlewere from "./middlewere/authMiddlewere.js";
+import courseRoutes from "./routes/courseRoutes.js";
 
 dotenv.config();
 
@@ -42,7 +45,10 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Routes
+app.use(authMiddlewere);
 app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/courses", courseRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

@@ -1,7 +1,7 @@
 import userModel from "../models/userModel.js";
 import asyncHandler from "../middlewere/asyncHandler.js";
 import { generateOTPToken } from "../utils/tokenGenerator.js";
-import { decryptEmail, encrypt } from "../utils/textCypher.js";
+import { decryptEmail, encrypt } from "../utils/textCipher.js";
 import tokenModel from "../models/tokenModel.js";
 import { generateToken } from "../utils/generateJWTToken.js";
 import {
@@ -151,8 +151,11 @@ const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
   const user = await userModel.findOne({ email }).select("+password");
+  if (!user) {
+    throw new Error("Invalid credentials");
+  }
 
-  const isMatch = await user.matchPassword(password, user.password);
+  const isMatch = await user.matchPassword(password);
 
   if (!user || !isMatch) {
     throw new Error("Invalid credentials");
@@ -218,6 +221,7 @@ const verifyResetPasswordRequest = asyncHandler(async (req, res) => {
     email,
     TokenType: "reset",
   });
+
   const isMatch = await existingToken.isCorrect(token);
 
   if (!existingToken || !isMatch) {
@@ -241,9 +245,8 @@ const verifyResetPasswordRequest = asyncHandler(async (req, res) => {
 });
 
 // @desc   Reset password
-// @route  PUT /api/auth/reset/:email
+// @route  POST /api/auth/reset/:email
 // @access Public
-
 const resetPassword = asyncHandler(async (req, res) => {
   const encryptedEmail = req.params.email;
   const { password } = req.body;
@@ -267,6 +270,19 @@ const resetPassword = asyncHandler(async (req, res) => {
   res.status(200).json({
     status: "success",
     message: "Password reset successfully",
+  });
+});
+
+// @desc  logout user
+// @route GET /api/auth/logout
+// @access Public
+const logout = asyncHandler(async (req, res) => {
+  // Clear cookie
+  res.clearCookie("jwt");
+
+  res.status(200).json({
+    status: "success",
+    message: "User logged out successfully",
   });
 });
 

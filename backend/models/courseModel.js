@@ -1,23 +1,77 @@
 import mongoose from "mongoose";
 
+const courseCategorySchema = mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  courseID: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Course",
+  },
+});
+
+const courseContentItemsSchema = mongoose.Schema({
+  contentType: {
+    type: String,
+    required: true,
+    enum: ["video", "document", "quiz"],
+  },
+  contentTitle: {
+    type: String,
+    required: true,
+  },
+  contentURL: {
+    type: String,
+    required: true,
+    select: false,
+  },
+  contentDuration: {
+    type: Number,
+    default: 0,
+  },
+  contentDescription: {
+    type: String,
+    select: false,
+  },
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment",
+    },
+  ],
+  finished: {
+    type: Boolean,
+    default: false,
+    select: false,
+  },
+});
+
+const courseContentSchema = mongoose.Schema({
+  sectionTitle: {
+    type: String,
+    required: true,
+  },
+  sectionContainer: [courseContentItemsSchema],
+});
+
 const courseSchema = mongoose.Schema(
   {
-    courseName: {
+    title: {
       type: String,
       required: true,
     },
-    courseSlug: {
+    slug: {
       type: String,
     },
-    courseDescription: {
+    description: {
       type: String,
       required: true,
     },
-    courseDuration: {
+    duration: {
       type: Number,
-      required: true,
     },
-    coursePrice: {
+    price: {
       type: Number,
       required: true,
       validate: {
@@ -27,7 +81,7 @@ const courseSchema = mongoose.Schema(
         message: "Price must be greater than 0.",
       },
     },
-    courseDiscount: {
+    discount: {
       type: Number,
       default: 0,
       validate: [
@@ -39,84 +93,40 @@ const courseSchema = mongoose.Schema(
         },
         {
           validator: function (value) {
-            return value < this.coursePrice;
+            return value <= this.price;
           },
-          message: "Discount cannot be greater than the course price.",
+          message: "Discount cannot be greater than the price.",
         },
       ],
     },
-    courseIntroVideo: {
+
+    discountExpires: {
+      type: Date,
+    },
+
+    introVideo: {
       type: String,
     },
     whatYouWillLearn: {
       type: [String],
     },
-    courseRequirements: [
-      {
-        requirement: {
-          type: String,
-          required: true,
-        },
-        need: {
-          type: Boolean,
-          default: false,
-        },
-      },
-    ],
-    courseContent: {
-      type: [
-        {
-          title: {
-            type: String,
-            required: true,
-          },
-          lessons: [
-            {
-              title: {
-                type: String,
-                required: true,
-              },
-              type: {
-                type: String,
-                required: true,
-                enum: ["video", "resource"],
-              },
-              duration: {
-                type: Number,
-                required: function () {
-                  return this.type === "video";
-                },
-              },
-              markAsComplete: {
-                type: Boolean,
-                default: false,
-              },
-              link: {
-                type: String,
-                required: true,
-              },
-            },
-          ],
-        },
-      ],
-      select: false,
+    requirements: {
+      type: [String],
     },
-    courseInstructor: {
+    courseContent: [courseContentSchema],
+
+    instructor: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "User",
     },
-    courseCategory: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: "Category",
-    },
-    courseLevel: {
+    courseCategory: courseCategorySchema,
+    level: {
       type: String,
       required: true,
       enum: ["Beginner", "Intermediate", "Advanced"],
     },
-    courseLanguage: {
+    language: {
       type: String,
       default: "English",
     },
@@ -132,6 +142,12 @@ const courseSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
+    courseReviews: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Review",
+      },
+    ],
   },
   {
     timestamps: true,
@@ -139,7 +155,7 @@ const courseSchema = mongoose.Schema(
 );
 
 courseSchema.pre("save", function (next) {
-  this.courseSlug = this.courseName
+  this.slug = this.title
     .toLowerCase()
     .split(" ")
     .map((word) => word.replace(/[^a-zA-Z0-9]/g, ""))
@@ -150,6 +166,10 @@ courseSchema.pre("save", function (next) {
 courseSchema.methods.incrementStudents = async function () {
   this.courseStudents += 1;
   await this.save();
+};
+
+courseSchema.statics.findTrendingCourses = async function (limit = 10) {
+  return this.find({}).sort({ courseStudents: -1 }).limit(limit);
 };
 
 const Course = mongoose.model("Course", courseSchema);

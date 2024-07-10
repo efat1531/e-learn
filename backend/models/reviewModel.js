@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import Course from "./courseModel.js";
 
-const ratingSchema = mongoose.Schema(
+const reviewSchema = mongoose.Schema(
   {
     rating: {
       type: Number,
@@ -26,7 +26,7 @@ const ratingSchema = mongoose.Schema(
   }
 );
 
-ratingSchema.statics.calculateAvgRating = async function (courseId) {
+reviewSchema.statics.calculateAvgRating = async function (courseId) {
   const stats = await this.aggregate([
     {
       $match: { course: courseId },
@@ -52,17 +52,17 @@ ratingSchema.statics.calculateAvgRating = async function (courseId) {
   }
 };
 
-ratingSchema.pre(/^findOneAnd/, async function (next) {
+reviewSchema.pre(/^findOneAnd/, async function (next) {
   this.r = await this.clone().findOne();
   next();
 });
 
-ratingSchema.post(/^findOneAnd/, async function () {
+reviewSchema.post(/^findOneAnd/, async function () {
   await this.r.constructor.calculateAvgRating(this.r.course);
 });
 
-ratingSchema.index({ course: 1, user: 1 }, { unique: true });
+reviewSchema.index({ course: 1, user: 1 }, { unique: true });
 
-const Rating = mongoose.model("Rating", ratingSchema);
+const Rating = mongoose.model("Review", reviewSchema);
 
 export default Rating;
