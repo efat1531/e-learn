@@ -1,58 +1,16 @@
 import mongoose from "mongoose";
 
-const courseCategorySchema = mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  courseID: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Course",
-  },
-});
-
-const courseContentItemsSchema = mongoose.Schema({
-  contentType: {
-    type: String,
-    required: true,
-    enum: ["video", "document", "quiz"],
-  },
-  contentTitle: {
-    type: String,
-    required: true,
-  },
-  contentURL: {
-    type: String,
-    required: true,
-    select: false,
-  },
-  contentDuration: {
-    type: Number,
-    default: 0,
-  },
-  contentDescription: {
-    type: String,
-    select: false,
-  },
-  comments: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Comment",
-    },
-  ],
-  finished: {
-    type: Boolean,
-    default: false,
-    select: false,
-  },
-});
-
 const courseContentSchema = mongoose.Schema({
   sectionTitle: {
     type: String,
     required: true,
   },
-  sectionContainer: [courseContentItemsSchema],
+  sectionContainer: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "CourseContent",
+    },
+  ],
 });
 
 const courseSchema = mongoose.Schema(
@@ -120,7 +78,6 @@ const courseSchema = mongoose.Schema(
       required: true,
       ref: "User",
     },
-    courseCategory: courseCategorySchema,
     level: {
       type: String,
       required: true,
@@ -150,17 +107,39 @@ const courseSchema = mongoose.Schema(
     ],
   },
   {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
     timestamps: true,
   }
 );
 
 courseSchema.pre("save", function (next) {
-  this.slug = this.title
-    .toLowerCase()
-    .split(" ")
-    .map((word) => word.replace(/[^a-zA-Z0-9]/g, ""))
-    .join("-");
+  if (this.isModified("title")) {
+    this.slug = this.title
+      .replace(/[^\w\s]/gi, "")
+      .toLowerCase()
+      .split(" ")
+      .join("-");
+  }
   next();
+});
+
+courseSchema.pre("findOneAndUpdate", function (next) {
+  if (this._update.title) {
+    this._update.slug = this._update.title
+      .replace(/[^\w\s]/gi, "")
+      .toLowerCase()
+      .split(" ")
+      .join("-");
+  }
+  next();
+});
+
+courseSchema.virtual("currentPrice").get(function () {
+  if (!this.discountExpires || this.discountExpires < Date.now()) {
+    return this.price;
+  }
+  return this.price - this.discount;
 });
 
 courseSchema.methods.incrementStudents = async function () {
