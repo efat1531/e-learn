@@ -167,7 +167,7 @@ const login = asyncHandler(async (req, res) => {
   // Send response
   res.status(200).json({
     status: "success",
-    message: "User logged in successfully",
+    token: res.cookie.eLearnJWT,
   });
 });
 

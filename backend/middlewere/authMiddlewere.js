@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import asyncHandler from "./asyncHandler.js";
 
 const authMiddlewere = asyncHandler(async (req, res, next) => {
-  const token = req.cookies.jwt;
+  const token = req.cookies.eLearnJWT;
 
   if (!token) {
     return next();
