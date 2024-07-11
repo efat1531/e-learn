@@ -98,6 +98,7 @@ const verifyUser = asyncHandler(async (req, res) => {
   res.status(200).json({
     status: "success",
     message: "User verified successfully",
+    token: res.cookie.eLearnJWT,
   });
 });
 
@@ -166,7 +167,7 @@ const login = asyncHandler(async (req, res) => {
   // Send response
   res.status(200).json({
     status: "success",
-    message: "User logged in successfully",
+    token: res.cookie.eLearnJWT,
   });
 });
 
@@ -277,7 +278,7 @@ const resetPassword = asyncHandler(async (req, res) => {
 // @access Public
 const logout = asyncHandler(async (req, res) => {
   // Clear cookie
-  res.clearCookie("jwt");
+  res.clearCookie("eLearnJWT");
 
   res.status(200).json({
     status: "success",
