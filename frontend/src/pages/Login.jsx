@@ -1,8 +1,43 @@
 import LoginBanner from "../assets/images/LoginBanner.png";
 import Button from "../components/ui/Button";
 import Input from "../components/ui/Input";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLoginMutation } from "../features/api/authApiSlice";
+import { setCredentials, setTempCredentials } from "../features/authSlice";
 const Login = () => {
-  const handleSubmit = () => {};
+  const [remember, setRemember] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [login, { isLoading, error }] = useLoginMutation();
+
+  const { userInfo } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate("/home");
+    }
+  }, [navigate, userInfo]);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const { email, password } = Object.fromEntries(formData.entries());
+
+    console.log(email, password, remember);
+
+    try {
+      const response = await login({ email, password }).unwrap();
+      console.log(response);
+    } catch (error) {
+      console.error(
+        "Failed to login",
+        error?.data?.message || error?.error?.message
+      );
+    }
+  };
   return (
     <div>
       <div className="flex justify-evenly">
@@ -33,6 +68,8 @@ const Login = () => {
                     type="checkbox"
                     className="h-5 w-5 border accent-Primary-600"
                     id="remember"
+                    value={remember}
+                    onChange={(e) => setRemember(e.target.checked)}
                   />
                   <label htmlFor="remember" className="cursor-pointer">
                     Remember Me
