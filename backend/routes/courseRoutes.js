@@ -14,6 +14,8 @@ import reviewRouter from "./reviewRoutes.js";
 
 const router = express.Router();
 
+router.use("/:courseId/reviews", reviewRouter);
+
 router
   .route("/")
   .get(getCourses)
@@ -30,7 +32,5 @@ router
   .patch(protect(["instructor"]), updateLecture);
 
 router.route("/:slug/:sectionId").post(protect(["instructor"]), createLecture);
-
-router.use("/:courseId/reviews", reviewRouter);
 
 export default router;
