@@ -6,12 +6,14 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLoginMutation } from "../features/api/authApiSlice";
 import { setCredentials, setTempCredentials } from "../features/authSlice";
+import { toast } from "react-toastify";
+
 const Login = () => {
   const [remember, setRemember] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [login, { isLoading, error }] = useLoginMutation();
+  const [login, { isLoading }] = useLoginMutation();
 
   const { userInfo } = useSelector((state) => state.auth);
 
@@ -26,16 +28,19 @@ const Login = () => {
     const formData = new FormData(event.target);
     const { email, password } = Object.fromEntries(formData.entries());
 
-    console.log(email, password, remember);
-
     try {
       const response = await login({ email, password }).unwrap();
-      console.log(response);
+      const { token } = response;
+      if (remember) {
+        dispatch(setCredentials(token));
+      } else {
+        dispatch(setTempCredentials(token));
+      }
+      toast.success("Logged in successfully");
+      navigate("/home");
     } catch (error) {
-      console.error(
-        "Failed to login",
-        error?.data?.message || error?.error?.message
-      );
+      const message = error.data ? error.data.message : error.error.message;
+      toast.error(message);
     }
   };
   return (
