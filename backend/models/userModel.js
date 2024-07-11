@@ -113,6 +113,10 @@ userSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, salt);
 });
 
+userSchema.methods.checkIfAllowedToReview = async function (courseId) {
+  return this.courses.map(String).includes(String(courseId));
+};
+
 const User = mongoose.model("User", userSchema);
 
 export default User;

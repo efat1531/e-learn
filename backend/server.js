@@ -11,6 +11,7 @@ import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import authMiddlewere from "./middlewere/authMiddlewere.js";
 import courseRoutes from "./routes/courseRoutes.js";
+import reviewRoutes from "./routes/reviewRoutes.js";
 
 dotenv.config();
 
@@ -49,6 +50,7 @@ app.use(authMiddlewere);
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/courses", courseRoutes);
+app.use("/api/reviews", reviewRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

@@ -10,6 +10,7 @@ import {
   createLecture,
 } from "../controllers/courseController.js";
 import protect from "../middlewere/protectMiddleware.js";
+import reviewRouter from "./reviewRoutes.js";
 
 const router = express.Router();
 
@@ -29,5 +30,7 @@ router
   .patch(protect(["instructor"]), updateLecture);
 
 router.route("/:slug/:sectionId").post(protect(["instructor"]), createLecture);
+
+router.use("/:courseId/reviews", reviewRouter);
 
 export default router;
