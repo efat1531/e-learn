@@ -6,6 +6,7 @@ import morgan from "morgan";
 import cors from "cors";
 
 import { errorHandler, notFound } from "./middlewere/errorHandler.js";
+import corsOptions from "./config/corsOptions.js";
 import connectionDB from "./config/database.js";
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
@@ -25,6 +26,7 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use(cookieParser());

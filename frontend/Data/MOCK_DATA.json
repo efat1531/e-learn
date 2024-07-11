@@ -1,0 +1,1142 @@
+[
+  {
+    "id": "abc123",
+    "title": "Mr",
+    "slug": "Rev",
+    "imageSrc": "https://over-blog.com/at/nulla/suspendisse/potenti/cras.js?morbi=dis&a=parturient&ipsum=montes&integer=nascetur&a=ridiculus&nibh=mus&in=vivamus&quis=vestibulum&justo=sagittis&maecenas=sapien&rhoncus=cum&aliquam=sociis&lacus=natoque&morbi=penatibus&quis=et&tortor=magnis&id=dis&nulla=parturient&ultrices=montes&aliquet=nascetur&maecenas=ridiculus&leo=mus&odio=etiam&condimentum=vel&id=augue&luctus=vestibulum&nec=rutrum&molestie=rutrum&sed=neque&justo=aenean&pellentesque=auctor&viverra=gravida&pede=sem&ac=praesent&diam=id&cras=massa&pellentesque=id&volutpat=nisl&dui=venenatis&maecenas=lacinia&tristique=aenean&est=sit&et=amet&tempus=justo&semper=morbi&est=ut&quam=odio&pharetra=cras&magna=mi&ac=pede&consequat=malesuada&metus=in&sapien=imperdiet&ut=et&nunc=commodo&vestibulum=vulputate&ante=justo&ipsum=in&primis=blandit&in=ultrices&faucibus=enim&orci=lorem&luctus=ipsum&et=dolor&ultrices=sit&posuere=amet&cubilia=consectetuer&curae=adipiscing&mauris=elit&viverra=proin&diam=interdum&vitae=mauris&quam=non&suspendisse=ligula&potenti=pellentesque",
+    "rating": 1.8,
+    "numOfRating": 735,
+    "students": 578,
+    "duration": 50,
+    "courseLevel": "Advanced",
+    "courseLanguage": "Montenegrin",
+    "price": 79,
+    "discount": 22,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Mrs",
+      "color": "#69ac4e",
+      "backgroundColor": "#cc6629"
+    },
+    "createAt": "2025-08-06T02:56:48Z",
+    "introVideo": "http://msu.edu/habitasse/platea/dictumst/maecenas/ut.png?at=tincidunt&ipsum=eget&ac=tempus&tellus=vel&semper=pede&interdum=morbi&mauris=porttitor&ullamcorper=lorem&purus=id&sit=ligula&amet=suspendisse&nulla=ornare&quisque=consequat&arcu=lectus&libero=in&rutrum=est&ac=risus&lobortis=auctor&vel=sed&dapibus=tristique&at=in&diam=tempus&nam=sit&tristique=amet",
+    "instructor": "ins003",
+    "description": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
+    "summary": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
+    "requirements": {
+      "text": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+      "need": false
+    },
+    "curriculum": {
+      "title": "Rev",
+      "lessons": {
+        "title": "Rev",
+        "type": "resource",
+        "duration": 23,
+        "link": "https://hp.com/in.html?nisi=in&eu=faucibus&orci=orci&mauris=luctus&lacinia=et&sapien=ultrices&quis=posuere&libero=cubilia&nullam=curae&sit=mauris&amet=viverra&turpis=diam&elementum=vitae&ligula=quam&vehicula=suspendisse&consequat=potenti&morbi=nullam&a=porttitor&ipsum=lacus&integer=at&a=turpis&nibh=donec&in=posuere&quis=metus&justo=vitae&maecenas=ipsum&rhoncus=aliquam&aliquam=non&lacus=mauris&morbi=morbi&quis=non&tortor=lectus&id=aliquam&nulla=sit&ultrices=amet&aliquet=diam&maecenas=in&leo=magna&odio=bibendum&condimentum=imperdiet&id=nullam&luctus=orci&nec=pede&molestie=venenatis"
+      }
+    }
+  },
+  {
+    "id": "jkl567",
+    "title": "Honorable",
+    "slug": "Rev",
+    "imageSrc": "http://sbwire.com/praesent/id/massa/id/nisl/venenatis.aspx?enim=maecenas&in=tincidunt&tempor=lacus&turpis=at&nec=velit&euismod=vivamus&scelerisque=vel&quam=nulla&turpis=eget&adipiscing=eros&lorem=elementum&vitae=pellentesque&mattis=quisque&nibh=porta&ligula=volutpat&nec=erat&sem=quisque&duis=erat&aliquam=eros&convallis=viverra&nunc=eget&proin=congue&at=eget&turpis=semper&a=rutrum&pede=nulla&posuere=nunc&nonummy=purus&integer=phasellus&non=in&velit=felis&donec=donec&diam=semper&neque=sapien&vestibulum=a&eget=libero&vulputate=nam&ut=dui&ultrices=proin&vel=leo&augue=odio&vestibulum=porttitor&ante=id&ipsum=consequat&primis=in&in=consequat&faucibus=ut&orci=nulla&luctus=sed&et=accumsan&ultrices=felis&posuere=ut&cubilia=at&curae=dolor&donec=quis&pharetra=odio&magna=consequat&vestibulum=varius&aliquet=integer&ultrices=ac&erat=leo&tortor=pellentesque&sollicitudin=ultrices&mi=mattis&sit=odio&amet=donec&lobortis=vitae&sapien=nisi&sapien=nam&non=ultrices&mi=libero&integer=non&ac=mattis&neque=pulvinar&duis=nulla&bibendum=pede&morbi=ullamcorper&non=augue&quam=a&nec=suscipit&dui=nulla&luctus=elit&rutrum=ac&nulla=nulla&tellus=sed&in=vel&sagittis=enim&dui=sit&vel=amet&nisl=nunc&duis=viverra&ac=dapibus",
+    "rating": 2.3,
+    "numOfRating": 370,
+    "students": 275,
+    "duration": 41,
+    "courseLevel": "Advanced",
+    "courseLanguage": "Sotho",
+    "price": 92,
+    "discount": 8,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Honorable",
+      "color": "#00655f",
+      "backgroundColor": "#3e789d"
+    },
+    "createAt": "2024-02-21T04:39:41Z",
+    "introVideo": "http://etsy.com/non/quam.jpg?eget=diam&tempus=neque&vel=vestibulum&pede=eget&morbi=vulputate&porttitor=ut&lorem=ultrices&id=vel&ligula=augue&suspendisse=vestibulum&ornare=ante&consequat=ipsum&lectus=primis&in=in&est=faucibus&risus=orci&auctor=luctus&sed=et&tristique=ultrices&in=posuere&tempus=cubilia&sit=curae&amet=donec&sem=pharetra&fusce=magna&consequat=vestibulum&nulla=aliquet&nisl=ultrices&nunc=erat&nisl=tortor&duis=sollicitudin&bibendum=mi&felis=sit&sed=amet&interdum=lobortis&venenatis=sapien&turpis=sapien&enim=non&blandit=mi&mi=integer&in=ac&porttitor=neque&pede=duis&justo=bibendum&eu=morbi&massa=non&donec=quam&dapibus=nec&duis=dui&at=luctus&velit=rutrum&eu=nulla&est=tellus&congue=in&elementum=sagittis&in=dui&hac=vel&habitasse=nisl&platea=duis&dictumst=ac&morbi=nibh&vestibulum=fusce&velit=lacus&id=purus&pretium=aliquet&iaculis=at&diam=feugiat&erat=non&fermentum=pretium&justo=quis&nec=lectus&condimentum=suspendisse&neque=potenti&sapien=in&placerat=eleifend&ante=quam&nulla=a&justo=odio&aliquam=in&quis=hac&turpis=habitasse&eget=platea",
+    "instructor": "ins003",
+    "description": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
+    "summary": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
+    "requirements": {
+      "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
+      "need": true
+    },
+    "curriculum": {
+      "title": "Dr",
+      "lessons": {
+        "title": "Mr",
+        "type": "video",
+        "duration": 7,
+        "link": "https://buzzfeed.com/a/feugiat/et.aspx?odio=risus&porttitor=auctor&id=sed&consequat=tristique&in=in&consequat=tempus&ut=sit&nulla=amet&sed=sem&accumsan=fusce&felis=consequat&ut=nulla&at=nisl"
+      }
+    }
+  },
+  {
+    "id": "def456",
+    "title": "Mr",
+    "slug": "Mr",
+    "imageSrc": "https://hostgator.com/ipsum/dolor/sit.json?accumsan=vulputate&odio=ut&curabitur=ultrices&convallis=vel&duis=augue&consequat=vestibulum&dui=ante&nec=ipsum&nisi=primis&volutpat=in&eleifend=faucibus&donec=orci&ut=luctus&dolor=et&morbi=ultrices&vel=posuere&lectus=cubilia&in=curae&quam=donec&fringilla=pharetra&rhoncus=magna&mauris=vestibulum",
+    "rating": 3.9,
+    "numOfRating": 50,
+    "students": 143,
+    "duration": 43,
+    "courseLevel": "Intermediate",
+    "courseLanguage": "Albanian",
+    "price": 12,
+    "discount": 15,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Rev",
+      "color": "#2d5bee",
+      "backgroundColor": "#171213"
+    },
+    "createAt": "2025-01-01T20:35:23Z",
+    "introVideo": "https://prlog.org/quam/pharetra/magna.jpg?tincidunt=a&ante=odio&vel=in&ipsum=hac&praesent=habitasse&blandit=platea&lacinia=dictumst&erat=maecenas&vestibulum=ut&sed=massa&magna=quis&at=augue&nunc=luctus&commodo=tincidunt&placerat=nulla&praesent=mollis&blandit=molestie&nam=lorem&nulla=quisque&integer=ut&pede=erat&justo=curabitur&lacinia=gravida&eget=nisi&tincidunt=at&eget=nibh&tempus=in&vel=hac&pede=habitasse&morbi=platea&porttitor=dictumst&lorem=aliquam&id=augue&ligula=quam&suspendisse=sollicitudin&ornare=vitae&consequat=consectetuer&lectus=eget&in=rutrum&est=at&risus=lorem&auctor=integer&sed=tincidunt&tristique=ante&in=vel&tempus=ipsum&sit=praesent&amet=blandit&sem=lacinia&fusce=erat&consequat=vestibulum&nulla=sed&nisl=magna&nunc=at&nisl=nunc&duis=commodo&bibendum=placerat&felis=praesent&sed=blandit&interdum=nam&venenatis=nulla&turpis=integer&enim=pede&blandit=justo&mi=lacinia&in=eget&porttitor=tincidunt&pede=eget&justo=tempus&eu=vel&massa=pede&donec=morbi&dapibus=porttitor&duis=lorem&at=id&velit=ligula&eu=suspendisse&est=ornare",
+    "instructor": "ins003",
+    "description": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
+    "summary": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
+    "requirements": {
+      "text": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\n\nCras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
+      "need": false
+    },
+    "curriculum": {
+      "title": "Mrs",
+      "lessons": {
+        "title": "Rev",
+        "type": "video",
+        "duration": 38,
+        "link": "http://newyorker.com/mauris/ullamcorper.json?morbi=faucibus&non=orci&lectus=luctus&aliquam=et&sit=ultrices&amet=posuere&diam=cubilia&in=curae&magna=duis&bibendum=faucibus&imperdiet=accumsan&nullam=odio&orci=curabitur&pede=convallis&venenatis=duis&non=consequat&sodales=dui&sed=nec&tincidunt=nisi&eu=volutpat&felis=eleifend&fusce=donec&posuere=ut&felis=dolor&sed=morbi&lacus=vel&morbi=lectus&sem=in&mauris=quam&laoreet=fringilla&ut=rhoncus&rhoncus=mauris&aliquet=enim"
+      }
+    }
+  },
+  {
+    "id": "def456",
+    "title": "Mr",
+    "slug": "Ms",
+    "imageSrc": "https://reuters.com/aenean/sit/amet/justo/morbi/ut.png?eu=pulvinar&interdum=nulla&eu=pede&tincidunt=ullamcorper&in=augue&leo=a&maecenas=suscipit&pulvinar=nulla&lobortis=elit&est=ac&phasellus=nulla&sit=sed&amet=vel&erat=enim&nulla=sit&tempus=amet&vivamus=nunc&in=viverra&felis=dapibus&eu=nulla&sapien=suscipit&cursus=ligula&vestibulum=in&proin=lacus&eu=curabitur&mi=at&nulla=ipsum&ac=ac&enim=tellus&in=semper&tempor=interdum&turpis=mauris&nec=ullamcorper&euismod=purus&scelerisque=sit&quam=amet&turpis=nulla&adipiscing=quisque&lorem=arcu&vitae=libero&mattis=rutrum",
+    "rating": 0.2,
+    "numOfRating": 481,
+    "students": 205,
+    "duration": 37,
+    "courseLevel": "Intermediate",
+    "courseLanguage": "Italian",
+    "price": 67,
+    "discount": 25,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Ms",
+      "color": "#e6dabd",
+      "backgroundColor": "#215969"
+    },
+    "createAt": "2024-10-26T14:41:16Z",
+    "introVideo": "https://skype.com/pede/venenatis/non.xml?volutpat=at&dui=turpis&maecenas=a&tristique=pede&est=posuere&et=nonummy&tempus=integer&semper=non&est=velit&quam=donec&pharetra=diam&magna=neque&ac=vestibulum&consequat=eget&metus=vulputate&sapien=ut&ut=ultrices&nunc=vel&vestibulum=augue&ante=vestibulum&ipsum=ante&primis=ipsum&in=primis&faucibus=in&orci=faucibus&luctus=orci&et=luctus&ultrices=et&posuere=ultrices&cubilia=posuere&curae=cubilia&mauris=curae&viverra=donec&diam=pharetra&vitae=magna&quam=vestibulum&suspendisse=aliquet&potenti=ultrices&nullam=erat&porttitor=tortor&lacus=sollicitudin&at=mi&turpis=sit&donec=amet&posuere=lobortis&metus=sapien&vitae=sapien&ipsum=non&aliquam=mi&non=integer&mauris=ac&morbi=neque&non=duis&lectus=bibendum&aliquam=morbi",
+    "instructor": "ins002",
+    "description": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+    "summary": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\n\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+    "requirements": {
+      "text": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.\n\nQuisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.\n\nVestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
+      "need": false
+    },
+    "curriculum": {
+      "title": "Mrs",
+      "lessons": {
+        "title": "Mrs",
+        "type": "video",
+        "duration": 23,
+        "link": "http://npr.org/parturient/montes/nascetur/ridiculus/mus.jsp?at=ut&velit=rhoncus&vivamus=aliquet&vel=pulvinar&nulla=sed&eget=nisl&eros=nunc&elementum=rhoncus&pellentesque=dui&quisque=vel&porta=sem&volutpat=sed&erat=sagittis&quisque=nam&erat=congue&eros=risus&viverra=semper&eget=porta&congue=volutpat&eget=quam&semper=pede&rutrum=lobortis&nulla=ligula&nunc=sit&purus=amet&phasellus=eleifend&in=pede&felis=libero&donec=quis&semper=orci&sapien=nullam&a=molestie&libero=nibh&nam=in&dui=lectus&proin=pellentesque&leo=at&odio=nulla&porttitor=suspendisse&id=potenti&consequat=cras&in=in&consequat=purus&ut=eu&nulla=magna&sed=vulputate&accumsan=luctus&felis=cum&ut=sociis&at=natoque&dolor=penatibus&quis=et&odio=magnis&consequat=dis&varius=parturient&integer=montes&ac=nascetur&leo=ridiculus&pellentesque=mus&ultrices=vivamus&mattis=vestibulum&odio=sagittis&donec=sapien&vitae=cum&nisi=sociis&nam=natoque&ultrices=penatibus&libero=et&non=magnis&mattis=dis&pulvinar=parturient&nulla=montes&pede=nascetur&ullamcorper=ridiculus&augue=mus&a=etiam&suscipit=vel&nulla=augue&elit=vestibulum&ac=rutrum&nulla=rutrum&sed=neque&vel=aenean&enim=auctor&sit=gravida&amet=sem&nunc=praesent&viverra=id&dapibus=massa"
+      }
+    }
+  },
+  {
+    "id": "ghi789",
+    "title": "Ms",
+    "slug": "Mr",
+    "imageSrc": "http://mapquest.com/duis.js?amet=aliquam&eleifend=quis&pede=turpis&libero=eget&quis=elit&orci=sodales&nullam=scelerisque&molestie=mauris&nibh=sit&in=amet&lectus=eros&pellentesque=suspendisse&at=accumsan&nulla=tortor&suspendisse=quis&potenti=turpis&cras=sed&in=ante&purus=vivamus&eu=tortor&magna=duis&vulputate=mattis&luctus=egestas&cum=metus&sociis=aenean&natoque=fermentum&penatibus=donec&et=ut&magnis=mauris&dis=eget&parturient=massa&montes=tempor&nascetur=convallis&ridiculus=nulla&mus=neque&vivamus=libero&vestibulum=convallis&sagittis=eget&sapien=eleifend&cum=luctus&sociis=ultricies&natoque=eu&penatibus=nibh&et=quisque&magnis=id&dis=justo&parturient=sit&montes=amet&nascetur=sapien&ridiculus=dignissim&mus=vestibulum&etiam=vestibulum&vel=ante&augue=ipsum&vestibulum=primis&rutrum=in&rutrum=faucibus&neque=orci&aenean=luctus&auctor=et&gravida=ultrices&sem=posuere&praesent=cubilia&id=curae&massa=nulla&id=dapibus&nisl=dolor&venenatis=vel&lacinia=est&aenean=donec&sit=odio&amet=justo&justo=sollicitudin&morbi=ut&ut=suscipit&odio=a&cras=feugiat&mi=et&pede=eros",
+    "rating": 2.7,
+    "numOfRating": 606,
+    "students": 913,
+    "duration": 9,
+    "courseLevel": "Advanced",
+    "courseLanguage": "Icelandic",
+    "price": 42,
+    "discount": 3,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Ms",
+      "color": "#fe9ff5",
+      "backgroundColor": "#321e81"
+    },
+    "createAt": "2024-11-03T21:43:36Z",
+    "introVideo": "https://merriam-webster.com/phasellus.html?vivamus=sed&vel=justo&nulla=pellentesque",
+    "instructor": "ins003",
+    "description": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
+    "summary": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
+    "requirements": {
+      "text": "In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
+      "need": false
+    },
+    "curriculum": {
+      "title": "Mr",
+      "lessons": {
+        "title": "Mr",
+        "type": "video",
+        "duration": 38,
+        "link": "http://bravesites.com/nibh/fusce/lacus/purus/aliquet/at/feugiat.jsp?nulla=pellentesque&ut=quisque&erat=porta&id=volutpat&mauris=erat&vulputate=quisque&elementum=erat&nullam=eros&varius=viverra&nulla=eget&facilisi=congue&cras=eget&non=semper&velit=rutrum&nec=nulla&nisi=nunc&vulputate=purus&nonummy=phasellus&maecenas=in&tincidunt=felis&lacus=donec&at=semper&velit=sapien&vivamus=a&vel=libero&nulla=nam&eget=dui&eros=proin&elementum=leo&pellentesque=odio&quisque=porttitor&porta=id&volutpat=consequat&erat=in&quisque=consequat&erat=ut&eros=nulla&viverra=sed&eget=accumsan&congue=felis&eget=ut&semper=at&rutrum=dolor&nulla=quis&nunc=odio&purus=consequat&phasellus=varius&in=integer&felis=ac&donec=leo&semper=pellentesque&sapien=ultrices&a=mattis&libero=odio&nam=donec&dui=vitae&proin=nisi&leo=nam&odio=ultrices&porttitor=libero&id=non&consequat=mattis&in=pulvinar&consequat=nulla&ut=pede&nulla=ullamcorper&sed=augue&accumsan=a&felis=suscipit&ut=nulla&at=elit&dolor=ac&quis=nulla&odio=sed&consequat=vel&varius=enim&integer=sit&ac=amet&leo=nunc&pellentesque=viverra&ultrices=dapibus&mattis=nulla&odio=suscipit&donec=ligula&vitae=in&nisi=lacus&nam=curabitur"
+      }
+    }
+  },
+  {
+    "id": "ghi789",
+    "title": "Mr",
+    "slug": "Mrs",
+    "imageSrc": "https://a8.net/duis/bibendum/morbi/non/quam/nec.aspx?eget=eget&semper=orci&rutrum=vehicula&nulla=condimentum&nunc=curabitur&purus=in&phasellus=libero&in=ut&felis=massa&donec=volutpat&semper=convallis&sapien=morbi&a=odio&libero=odio&nam=elementum&dui=eu&proin=interdum&leo=eu&odio=tincidunt&porttitor=in&id=leo&consequat=maecenas&in=pulvinar&consequat=lobortis&ut=est&nulla=phasellus&sed=sit&accumsan=amet&felis=erat&ut=nulla&at=tempus&dolor=vivamus&quis=in&odio=felis&consequat=eu",
+    "rating": 1.9,
+    "numOfRating": 458,
+    "students": 19,
+    "duration": 26,
+    "courseLevel": "Beginner",
+    "courseLanguage": "Albanian",
+    "price": 57,
+    "discount": 10,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Mr",
+      "color": "#1f3233",
+      "backgroundColor": "#51166a"
+    },
+    "createAt": "2024-01-24T23:24:02Z",
+    "introVideo": "http://ftc.gov/et/ultrices/posuere/cubilia/curae/nulla.js?lectus=sed&in=interdum&est=venenatis&risus=turpis&auctor=enim&sed=blandit&tristique=mi&in=in&tempus=porttitor&sit=pede&amet=justo&sem=eu&fusce=massa&consequat=donec&nulla=dapibus&nisl=duis&nunc=at&nisl=velit&duis=eu&bibendum=est&felis=congue&sed=elementum&interdum=in&venenatis=hac&turpis=habitasse&enim=platea&blandit=dictumst&mi=morbi&in=vestibulum&porttitor=velit&pede=id&justo=pretium&eu=iaculis&massa=diam&donec=erat&dapibus=fermentum&duis=justo&at=nec&velit=condimentum&eu=neque&est=sapien&congue=placerat&elementum=ante&in=nulla&hac=justo&habitasse=aliquam&platea=quis&dictumst=turpis&morbi=eget&vestibulum=elit&velit=sodales&id=scelerisque&pretium=mauris&iaculis=sit&diam=amet&erat=eros&fermentum=suspendisse&justo=accumsan&nec=tortor&condimentum=quis&neque=turpis&sapien=sed&placerat=ante&ante=vivamus&nulla=tortor&justo=duis&aliquam=mattis",
+    "instructor": "ins001",
+    "description": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
+    "summary": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
+    "requirements": {
+      "text": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
+      "need": false
+    },
+    "curriculum": {
+      "title": "Ms",
+      "lessons": {
+        "title": "Dr",
+        "type": "video",
+        "duration": 56,
+        "link": "http://slideshare.net/ante/ipsum/primis/in/faucibus.html?dolor=velit&quis=donec&odio=diam&consequat=neque&varius=vestibulum&integer=eget&ac=vulputate&leo=ut&pellentesque=ultrices&ultrices=vel&mattis=augue&odio=vestibulum&donec=ante&vitae=ipsum&nisi=primis&nam=in"
+      }
+    }
+  },
+  {
+    "id": "ghi789",
+    "title": "Dr",
+    "slug": "Ms",
+    "imageSrc": "http://phoca.cz/curae.jsp?luctus=ante&et=ipsum&ultrices=primis&posuere=in&cubilia=faucibus&curae=orci&nulla=luctus&dapibus=et&dolor=ultrices&vel=posuere&est=cubilia&donec=curae&odio=duis&justo=faucibus&sollicitudin=accumsan&ut=odio&suscipit=curabitur&a=convallis&feugiat=duis",
+    "rating": 0.4,
+    "numOfRating": 588,
+    "students": 158,
+    "duration": 9,
+    "courseLevel": "Advanced",
+    "courseLanguage": "Bosnian",
+    "price": 104,
+    "discount": 39,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Dr",
+      "color": "#cffbad",
+      "backgroundColor": "#f3c0be"
+    },
+    "createAt": "2023-12-27T04:19:47Z",
+    "introVideo": "http://ehow.com/eget/elit.xml?integer=eget&pede=nunc&justo=donec&lacinia=quis&eget=orci&tincidunt=eget&eget=orci&tempus=vehicula&vel=condimentum&pede=curabitur&morbi=in&porttitor=libero&lorem=ut&id=massa&ligula=volutpat&suspendisse=convallis&ornare=morbi&consequat=odio&lectus=odio&in=elementum&est=eu&risus=interdum&auctor=eu&sed=tincidunt&tristique=in&in=leo&tempus=maecenas&sit=pulvinar&amet=lobortis&sem=est&fusce=phasellus",
+    "instructor": "ins001",
+    "description": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\n\nDonec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\n\nDuis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
+    "summary": "Fusce consequat. Nulla nisl. Nunc nisl.",
+    "requirements": {
+      "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\n\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
+      "need": true
+    },
+    "curriculum": {
+      "title": "Rev",
+      "lessons": {
+        "title": "Mrs",
+        "type": "video",
+        "duration": 23,
+        "link": "http://slashdot.org/donec/diam/neque/vestibulum.jpg?eros=mi&vestibulum=pede&ac=malesuada&est=in&lacinia=imperdiet&nisi=et&venenatis=commodo&tristique=vulputate&fusce=justo&congue=in&diam=blandit&id=ultrices&ornare=enim&imperdiet=lorem&sapien=ipsum&urna=dolor&pretium=sit&nisl=amet&ut=consectetuer&volutpat=adipiscing&sapien=elit&arcu=proin&sed=interdum&augue=mauris&aliquam=non&erat=ligula&volutpat=pellentesque&in=ultrices&congue=phasellus&etiam=id&justo=sapien&etiam=in&pretium=sapien&iaculis=iaculis&justo=congue&in=vivamus&hac=metus&habitasse=arcu&platea=adipiscing&dictumst=molestie&etiam=hendrerit&faucibus=at&cursus=vulputate&urna=vitae&ut=nisl&tellus=aenean&nulla=lectus&ut=pellentesque&erat=eget&id=nunc&mauris=donec&vulputate=quis&elementum=orci&nullam=eget&varius=orci&nulla=vehicula&facilisi=condimentum"
+      }
+    }
+  },
+  {
+    "id": "abc123",
+    "title": "Dr",
+    "slug": "Honorable",
+    "imageSrc": "http://amazon.de/vulputate/elementum/nullam/varius/nulla.jpg?tristique=nulla&est=integer&et=pede&tempus=justo&semper=lacinia&est=eget&quam=tincidunt&pharetra=eget&magna=tempus&ac=vel&consequat=pede&metus=morbi&sapien=porttitor&ut=lorem&nunc=id&vestibulum=ligula&ante=suspendisse&ipsum=ornare&primis=consequat&in=lectus&faucibus=in&orci=est&luctus=risus&et=auctor&ultrices=sed&posuere=tristique&cubilia=in&curae=tempus&mauris=sit&viverra=amet&diam=sem&vitae=fusce&quam=consequat&suspendisse=nulla&potenti=nisl&nullam=nunc&porttitor=nisl&lacus=duis&at=bibendum&turpis=felis&donec=sed&posuere=interdum&metus=venenatis&vitae=turpis",
+    "rating": 4.4,
+    "numOfRating": 55,
+    "students": 915,
+    "duration": 2,
+    "courseLevel": "Beginner",
+    "courseLanguage": "Burmese",
+    "price": 4,
+    "discount": 0,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Mr",
+      "color": "#6891cb",
+      "backgroundColor": "#0a098c"
+    },
+    "createAt": "2025-03-31T21:07:45Z",
+    "introVideo": "http://springer.com/in/faucibus/orci/luctus/et/ultrices.js?venenatis=pede&tristique=venenatis&fusce=non&congue=sodales&diam=sed&id=tincidunt&ornare=eu&imperdiet=felis&sapien=fusce&urna=posuere&pretium=felis&nisl=sed&ut=lacus&volutpat=morbi&sapien=sem&arcu=mauris&sed=laoreet&augue=ut&aliquam=rhoncus&erat=aliquet&volutpat=pulvinar&in=sed&congue=nisl&etiam=nunc&justo=rhoncus&etiam=dui&pretium=vel&iaculis=sem&justo=sed&in=sagittis&hac=nam&habitasse=congue&platea=risus&dictumst=semper",
+    "instructor": "ins002",
+    "description": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
+    "summary": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
+    "requirements": {
+      "text": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\n\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
+      "need": false
+    },
+    "curriculum": {
+      "title": "Rev",
+      "lessons": {
+        "title": "Rev",
+        "type": "resource",
+        "duration": 57,
+        "link": "http://chron.com/in/lectus/pellentesque/at/nulla/suspendisse/potenti.jsp?venenatis=metus&tristique=vitae&fusce=ipsum&congue=aliquam&diam=non&id=mauris&ornare=morbi&imperdiet=non&sapien=lectus&urna=aliquam&pretium=sit&nisl=amet&ut=diam&volutpat=in&sapien=magna&arcu=bibendum&sed=imperdiet&augue=nullam&aliquam=orci&erat=pede&volutpat=venenatis&in=non&congue=sodales&etiam=sed&justo=tincidunt&etiam=eu&pretium=felis&iaculis=fusce&justo=posuere&in=felis&hac=sed&habitasse=lacus&platea=morbi&dictumst=sem&etiam=mauris&faucibus=laoreet&cursus=ut&urna=rhoncus&ut=aliquet&tellus=pulvinar&nulla=sed&ut=nisl&erat=nunc&id=rhoncus&mauris=dui&vulputate=vel&elementum=sem&nullam=sed&varius=sagittis&nulla=nam&facilisi=congue&cras=risus&non=semper&velit=porta&nec=volutpat&nisi=quam&vulputate=pede&nonummy=lobortis&maecenas=ligula&tincidunt=sit&lacus=amet&at=eleifend"
+      }
+    }
+  },
+  {
+    "id": "jkl567",
+    "title": "Ms",
+    "slug": "Rev",
+    "imageSrc": "https://tuttocitta.it/viverra.png?curabitur=vestibulum&convallis=proin&duis=eu&consequat=mi&dui=nulla&nec=ac&nisi=enim&volutpat=in&eleifend=tempor&donec=turpis&ut=nec&dolor=euismod&morbi=scelerisque&vel=quam&lectus=turpis&in=adipiscing&quam=lorem&fringilla=vitae&rhoncus=mattis&mauris=nibh&enim=ligula&leo=nec&rhoncus=sem&sed=duis&vestibulum=aliquam&sit=convallis&amet=nunc&cursus=proin&id=at&turpis=turpis&integer=a&aliquet=pede&massa=posuere&id=nonummy&lobortis=integer&convallis=non&tortor=velit&risus=donec&dapibus=diam&augue=neque&vel=vestibulum&accumsan=eget&tellus=vulputate&nisi=ut&eu=ultrices&orci=vel&mauris=augue&lacinia=vestibulum&sapien=ante&quis=ipsum&libero=primis",
+    "rating": 2.2,
+    "numOfRating": 968,
+    "students": 223,
+    "duration": 31,
+    "courseLevel": "Beginner",
+    "courseLanguage": "Northern Sotho",
+    "price": 117,
+    "discount": 14,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Dr",
+      "color": "#9110fa",
+      "backgroundColor": "#87b55e"
+    },
+    "createAt": "2022-10-04T01:10:29Z",
+    "introVideo": "https://addtoany.com/integer/pede/justo.png?vestibulum=mauris&vestibulum=lacinia&ante=sapien&ipsum=quis&primis=libero&in=nullam&faucibus=sit&orci=amet&luctus=turpis&et=elementum&ultrices=ligula&posuere=vehicula&cubilia=consequat&curae=morbi&nulla=a&dapibus=ipsum&dolor=integer&vel=a&est=nibh&donec=in&odio=quis&justo=justo&sollicitudin=maecenas&ut=rhoncus&suscipit=aliquam&a=lacus&feugiat=morbi&et=quis&eros=tortor&vestibulum=id&ac=nulla&est=ultrices&lacinia=aliquet&nisi=maecenas&venenatis=leo&tristique=odio&fusce=condimentum&congue=id&diam=luctus&id=nec&ornare=molestie&imperdiet=sed&sapien=justo&urna=pellentesque&pretium=viverra&nisl=pede&ut=ac&volutpat=diam&sapien=cras&arcu=pellentesque&sed=volutpat&augue=dui&aliquam=maecenas&erat=tristique&volutpat=est&in=et&congue=tempus&etiam=semper&justo=est&etiam=quam&pretium=pharetra&iaculis=magna",
+    "instructor": "ins003",
+    "description": "Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
+    "summary": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
+    "requirements": {
+      "text": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\n\nIn quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.",
+      "need": false
+    },
+    "curriculum": {
+      "title": "Ms",
+      "lessons": {
+        "title": "Ms",
+        "type": "video",
+        "duration": 1,
+        "link": "http://skype.com/eu/sapien/cursus.html?sollicitudin=cum&mi=sociis&sit=natoque&amet=penatibus&lobortis=et&sapien=magnis&sapien=dis&non=parturient&mi=montes&integer=nascetur&ac=ridiculus&neque=mus&duis=etiam&bibendum=vel&morbi=augue&non=vestibulum&quam=rutrum&nec=rutrum&dui=neque"
+      }
+    }
+  },
+  {
+    "id": "ghi789",
+    "title": "Ms",
+    "slug": "Honorable",
+    "imageSrc": "https://usgs.gov/vestibulum/sed.xml?id=cubilia&lobortis=curae&convallis=duis&tortor=faucibus&risus=accumsan&dapibus=odio&augue=curabitur&vel=convallis&accumsan=duis&tellus=consequat&nisi=dui&eu=nec&orci=nisi&mauris=volutpat&lacinia=eleifend&sapien=donec&quis=ut&libero=dolor&nullam=morbi&sit=vel&amet=lectus&turpis=in&elementum=quam&ligula=fringilla&vehicula=rhoncus&consequat=mauris&morbi=enim&a=leo&ipsum=rhoncus&integer=sed&a=vestibulum&nibh=sit&in=amet&quis=cursus&justo=id&maecenas=turpis&rhoncus=integer&aliquam=aliquet",
+    "rating": 3.0,
+    "numOfRating": 242,
+    "students": 69,
+    "duration": 10,
+    "courseLevel": "Intermediate",
+    "courseLanguage": "Gagauz",
+    "price": 60,
+    "discount": 30,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Rev",
+      "color": "#10f0b5",
+      "backgroundColor": "#94203a"
+    },
+    "createAt": "2024-12-04T11:03:01Z",
+    "introVideo": "https://answers.com/amet/sem/fusce/consequat.js?platea=amet&dictumst=consectetuer&maecenas=adipiscing&ut=elit&massa=proin&quis=risus&augue=praesent&luctus=lectus&tincidunt=vestibulum&nulla=quam&mollis=sapien&molestie=varius&lorem=ut&quisque=blandit&ut=non&erat=interdum&curabitur=in&gravida=ante&nisi=vestibulum&at=ante&nibh=ipsum&in=primis&hac=in&habitasse=faucibus&platea=orci&dictumst=luctus&aliquam=et&augue=ultrices&quam=posuere&sollicitudin=cubilia&vitae=curae&consectetuer=duis&eget=faucibus&rutrum=accumsan&at=odio&lorem=curabitur&integer=convallis&tincidunt=duis&ante=consequat&vel=dui&ipsum=nec&praesent=nisi&blandit=volutpat&lacinia=eleifend&erat=donec&vestibulum=ut&sed=dolor&magna=morbi&at=vel&nunc=lectus",
+    "instructor": "ins003",
+    "description": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+    "summary": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
+    "requirements": {
+      "text": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
+      "need": false
+    },
+    "curriculum": {
+      "title": "Mrs",
+      "lessons": {
+        "title": "Honorable",
+        "type": "resource",
+        "duration": 56,
+        "link": "https://bbb.org/in/quis/justo/maecenas/rhoncus/aliquam/lacus.json?consequat=non&lectus=pretium&in=quis&est=lectus&risus=suspendisse&auctor=potenti&sed=in&tristique=eleifend&in=quam&tempus=a&sit=odio&amet=in&sem=hac&fusce=habitasse&consequat=platea&nulla=dictumst&nisl=maecenas&nunc=ut&nisl=massa&duis=quis&bibendum=augue&felis=luctus&sed=tincidunt&interdum=nulla&venenatis=mollis&turpis=molestie&enim=lorem&blandit=quisque&mi=ut&in=erat&porttitor=curabitur&pede=gravida&justo=nisi&eu=at&massa=nibh&donec=in&dapibus=hac&duis=habitasse&at=platea&velit=dictumst&eu=aliquam&est=augue&congue=quam&elementum=sollicitudin&in=vitae&hac=consectetuer&habitasse=eget&platea=rutrum&dictumst=at&morbi=lorem&vestibulum=integer&velit=tincidunt&id=ante&pretium=vel&iaculis=ipsum&diam=praesent&erat=blandit&fermentum=lacinia&justo=erat&nec=vestibulum&condimentum=sed&neque=magna&sapien=at&placerat=nunc&ante=commodo&nulla=placerat&justo=praesent&aliquam=blandit&quis=nam&turpis=nulla&eget=integer&elit=pede&sodales=justo&scelerisque=lacinia&mauris=eget&sit=tincidunt&amet=eget&eros=tempus&suspendisse=vel&accumsan=pede&tortor=morbi&quis=porttitor&turpis=lorem&sed=id&ante=ligula&vivamus=suspendisse&tortor=ornare"
+      }
+    }
+  },
+  {
+    "id": "abc123",
+    "title": "Mr",
+    "slug": "Dr",
+    "imageSrc": "https://marketwatch.com/magna/bibendum/imperdiet/nullam.xml?luctus=sapien&et=in&ultrices=sapien&posuere=iaculis&cubilia=congue&curae=vivamus&mauris=metus&viverra=arcu&diam=adipiscing&vitae=molestie&quam=hendrerit&suspendisse=at&potenti=vulputate&nullam=vitae&porttitor=nisl&lacus=aenean&at=lectus&turpis=pellentesque&donec=eget&posuere=nunc&metus=donec&vitae=quis&ipsum=orci&aliquam=eget&non=orci&mauris=vehicula&morbi=condimentum&non=curabitur&lectus=in&aliquam=libero&sit=ut&amet=massa&diam=volutpat&in=convallis&magna=morbi&bibendum=odio&imperdiet=odio&nullam=elementum&orci=eu&pede=interdum&venenatis=eu&non=tincidunt&sodales=in&sed=leo&tincidunt=maecenas&eu=pulvinar&felis=lobortis&fusce=est&posuere=phasellus&felis=sit&sed=amet&lacus=erat&morbi=nulla&sem=tempus&mauris=vivamus",
+    "rating": 4.3,
+    "numOfRating": 967,
+    "students": 426,
+    "duration": 23,
+    "courseLevel": "Beginner",
+    "courseLanguage": "Somali",
+    "price": 20,
+    "discount": 40,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Honorable",
+      "color": "#aa0a2e",
+      "backgroundColor": "#30bb78"
+    },
+    "createAt": "2024-08-24T03:36:44Z",
+    "introVideo": "https://cam.ac.uk/vitae/nisi/nam.json?et=justo&ultrices=maecenas",
+    "instructor": "ins003",
+    "description": "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
+    "summary": "Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
+    "requirements": {
+      "text": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\n\nDonec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.",
+      "need": false
+    },
+    "curriculum": {
+      "title": "Honorable",
+      "lessons": {
+        "title": "Rev",
+        "type": "video",
+        "duration": 3,
+        "link": "https://so-net.ne.jp/velit/nec/nisi/vulputate/nonummy/maecenas/tincidunt.png?condimentum=etiam&neque=faucibus&sapien=cursus&placerat=urna&ante=ut&nulla=tellus&justo=nulla&aliquam=ut&quis=erat&turpis=id&eget=mauris&elit=vulputate&sodales=elementum&scelerisque=nullam&mauris=varius&sit=nulla&amet=facilisi&eros=cras&suspendisse=non&accumsan=velit&tortor=nec&quis=nisi&turpis=vulputate&sed=nonummy&ante=maecenas&vivamus=tincidunt&tortor=lacus&duis=at&mattis=velit&egestas=vivamus&metus=vel&aenean=nulla&fermentum=eget&donec=eros&ut=elementum&mauris=pellentesque&eget=quisque&massa=porta&tempor=volutpat&convallis=erat&nulla=quisque&neque=erat&libero=eros"
+      }
+    }
+  },
+  {
+    "id": "abc123",
+    "title": "Mrs",
+    "slug": "Rev",
+    "imageSrc": "http://fc2.com/venenatis/lacinia/aenean/sit/amet/justo/morbi.aspx?sit=turpis&amet=eget&eleifend=elit&pede=sodales&libero=scelerisque&quis=mauris&orci=sit&nullam=amet&molestie=eros&nibh=suspendisse&in=accumsan&lectus=tortor&pellentesque=quis&at=turpis&nulla=sed&suspendisse=ante&potenti=vivamus&cras=tortor&in=duis&purus=mattis&eu=egestas&magna=metus&vulputate=aenean&luctus=fermentum&cum=donec&sociis=ut&natoque=mauris&penatibus=eget&et=massa&magnis=tempor&dis=convallis&parturient=nulla",
+    "rating": 4.2,
+    "numOfRating": 334,
+    "students": 607,
+    "duration": 15,
+    "courseLevel": "Advanced",
+    "courseLanguage": "Telugu",
+    "price": 107,
+    "discount": 9,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Rev",
+      "color": "#7fe4e4",
+      "backgroundColor": "#8c906a"
+    },
+    "createAt": "2024-03-13T00:11:04Z",
+    "introVideo": "http://plala.or.jp/aliquet/ultrices/erat/tortor/sollicitudin.png?erat=sapien&volutpat=varius&in=ut&congue=blandit&etiam=non&justo=interdum&etiam=in&pretium=ante&iaculis=vestibulum&justo=ante&in=ipsum&hac=primis&habitasse=in&platea=faucibus&dictumst=orci&etiam=luctus&faucibus=et&cursus=ultrices&urna=posuere&ut=cubilia&tellus=curae&nulla=duis&ut=faucibus&erat=accumsan&id=odio&mauris=curabitur&vulputate=convallis&elementum=duis&nullam=consequat&varius=dui&nulla=nec&facilisi=nisi&cras=volutpat&non=eleifend&velit=donec&nec=ut&nisi=dolor&vulputate=morbi&nonummy=vel&maecenas=lectus&tincidunt=in&lacus=quam&at=fringilla",
+    "instructor": "ins002",
+    "description": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
+    "summary": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+    "requirements": {
+      "text": "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
+      "need": true
+    },
+    "curriculum": {
+      "title": "Dr",
+      "lessons": {
+        "title": "Rev",
+        "type": "resource",
+        "duration": 1,
+        "link": "https://blogger.com/at/diam/nam/tristique.xml?mus=maecenas&vivamus=tincidunt&vestibulum=lacus&sagittis=at&sapien=velit&cum=vivamus&sociis=vel&natoque=nulla&penatibus=eget&et=eros&magnis=elementum&dis=pellentesque&parturient=quisque&montes=porta&nascetur=volutpat&ridiculus=erat&mus=quisque&etiam=erat&vel=eros&augue=viverra&vestibulum=eget&rutrum=congue&rutrum=eget&neque=semper&aenean=rutrum&auctor=nulla&gravida=nunc"
+      }
+    }
+  },
+  {
+    "id": "ghi789",
+    "title": "Mrs",
+    "slug": "Mr",
+    "imageSrc": "http://ox.ac.uk/consectetuer/adipiscing.aspx?magnis=duis&dis=consequat&parturient=dui&montes=nec&nascetur=nisi&ridiculus=volutpat&mus=eleifend&etiam=donec&vel=ut&augue=dolor&vestibulum=morbi&rutrum=vel&rutrum=lectus&neque=in&aenean=quam&auctor=fringilla&gravida=rhoncus&sem=mauris&praesent=enim&id=leo&massa=rhoncus&id=sed&nisl=vestibulum&venenatis=sit&lacinia=amet&aenean=cursus&sit=id&amet=turpis&justo=integer&morbi=aliquet&ut=massa&odio=id&cras=lobortis&mi=convallis&pede=tortor&malesuada=risus&in=dapibus&imperdiet=augue&et=vel&commodo=accumsan&vulputate=tellus&justo=nisi&in=eu&blandit=orci&ultrices=mauris&enim=lacinia&lorem=sapien&ipsum=quis&dolor=libero&sit=nullam&amet=sit&consectetuer=amet&adipiscing=turpis&elit=elementum&proin=ligula&interdum=vehicula&mauris=consequat&non=morbi&ligula=a&pellentesque=ipsum&ultrices=integer&phasellus=a&id=nibh&sapien=in&in=quis&sapien=justo&iaculis=maecenas&congue=rhoncus&vivamus=aliquam&metus=lacus&arcu=morbi&adipiscing=quis&molestie=tortor&hendrerit=id&at=nulla&vulputate=ultrices&vitae=aliquet&nisl=maecenas",
+    "rating": 1.7,
+    "numOfRating": 822,
+    "students": 371,
+    "duration": 32,
+    "courseLevel": "Beginner",
+    "courseLanguage": "Swedish",
+    "price": 163,
+    "discount": 5,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Honorable",
+      "color": "#8d5a1f",
+      "backgroundColor": "#2ccefa"
+    },
+    "createAt": "2023-10-02T04:12:51Z",
+    "introVideo": "https://networkadvertising.org/curae/nulla/dapibus/dolor.aspx?ultrices=neque&posuere=sapien&cubilia=placerat&curae=ante&mauris=nulla&viverra=justo&diam=aliquam&vitae=quis&quam=turpis&suspendisse=eget&potenti=elit&nullam=sodales&porttitor=scelerisque&lacus=mauris&at=sit&turpis=amet&donec=eros&posuere=suspendisse&metus=accumsan&vitae=tortor&ipsum=quis&aliquam=turpis&non=sed&mauris=ante&morbi=vivamus&non=tortor&lectus=duis&aliquam=mattis&sit=egestas&amet=metus&diam=aenean&in=fermentum&magna=donec&bibendum=ut&imperdiet=mauris&nullam=eget&orci=massa&pede=tempor&venenatis=convallis&non=nulla&sodales=neque&sed=libero&tincidunt=convallis&eu=eget&felis=eleifend&fusce=luctus&posuere=ultricies&felis=eu&sed=nibh&lacus=quisque&morbi=id&sem=justo&mauris=sit&laoreet=amet&ut=sapien&rhoncus=dignissim&aliquet=vestibulum&pulvinar=vestibulum&sed=ante&nisl=ipsum&nunc=primis&rhoncus=in&dui=faucibus&vel=orci&sem=luctus&sed=et&sagittis=ultrices&nam=posuere&congue=cubilia&risus=curae&semper=nulla&porta=dapibus&volutpat=dolor&quam=vel&pede=est&lobortis=donec&ligula=odio&sit=justo&amet=sollicitudin&eleifend=ut&pede=suscipit&libero=a&quis=feugiat&orci=et&nullam=eros&molestie=vestibulum&nibh=ac&in=est&lectus=lacinia&pellentesque=nisi&at=venenatis",
+    "instructor": "ins001",
+    "description": "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\n\nDuis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
+    "summary": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
+    "requirements": {
+      "text": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\n\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+      "need": false
+    },
+    "curriculum": {
+      "title": "Mr",
+      "lessons": {
+        "title": "Rev",
+        "type": "resource",
+        "duration": 18,
+        "link": "https://storify.com/augue/luctus.aspx?at=ultrices&vulputate=enim&vitae=lorem&nisl=ipsum&aenean=dolor&lectus=sit&pellentesque=amet&eget=consectetuer&nunc=adipiscing&donec=elit&quis=proin&orci=interdum&eget=mauris&orci=non&vehicula=ligula&condimentum=pellentesque&curabitur=ultrices&in=phasellus&libero=id&ut=sapien&massa=in&volutpat=sapien&convallis=iaculis&morbi=congue&odio=vivamus&odio=metus&elementum=arcu&eu=adipiscing&interdum=molestie&eu=hendrerit&tincidunt=at&in=vulputate&leo=vitae&maecenas=nisl&pulvinar=aenean"
+      }
+    }
+  },
+  {
+    "id": "jkl567",
+    "title": "Rev",
+    "slug": "Mrs",
+    "imageSrc": "https://123-reg.co.uk/sit/amet/sapien/dignissim/vestibulum/vestibulum/ante.png?ut=blandit&erat=non&id=interdum&mauris=in&vulputate=ante&elementum=vestibulum&nullam=ante&varius=ipsum&nulla=primis&facilisi=in&cras=faucibus&non=orci&velit=luctus&nec=et&nisi=ultrices&vulputate=posuere&nonummy=cubilia&maecenas=curae&tincidunt=duis&lacus=faucibus&at=accumsan&velit=odio&vivamus=curabitur&vel=convallis&nulla=duis&eget=consequat&eros=dui&elementum=nec&pellentesque=nisi&quisque=volutpat&porta=eleifend&volutpat=donec&erat=ut&quisque=dolor&erat=morbi&eros=vel&viverra=lectus&eget=in&congue=quam&eget=fringilla&semper=rhoncus&rutrum=mauris&nulla=enim&nunc=leo&purus=rhoncus&phasellus=sed&in=vestibulum&felis=sit&donec=amet&semper=cursus&sapien=id&a=turpis&libero=integer&nam=aliquet&dui=massa&proin=id&leo=lobortis&odio=convallis&porttitor=tortor&id=risus&consequat=dapibus&in=augue&consequat=vel&ut=accumsan&nulla=tellus&sed=nisi&accumsan=eu&felis=orci&ut=mauris&at=lacinia&dolor=sapien&quis=quis&odio=libero&consequat=nullam&varius=sit&integer=amet&ac=turpis&leo=elementum&pellentesque=ligula&ultrices=vehicula&mattis=consequat&odio=morbi&donec=a",
+    "rating": 3.0,
+    "numOfRating": 954,
+    "students": 821,
+    "duration": 23,
+    "courseLevel": "Advanced",
+    "courseLanguage": "Tsonga",
+    "price": 126,
+    "discount": 7,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Honorable",
+      "color": "#269722",
+      "backgroundColor": "#4da882"
+    },
+    "createAt": "2022-11-20T10:19:36Z",
+    "introVideo": "https://creativecommons.org/eros/elementum/pellentesque/quisque/porta/volutpat/erat.js?quam=dictumst&pharetra=maecenas&magna=ut&ac=massa&consequat=quis&metus=augue&sapien=luctus&ut=tincidunt&nunc=nulla&vestibulum=mollis&ante=molestie&ipsum=lorem&primis=quisque&in=ut&faucibus=erat&orci=curabitur&luctus=gravida&et=nisi&ultrices=at&posuere=nibh&cubilia=in&curae=hac&mauris=habitasse&viverra=platea&diam=dictumst&vitae=aliquam&quam=augue&suspendisse=quam&potenti=sollicitudin&nullam=vitae&porttitor=consectetuer&lacus=eget&at=rutrum&turpis=at&donec=lorem&posuere=integer&metus=tincidunt&vitae=ante&ipsum=vel&aliquam=ipsum&non=praesent&mauris=blandit&morbi=lacinia&non=erat&lectus=vestibulum&aliquam=sed&sit=magna&amet=at&diam=nunc&in=commodo&magna=placerat&bibendum=praesent&imperdiet=blandit&nullam=nam&orci=nulla&pede=integer&venenatis=pede&non=justo&sodales=lacinia&sed=eget&tincidunt=tincidunt&eu=eget&felis=tempus&fusce=vel&posuere=pede&felis=morbi&sed=porttitor&lacus=lorem&morbi=id&sem=ligula&mauris=suspendisse&laoreet=ornare&ut=consequat&rhoncus=lectus&aliquet=in&pulvinar=est&sed=risus&nisl=auctor&nunc=sed&rhoncus=tristique&dui=in&vel=tempus",
+    "instructor": "ins002",
+    "description": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
+    "summary": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\n\nAenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
+    "requirements": {
+      "text": "In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
+      "need": true
+    },
+    "curriculum": {
+      "title": "Honorable",
+      "lessons": {
+        "title": "Mrs",
+        "type": "video",
+        "duration": 9,
+        "link": "https://plala.or.jp/leo/maecenas/pulvinar.json?curabitur=facilisi&in=cras&libero=non&ut=velit&massa=nec&volutpat=nisi&convallis=vulputate&morbi=nonummy&odio=maecenas&odio=tincidunt&elementum=lacus&eu=at&interdum=velit&eu=vivamus&tincidunt=vel&in=nulla&leo=eget&maecenas=eros&pulvinar=elementum&lobortis=pellentesque&est=quisque&phasellus=porta&sit=volutpat&amet=erat&erat=quisque&nulla=erat&tempus=eros&vivamus=viverra&in=eget&felis=congue&eu=eget&sapien=semper&cursus=rutrum&vestibulum=nulla&proin=nunc&eu=purus&mi=phasellus&nulla=in&ac=felis&enim=donec&in=semper&tempor=sapien&turpis=a&nec=libero&euismod=nam"
+      }
+    }
+  },
+  {
+    "id": "def456",
+    "title": "Rev",
+    "slug": "Mrs",
+    "imageSrc": "https://canalblog.com/eu/mi/nulla.js?consequat=dictumst&metus=etiam&sapien=faucibus&ut=cursus&nunc=urna&vestibulum=ut&ante=tellus&ipsum=nulla&primis=ut&in=erat&faucibus=id&orci=mauris&luctus=vulputate&et=elementum&ultrices=nullam&posuere=varius&cubilia=nulla",
+    "rating": 1.5,
+    "numOfRating": 160,
+    "students": 86,
+    "duration": 5,
+    "courseLevel": "Intermediate",
+    "courseLanguage": "Somali",
+    "price": 180,
+    "discount": 19,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Ms",
+      "color": "#e1848f",
+      "backgroundColor": "#acf327"
+    },
+    "createAt": "2023-09-13T12:55:54Z",
+    "introVideo": "https://altervista.org/sed/magna/at.jsp?elit=tellus&sodales=nisi&scelerisque=eu&mauris=orci&sit=mauris&amet=lacinia&eros=sapien&suspendisse=quis&accumsan=libero&tortor=nullam&quis=sit&turpis=amet&sed=turpis&ante=elementum&vivamus=ligula&tortor=vehicula&duis=consequat&mattis=morbi&egestas=a&metus=ipsum&aenean=integer&fermentum=a&donec=nibh&ut=in&mauris=quis&eget=justo&massa=maecenas&tempor=rhoncus&convallis=aliquam&nulla=lacus&neque=morbi&libero=quis&convallis=tortor&eget=id&eleifend=nulla&luctus=ultrices&ultricies=aliquet&eu=maecenas&nibh=leo&quisque=odio&id=condimentum&justo=id&sit=luctus&amet=nec&sapien=molestie&dignissim=sed&vestibulum=justo&vestibulum=pellentesque&ante=viverra&ipsum=pede&primis=ac&in=diam&faucibus=cras&orci=pellentesque&luctus=volutpat&et=dui&ultrices=maecenas&posuere=tristique&cubilia=est&curae=et&nulla=tempus&dapibus=semper&dolor=est&vel=quam&est=pharetra&donec=magna&odio=ac&justo=consequat&sollicitudin=metus&ut=sapien&suscipit=ut&a=nunc&feugiat=vestibulum&et=ante&eros=ipsum&vestibulum=primis&ac=in&est=faucibus&lacinia=orci&nisi=luctus&venenatis=et&tristique=ultrices&fusce=posuere&congue=cubilia&diam=curae&id=mauris&ornare=viverra&imperdiet=diam&sapien=vitae&urna=quam",
+    "instructor": "ins003",
+    "description": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+    "summary": "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\n\nDuis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
+    "requirements": {
+      "text": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\n\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
+      "need": true
+    },
+    "curriculum": {
+      "title": "Honorable",
+      "lessons": {
+        "title": "Mr",
+        "type": "resource",
+        "duration": 44,
+        "link": "http://netvibes.com/donec.html?ut=dictumst&massa=etiam&quis=faucibus&augue=cursus&luctus=urna&tincidunt=ut&nulla=tellus&mollis=nulla&molestie=ut&lorem=erat&quisque=id&ut=mauris&erat=vulputate&curabitur=elementum&gravida=nullam&nisi=varius&at=nulla&nibh=facilisi&in=cras&hac=non&habitasse=velit&platea=nec&dictumst=nisi&aliquam=vulputate&augue=nonummy&quam=maecenas&sollicitudin=tincidunt&vitae=lacus&consectetuer=at&eget=velit&rutrum=vivamus&at=vel&lorem=nulla&integer=eget&tincidunt=eros&ante=elementum&vel=pellentesque&ipsum=quisque&praesent=porta&blandit=volutpat&lacinia=erat&erat=quisque&vestibulum=erat&sed=eros&magna=viverra&at=eget&nunc=congue&commodo=eget&placerat=semper&praesent=rutrum&blandit=nulla&nam=nunc&nulla=purus&integer=phasellus&pede=in&justo=felis&lacinia=donec&eget=semper&tincidunt=sapien&eget=a&tempus=libero&vel=nam&pede=dui&morbi=proin&porttitor=leo&lorem=odio&id=porttitor&ligula=id&suspendisse=consequat&ornare=in&consequat=consequat&lectus=ut&in=nulla&est=sed&risus=accumsan&auctor=felis&sed=ut&tristique=at&in=dolor&tempus=quis&sit=odio&amet=consequat&sem=varius&fusce=integer&consequat=ac&nulla=leo&nisl=pellentesque&nunc=ultrices&nisl=mattis&duis=odio&bibendum=donec&felis=vitae&sed=nisi&interdum=nam&venenatis=ultrices&turpis=libero&enim=non&blandit=mattis"
+      }
+    }
+  },
+  {
+    "id": "def456",
+    "title": "Ms",
+    "slug": "Rev",
+    "imageSrc": "http://shutterfly.com/dis/parturient/montes/nascetur.png?facilisi=accumsan&cras=felis&non=ut&velit=at&nec=dolor&nisi=quis&vulputate=odio&nonummy=consequat&maecenas=varius&tincidunt=integer&lacus=ac&at=leo&velit=pellentesque&vivamus=ultrices&vel=mattis&nulla=odio&eget=donec&eros=vitae&elementum=nisi&pellentesque=nam&quisque=ultrices&porta=libero&volutpat=non&erat=mattis&quisque=pulvinar&erat=nulla&eros=pede&viverra=ullamcorper&eget=augue&congue=a&eget=suscipit&semper=nulla&rutrum=elit&nulla=ac&nunc=nulla&purus=sed&phasellus=vel&in=enim&felis=sit&donec=amet&semper=nunc&sapien=viverra&a=dapibus&libero=nulla&nam=suscipit&dui=ligula&proin=in&leo=lacus&odio=curabitur&porttitor=at&id=ipsum&consequat=ac&in=tellus&consequat=semper&ut=interdum&nulla=mauris&sed=ullamcorper&accumsan=purus&felis=sit&ut=amet&at=nulla&dolor=quisque&quis=arcu&odio=libero&consequat=rutrum&varius=ac&integer=lobortis&ac=vel",
+    "rating": 3.6,
+    "numOfRating": 21,
+    "students": 717,
+    "duration": 51,
+    "courseLevel": "Beginner",
+    "courseLanguage": "Kannada",
+    "price": 140,
+    "discount": 4,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Mrs",
+      "color": "#9f9f6f",
+      "backgroundColor": "#37f666"
+    },
+    "createAt": "2025-06-02T14:48:51Z",
+    "introVideo": "https://is.gd/maecenas.html?vivamus=porttitor&vel=id&nulla=consequat&eget=in&eros=consequat&elementum=ut&pellentesque=nulla&quisque=sed&porta=accumsan&volutpat=felis&erat=ut&quisque=at&erat=dolor&eros=quis&viverra=odio&eget=consequat&congue=varius&eget=integer&semper=ac&rutrum=leo&nulla=pellentesque&nunc=ultrices&purus=mattis&phasellus=odio&in=donec&felis=vitae&donec=nisi&semper=nam&sapien=ultrices&a=libero&libero=non&nam=mattis&dui=pulvinar&proin=nulla&leo=pede&odio=ullamcorper&porttitor=augue&id=a&consequat=suscipit&in=nulla&consequat=elit&ut=ac&nulla=nulla&sed=sed&accumsan=vel&felis=enim&ut=sit&at=amet&dolor=nunc&quis=viverra&odio=dapibus",
+    "instructor": "ins003",
+    "description": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.\n\nAliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.",
+    "summary": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\n\nAenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\n\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
+    "requirements": {
+      "text": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
+      "need": false
+    },
+    "curriculum": {
+      "title": "Dr",
+      "lessons": {
+        "title": "Mr",
+        "type": "video",
+        "duration": 7,
+        "link": "https://netvibes.com/augue/a.jsp?ligula=amet&nec=lobortis&sem=sapien&duis=sapien&aliquam=non&convallis=mi&nunc=integer&proin=ac&at=neque&turpis=duis&a=bibendum&pede=morbi&posuere=non&nonummy=quam&integer=nec&non=dui&velit=luctus&donec=rutrum&diam=nulla&neque=tellus&vestibulum=in&eget=sagittis&vulputate=dui&ut=vel&ultrices=nisl&vel=duis&augue=ac&vestibulum=nibh&ante=fusce&ipsum=lacus&primis=purus&in=aliquet&faucibus=at&orci=feugiat&luctus=non&et=pretium&ultrices=quis&posuere=lectus&cubilia=suspendisse&curae=potenti&donec=in&pharetra=eleifend&magna=quam&vestibulum=a&aliquet=odio&ultrices=in&erat=hac&tortor=habitasse&sollicitudin=platea&mi=dictumst&sit=maecenas&amet=ut&lobortis=massa&sapien=quis&sapien=augue&non=luctus&mi=tincidunt&integer=nulla&ac=mollis&neque=molestie&duis=lorem&bibendum=quisque&morbi=ut&non=erat&quam=curabitur&nec=gravida&dui=nisi&luctus=at&rutrum=nibh&nulla=in&tellus=hac&in=habitasse"
+      }
+    }
+  },
+  {
+    "id": "def456",
+    "title": "Mrs",
+    "slug": "Mrs",
+    "imageSrc": "https://blogspot.com/ultrices/erat/tortor/sollicitudin/mi/sit/amet.jsp?placerat=dolor&praesent=sit&blandit=amet&nam=consectetuer&nulla=adipiscing&integer=elit&pede=proin&justo=interdum&lacinia=mauris&eget=non&tincidunt=ligula&eget=pellentesque&tempus=ultrices&vel=phasellus&pede=id&morbi=sapien&porttitor=in&lorem=sapien&id=iaculis&ligula=congue&suspendisse=vivamus&ornare=metus&consequat=arcu&lectus=adipiscing&in=molestie&est=hendrerit&risus=at&auctor=vulputate&sed=vitae&tristique=nisl&in=aenean&tempus=lectus&sit=pellentesque&amet=eget&sem=nunc&fusce=donec&consequat=quis&nulla=orci&nisl=eget&nunc=orci&nisl=vehicula&duis=condimentum&bibendum=curabitur&felis=in&sed=libero&interdum=ut",
+    "rating": 0.2,
+    "numOfRating": 574,
+    "students": 157,
+    "duration": 12,
+    "courseLevel": "Intermediate",
+    "courseLanguage": "Albanian",
+    "price": 37,
+    "discount": 4,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Honorable",
+      "color": "#447af8",
+      "backgroundColor": "#d99f2c"
+    },
+    "createAt": "2024-04-08T06:56:07Z",
+    "introVideo": "http://baidu.com/eu/massa/donec/dapibus/duis/at.aspx?cursus=sapien&id=non&turpis=mi&integer=integer&aliquet=ac&massa=neque&id=duis&lobortis=bibendum&convallis=morbi&tortor=non&risus=quam&dapibus=nec&augue=dui&vel=luctus&accumsan=rutrum&tellus=nulla&nisi=tellus&eu=in&orci=sagittis&mauris=dui&lacinia=vel&sapien=nisl&quis=duis&libero=ac&nullam=nibh&sit=fusce&amet=lacus&turpis=purus&elementum=aliquet&ligula=at&vehicula=feugiat&consequat=non&morbi=pretium&a=quis&ipsum=lectus&integer=suspendisse&a=potenti&nibh=in&in=eleifend&quis=quam&justo=a&maecenas=odio&rhoncus=in&aliquam=hac&lacus=habitasse&morbi=platea&quis=dictumst&tortor=maecenas&id=ut&nulla=massa&ultrices=quis&aliquet=augue&maecenas=luctus&leo=tincidunt&odio=nulla&condimentum=mollis&id=molestie&luctus=lorem&nec=quisque&molestie=ut&sed=erat&justo=curabitur&pellentesque=gravida&viverra=nisi&pede=at&ac=nibh&diam=in&cras=hac&pellentesque=habitasse&volutpat=platea&dui=dictumst&maecenas=aliquam&tristique=augue&est=quam&et=sollicitudin&tempus=vitae&semper=consectetuer&est=eget&quam=rutrum&pharetra=at&magna=lorem&ac=integer&consequat=tincidunt&metus=ante&sapien=vel&ut=ipsum&nunc=praesent&vestibulum=blandit&ante=lacinia&ipsum=erat&primis=vestibulum",
+    "instructor": "ins003",
+    "description": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
+    "summary": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
+    "requirements": {
+      "text": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
+      "need": false
+    },
+    "curriculum": {
+      "title": "Ms",
+      "lessons": {
+        "title": "Dr",
+        "type": "resource",
+        "duration": 7,
+        "link": "http://godaddy.com/in/ante/vestibulum/ante.xml?tempus=convallis&vivamus=nunc&in=proin&felis=at&eu=turpis&sapien=a&cursus=pede&vestibulum=posuere&proin=nonummy&eu=integer&mi=non&nulla=velit&ac=donec&enim=diam&in=neque&tempor=vestibulum&turpis=eget&nec=vulputate&euismod=ut&scelerisque=ultrices&quam=vel&turpis=augue&adipiscing=vestibulum&lorem=ante&vitae=ipsum&mattis=primis&nibh=in&ligula=faucibus&nec=orci&sem=luctus&duis=et&aliquam=ultrices&convallis=posuere&nunc=cubilia&proin=curae&at=donec&turpis=pharetra&a=magna&pede=vestibulum&posuere=aliquet&nonummy=ultrices&integer=erat&non=tortor&velit=sollicitudin&donec=mi&diam=sit&neque=amet&vestibulum=lobortis&eget=sapien&vulputate=sapien&ut=non&ultrices=mi"
+      }
+    }
+  },
+  {
+    "id": "abc123",
+    "title": "Honorable",
+    "slug": "Rev",
+    "imageSrc": "https://patch.com/dolor/morbi/vel/lectus/in/quam/fringilla.json?sed=nulla&vestibulum=nunc&sit=purus&amet=phasellus&cursus=in&id=felis&turpis=donec&integer=semper&aliquet=sapien&massa=a&id=libero&lobortis=nam&convallis=dui&tortor=proin&risus=leo&dapibus=odio&augue=porttitor&vel=id&accumsan=consequat&tellus=in&nisi=consequat&eu=ut&orci=nulla&mauris=sed&lacinia=accumsan&sapien=felis&quis=ut&libero=at&nullam=dolor&sit=quis&amet=odio&turpis=consequat&elementum=varius&ligula=integer&vehicula=ac&consequat=leo&morbi=pellentesque&a=ultrices&ipsum=mattis&integer=odio&a=donec&nibh=vitae&in=nisi&quis=nam&justo=ultrices&maecenas=libero&rhoncus=non&aliquam=mattis&lacus=pulvinar&morbi=nulla&quis=pede&tortor=ullamcorper&id=augue&nulla=a&ultrices=suscipit&aliquet=nulla&maecenas=elit&leo=ac&odio=nulla&condimentum=sed",
+    "rating": 2.3,
+    "numOfRating": 683,
+    "students": 385,
+    "duration": 9,
+    "courseLevel": "Intermediate",
+    "courseLanguage": "Luxembourgish",
+    "price": 81,
+    "discount": 38,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Mr",
+      "color": "#747dbb",
+      "backgroundColor": "#930b76"
+    },
+    "createAt": "2022-05-28T09:02:36Z",
+    "introVideo": "http://whitehouse.gov/luctus/ultricies.jsp?duis=semper&faucibus=est&accumsan=quam&odio=pharetra&curabitur=magna&convallis=ac&duis=consequat&consequat=metus&dui=sapien&nec=ut&nisi=nunc",
+    "instructor": "ins001",
+    "description": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\n\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
+    "summary": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
+    "requirements": {
+      "text": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
+      "need": true
+    },
+    "curriculum": {
+      "title": "Dr",
+      "lessons": {
+        "title": "Dr",
+        "type": "video",
+        "duration": 38,
+        "link": "http://tripod.com/lacinia/nisi/venenatis/tristique/fusce/congue.png?dignissim=a&vestibulum=ipsum&vestibulum=integer&ante=a&ipsum=nibh&primis=in&in=quis&faucibus=justo"
+      }
+    }
+  },
+  {
+    "id": "def456",
+    "title": "Ms",
+    "slug": "Rev",
+    "imageSrc": "http://whitehouse.gov/lobortis/convallis.json?nec=mi&nisi=pede&volutpat=malesuada&eleifend=in&donec=imperdiet&ut=et",
+    "rating": 4.9,
+    "numOfRating": 387,
+    "students": 481,
+    "duration": 36,
+    "courseLevel": "Advanced",
+    "courseLanguage": "Pashto",
+    "price": 19,
+    "discount": 29,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Rev",
+      "color": "#921e65",
+      "backgroundColor": "#6c6c99"
+    },
+    "createAt": "2025-01-27T08:01:19Z",
+    "introVideo": "http://plala.or.jp/faucibus/orci/luctus/et/ultrices/posuere/cubilia.jpg?orci=urna&eget=pretium&orci=nisl&vehicula=ut&condimentum=volutpat&curabitur=sapien&in=arcu&libero=sed&ut=augue&massa=aliquam&volutpat=erat&convallis=volutpat&morbi=in&odio=congue&odio=etiam&elementum=justo&eu=etiam&interdum=pretium&eu=iaculis&tincidunt=justo&in=in&leo=hac&maecenas=habitasse&pulvinar=platea&lobortis=dictumst&est=etiam&phasellus=faucibus&sit=cursus&amet=urna&erat=ut&nulla=tellus&tempus=nulla&vivamus=ut&in=erat&felis=id&eu=mauris&sapien=vulputate&cursus=elementum&vestibulum=nullam&proin=varius&eu=nulla&mi=facilisi&nulla=cras&ac=non&enim=velit&in=nec&tempor=nisi&turpis=vulputate&nec=nonummy&euismod=maecenas&scelerisque=tincidunt&quam=lacus&turpis=at&adipiscing=velit&lorem=vivamus&vitae=vel&mattis=nulla&nibh=eget&ligula=eros&nec=elementum&sem=pellentesque&duis=quisque&aliquam=porta&convallis=volutpat&nunc=erat&proin=quisque&at=erat&turpis=eros&a=viverra&pede=eget&posuere=congue&nonummy=eget&integer=semper&non=rutrum&velit=nulla&donec=nunc&diam=purus&neque=phasellus&vestibulum=in&eget=felis&vulputate=donec&ut=semper&ultrices=sapien&vel=a&augue=libero&vestibulum=nam&ante=dui&ipsum=proin&primis=leo&in=odio&faucibus=porttitor&orci=id&luctus=consequat&et=in&ultrices=consequat&posuere=ut&cubilia=nulla&curae=sed&donec=accumsan&pharetra=felis",
+    "instructor": "ins002",
+    "description": "In congue. Etiam justo. Etiam pretium iaculis justo.",
+    "summary": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\n\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
+    "requirements": {
+      "text": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
+      "need": true
+    },
+    "curriculum": {
+      "title": "Mrs",
+      "lessons": {
+        "title": "Mr",
+        "type": "resource",
+        "duration": 25,
+        "link": "http://w3.org/mauris/ullamcorper/purus/sit.jsp?id=nulla&mauris=neque&vulputate=libero&elementum=convallis&nullam=eget&varius=eleifend&nulla=luctus&facilisi=ultricies&cras=eu&non=nibh&velit=quisque&nec=id&nisi=justo&vulputate=sit&nonummy=amet&maecenas=sapien&tincidunt=dignissim&lacus=vestibulum&at=vestibulum&velit=ante&vivamus=ipsum&vel=primis&nulla=in&eget=faucibus&eros=orci&elementum=luctus&pellentesque=et&quisque=ultrices&porta=posuere&volutpat=cubilia&erat=curae&quisque=nulla&erat=dapibus&eros=dolor&viverra=vel&eget=est&congue=donec&eget=odio&semper=justo&rutrum=sollicitudin&nulla=ut&nunc=suscipit&purus=a&phasellus=feugiat&in=et&felis=eros&donec=vestibulum&semper=ac&sapien=est&a=lacinia&libero=nisi&nam=venenatis&dui=tristique&proin=fusce&leo=congue&odio=diam&porttitor=id&id=ornare&consequat=imperdiet&in=sapien&consequat=urna&ut=pretium&nulla=nisl&sed=ut&accumsan=volutpat&felis=sapien&ut=arcu&at=sed&dolor=augue&quis=aliquam&odio=erat&consequat=volutpat&varius=in&integer=congue&ac=etiam&leo=justo&pellentesque=etiam&ultrices=pretium&mattis=iaculis&odio=justo&donec=in&vitae=hac&nisi=habitasse&nam=platea"
+      }
+    }
+  },
+  {
+    "id": "ghi789",
+    "title": "Honorable",
+    "slug": "Ms",
+    "imageSrc": "https://aol.com/vestibulum/ante/ipsum/primis.xml?orci=nam&luctus=nulla&et=integer&ultrices=pede&posuere=justo&cubilia=lacinia&curae=eget&nulla=tincidunt&dapibus=eget&dolor=tempus&vel=vel&est=pede&donec=morbi&odio=porttitor&justo=lorem&sollicitudin=id&ut=ligula&suscipit=suspendisse&a=ornare&feugiat=consequat&et=lectus&eros=in&vestibulum=est&ac=risus&est=auctor&lacinia=sed&nisi=tristique&venenatis=in&tristique=tempus&fusce=sit&congue=amet&diam=sem&id=fusce&ornare=consequat&imperdiet=nulla&sapien=nisl&urna=nunc&pretium=nisl&nisl=duis&ut=bibendum&volutpat=felis&sapien=sed&arcu=interdum&sed=venenatis&augue=turpis&aliquam=enim&erat=blandit&volutpat=mi&in=in&congue=porttitor&etiam=pede&justo=justo",
+    "rating": 2.4,
+    "numOfRating": 225,
+    "students": 724,
+    "duration": 21,
+    "courseLevel": "Advanced",
+    "courseLanguage": "Czech",
+    "price": 113,
+    "discount": 4,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Rev",
+      "color": "#ca33d9",
+      "backgroundColor": "#32989c"
+    },
+    "createAt": "2024-10-15T17:27:48Z",
+    "introVideo": "http://merriam-webster.com/facilisi/cras/non/velit.jpg?at=erat&turpis=quisque&a=erat&pede=eros&posuere=viverra&nonummy=eget&integer=congue&non=eget&velit=semper&donec=rutrum&diam=nulla&neque=nunc&vestibulum=purus&eget=phasellus&vulputate=in&ut=felis&ultrices=donec&vel=semper&augue=sapien&vestibulum=a&ante=libero&ipsum=nam&primis=dui&in=proin&faucibus=leo&orci=odio&luctus=porttitor&et=id&ultrices=consequat&posuere=in&cubilia=consequat&curae=ut&donec=nulla&pharetra=sed&magna=accumsan&vestibulum=felis&aliquet=ut&ultrices=at&erat=dolor&tortor=quis&sollicitudin=odio&mi=consequat&sit=varius&amet=integer&lobortis=ac&sapien=leo&sapien=pellentesque&non=ultrices&mi=mattis&integer=odio&ac=donec&neque=vitae&duis=nisi&bibendum=nam&morbi=ultrices&non=libero&quam=non&nec=mattis&dui=pulvinar&luctus=nulla&rutrum=pede&nulla=ullamcorper&tellus=augue&in=a&sagittis=suscipit&dui=nulla&vel=elit&nisl=ac",
+    "instructor": "ins001",
+    "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\n\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.",
+    "summary": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
+    "requirements": {
+      "text": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
+      "need": true
+    },
+    "curriculum": {
+      "title": "Rev",
+      "lessons": {
+        "title": "Ms",
+        "type": "resource",
+        "duration": 23,
+        "link": "https://over-blog.com/ac.json?diam=viverra&neque=diam&vestibulum=vitae&eget=quam&vulputate=suspendisse&ut=potenti&ultrices=nullam&vel=porttitor&augue=lacus&vestibulum=at&ante=turpis&ipsum=donec&primis=posuere&in=metus&faucibus=vitae&orci=ipsum&luctus=aliquam&et=non&ultrices=mauris&posuere=morbi&cubilia=non&curae=lectus&donec=aliquam&pharetra=sit&magna=amet&vestibulum=diam&aliquet=in&ultrices=magna&erat=bibendum&tortor=imperdiet&sollicitudin=nullam&mi=orci&sit=pede&amet=venenatis&lobortis=non&sapien=sodales&sapien=sed&non=tincidunt&mi=eu&integer=felis&ac=fusce&neque=posuere&duis=felis&bibendum=sed&morbi=lacus&non=morbi&quam=sem&nec=mauris&dui=laoreet&luctus=ut&rutrum=rhoncus&nulla=aliquet&tellus=pulvinar&in=sed&sagittis=nisl&dui=nunc&vel=rhoncus&nisl=dui&duis=vel&ac=sem"
+      }
+    }
+  },
+  {
+    "id": "def456",
+    "title": "Mrs",
+    "slug": "Honorable",
+    "imageSrc": "http://kickstarter.com/consectetuer.jsp?sed=ut&magna=erat&at=id&nunc=mauris&commodo=vulputate&placerat=elementum&praesent=nullam&blandit=varius&nam=nulla&nulla=facilisi&integer=cras&pede=non&justo=velit&lacinia=nec&eget=nisi&tincidunt=vulputate&eget=nonummy&tempus=maecenas&vel=tincidunt&pede=lacus&morbi=at&porttitor=velit&lorem=vivamus&id=vel&ligula=nulla&suspendisse=eget&ornare=eros&consequat=elementum&lectus=pellentesque&in=quisque&est=porta&risus=volutpat&auctor=erat&sed=quisque&tristique=erat&in=eros&tempus=viverra&sit=eget&amet=congue&sem=eget&fusce=semper&consequat=rutrum&nulla=nulla&nisl=nunc&nunc=purus&nisl=phasellus&duis=in&bibendum=felis&felis=donec&sed=semper&interdum=sapien&venenatis=a&turpis=libero&enim=nam&blandit=dui&mi=proin&in=leo&porttitor=odio&pede=porttitor&justo=id&eu=consequat&massa=in&donec=consequat&dapibus=ut&duis=nulla&at=sed&velit=accumsan&eu=felis&est=ut&congue=at&elementum=dolor&in=quis&hac=odio&habitasse=consequat&platea=varius&dictumst=integer&morbi=ac&vestibulum=leo&velit=pellentesque&id=ultrices&pretium=mattis&iaculis=odio&diam=donec&erat=vitae",
+    "rating": 2.9,
+    "numOfRating": 932,
+    "students": 449,
+    "duration": 45,
+    "courseLevel": "Advanced",
+    "courseLanguage": "Luxembourgish",
+    "price": 198,
+    "discount": 5,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Honorable",
+      "color": "#b09476",
+      "backgroundColor": "#6723c3"
+    },
+    "createAt": "2023-04-13T14:09:48Z",
+    "introVideo": "https://delicious.com/rhoncus/dui/vel/sem/sed.jsp?at=lectus&turpis=pellentesque&donec=at&posuere=nulla&metus=suspendisse&vitae=potenti&ipsum=cras&aliquam=in&non=purus&mauris=eu&morbi=magna&non=vulputate&lectus=luctus&aliquam=cum&sit=sociis&amet=natoque&diam=penatibus&in=et&magna=magnis&bibendum=dis&imperdiet=parturient&nullam=montes&orci=nascetur&pede=ridiculus&venenatis=mus&non=vivamus&sodales=vestibulum&sed=sagittis&tincidunt=sapien&eu=cum&felis=sociis&fusce=natoque&posuere=penatibus&felis=et&sed=magnis&lacus=dis&morbi=parturient&sem=montes&mauris=nascetur&laoreet=ridiculus&ut=mus&rhoncus=etiam&aliquet=vel&pulvinar=augue&sed=vestibulum&nisl=rutrum&nunc=rutrum&rhoncus=neque&dui=aenean&vel=auctor&sem=gravida",
+    "instructor": "ins001",
+    "description": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
+    "summary": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
+    "requirements": {
+      "text": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\n\nIn quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.",
+      "need": true
+    },
+    "curriculum": {
+      "title": "Ms",
+      "lessons": {
+        "title": "Mrs",
+        "type": "video",
+        "duration": 51,
+        "link": "https://ehow.com/integer/aliquet/massa/id.png?in=eget&faucibus=tempus&orci=vel&luctus=pede&et=morbi&ultrices=porttitor&posuere=lorem&cubilia=id&curae=ligula&duis=suspendisse&faucibus=ornare&accumsan=consequat&odio=lectus&curabitur=in&convallis=est&duis=risus&consequat=auctor&dui=sed&nec=tristique&nisi=in&volutpat=tempus&eleifend=sit&donec=amet&ut=sem&dolor=fusce&morbi=consequat&vel=nulla&lectus=nisl&in=nunc&quam=nisl&fringilla=duis&rhoncus=bibendum&mauris=felis&enim=sed&leo=interdum&rhoncus=venenatis&sed=turpis&vestibulum=enim&sit=blandit&amet=mi&cursus=in&id=porttitor&turpis=pede&integer=justo"
+      }
+    }
+  },
+  {
+    "id": "def456",
+    "title": "Honorable",
+    "slug": "Ms",
+    "imageSrc": "http://jigsy.com/imperdiet/sapien/urna/pretium/nisl/ut/volutpat.json?orci=fusce&luctus=lacus&et=purus&ultrices=aliquet&posuere=at&cubilia=feugiat&curae=non&mauris=pretium&viverra=quis&diam=lectus&vitae=suspendisse&quam=potenti&suspendisse=in&potenti=eleifend&nullam=quam&porttitor=a&lacus=odio&at=in",
+    "rating": 2.8,
+    "numOfRating": 392,
+    "students": 378,
+    "duration": 51,
+    "courseLevel": "Advanced",
+    "courseLanguage": "Irish Gaelic",
+    "price": 200,
+    "discount": 27,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Dr",
+      "color": "#ceb0d4",
+      "backgroundColor": "#ae5526"
+    },
+    "createAt": "2023-04-06T06:35:34Z",
+    "introVideo": "http://epa.gov/non/quam/nec/dui/luctus.aspx?etiam=vestibulum&faucibus=sit&cursus=amet&urna=cursus&ut=id&tellus=turpis&nulla=integer&ut=aliquet&erat=massa&id=id&mauris=lobortis&vulputate=convallis&elementum=tortor&nullam=risus&varius=dapibus&nulla=augue&facilisi=vel&cras=accumsan&non=tellus&velit=nisi&nec=eu&nisi=orci&vulputate=mauris&nonummy=lacinia&maecenas=sapien&tincidunt=quis&lacus=libero&at=nullam&velit=sit&vivamus=amet&vel=turpis&nulla=elementum&eget=ligula&eros=vehicula",
+    "instructor": "ins003",
+    "description": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
+    "summary": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+    "requirements": {
+      "text": "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
+      "need": false
+    },
+    "curriculum": {
+      "title": "Mrs",
+      "lessons": {
+        "title": "Ms",
+        "type": "video",
+        "duration": 5,
+        "link": "https://qq.com/varius.json?duis=hendrerit&ac=at&nibh=vulputate&fusce=vitae&lacus=nisl&purus=aenean&aliquet=lectus&at=pellentesque&feugiat=eget&non=nunc&pretium=donec&quis=quis"
+      }
+    }
+  },
+  {
+    "id": "def456",
+    "title": "Honorable",
+    "slug": "Mr",
+    "imageSrc": "http://china.com.cn/sapien/urna.json?habitasse=id&platea=turpis&dictumst=integer&etiam=aliquet&faucibus=massa&cursus=id&urna=lobortis&ut=convallis&tellus=tortor&nulla=risus&ut=dapibus&erat=augue&id=vel&mauris=accumsan&vulputate=tellus&elementum=nisi&nullam=eu&varius=orci&nulla=mauris&facilisi=lacinia&cras=sapien&non=quis&velit=libero&nec=nullam&nisi=sit&vulputate=amet&nonummy=turpis&maecenas=elementum&tincidunt=ligula&lacus=vehicula&at=consequat&velit=morbi&vivamus=a&vel=ipsum&nulla=integer&eget=a&eros=nibh&elementum=in&pellentesque=quis&quisque=justo&porta=maecenas&volutpat=rhoncus&erat=aliquam&quisque=lacus&erat=morbi&eros=quis&viverra=tortor&eget=id&congue=nulla&eget=ultrices&semper=aliquet&rutrum=maecenas&nulla=leo&nunc=odio&purus=condimentum&phasellus=id&in=luctus&felis=nec&donec=molestie&semper=sed&sapien=justo&a=pellentesque&libero=viverra&nam=pede&dui=ac&proin=diam&leo=cras&odio=pellentesque&porttitor=volutpat&id=dui&consequat=maecenas",
+    "rating": 1.3,
+    "numOfRating": 648,
+    "students": 592,
+    "duration": 17,
+    "courseLevel": "Intermediate",
+    "courseLanguage": "Indonesian",
+    "price": 56,
+    "discount": 44,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Mrs",
+      "color": "#d5362a",
+      "backgroundColor": "#3163a5"
+    },
+    "createAt": "2023-12-31T10:56:39Z",
+    "introVideo": "http://examiner.com/turpis/adipiscing/lorem/vitae/mattis.jsp?eu=duis&interdum=bibendum&eu=morbi&tincidunt=non&in=quam&leo=nec&maecenas=dui&pulvinar=luctus&lobortis=rutrum&est=nulla&phasellus=tellus&sit=in&amet=sagittis&erat=dui&nulla=vel&tempus=nisl&vivamus=duis&in=ac&felis=nibh&eu=fusce&sapien=lacus&cursus=purus&vestibulum=aliquet&proin=at&eu=feugiat&mi=non&nulla=pretium&ac=quis&enim=lectus&in=suspendisse&tempor=potenti&turpis=in&nec=eleifend&euismod=quam&scelerisque=a&quam=odio&turpis=in&adipiscing=hac&lorem=habitasse&vitae=platea&mattis=dictumst&nibh=maecenas&ligula=ut&nec=massa&sem=quis&duis=augue&aliquam=luctus&convallis=tincidunt&nunc=nulla&proin=mollis&at=molestie&turpis=lorem&a=quisque&pede=ut&posuere=erat&nonummy=curabitur&integer=gravida&non=nisi&velit=at&donec=nibh&diam=in&neque=hac&vestibulum=habitasse&eget=platea&vulputate=dictumst&ut=aliquam&ultrices=augue&vel=quam&augue=sollicitudin&vestibulum=vitae&ante=consectetuer&ipsum=eget&primis=rutrum&in=at&faucibus=lorem&orci=integer&luctus=tincidunt&et=ante&ultrices=vel&posuere=ipsum&cubilia=praesent&curae=blandit&donec=lacinia&pharetra=erat&magna=vestibulum&vestibulum=sed&aliquet=magna&ultrices=at&erat=nunc&tortor=commodo&sollicitudin=placerat&mi=praesent",
+    "instructor": "ins003",
+    "description": "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\n\nDuis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
+    "summary": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\n\nAenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\n\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
+    "requirements": {
+      "text": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
+      "need": true
+    },
+    "curriculum": {
+      "title": "Dr",
+      "lessons": {
+        "title": "Dr",
+        "type": "resource",
+        "duration": 15,
+        "link": "https://wikia.com/est/phasellus/sit/amet.jpg?pede=rhoncus&ac=dui&diam=vel&cras=sem&pellentesque=sed&volutpat=sagittis&dui=nam&maecenas=congue&tristique=risus&est=semper&et=porta&tempus=volutpat&semper=quam&est=pede&quam=lobortis&pharetra=ligula&magna=sit&ac=amet&consequat=eleifend&metus=pede&sapien=libero&ut=quis&nunc=orci&vestibulum=nullam&ante=molestie&ipsum=nibh&primis=in&in=lectus&faucibus=pellentesque&orci=at&luctus=nulla&et=suspendisse&ultrices=potenti&posuere=cras&cubilia=in&curae=purus&mauris=eu&viverra=magna&diam=vulputate&vitae=luctus&quam=cum&suspendisse=sociis&potenti=natoque&nullam=penatibus&porttitor=et&lacus=magnis&at=dis&turpis=parturient&donec=montes&posuere=nascetur&metus=ridiculus&vitae=mus&ipsum=vivamus&aliquam=vestibulum&non=sagittis&mauris=sapien&morbi=cum&non=sociis&lectus=natoque&aliquam=penatibus&sit=et&amet=magnis&diam=dis&in=parturient&magna=montes&bibendum=nascetur&imperdiet=ridiculus&nullam=mus&orci=etiam&pede=vel&venenatis=augue"
+      }
+    }
+  },
+  {
+    "id": "jkl567",
+    "title": "Dr",
+    "slug": "Rev",
+    "imageSrc": "https://skyrock.com/quam/turpis/adipiscing.jsp?in=lacus&quam=at&fringilla=velit&rhoncus=vivamus&mauris=vel&enim=nulla&leo=eget&rhoncus=eros&sed=elementum&vestibulum=pellentesque&sit=quisque&amet=porta&cursus=volutpat&id=erat&turpis=quisque&integer=erat&aliquet=eros&massa=viverra&id=eget&lobortis=congue&convallis=eget&tortor=semper&risus=rutrum&dapibus=nulla&augue=nunc&vel=purus&accumsan=phasellus&tellus=in&nisi=felis&eu=donec&orci=semper&mauris=sapien&lacinia=a&sapien=libero&quis=nam&libero=dui&nullam=proin&sit=leo&amet=odio&turpis=porttitor&elementum=id&ligula=consequat&vehicula=in&consequat=consequat&morbi=ut&a=nulla&ipsum=sed&integer=accumsan&a=felis&nibh=ut&in=at&quis=dolor&justo=quis&maecenas=odio&rhoncus=consequat&aliquam=varius&lacus=integer",
+    "rating": 0.6,
+    "numOfRating": 416,
+    "students": 780,
+    "duration": 26,
+    "courseLevel": "Advanced",
+    "courseLanguage": "West Frisian",
+    "price": 44,
+    "discount": 28,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Mr",
+      "color": "#f96d0f",
+      "backgroundColor": "#241b7d"
+    },
+    "createAt": "2023-08-03T20:35:14Z",
+    "introVideo": "http://geocities.jp/ligula/nec/sem/duis/aliquam.json?diam=in&erat=consequat&fermentum=ut&justo=nulla&nec=sed&condimentum=accumsan&neque=felis&sapien=ut&placerat=at&ante=dolor&nulla=quis&justo=odio&aliquam=consequat&quis=varius&turpis=integer&eget=ac&elit=leo&sodales=pellentesque&scelerisque=ultrices&mauris=mattis&sit=odio&amet=donec&eros=vitae&suspendisse=nisi&accumsan=nam&tortor=ultrices&quis=libero&turpis=non&sed=mattis&ante=pulvinar&vivamus=nulla&tortor=pede&duis=ullamcorper&mattis=augue&egestas=a&metus=suscipit&aenean=nulla&fermentum=elit&donec=ac&ut=nulla&mauris=sed&eget=vel&massa=enim&tempor=sit&convallis=amet&nulla=nunc&neque=viverra&libero=dapibus&convallis=nulla&eget=suscipit&eleifend=ligula&luctus=in&ultricies=lacus&eu=curabitur&nibh=at&quisque=ipsum&id=ac&justo=tellus&sit=semper&amet=interdum&sapien=mauris&dignissim=ullamcorper&vestibulum=purus&vestibulum=sit&ante=amet",
+    "instructor": "ins003",
+    "description": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
+    "summary": "Sed ante. Vivamus tortor. Duis mattis egestas metus.\n\nAenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
+    "requirements": {
+      "text": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
+      "need": false
+    },
+    "curriculum": {
+      "title": "Rev",
+      "lessons": {
+        "title": "Mr",
+        "type": "resource",
+        "duration": 45,
+        "link": "http://loc.gov/platea/dictumst/morbi/vestibulum.jsp?eleifend=erat"
+      }
+    }
+  },
+  {
+    "id": "def456",
+    "title": "Mrs",
+    "slug": "Ms",
+    "imageSrc": "http://miibeian.gov.cn/id/ligula/suspendisse/ornare.js?pellentesque=sed&at=justo&nulla=pellentesque&suspendisse=viverra&potenti=pede&cras=ac&in=diam&purus=cras&eu=pellentesque&magna=volutpat&vulputate=dui&luctus=maecenas&cum=tristique&sociis=est&natoque=et&penatibus=tempus&et=semper&magnis=est&dis=quam&parturient=pharetra&montes=magna&nascetur=ac&ridiculus=consequat&mus=metus&vivamus=sapien&vestibulum=ut&sagittis=nunc&sapien=vestibulum&cum=ante&sociis=ipsum&natoque=primis&penatibus=in&et=faucibus&magnis=orci&dis=luctus&parturient=et&montes=ultrices&nascetur=posuere&ridiculus=cubilia&mus=curae&etiam=mauris&vel=viverra&augue=diam&vestibulum=vitae&rutrum=quam&rutrum=suspendisse&neque=potenti&aenean=nullam&auctor=porttitor&gravida=lacus&sem=at&praesent=turpis&id=donec&massa=posuere&id=metus&nisl=vitae&venenatis=ipsum&lacinia=aliquam&aenean=non&sit=mauris&amet=morbi&justo=non&morbi=lectus&ut=aliquam&odio=sit&cras=amet&mi=diam&pede=in&malesuada=magna&in=bibendum&imperdiet=imperdiet&et=nullam&commodo=orci&vulputate=pede&justo=venenatis&in=non&blandit=sodales&ultrices=sed&enim=tincidunt&lorem=eu&ipsum=felis&dolor=fusce&sit=posuere&amet=felis&consectetuer=sed&adipiscing=lacus&elit=morbi&proin=sem&interdum=mauris&mauris=laoreet&non=ut&ligula=rhoncus",
+    "rating": 0.2,
+    "numOfRating": 272,
+    "students": 562,
+    "duration": 34,
+    "courseLevel": "Intermediate",
+    "courseLanguage": "Aymara",
+    "price": 149,
+    "discount": 40,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Ms",
+      "color": "#c788d0",
+      "backgroundColor": "#3e24cb"
+    },
+    "createAt": "2024-09-29T01:28:06Z",
+    "introVideo": "https://newsvine.com/mi/nulla/ac/enim/in/tempor.jsp?vestibulum=praesent&ante=blandit&ipsum=lacinia&primis=erat&in=vestibulum&faucibus=sed&orci=magna&luctus=at&et=nunc&ultrices=commodo&posuere=placerat&cubilia=praesent&curae=blandit&duis=nam&faucibus=nulla&accumsan=integer&odio=pede&curabitur=justo&convallis=lacinia&duis=eget&consequat=tincidunt&dui=eget&nec=tempus&nisi=vel&volutpat=pede&eleifend=morbi&donec=porttitor&ut=lorem&dolor=id&morbi=ligula&vel=suspendisse&lectus=ornare&in=consequat&quam=lectus&fringilla=in&rhoncus=est&mauris=risus&enim=auctor&leo=sed&rhoncus=tristique&sed=in&vestibulum=tempus&sit=sit&amet=amet&cursus=sem&id=fusce&turpis=consequat&integer=nulla&aliquet=nisl&massa=nunc&id=nisl&lobortis=duis&convallis=bibendum&tortor=felis&risus=sed&dapibus=interdum&augue=venenatis&vel=turpis&accumsan=enim&tellus=blandit",
+    "instructor": "ins003",
+    "description": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+    "summary": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
+    "requirements": {
+      "text": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.\n\nAenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
+      "need": false
+    },
+    "curriculum": {
+      "title": "Dr",
+      "lessons": {
+        "title": "Ms",
+        "type": "video",
+        "duration": 31,
+        "link": "http://foxnews.com/elit/ac/nulla/sed/vel.jpg?mauris=convallis&eget=eget&massa=eleifend&tempor=luctus&convallis=ultricies&nulla=eu&neque=nibh&libero=quisque&convallis=id&eget=justo&eleifend=sit&luctus=amet&ultricies=sapien&eu=dignissim&nibh=vestibulum&quisque=vestibulum&id=ante&justo=ipsum&sit=primis&amet=in&sapien=faucibus&dignissim=orci&vestibulum=luctus&vestibulum=et&ante=ultrices&ipsum=posuere&primis=cubilia&in=curae&faucibus=nulla&orci=dapibus&luctus=dolor&et=vel&ultrices=est&posuere=donec&cubilia=odio&curae=justo&nulla=sollicitudin&dapibus=ut&dolor=suscipit&vel=a&est=feugiat&donec=et&odio=eros&justo=vestibulum&sollicitudin=ac&ut=est&suscipit=lacinia&a=nisi&feugiat=venenatis&et=tristique"
+      }
+    }
+  },
+  {
+    "id": "def456",
+    "title": "Mr",
+    "slug": "Mrs",
+    "imageSrc": "http://gizmodo.com/blandit/nam/nulla/integer.png?habitasse=aliquet&platea=at&dictumst=feugiat&morbi=non&vestibulum=pretium&velit=quis&id=lectus&pretium=suspendisse&iaculis=potenti&diam=in&erat=eleifend&fermentum=quam&justo=a&nec=odio&condimentum=in&neque=hac&sapien=habitasse&placerat=platea&ante=dictumst&nulla=maecenas&justo=ut&aliquam=massa&quis=quis&turpis=augue&eget=luctus&elit=tincidunt&sodales=nulla&scelerisque=mollis&mauris=molestie&sit=lorem&amet=quisque&eros=ut&suspendisse=erat&accumsan=curabitur&tortor=gravida&quis=nisi&turpis=at&sed=nibh&ante=in&vivamus=hac&tortor=habitasse&duis=platea&mattis=dictumst&egestas=aliquam&metus=augue&aenean=quam&fermentum=sollicitudin&donec=vitae&ut=consectetuer&mauris=eget&eget=rutrum&massa=at&tempor=lorem&convallis=integer&nulla=tincidunt&neque=ante&libero=vel&convallis=ipsum&eget=praesent&eleifend=blandit&luctus=lacinia&ultricies=erat&eu=vestibulum&nibh=sed&quisque=magna&id=at&justo=nunc&sit=commodo&amet=placerat&sapien=praesent&dignissim=blandit&vestibulum=nam&vestibulum=nulla&ante=integer&ipsum=pede&primis=justo&in=lacinia&faucibus=eget&orci=tincidunt&luctus=eget&et=tempus",
+    "rating": 2.8,
+    "numOfRating": 65,
+    "students": 491,
+    "duration": 3,
+    "courseLevel": "Advanced",
+    "courseLanguage": "Tswana",
+    "price": 94,
+    "discount": 49,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Rev",
+      "color": "#311601",
+      "backgroundColor": "#206bac"
+    },
+    "createAt": "2022-06-12T05:14:00Z",
+    "introVideo": "http://miitbeian.gov.cn/augue/aliquam/erat/volutpat/in/congue.jpg?montes=quam&nascetur=nec&ridiculus=dui&mus=luctus&etiam=rutrum&vel=nulla&augue=tellus&vestibulum=in&rutrum=sagittis&rutrum=dui&neque=vel&aenean=nisl&auctor=duis&gravida=ac&sem=nibh&praesent=fusce&id=lacus&massa=purus&id=aliquet&nisl=at&venenatis=feugiat&lacinia=non&aenean=pretium&sit=quis&amet=lectus&justo=suspendisse&morbi=potenti&ut=in&odio=eleifend&cras=quam&mi=a&pede=odio&malesuada=in",
+    "instructor": "ins001",
+    "description": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
+    "summary": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
+    "requirements": {
+      "text": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.",
+      "need": false
+    },
+    "curriculum": {
+      "title": "Honorable",
+      "lessons": {
+        "title": "Mrs",
+        "type": "resource",
+        "duration": 34,
+        "link": "https://bloglines.com/mattis/nibh/ligula/nec/sem/duis.jsp?lectus=nec&in=sem&est=duis&risus=aliquam&auctor=convallis&sed=nunc&tristique=proin&in=at&tempus=turpis&sit=a&amet=pede&sem=posuere&fusce=nonummy&consequat=integer&nulla=non&nisl=velit&nunc=donec&nisl=diam&duis=neque"
+      }
+    }
+  },
+  {
+    "id": "ghi789",
+    "title": "Honorable",
+    "slug": "Dr",
+    "imageSrc": "https://wix.com/leo/rhoncus/sed/vestibulum/sit/amet.json?sit=rhoncus&amet=mauris&justo=enim&morbi=leo&ut=rhoncus&odio=sed&cras=vestibulum&mi=sit&pede=amet&malesuada=cursus&in=id&imperdiet=turpis&et=integer&commodo=aliquet&vulputate=massa&justo=id&in=lobortis&blandit=convallis&ultrices=tortor&enim=risus&lorem=dapibus&ipsum=augue&dolor=vel&sit=accumsan&amet=tellus&consectetuer=nisi&adipiscing=eu&elit=orci&proin=mauris&interdum=lacinia&mauris=sapien&non=quis&ligula=libero&pellentesque=nullam&ultrices=sit&phasellus=amet&id=turpis&sapien=elementum&in=ligula&sapien=vehicula&iaculis=consequat&congue=morbi&vivamus=a&metus=ipsum&arcu=integer&adipiscing=a&molestie=nibh&hendrerit=in&at=quis&vulputate=justo&vitae=maecenas&nisl=rhoncus&aenean=aliquam&lectus=lacus&pellentesque=morbi&eget=quis&nunc=tortor&donec=id&quis=nulla&orci=ultrices&eget=aliquet&orci=maecenas&vehicula=leo&condimentum=odio&curabitur=condimentum&in=id&libero=luctus&ut=nec&massa=molestie&volutpat=sed&convallis=justo&morbi=pellentesque&odio=viverra&odio=pede&elementum=ac&eu=diam&interdum=cras&eu=pellentesque&tincidunt=volutpat&in=dui&leo=maecenas&maecenas=tristique",
+    "rating": 2.8,
+    "numOfRating": 629,
+    "students": 730,
+    "duration": 48,
+    "courseLevel": "Advanced",
+    "courseLanguage": "Kannada",
+    "price": 126,
+    "discount": 18,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Rev",
+      "color": "#77f196",
+      "backgroundColor": "#e5c041"
+    },
+    "createAt": "2024-07-27T07:42:00Z",
+    "introVideo": "http://arizona.edu/mollis/molestie/lorem/quisque.jpg?sociis=quis&natoque=tortor&penatibus=id&et=nulla&magnis=ultrices&dis=aliquet&parturient=maecenas&montes=leo&nascetur=odio&ridiculus=condimentum&mus=id&etiam=luctus&vel=nec&augue=molestie&vestibulum=sed&rutrum=justo&rutrum=pellentesque&neque=viverra&aenean=pede&auctor=ac&gravida=diam&sem=cras&praesent=pellentesque&id=volutpat&massa=dui&id=maecenas&nisl=tristique&venenatis=est&lacinia=et&aenean=tempus&sit=semper&amet=est&justo=quam&morbi=pharetra",
+    "instructor": "ins001",
+    "description": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.\n\nCurabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
+    "summary": "In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
+    "requirements": {
+      "text": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+      "need": true
+    },
+    "curriculum": {
+      "title": "Honorable",
+      "lessons": {
+        "title": "Mrs",
+        "type": "resource",
+        "duration": 15,
+        "link": "http://naver.com/a.json?nulla=curabitur&tellus=convallis&in=duis&sagittis=consequat&dui=dui&vel=nec&nisl=nisi&duis=volutpat&ac=eleifend&nibh=donec&fusce=ut&lacus=dolor&purus=morbi&aliquet=vel&at=lectus&feugiat=in&non=quam&pretium=fringilla&quis=rhoncus&lectus=mauris&suspendisse=enim&potenti=leo&in=rhoncus&eleifend=sed&quam=vestibulum&a=sit&odio=amet&in=cursus&hac=id&habitasse=turpis&platea=integer&dictumst=aliquet&maecenas=massa&ut=id&massa=lobortis&quis=convallis&augue=tortor&luctus=risus&tincidunt=dapibus&nulla=augue&mollis=vel&molestie=accumsan&lorem=tellus&quisque=nisi&ut=eu&erat=orci&curabitur=mauris&gravida=lacinia&nisi=sapien&at=quis&nibh=libero&in=nullam&hac=sit&habitasse=amet&platea=turpis&dictumst=elementum&aliquam=ligula&augue=vehicula&quam=consequat&sollicitudin=morbi&vitae=a&consectetuer=ipsum&eget=integer&rutrum=a&at=nibh&lorem=in&integer=quis&tincidunt=justo&ante=maecenas&vel=rhoncus&ipsum=aliquam&praesent=lacus&blandit=morbi&lacinia=quis&erat=tortor&vestibulum=id&sed=nulla&magna=ultrices&at=aliquet&nunc=maecenas&commodo=leo&placerat=odio&praesent=condimentum&blandit=id&nam=luctus&nulla=nec&integer=molestie&pede=sed&justo=justo&lacinia=pellentesque&eget=viverra&tincidunt=pede&eget=ac"
+      }
+    }
+  },
+  {
+    "id": "jkl567",
+    "title": "Rev",
+    "slug": "Mrs",
+    "imageSrc": "https://about.me/non/lectus/aliquam/sit.html?lectus=morbi&in=non&quam=quam&fringilla=nec&rhoncus=dui&mauris=luctus&enim=rutrum&leo=nulla&rhoncus=tellus&sed=in&vestibulum=sagittis&sit=dui&amet=vel&cursus=nisl&id=duis&turpis=ac&integer=nibh&aliquet=fusce&massa=lacus&id=purus&lobortis=aliquet&convallis=at&tortor=feugiat&risus=non&dapibus=pretium&augue=quis&vel=lectus&accumsan=suspendisse&tellus=potenti&nisi=in&eu=eleifend&orci=quam&mauris=a&lacinia=odio&sapien=in&quis=hac&libero=habitasse&nullam=platea&sit=dictumst&amet=maecenas&turpis=ut&elementum=massa&ligula=quis",
+    "rating": 4.1,
+    "numOfRating": 119,
+    "students": 644,
+    "duration": 45,
+    "courseLevel": "Beginner",
+    "courseLanguage": "Croatian",
+    "price": 30,
+    "discount": 39,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Mrs",
+      "color": "#3bc9a4",
+      "backgroundColor": "#67a431"
+    },
+    "createAt": "2022-07-18T00:49:00Z",
+    "introVideo": "https://spotify.com/mi/sit/amet/lobortis/sapien.json?sapien=luctus&dignissim=cum&vestibulum=sociis&vestibulum=natoque&ante=penatibus&ipsum=et&primis=magnis&in=dis&faucibus=parturient&orci=montes&luctus=nascetur&et=ridiculus&ultrices=mus&posuere=vivamus&cubilia=vestibulum&curae=sagittis&nulla=sapien&dapibus=cum&dolor=sociis&vel=natoque&est=penatibus&donec=et&odio=magnis&justo=dis&sollicitudin=parturient&ut=montes&suscipit=nascetur&a=ridiculus&feugiat=mus&et=etiam&eros=vel&vestibulum=augue&ac=vestibulum&est=rutrum&lacinia=rutrum&nisi=neque&venenatis=aenean&tristique=auctor&fusce=gravida&congue=sem&diam=praesent&id=id&ornare=massa&imperdiet=id&sapien=nisl&urna=venenatis&pretium=lacinia&nisl=aenean&ut=sit&volutpat=amet&sapien=justo&arcu=morbi&sed=ut&augue=odio&aliquam=cras&erat=mi&volutpat=pede&in=malesuada&congue=in&etiam=imperdiet&justo=et&etiam=commodo&pretium=vulputate&iaculis=justo&justo=in&in=blandit&hac=ultrices",
+    "instructor": "ins003",
+    "description": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+    "summary": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\n\nDonec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.",
+    "requirements": {
+      "text": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
+      "need": true
+    },
+    "curriculum": {
+      "title": "Mr",
+      "lessons": {
+        "title": "Mrs",
+        "type": "resource",
+        "duration": 59,
+        "link": "https://domainmarket.com/turpis/eget/elit/sodales/scelerisque/mauris/sit.jsp?iaculis=mauris&justo=eget&in=massa&hac=tempor&habitasse=convallis&platea=nulla&dictumst=neque&etiam=libero&faucibus=convallis&cursus=eget&urna=eleifend&ut=luctus&tellus=ultricies&nulla=eu&ut=nibh&erat=quisque&id=id&mauris=justo&vulputate=sit&elementum=amet&nullam=sapien&varius=dignissim&nulla=vestibulum&facilisi=vestibulum&cras=ante&non=ipsum&velit=primis&nec=in&nisi=faucibus&vulputate=orci&nonummy=luctus&maecenas=et&tincidunt=ultrices&lacus=posuere&at=cubilia&velit=curae&vivamus=nulla&vel=dapibus&nulla=dolor&eget=vel&eros=est&elementum=donec&pellentesque=odio&quisque=justo&porta=sollicitudin&volutpat=ut&erat=suscipit&quisque=a&erat=feugiat&eros=et&viverra=eros&eget=vestibulum"
+      }
+    }
+  },
+  {
+    "id": "def456",
+    "title": "Honorable",
+    "slug": "Honorable",
+    "imageSrc": "https://ask.com/rhoncus/dui/vel/sem/sed.json?nunc=vel&vestibulum=augue&ante=vestibulum&ipsum=rutrum&primis=rutrum&in=neque&faucibus=aenean&orci=auctor&luctus=gravida&et=sem&ultrices=praesent&posuere=id&cubilia=massa&curae=id&mauris=nisl&viverra=venenatis&diam=lacinia&vitae=aenean&quam=sit&suspendisse=amet&potenti=justo&nullam=morbi&porttitor=ut&lacus=odio&at=cras&turpis=mi&donec=pede&posuere=malesuada&metus=in&vitae=imperdiet&ipsum=et&aliquam=commodo&non=vulputate&mauris=justo&morbi=in&non=blandit&lectus=ultrices&aliquam=enim&sit=lorem&amet=ipsum&diam=dolor&in=sit&magna=amet&bibendum=consectetuer&imperdiet=adipiscing&nullam=elit&orci=proin&pede=interdum&venenatis=mauris&non=non&sodales=ligula&sed=pellentesque&tincidunt=ultrices&eu=phasellus&felis=id&fusce=sapien&posuere=in&felis=sapien&sed=iaculis&lacus=congue&morbi=vivamus&sem=metus&mauris=arcu&laoreet=adipiscing&ut=molestie&rhoncus=hendrerit&aliquet=at&pulvinar=vulputate",
+    "rating": 3.2,
+    "numOfRating": 124,
+    "students": 528,
+    "duration": 40,
+    "courseLevel": "Beginner",
+    "courseLanguage": "Persian",
+    "price": 38,
+    "discount": 19,
+    "discountEnds": "2022-01-01T00:00:00.000",
+    "category": {
+      "name": "Mr",
+      "color": "#5a3226",
+      "backgroundColor": "#6c83f7"
+    },
+    "createAt": "2022-10-12T11:32:05Z",
+    "introVideo": "https://wikipedia.org/pede/justo/lacinia.png?phasellus=lorem&sit=quisque&amet=ut&erat=erat&nulla=curabitur&tempus=gravida&vivamus=nisi&in=at&felis=nibh&eu=in&sapien=hac&cursus=habitasse&vestibulum=platea&proin=dictumst&eu=aliquam&mi=augue&nulla=quam&ac=sollicitudin&enim=vitae&in=consectetuer&tempor=eget&turpis=rutrum&nec=at&euismod=lorem&scelerisque=integer&quam=tincidunt&turpis=ante&adipiscing=vel&lorem=ipsum&vitae=praesent&mattis=blandit&nibh=lacinia&ligula=erat&nec=vestibulum&sem=sed&duis=magna&aliquam=at&convallis=nunc&nunc=commodo&proin=placerat&at=praesent&turpis=blandit&a=nam&pede=nulla&posuere=integer&nonummy=pede&integer=justo&non=lacinia&velit=eget&donec=tincidunt&diam=eget&neque=tempus&vestibulum=vel",
+    "instructor": "ins002",
+    "description": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.\n\nNullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
+    "summary": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.\n\nQuisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
+    "requirements": {
+      "text": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
+      "need": true
+    },
+    "curriculum": {
+      "title": "Rev",
+      "lessons": {
+        "title": "Dr",
+        "type": "resource",
+        "duration": 20,
+        "link": "https://paginegialle.it/tortor/sollicitudin/mi/sit/amet/lobortis/sapien.html?eu=duis&sapien=ac&cursus=nibh&vestibulum=fusce&proin=lacus&eu=purus&mi=aliquet&nulla=at&ac=feugiat&enim=non&in=pretium&tempor=quis&turpis=lectus&nec=suspendisse&euismod=potenti&scelerisque=in&quam=eleifend&turpis=quam&adipiscing=a&lorem=odio&vitae=in&mattis=hac&nibh=habitasse&ligula=platea&nec=dictumst&sem=maecenas&duis=ut"
+      }
+    }
+  },
+  {
+    "id": "jkl567",
+    "title": "Mrs",
+    "slug": "Mr",
+    "imageSrc": "http://examiner.com/quis.aspx?erat=erat&nulla=eros&tempus=viverra&vivamus=eget&in=congue&felis=eget&eu=semper&sapien=rutrum&cursus=nulla&vestibulum=nunc&proin=purus&eu=phasellus&mi=in&nulla=felis&ac=donec&enim=semper&in=sapien&tempor=a&turpis=libero&nec=nam&euismod=dui&scelerisque=proin&quam=leo&turpis=odio&adipiscing=porttitor&lorem=id&vitae=consequat&mattis=in&nibh=consequat&ligula=ut&nec=nulla&sem=sed&duis=accumsan&aliquam=felis&convallis=ut&nunc=at&proin=dolor&at=quis&turpis=odio&a=consequat&pede=varius&posuere=integer&nonummy=ac&integer=leo&non=pellentesque&velit=ultrices&donec=mattis&diam=odio&neque=donec&vestibulum=vitae&eget=nisi&vulputate=nam&ut=ultrices&ultrices=libero&vel=non&augue=mattis&vestibulum=pulvinar&ante=nulla&ipsum=pede",
+    "rating": 0.1,
+    "numOfRating": 334,
+    "students": 905,
+    "duration": 3,
+    "courseLevel": "Beginner",
+    "courseLanguage": "Aymara",
+    "price": 12,
+    "discount": 0,
+    "discountEnds": "2022-01-01T00:00:00.000Z",
+    "category": {
+      "name": "Dr",
+      "color": "#e8812d",
+      "backgroundColor": "#241d63"
+    },
+    "createAt": "2024-09-02T19:46:15Z",
+    "introVideo": "https://umn.edu/odio/curabitur/convallis.js?in=eu&felis=magna&eu=vulputate&sapien=luctus&cursus=cum&vestibulum=sociis&proin=natoque&eu=penatibus&mi=et&nulla=magnis&ac=dis&enim=parturient&in=montes&tempor=nascetur&turpis=ridiculus&nec=mus&euismod=vivamus&scelerisque=vestibulum&quam=sagittis&turpis=sapien&adipiscing=cum&lorem=sociis&vitae=natoque&mattis=penatibus&nibh=et&ligula=magnis&nec=dis&sem=parturient&duis=montes&aliquam=nascetur&convallis=ridiculus&nunc=mus&proin=etiam&at=vel&turpis=augue&a=vestibulum&pede=rutrum&posuere=rutrum&nonummy=neque&integer=aenean&non=auctor&velit=gravida&donec=sem&diam=praesent&neque=id&vestibulum=massa&eget=id&vulputate=nisl&ut=venenatis&ultrices=lacinia&vel=aenean&augue=sit&vestibulum=amet&ante=justo&ipsum=morbi&primis=ut&in=odio&faucibus=cras&orci=mi&luctus=pede&et=malesuada",
+    "instructor": "ins003",
+    "description": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.",
+    "summary": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
+    "requirements": {
+      "text": "In congue. Etiam justo. Etiam pretium iaculis justo.\n\nIn hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
+      "need": true
+    },
+    "curriculum": {
+      "title": "Honorable",
+      "lessons": {
+        "title": "Honorable",
+        "type": "resource",
+        "duration": 33,
+        "link": "https://walmart.com/dis.jsp?lobortis=maecenas&est=tincidunt&phasellus=lacus&sit=at&amet=velit&erat=vivamus&nulla=vel&tempus=nulla&vivamus=eget&in=eros&felis=elementum&eu=pellentesque&sapien=quisque&cursus=porta&vestibulum=volutpat&proin=erat&eu=quisque&mi=erat&nulla=eros&ac=viverra&enim=eget&in=congue&tempor=eget&turpis=semper&nec=rutrum&euismod=nulla&scelerisque=nunc&quam=purus&turpis=phasellus&adipiscing=in&lorem=felis&vitae=donec&mattis=semper&nibh=sapien&ligula=a&nec=libero&sem=nam&duis=dui&aliquam=proin&convallis=leo&nunc=odio&proin=porttitor&at=id&turpis=consequat&a=in&pede=consequat&posuere=ut"
+      }
+    }
+  }
+]

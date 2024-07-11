@@ -1,27 +1,50 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
+.nav-link {
+  @apply hover:scale-105 hover:text-white hover:font-[600] hover:duration-200;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-  }
+h1 {
+  @apply text-4xl sm:text-5xl font-semibold;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
+h2 {
+  @apply text-2xl sm:text-4xl font-bold mb-2;
+}
+
+h3 {
+  @apply text-xl sm:text-4xl font-bold mb-2;
+}
+
+h4 {
+  @apply text-lg font-semibold mb-2 uppercase;
+}
+
+.btn-primary {
+  @apply bg-orange-500 text-white px-4 py-2 mt-4 hover:bg-orange-600 font-semibold;
+}
+
+.btn-secondary {
+  @apply bg-zinc-700 text-white px-4 py-2 mt-4 hover:bg-zinc-900 font-semibold;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .clip-path-image-landing-page {
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
   }
+  .clip-path-image-landing-page-reverse {
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+  }
+}
+
+/* Dashboard */
+.dashboardNavLinks {
+  @apply flex gap-2 items-center ps-8 pe-24 py-2 text-CustomGray-600 hover:text-white hover:bg-Primary-500;
+}
+.dashboardNavLinks svg {
+  @apply text-xl;
 }

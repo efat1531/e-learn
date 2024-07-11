@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
+    "daisyui": "^4.12.10",
     "morgan": "^1.10.0",
     "nodemon": "^3.1.4"
   }
