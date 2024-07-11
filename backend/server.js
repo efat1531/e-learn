@@ -28,6 +28,8 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+=======
+>>>>>>> 148054d (Added Redux)
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
