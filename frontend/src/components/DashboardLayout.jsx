@@ -5,7 +5,7 @@ const DashboardLayout = ({ children }) => {
   return (
     <div className="flex">
       <Sidebar />
-      <div className="w-full">
+      <div className="w-full bg-CustomGray-50">
         <TopBar />
         {children}
       </div>
