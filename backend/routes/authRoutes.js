@@ -2,6 +2,7 @@ import express from "express";
 import {
   login,
   register,
+  logout,
   verifyUser,
   resendToken,
   forgotPassword,
@@ -19,6 +20,7 @@ const printMiddleware = (req, res, next) => {
 router.route("/register").post(register);
 router.route("/verify/:email").post(verifyUser).get(resendToken);
 router.route("/login").post(login);
+router.route("/logout").post(logout);
 router.route("/forgot").post(forgotPassword);
 router.route("/reset/:email/:token").get(verifyResetPasswordRequest);
 router.route("/reset/:email").post(resetPassword);

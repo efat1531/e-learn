@@ -92,13 +92,13 @@ const verifyUser = asyncHandler(async (req, res) => {
   await userModel.findByIdAndUpdate(user._id, { isVerified: true });
 
   // JWT Cookie
-  await generateToken(res, user._id, user.role);
+  const JWTtoken = await generateToken(res, user._id, user.role);
 
   // Send response
   res.status(200).json({
     status: "success",
     message: "User verified successfully",
-    token: res.cookie.eLearnJWT,
+    token: JWTtoken,
   });
 });
 
@@ -162,12 +162,12 @@ const login = asyncHandler(async (req, res) => {
   }
 
   // JWT Cookie
-  await generateToken(res, user._id, user.role);
+  const JTWToken = await generateToken(res, user._id, user.role);
 
   // Send response
   res.status(200).json({
     status: "success",
-    token: res.cookie.eLearnJWT,
+    token: JTWToken,
   });
 });
 
@@ -274,7 +274,7 @@ const resetPassword = asyncHandler(async (req, res) => {
 });
 
 // @desc  logout user
-// @route GET /api/auth/logout
+// @route POST /api/auth/logout
 // @access Public
 const logout = asyncHandler(async (req, res) => {
   // Clear cookie
@@ -290,6 +290,7 @@ export {
   register,
   verifyUser,
   login,
+  logout,
   resendToken,
   forgotPassword,
   resetPassword,
