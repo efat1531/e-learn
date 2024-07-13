@@ -2,7 +2,7 @@ import InstructorCard from "./InstructorCard";
 
 const Instructor = () => {
   return (
-    <section id="instructor" className="py-16">
+    <section id="instructor" className="py-16 bg-gray-50">
       <div className="container">
         {/* <!-- Section Header Start --> */}
         <div className="section-header">

@@ -1,8 +1,13 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import { useSelector } from "react-redux";
 
-const WhatYouWillLearn = ({ learning }) => {
+const WhatYouWillLearn = () => {
+  const { selectedCourse } = useSelector((state) => state.course);
+  if (!selectedCourse) return null;
+
+  const { whatYouWillLearn: learning } = selectedCourse;
+
   return (
     <div className="flex w-full p-[2.5rem] flex-col items-center gap-[1.25rem] bg-[rgba(225,247,227,0.4)]">
       <div className="text-left w-[49.5rem] text-[1.5rem] font-inter font-semibold leading-[2rem] tracking-[-0.015rem] text-[#1d2026]">
@@ -20,10 +25,6 @@ const WhatYouWillLearn = ({ learning }) => {
       </div>
     </div>
   );
-};
-
-WhatYouWillLearn.propTypes = {
-  learning: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default WhatYouWillLearn;

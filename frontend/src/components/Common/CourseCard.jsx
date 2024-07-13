@@ -2,10 +2,17 @@ import react from "react";
 import PropTypes from "prop-types";
 import { FaStar } from "react-icons/fa6";
 import { numberToEnFormat } from "../../utils/Transformations";
+const imageSrc =
+  "https://www.pcinvasion.com/wp-content/uploads/2021/09/Lost-in-Random-Bloobs-5.jpg?fit=1200%2C675";
+
+const category = {
+  name: "Development",
+  backgroundColor: "#F0F4FF",
+  color: "#334155",
+};
 
 const CourseCard = ({ course }) => {
-  const { imageSrc, title, category, rating, price, discount, students } =
-    course;
+  const { title, courseRating, price, courseStudents, currentPrice } = course;
   return (
     <div className="inline-flex pb-[0.875rem] flex-col justify-center items-center gap-[0.88rem] bg-white max-w-[15.25rem] border-gray-100 border drop-shadow-lg hover:scale-105">
       <div
@@ -29,19 +36,19 @@ const CourseCard = ({ course }) => {
             </span>
           </div>
           <div>
-            {discount > 0 && (
+            {price != currentPrice && (
               <span className="text-primary font-semibold text-sm">
-                {price - discount}$&nbsp;
+                {currentPrice}$&nbsp;
               </span>
             )}
             <span
               className={`text-primary-500 font-semibold text-xs ${
-                discount > 0
+                price != currentPrice
                   ? "line-through text-gray-500 font-normal opacity-50 text-sm"
                   : ""
               }`}
             >
-              {price === 0 ? "Free" : `${price}$`}
+              {currentPrice === 0 ? "Free" : `${currentPrice}$`}
             </span>
           </div>
         </div>
@@ -54,15 +61,15 @@ const CourseCard = ({ course }) => {
         <div className="flex gap-[0.25rem]">
           <FaStar className="text-Warning-500 h-4 w-4" />
           <span className="text-sm font-[500] text-CustomGray-700">
-            {rating}
+            {courseRating}
           </span>
         </div>
         <div className="flex gap-1">
           <span className="text-sm font-[500] text-CustomGray-700">
-            {numberToEnFormat(students)}
+            {numberToEnFormat(courseStudents)}
           </span>
           <span className="text-sm font-normal text-CustomGray-500">
-            {students > 1 ? "Students" : "Student"}
+            {courseStudents > 1 ? "Students" : "Student"}
           </span>
         </div>
       </div>

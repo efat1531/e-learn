@@ -14,7 +14,7 @@ const BestSellingCourses = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 desktop:grid-cols-4 gap-4">
           {top10Course.map((course, index) => (
             <Link to={`/courses/${course.slug}`} key={index}>
-              <CourseCard key={index} course={course} />
+              {/* <CourseCard key={index} course={course} /> */}
             </Link>
           ))}
         </div>

@@ -10,7 +10,7 @@ const recentlyAdded = CourseData.sort((a, b) => b.createAt - a.createAt).slice(
 
 const RecentlyAddedCourse = () => {
   return (
-    <section id="best-selling-course" className="bg-gray-50 py-16">
+    <section id="best-selling-course" className="bg-fff py-16">
       <div className="py-[5rem] flex flex-col gap-[2.5rem] justify-center items-center">
         <div className="text-[2.5rem] font-[600] leading[3rem] tracking-tight text-CustomGray-900">
           Recently Added Course
@@ -18,7 +18,7 @@ const RecentlyAddedCourse = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 desktop:grid-cols-4 gap-4">
           {recentlyAdded.map((course, index) => (
             <Link to={`/courses/${course.slug}`} key={index}>
-              <CourseCard key={index} course={course} />
+              {/* <CourseCard key={index} course={course} /> */}
             </Link>
           ))}
         </div>

@@ -6,7 +6,7 @@ const RatingProgressBar = ({ reviews, value }) => {
   const ratingQuantity = reviews.filter(
     (review) => review.rating === value
   ).length;
-  const percentage = (ratingQuantity / reviews.length) * 100;
+  const percentage = (ratingQuantity / reviews.length) * 100 || 0;
 
   return (
     <div className="flex flex-row gap-6 w-full">

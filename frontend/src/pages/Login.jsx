@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLoginMutation } from "../features/api/authApiSlice";
 import { setCredentials, setTempCredentials } from "../features/authSlice";
-import { toast } from "react-toastify";
+import { toastManager } from "../components/ui/toastGeneral";
 
 const Login = () => {
   const [remember, setRemember] = useState(false);
@@ -25,9 +25,9 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const toastId = toastManager.loading("Logging in...");
     const formData = new FormData(event.target);
     const { email, password } = Object.fromEntries(formData.entries());
-
     try {
       const response = await login({ email, password }).unwrap();
       const { token } = response;
@@ -36,11 +36,19 @@ const Login = () => {
       } else {
         dispatch(setTempCredentials(token));
       }
-      toast.success("Logged in successfully");
+      toastManager.updateStatus(toastId, {
+        render: "Logged in successfully",
+        type: "success",
+      });
       navigate("/home");
     } catch (error) {
-      const message = error.data ? error.data.message : error.error.message;
-      toast.error(message);
+      const message = await (error?.data
+        ? error?.data?.message
+        : error?.error?.message || "Something went wrong");
+      toastManager.updateStatus(toastId, {
+        render: message,
+        type: "reject",
+      });
     }
   };
   return (
