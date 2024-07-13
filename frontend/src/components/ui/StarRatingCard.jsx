@@ -1,7 +1,9 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { FaStarHalfAlt, FaStar } from "react-icons/fa";
-import { FaStar as FaStarFull } from "react-icons/fa6";
+
+import { FaStar } from "react-icons/fa";
+import { FaRegStar, FaRegStarHalfStroke } from "react-icons/fa6";
+import { GoStarFill } from "react-icons/go";
 
 const starRating = (rating, size, color) => {
   const stars = [];
@@ -9,15 +11,15 @@ const starRating = (rating, size, color) => {
   const hasHalfStar = rating - floorRating >= 0.5;
 
   for (let i = 0; i < floorRating; i++) {
-    stars.push(<FaStarFull size={size} color={color} />);
+    stars.push(<FaStar size={size} color={color} />);
   }
 
   if (hasHalfStar) {
-    stars.push(<FaStarHalfAlt size={size} color={color} />);
+    stars.push(<FaRegStarHalfStroke size={size} color={color} />);
   }
 
   for (let i = stars.length; i < 5; i++) {
-    stars.push(<FaStar size={size} color={color} />);
+    stars.push(<FaRegStar size={size} color={color} />);
   }
 
   return stars;

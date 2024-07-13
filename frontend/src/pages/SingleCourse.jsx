@@ -1,6 +1,8 @@
-import react, { useEffect, useState } from "react";
+import react, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import Courses from "../../Data/courseData.json";
+import { useFetchCourseQuery } from "../features/api/courseApiSlice";
+import { setSingleCourse } from "../features/courseSlice";
 import CourseTitle from "../components/SingleCourse/CourseContainer/CourseTitle";
 import IntroVideo from "../components/SingleCourse/CourseContainer/IntroVideo";
 import SideBar from "../components/SingleCourse/SideBar/SideBar";
@@ -14,9 +16,28 @@ import CourseRating from "../components/SingleCourse/CourseContainer/CourseRatin
 import StudentsReview from "../components/SingleCourse/CourseContainer/StudentsReview";
 
 const SingleCourse = () => {
-  const courseSlug = useParams().slug;
-  const course = Courses.find((course) => course.slug === courseSlug);
-  console.log(course);
+  const { slug } = useParams();
+  const dispatch = useDispatch();
+  const { data, error, isLoading } = useFetchCourseQuery(slug);
+  const { user } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    if (data) {
+      dispatch(setSingleCourse(data.data));
+    }
+  }, [data, dispatch]);
+
+  if (isLoading || error) return null;
+
+  const canReview = () => {
+    return (
+      user &&
+      user.role === "student" &&
+      user.isVerified &&
+      user.courses.includes(data.data._id)
+    );
+  };
+
   return (
     <div className="relative w-full">
       {/* Background */}
@@ -25,19 +46,19 @@ const SingleCourse = () => {
       <div className="w-full justify-center flex flex-col lg:flex-row gap-6 items-center lg:items-start py-20">
         {/* Course Details */}
         <div className="flex max-w-[54.5rem] flex-col gap-10">
-          <CourseTitle course={course} />
-          <IntroVideo link={course.introVideo} />
-          <CourseDescription desc={course.description} />
-          <WhatYouWillLearn learning={course.whatYouWillLearn} />
-          <CourseRequirement requirements={course.requirements} />
-          <Curriculum curriculum={course.curriculum} />
-          <InstructorInfo instructorID={course.instructor} />
-          <ReviewInput />
-          <CourseRating courseID={course.id} />
-          <StudentsReview courseID={course.id} />
+          <CourseTitle />
+          <IntroVideo />
+          <CourseDescription />
+          <WhatYouWillLearn />
+          <CourseRequirement />
+          <Curriculum />
+          <InstructorInfo />
+          {canReview() && <ReviewInput />}
+          <CourseRating />
+          <StudentsReview />
         </div>
         {/* Side Bar */}
-        <SideBar course={course} />
+        <SideBar />
       </div>
     </div>
   );

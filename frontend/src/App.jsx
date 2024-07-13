@@ -15,6 +15,13 @@ import SingleCourse from "./pages/SingleCourse";
 import WatchLecture from "./pages/WatchLecture";
 import Courses from "./pages/Courses";
 import Error from "./pages/Error";
+import StudentDashboard from "./pages/StudentDashboard";
+import StuDashboard from "./components/StudentDashboard/Dashboard";
+import PrivateRoute from "./components/PrivateRoute";
+import { useSelector, useDispatch } from "react-redux";
+import { useFetchUserQuery } from "./features/api/userApiSlice";
+import { setUser } from "./features/userSlice";
+import { useEffect } from "react";
 
 function App() {
   return (
@@ -102,6 +109,19 @@ function App() {
             </DashboardLayout>
           }
         />
+        <Route path="" element={<PrivateRoute />}>
+          <Route
+            path="/student"
+            element={
+              <Layout>
+                <StudentDashboard />
+              </Layout>
+            }
+          >
+            <Route index element={<Navigate to="dashboard" replace />} />
+            <Route path="dashboard" element={<StuDashboard />} />
+          </Route>
+        </Route>
         <Route
           path="*"
           element={

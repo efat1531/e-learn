@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 function InfoBar() {
   const { slug, lectureId } = useParams();
   const course = CourseData.find((course) => course.slug === slug);
-  console.log(course.curriculum[lectureId]);
 
   const navigate = useNavigate();
   const goBackFunction = () => {

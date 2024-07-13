@@ -28,8 +28,8 @@ const textToParagraphs = (text) => {
 };
 
 const durationConversion = (duration) => {
-  const hours = Math.floor(duration / 60);
-  const minutes = duration % 60;
+  const hours = Math.floor(duration / (60 * 60));
+  const minutes = Math.floor((duration % (60 * 60)) / 60);
   return `${hours}h ${minutes}m`;
 };
 

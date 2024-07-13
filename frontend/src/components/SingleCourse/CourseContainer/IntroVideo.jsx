@@ -1,24 +1,24 @@
 import React from "react";
 import VideoPlayer from "../../ui/VideoPlayer";
-import PropTypes from "prop-types";
 
-const IntroVideo = ({ link }) => {
+import { useSelector } from "react-redux";
+
+const IntroVideo = () => {
+  const { selectedCourse } = useSelector((state) => state.course);
+  if (!selectedCourse) return null;
+  const youtubeLink = selectedCourse.introVideo;
   return (
     <div>
       <div className="flex justify-center">
         <div className="hidden lg:flex">
-          <VideoPlayer videoID={link} width={872} height={490} />
+          <VideoPlayer url={youtubeLink} width={872} height={490} />
         </div>
         <div className="lg:hidden">
-          <VideoPlayer videoID={link} width={640} height={360} />
+          <VideoPlayer url={youtubeLink} width={640} height={360} />
         </div>
       </div>
     </div>
   );
-};
-
-IntroVideo.propTypes = {
-  link: PropTypes.string.isRequired,
 };
 
 export default IntroVideo;

@@ -36,7 +36,7 @@ const PriceCard = ({
               className={`font-inter font-normal leading-8 ${
                 discountState > 0
                   ? "text-gray-400 line-through font-xl"
-                  : "text-Primary-600 font-2xl"
+                  : "text-Primary-500 text-2xl"
               }`}
             >
               ${price.toFixed(2)}

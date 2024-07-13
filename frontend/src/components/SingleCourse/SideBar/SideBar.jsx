@@ -7,7 +7,6 @@ import { FaRegChartBar, FaRegCopy } from "react-icons/fa";
 import { GoPeople } from "react-icons/go";
 import { GrResources } from "react-icons/gr";
 import { FaLanguage } from "react-icons/fa6";
-import { toast } from "react-toastify";
 import {
   MdOutlineLockClock,
   MdMonitor,
@@ -15,37 +14,37 @@ import {
   MdOnlinePrediction,
 } from "react-icons/md";
 import Button from "../../ui/Button";
+import { useSelector } from "react-redux";
+import { toastManager } from "../../ui/toastGeneral";
 
-const SideBar = ({ course }) => {
+const SideBar = () => {
+  const { selectedCourse } = useSelector((state) => state.course);
+  if (!selectedCourse) return null;
   const {
     price,
     discount,
-    discountEnds,
-    duration,
-    courseLevel,
-    courseLanguage,
-    students,
-  } = course;
+    discountExpires,
+    duration = 0,
+    level,
+    language,
+    courseStudents,
+  } = selectedCourse;
 
   const location = window.location.href;
   const onCopyClick = () => {
     navigator.clipboard.writeText(location);
-    toast.success("Link Copied!", {
-      position: "top-right",
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: false,
-      progress: undefined,
-    });
+    toastManager.success("Course link copied to clipboard.");
   };
 
   return (
     <div className="flex flex-col py-6 gap-6 justify-center items-center bg-white border border-gray-100 shadow-md">
       {/* Price Card */}
       <div className="px-6">
-        <PriceCard price={price} discount={discount} endTime={discountEnds} />
+        <PriceCard
+          price={price}
+          discount={discount}
+          endTime={discountExpires}
+        />
       </div>
       <div className="w-full h-px bg-gray-200"></div>
       {/* Feature Section */}
@@ -53,13 +52,13 @@ const SideBar = ({ course }) => {
         <FeatureLabel feature={{ title: "Duration", value: duration }}>
           <LuClock className="text-CustomGray-400 text-[1.4rem]" />
         </FeatureLabel>
-        <FeatureLabel feature={{ title: "Level", value: courseLevel }}>
+        <FeatureLabel feature={{ title: "Level", value: level }}>
           <FaRegChartBar className="text-CustomGray-400 text-[1.4rem]" />
         </FeatureLabel>
-        <FeatureLabel feature={{ title: "Students", value: students }}>
+        <FeatureLabel feature={{ title: "Students", value: courseStudents }}>
           <GoPeople className="text-CustomGray-400 text-[1.4rem]" />
         </FeatureLabel>
-        <FeatureLabel feature={{ title: "Language", value: courseLanguage }}>
+        <FeatureLabel feature={{ title: "Language", value: language }}>
           <FaLanguage className="text-CustomGray-400 text-[1.4rem]" />
         </FeatureLabel>
       </div>
@@ -124,10 +123,6 @@ const SideBar = ({ course }) => {
       </div>
     </div>
   );
-};
-
-SideBar.propTypes = {
-  course: PropTypes.object.isRequired,
 };
 
 export default SideBar;

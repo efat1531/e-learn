@@ -1,8 +1,56 @@
 import LoginBanner from "../assets/images/LoginBanner.png";
 import Button from "../components/ui/Button";
 import Input from "../components/ui/Input";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLoginMutation } from "../features/api/authApiSlice";
+import { setCredentials, setTempCredentials } from "../features/authSlice";
+import { toastManager } from "../components/ui/toastGeneral";
+
 const Login = () => {
-  const handleSubmit = () => {};
+  const [remember, setRemember] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [login, { isLoading }] = useLoginMutation();
+
+  const { userInfo } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate("/home");
+    }
+  }, [navigate, userInfo]);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const toastId = toastManager.loading("Logging in...");
+    const formData = new FormData(event.target);
+    const { email, password } = Object.fromEntries(formData.entries());
+    try {
+      const response = await login({ email, password }).unwrap();
+      const { token } = response;
+      if (remember) {
+        dispatch(setCredentials(token));
+      } else {
+        dispatch(setTempCredentials(token));
+      }
+      toastManager.updateStatus(toastId, {
+        render: "Logged in successfully",
+        type: "success",
+      });
+      navigate("/home");
+    } catch (error) {
+      const message = await (error?.data
+        ? error?.data?.message
+        : error?.error?.message || "Something went wrong");
+      toastManager.updateStatus(toastId, {
+        render: message,
+        type: "reject",
+      });
+    }
+  };
   return (
     <div>
       <div className="flex justify-evenly">
@@ -33,6 +81,8 @@ const Login = () => {
                     type="checkbox"
                     className="h-5 w-5 border accent-Primary-600"
                     id="remember"
+                    value={remember}
+                    onChange={(e) => setRemember(e.target.checked)}
                   />
                   <label htmlFor="remember" className="cursor-pointer">
                     Remember Me

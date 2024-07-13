@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { ReactSVG } from "react-svg";
 import Logo from "../..//assets/svg/GraduationCap.svg";
@@ -7,9 +7,11 @@ import FollowIcon from "../../assets/Icon/FollowIcon";
 import NotificationIcon from "../../assets/Icon/NotificationIcon";
 import Button from "../ui/Button";
 import NavLinks from "./NavLinksDesktop";
+import { useSelector } from "react-redux";
 
 const DesktopNav = () => {
-  const [isLogged, setIsLogged] = useState(false);
+  const { userInfo } = useSelector((state) => state.auth);
+
   return (
     <nav className="hidden tablet:block">
       <NavLinks />
@@ -36,14 +38,7 @@ const DesktopNav = () => {
           </div>
           {/* <!-- Follow Button --> */}
           <div className="group">
-            <button
-              type="button"
-              className="follow-btn"
-              name="follow-btn"
-              onClick={(e) => {
-                setIsLogged(!isLogged);
-              }}
-            >
+            <button type="button" className="follow-btn" name="follow-btn">
               <FollowIcon />
             </button>
           </div>
@@ -54,7 +49,7 @@ const DesktopNav = () => {
             </button>
           </div>
           {/* <!-- Create Account Button --> */}
-          {!isLogged && (
+          {!userInfo && (
             <div className="flex gap-3">
               <Link to="/register" className="group">
                 <Button title="Create Account" />
@@ -66,12 +61,14 @@ const DesktopNav = () => {
               </Link>
             </div>
           )}
-          {isLogged && (
-            <div className="avatar">
-              <div className="w-12 rounded-full">
-                <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+          {userInfo && (
+            <Link to="/student" className="group">
+              <div className="avatar">
+                <div className="w-12 rounded-full">
+                  <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                </div>
               </div>
-            </div>
+            </Link>
           )}
         </div>
       </div>

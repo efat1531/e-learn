@@ -1,38 +1,17 @@
 import React from "react";
-import YouTube from "react-youtube";
 import PropTypes from "prop-types";
+import ReactPlayer from "react-player/lazy";
 
-const VideoPlayer = ({ videoID, width, height }) => {
-  const optObj = {
-    height: height,
-    width: width,
-    playerVars: {
-      autoplay: 0,
-    },
-  };
+// Render a YouTube video player
 
-  videoID = videoID.split("v=")[1];
-
-  const _onReady = (event) => {
-    event.target.pauseVideo();
-  };
-
-  const _onError = (event) => {
-    console.log("Error", event);
-  };
-
+const VideoPlayer = ({ url, width, height }) => {
   return (
-    <YouTube
-      videoId={videoID}
-      opts={optObj}
-      onReady={_onReady}
-      onError={_onError}
-    />
+    <ReactPlayer url={url} width={width} height={height} controls={true} />
   );
 };
 
 VideoPlayer.propTypes = {
-  videoID: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
 };
