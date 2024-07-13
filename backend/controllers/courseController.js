@@ -401,6 +401,38 @@ const createLecture = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc    Get top rated courses
+// @route   GET /api/courses/top
+// @access  Public
+const getTopCourses = asyncHandler(async (req, res) => {
+  const courses = await courseModel
+    .find({})
+    .sort({ rating: -1 })
+    .limit(10)
+    .populate("instructor", "name");
+
+  res.status(200).json({
+    status: "success",
+    data: courses,
+  });
+});
+
+// @desc  Recently added courses
+// @route GET /api/courses/recent
+// @access Public
+const getRecentCourses = asyncHandler(async (req, res) => {
+  const courses = await courseModel
+    .find({})
+    .sort({ createdAt: -1 })
+    .limit(10)
+    .populate("instructor", "name");
+
+  res.status(200).json({
+    status: "success",
+    data: courses,
+  });
+});
+
 export {
   getCourses,
   getCourse,
@@ -410,4 +442,6 @@ export {
   deleteLecture,
   updateLecture,
   createLecture,
+  getTopCourses,
+  getRecentCourses,
 };
