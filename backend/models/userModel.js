@@ -66,6 +66,10 @@ const userSchema = mongoose.Schema(
       type: String,
       select: false,
     },
+    designation: {
+      type: String,
+      select: false,
+    },
     address: {
       type: String,
     },
@@ -85,6 +89,16 @@ const userSchema = mongoose.Schema(
     isVerified: {
       type: Boolean,
       default: false,
+    },
+    rating: {
+      type: Number,
+      default: 4.5,
+      select: false,
+    },
+    numberOfStudents: {
+      type: Number,
+      default: 0,
+      select: false,
     },
     courses: [
       {

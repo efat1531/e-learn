@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const FeatureLabel = ({ feature, children }) => {
   return (
     <div className="flex justify-between items-center">
-      <div className="flex gap-1 items-center">
+      <div className="flex gap-3 items-center">
         {children}
         <div className="text-CustomGray-900 text-[0.93rem] leading-[1.375rem] tracking-[-0.00875rem]">
           {feature.title}

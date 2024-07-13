@@ -13,6 +13,7 @@ import userRoutes from "./routes/userRoutes.js";
 import authMiddlewere from "./middlewere/authMiddlewere.js";
 import courseRoutes from "./routes/courseRoutes.js";
 import reviewRoutes from "./routes/reviewRoutes.js";
+import uploadRoutes from "./routes/uploadRoutes.js";
 
 dotenv.config();
 
@@ -27,9 +28,17 @@ if (process.env.NODE_ENV === "development") {
 }
 
 app.use(cors(corsOptions));
-app.use(express.json());
+app.use(express.json({ limit: "10kb", extended: true }));
 
 app.use(cookieParser());
+
+// Routes
+app.use(authMiddlewere);
+app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/courses", courseRoutes);
+app.use("/api/reviews", reviewRoutes);
+app.use("/api/upload", uploadRoutes);
 
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();
@@ -46,13 +55,6 @@ if (process.env.NODE_ENV === "production") {
     res.send("API is running....");
   });
 }
-
-// Routes
-app.use(authMiddlewere);
-app.use("/api/auth", authRoutes);
-app.use("/api/users", userRoutes);
-app.use("/api/courses", courseRoutes);
-app.use("/api/reviews", reviewRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

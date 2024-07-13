@@ -279,7 +279,6 @@ const resetPassword = asyncHandler(async (req, res) => {
 const logout = asyncHandler(async (req, res) => {
   // Clear cookie
   res.clearCookie("eLearnJWT");
-
   res.status(200).json({
     status: "success",
     message: "User logged out successfully",

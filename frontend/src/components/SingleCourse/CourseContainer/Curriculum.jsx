@@ -1,24 +1,30 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { IoFolderOpenOutline } from "react-icons/io5";
 import { FaCirclePlay } from "react-icons/fa6";
 import { durationConversion } from "../../../utils/Transformations";
 import { LuClock4 } from "react-icons/lu";
 import CourseCurriculumCard from "./CurriculumCard";
+import { useSelector } from "react-redux";
 
-const Curriculum = ({ curriculum }) => {
-  const totalSections = curriculum.length;
-  const totalDuration = curriculum.reduce(
+const Curriculum = () => {
+  const { selectedCourse } = useSelector((state) => state.course);
+  if (!selectedCourse) return null;
+  const { courseContent } = selectedCourse;
+
+  const totalSections = courseContent.length;
+  const totalDuration = courseContent.reduce(
     (acc, curr) =>
       acc +
-      curr.lessons
-        .filter((lesson) => lesson.type !== "resource")
-        .reduce((total, lesson) => total + (lesson.duration || 0), 0),
+      curr.sectionContainer
+        .filter((lesson) => lesson.contentType === "video")
+        .reduce((total, lesson) => total + (lesson.contentDuration || 0), 0),
     0
   );
-  const totalLesson = curriculum.reduce(
+  const totalLesson = courseContent.reduce(
     (acc, curr) =>
-      acc + curr.lessons.filter((lesson) => lesson.type !== "resource").length,
+      acc +
+      curr.sectionContainer.filter((lesson) => lesson.contentType === "video")
+        .length,
     0
   );
 
@@ -52,7 +58,7 @@ const Curriculum = ({ curriculum }) => {
         </div>
       </div>
       <div className="flex flex-col items-center border border-gray-100 bg-white w-full shadow-md">
-        {curriculum.map((section, index) => (
+        {courseContent.map((section, index) => (
           <div key={index} className="w-full">
             <CourseCurriculumCard courseSection={section} />
             <div className="border-t border-gray-100 w-full"></div>
@@ -61,10 +67,6 @@ const Curriculum = ({ curriculum }) => {
       </div>
     </div>
   );
-};
-
-Curriculum.propTypes = {
-  curriculum: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Curriculum;

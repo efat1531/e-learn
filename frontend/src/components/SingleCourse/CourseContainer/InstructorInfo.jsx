@@ -1,22 +1,26 @@
-// import TeacherInfoCard from "../../components/uitls/Cards/TeacherInfoCard";
-import userData from "../../../../Data/userData.json";
-import courseData from "../../../../Data/courseData.json";
-import reviewData from "../../../../Data/reviewData.json";
-import PropTypes from "prop-types";
 import React, { useState } from "react";
 
-import { FaStar } from "react-icons/fa6";
-import { MdStar } from "react-icons/md";
+import { GoStarFill } from "react-icons/go";
 import { IoPeopleOutline, IoPlayCircle } from "react-icons/io5";
+import { useSelector } from "react-redux";
 
-const InstructorInfo = ({ instructorID }) => {
-  const { name, profileImg, designation, bio } =
-    getInstructorInfo(instructorID);
-  const instructorTotalRating = getTotalRating(instructorID);
-  const instructorTotalStudents = totalStudents(instructorID);
-  const instructorTotalCourses = totalCourse(instructorID);
-
+const InstructorInfo = () => {
+  const { selectedCourse } = useSelector((state) => state.course);
   const [isExpanded, setIsExpanded] = useState(false);
+
+  if (!selectedCourse) return null;
+
+  if (!selectedCourse || !selectedCourse.instructor) return null;
+
+  const {
+    rating,
+    numberOfStudents,
+    name,
+    numOfCourses,
+    profilePicture,
+    bio,
+    designation,
+  } = selectedCourse.instructor;
 
   const toggleExpanded = () => {
     setIsExpanded(!isExpanded);
@@ -30,10 +34,10 @@ const InstructorInfo = ({ instructorID }) => {
       <div className="flex p-8 items-start gap-6 border border-gray-100 bg-white shadow-md">
         <div className="avatar">
           <div className="w-[8.5rem] rounded-full">
-            <img src={profileImg} />
+            <img src={profilePicture} />
           </div>
         </div>
-        <div className="flex flex-col gap-4 items-start w-[40.5rem]">
+        <div className="flex flex-col gap-4 items-TypeError: Cannot read properties of undefined (reading 'toFixed')start w-[40.5rem]">
           <div className="flex gap-1.5 flex-col">
             <div className="text-gray-900 font-Inter text-[1.25rem] font-semibold leading-7">
               {name}
@@ -45,9 +49,9 @@ const InstructorInfo = ({ instructorID }) => {
           <div className="flex gap-6 items-center">
             {/* Text Labels */}
             <div className="flex gap-1 items-center">
-              <MdStar className="text-Warning-500 text-[1.25rem]" />
+              <GoStarFill className="text-Warning-500 text-[1.25rem]" />
               <span className="text-sm text-black font-[500]">
-                {instructorTotalRating}
+                {rating.toFixed(1)}
               </span>
               <span className="text-sm text-CustomGray-700 font-[400]">
                 Rating
@@ -56,7 +60,7 @@ const InstructorInfo = ({ instructorID }) => {
             <div className="flex gap-1 items-center">
               <IoPeopleOutline className="text-Secondary-500 text-[1.25rem]" />
               <span className="text-sm text-black font-[500]">
-                {instructorTotalStudents}
+                {numberOfStudents}
               </span>
               <span className="text-sm text-CustomGray-700 font-[400]">
                 Students
@@ -65,7 +69,7 @@ const InstructorInfo = ({ instructorID }) => {
             <div className="flex gap-1 items-center">
               <IoPlayCircle className="text-Primary-500 text-[1.25rem]" />
               <span className="text-sm text-black font-[500]">
-                {instructorTotalCourses}
+                {numOfCourses}
               </span>
               <span className="text-sm text-CustomGray-700 font-[400]">
                 Courses
@@ -80,7 +84,7 @@ const InstructorInfo = ({ instructorID }) => {
             >
               {bio}
             </div>
-            {bio.length > 250 && (
+            {bio?.length > 250 && (
               <div className="flex justify-end">
                 <button
                   onClick={toggleExpanded}
@@ -97,42 +101,4 @@ const InstructorInfo = ({ instructorID }) => {
   );
 };
 
-InstructorInfo.propTypes = {
-  instructorID: PropTypes.string.isRequired,
-};
-
 export default InstructorInfo;
-
-const getInstructorInfo = (instructorID) => {
-  return userData.find((user) => user.userID === instructorID);
-};
-
-const getTotalRating = (instructorID) => {
-  const courses = courseData.filter(
-    (course) => course.instructor === instructorID
-  );
-  const courseIDs = courses.map((course) => course.id);
-  const reviews = reviewData.filter((review) =>
-    courseIDs.includes(review.courseID)
-  );
-  const totalRating = reviews.reduce((acc, review) => acc + review.rating, 0);
-  return (totalRating / reviews.length).toFixed(1);
-};
-
-const totalStudents = (instructorID) => {
-  const courses = courseData.filter(
-    (course) => course.instructor === instructorID
-  );
-  const totalStudents = courses.reduce(
-    (acc, course) => acc + course.students,
-    0
-  );
-  return totalStudents;
-};
-
-const totalCourse = (instructorID) => {
-  const courses = courseData.filter(
-    (course) => course.instructor === instructorID
-  );
-  return courses.length;
-};

@@ -1,11 +1,14 @@
 import mongoose from "mongoose";
-import Course from "./courseModel.js";
+import courseModel from "./courseModel.js";
+import userModel from "./userModel.js";
 
 const reviewSchema = mongoose.Schema(
   {
     rating: {
       type: Number,
       required: true,
+      min: 1,
+      max: 5,
     },
     comment: {
       type: String,
@@ -39,18 +42,49 @@ reviewSchema.statics.calculateAvgRating = async function (courseId) {
       },
     },
   ]);
+
   if (stats.length > 0) {
-    await Course.findByIdAndUpdate(courseId, {
+    await courseModel.findByIdAndUpdate(courseId, {
       courseRating: stats[0].avgRating,
-      courseStudents: stats[0].nRating,
+      numberOfRating: stats[0].nRating,
     });
   } else {
-    await Course.findByIdAndUpdate(courseId, {
+    await courseModel.findByIdAndUpdate(courseId, {
       courseRating: 4.5,
       numberOfRating: 0,
     });
   }
+
+  const course = await courseModel.findById(courseId);
+  const instructorId = course.instructor;
+  const instructorRatingStats = await courseModel.aggregate([
+    {
+      $match: { instructor: instructorId },
+    },
+    {
+      $group: {
+        _id: "$instructor",
+        newAvgRating: { $avg: "$courseRating" },
+      },
+    },
+  ]);
+  if (instructorRatingStats.length > 0) {
+    await userModel.findByIdAndUpdate(instructorId, {
+      rating: instructorRatingStats[0].newAvgRating,
+    });
+  }
 };
+
+reviewSchema.post("save", function () {
+  this.constructor.calculateAvgRating(this.course);
+});
+
+reviewSchema.pre("^find", function (next) {
+  this.populate({
+    path: "user",
+    select: "name profilePicture",
+  });
+});
 
 reviewSchema.pre(/^findOneAnd/, async function (next) {
   this.r = await this.clone().findOne();
@@ -63,6 +97,6 @@ reviewSchema.post(/^findOneAnd/, async function () {
 
 reviewSchema.index({ course: 1, user: 1 }, { unique: true });
 
-const Rating = mongoose.model("Review", reviewSchema);
+const Review = mongoose.model("Review", reviewSchema);
 
-export default Rating;
+export default Review;

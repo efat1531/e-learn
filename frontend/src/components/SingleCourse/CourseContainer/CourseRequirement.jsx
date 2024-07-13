@@ -1,8 +1,12 @@
 import { BsFillExclamationCircleFill } from "react-icons/bs";
 import React from "react";
-import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
-const CourseRequirement = ({ requirements }) => {
+const CourseRequirement = () => {
+  const { selectedCourse } = useSelector((state) => state.course);
+  if (!selectedCourse) return null;
+  const { requirements } = selectedCourse;
+
   return (
     <div className="w-full flex flex-col items-start gap-5">
       <div className="text-center text-[#1d2026] font-inter text-2xl font-semibold leading-8 tracking-tighter">
@@ -20,10 +24,6 @@ const CourseRequirement = ({ requirements }) => {
       </div>
     </div>
   );
-};
-
-CourseRequirement.propTypes = {
-  requirements: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default CourseRequirement;

@@ -31,6 +31,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
   if (req.user.role === "instructor") {
     updateFields.push("bio");
+    updateFields.push("designation");
   }
 
   const updateData = Object.keys(req.body)

@@ -26,8 +26,14 @@ const courseSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    summary: {
+      type: String,
+    },
     duration: {
       type: Number,
+    },
+    titleImage: {
+      type: String,
     },
     price: {
       type: Number,
@@ -60,6 +66,7 @@ const courseSchema = mongoose.Schema(
 
     discountExpires: {
       type: Date,
+      default: Date.now,
     },
 
     introVideo: {
@@ -99,12 +106,6 @@ const courseSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
-    courseReviews: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Review",
-      },
-    ],
   },
   {
     toJSON: { virtuals: true },
@@ -122,6 +123,12 @@ courseSchema.pre("save", function (next) {
       .join("-");
   }
   next();
+});
+
+courseSchema.virtual("reviews", {
+  ref: "Review",
+  foreignField: "course",
+  localField: "_id",
 });
 
 courseSchema.pre("findOneAndUpdate", function (next) {

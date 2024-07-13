@@ -1,8 +1,7 @@
 import { useState } from "react";
 import CustomSelect from "../../ui/CustomSelect";
 import StudentFeedbackCard from "../../ui/Feedback";
-import reviewData from "../../../../Data/reviewData.json";
-import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 import { ImSpinner6 } from "react-icons/im";
 
 const options = [
@@ -38,10 +37,13 @@ const options = [
   },
 ];
 
-const StudentsRating = ({ courseID }) => {
-  const reviews = reviewData.filter((review) => review.courseID === courseID);
+const StudentsRating = () => {
+  const { selectedCourse } = useSelector((state) => state.course);
   const [selectedOption, setSelectedOption] = useState(options[4]);
   const [visibleReviews, setVisibleReviews] = useState(2);
+  if (!selectedCourse) return null;
+
+  const { reviews } = selectedCourse;
 
   const filteredAndSortedRatings = reviews
     .filter((rating) => rating.rating <= parseInt(selectedOption.value))
@@ -77,9 +79,9 @@ const StudentsRating = ({ courseID }) => {
       </div>
       {filteredAndSortedRatings
         .slice(0, visibleReviews)
-        .map((rating, index) => (
+        .map((review, index) => (
           <div key={index} className="flex flex-col items-start gap-5">
-            <StudentFeedbackCard feedback={rating} />
+            <StudentFeedbackCard feedback={review} />
           </div>
         ))}
       {visibleReviews < length && (
@@ -97,10 +99,6 @@ const StudentsRating = ({ courseID }) => {
       )}
     </div>
   );
-};
-
-StudentsRating.propTypes = {
-  courseID: PropTypes.string.isRequired,
 };
 
 export default StudentsRating;

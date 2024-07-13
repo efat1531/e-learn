@@ -27,10 +27,22 @@ const getCourses = asyncHandler(async (req, res) => {
 const getCourse = asyncHandler(async (req, res) => {
   const course = await courseModel
     .findOne({ slug: req.params.slug })
-    .populate("instructor", "name")
+    .populate({
+      path: "instructor",
+      select:
+        "name profilePicture rating numberOfStudents numOfCourses designation bio",
+    })
     .populate({
       path: "courseContent.sectionContainer",
       select: "contentType contentTitle contentDuration",
+    })
+    .populate({
+      path: "reviews",
+      select: "rating comment user updatedAt",
+      populate: {
+        path: "user",
+        select: "name profilePicture",
+      },
     });
 
   if (!course) {
@@ -58,6 +70,7 @@ const createCourse = asyncHandler(async (req, res) => {
     discount = 0,
     discountExpires,
     courseContent,
+    summary,
     level,
     language,
   } = req.body;
@@ -81,6 +94,7 @@ const createCourse = asyncHandler(async (req, res) => {
     slug,
     description,
     duration,
+    summary,
     price,
     introVideo,
     whatYouWillLearn,
@@ -142,6 +156,7 @@ const updateCourse = asyncHandler(async (req, res) => {
 
   const allowedFields = [
     "title",
+    "summary",
     "description",
     "duration",
     "price",

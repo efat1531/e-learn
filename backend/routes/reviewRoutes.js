@@ -8,16 +8,16 @@ import {
 } from "../controllers/reviewController.js";
 import protect from "../middlewere/protectMiddleware.js";
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 router
   .route("/")
   .get(getReviews)
-  .post(protect(["student"]), createReview);
+  .post(protect(["student", "admin"]), createReview);
 router
   .route("/:id")
   .get(getReview)
-  .put(protect(["student"]), updateReview)
-  .delete(protect(["student"]), deleteReview);
+  .patch(protect(["student", "admin"]), updateReview)
+  .delete(protect(["student", "admin"]), deleteReview);
 
 export default router;

@@ -1,40 +1,47 @@
 import { useState, useEffect } from "react";
-import courses from "../../Data/courseData.json";
+// import courses from "../../Data/courseData.json";
 import CourseCard from "../components/Common/CourseCard";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import CustomSelect from "../components/ui/CustomSelect";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useFetchAllCourseQuery } from "../features/api/courseApiSlice";
+import { setAllCourses, setSingleCourse } from "../features/courseSlice";
 
 const Courses = () => {
-  console.log(typeof courses);
   const [selectedOption, setSelectedOption] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const { data, error, isLoading } = useFetchAllCourseQuery();
+  const dispatch = useDispatch();
+
+  const { courses } = useSelector((state) => state.course);
+
   const [newCourses, setNewCourses] = useState(courses);
 
-  const categoryOptions = courses
-    .map((course) => ({
-      value: course.category.name,
-      label: course.category.name,
-      hoverColor: course.category.backgroundColor,
-      textColor: course.category.color,
-    }))
-    .filter(
-      (category, index, self) =>
-        index ===
-        self.findIndex(
-          (t) => t.value === category.value && t.label === category.label
-        )
-    );
-
   useEffect(() => {
-    if (selectedCategory) {
-      setNewCourses(
-        courses.filter(
-          (course) => course.category.name === selectedCategory.value
-        )
-      );
+    if (data) {
+      dispatch(setAllCourses(data.data));
+      setNewCourses(data.data);
     }
-  }, [selectedCategory]);
+  }, [data, dispatch]);
+
+  const categoryOptions = courses.map((course) => ({
+    value: "category",
+    label: "Hello My",
+    hoverColor: "#E8F0F7",
+    textColor: "#334155",
+  }));
+
+  // useEffect(() => {
+  //   if (selectedCategory) {
+  //     setNewCourses(
+  //       courses.filter(
+  //         (course) => course.category.name === selectedCategory.value
+  //       )
+  //     );
+  //   }
+  // }, [selectedCategory]);
 
   useEffect(() => {
     setNewCourses((prevCourses) => {
@@ -110,7 +117,11 @@ const Courses = () => {
       </div>
       <div className="w-[80vw] grid grid-cols-1 gap-6 minmax-[15.25rem,1fr] md:grid-cols-2 lg:grid-cols-3 desktop:grid-cols-4 place-items-center">
         {newCourses.map((course, index) => (
-          <Link key={index} to={`/courses/${course.slug}`}>
+          <Link
+            key={index}
+            to={`/courses/${course.slug}`}
+            onClick={() => handleCourseOnClick(course)}
+          >
             <CourseCard course={course} />
           </Link>
         ))}

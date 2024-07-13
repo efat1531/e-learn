@@ -12,10 +12,6 @@ const CourseCurriculumCard = ({ courseSection }) => {
   const navigate = useNavigate();
   const currentPath = window.location.pathname;
 
-  const navigateToLecture = (lectureID) => {
-    navigate(`${currentPath}/lecture/${lectureID}`);
-  };
-
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = () => {
@@ -35,7 +31,7 @@ const CourseCurriculumCard = ({ courseSection }) => {
             }`}
           />
           <div className="text-gray-900 font-inter text-base font-normal leading-5 group-hover:text-Primary-500">
-            {courseSection.title}
+            {courseSection.sectionTitle}
           </div>
         </div>
         <div className="flex flex-row items-center gap-4">
@@ -56,12 +52,8 @@ const CourseCurriculumCard = ({ courseSection }) => {
 
       {isOpen && (
         <div className="flex flex-col items-center gap-4 transition-all w-full ease-in-out duration-300 py-4">
-          {courseSection.lessons.map((lesson, index) => (
-            <div
-              className="w-full"
-              key={index}
-              onClick={() => navigateToLecture(index)}
-            >
+          {courseSection.sectionContainer.map((lesson, index) => (
+            <div className="w-full" key={index}>
               <CourseCurriculumList lesson={lesson} />
             </div>
           ))}
@@ -78,12 +70,13 @@ CourseCurriculumCard.propTypes = {
 export default CourseCurriculumCard;
 
 const totalDuration = (courseSection) => {
-  return courseSection.lessons
-    .filter((lesson) => lesson.type !== "resource")
-    .reduce((total, lesson) => total + lesson.duration, 0);
+  return courseSection.sectionContainer
+    .filter((lesson) => lesson.contentType !== "resource")
+    .reduce((total, lesson) => total + lesson.contentDuration, 0);
 };
 
 const totalLectures = (courseSection) => {
-  return courseSection.lessons.filter((lesson) => lesson.type !== "resource")
-    .length;
+  return courseSection.sectionContainer.filter(
+    (lesson) => lesson.contentType !== "resource"
+  ).length;
 };

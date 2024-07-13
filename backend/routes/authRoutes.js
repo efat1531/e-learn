@@ -12,11 +12,6 @@ import {
 
 const router = express.Router();
 
-const printMiddleware = (req, res, next) => {
-  console.log("Middleware");
-  next();
-};
-
 router.route("/register").post(register);
 router.route("/verify/:email").post(verifyUser).get(resendToken);
 router.route("/login").post(login);

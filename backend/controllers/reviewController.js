@@ -48,7 +48,7 @@ const createReview = asyncHandler(async (req, res) => {
   }
 
   const reviewFields = {
-    review: req.body.review,
+    comment: req.body.comment,
     rating: req.body.rating,
     course: req.params.courseId,
     user: req.user._id,
@@ -66,12 +66,12 @@ const createReview = asyncHandler(async (req, res) => {
 
   const ifAllowed = await req.user.checkIfAllowedToReview(req.params.courseId);
 
-  if (!ifAllowed) {
+  if (!ifAllowed && req.user.role !== "admin") {
     res.status(400);
     throw new Error("You must enroll in this course before reviewing it.");
   }
 
-  const review = await reviewModel.create();
+  const review = await reviewModel.create(reviewFields);
   await reviewModel.calculateAvgRating(req.params.courseId);
 
   res.status(201).json({
@@ -95,7 +95,7 @@ const updateReview = asyncHandler(async (req, res) => {
     throw new Error("You are not authorized to update this review.");
   }
 
-  const allowedFields = ["review", "rating"];
+  const allowedFields = ["comment", "rating"];
 
   const updatedFields = {};
   allowedFields.forEach((field) => {
