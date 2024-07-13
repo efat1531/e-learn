@@ -33,7 +33,6 @@ const TopBar = () => {
       </div>
     </div>
   );
-  );
 };
 
 export default TopBar;
