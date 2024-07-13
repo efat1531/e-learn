@@ -1,9 +1,19 @@
-const calculatedPrice = (price, discount) => {
-  return price - discount;
+const calculateDiscountPercentageByPriceDiscount = (price, discount) => {
+  const realPrice = price - discount;
+  const percentage = (realPrice * 100) / price;
+  return percentage.toFixed(2);
 };
 
-const calculatePercentage = (price, discount) => {
-  return (discount / price) * 100;
+const calculateDiscountPercentageByPriceRealPrice = (
+  discountedPrice,
+  realPrice
+) => {
+  const remPrice = realPrice - discountedPrice;
+  const percentage = (remPrice * 100) / realPrice;
+  return percentage.toFixed(2);
 };
 
-export { calculatedPrice, calculatePercentage };
+export {
+  calculateDiscountPercentageByPriceDiscount,
+  calculateDiscountPercentageByPriceRealPrice,
+};

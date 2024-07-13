@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import PriceCard from "./PriceCard";
 import FeatureLabel from "./FeatureLabel";
 import { LuClock } from "react-icons/lu";
@@ -7,6 +6,8 @@ import { FaRegChartBar, FaRegCopy } from "react-icons/fa";
 import { GoPeople } from "react-icons/go";
 import { GrResources } from "react-icons/gr";
 import { FaLanguage } from "react-icons/fa6";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   MdOutlineLockClock,
   MdMonitor,
@@ -16,9 +17,13 @@ import {
 import Button from "../../ui/Button";
 import { useSelector } from "react-redux";
 import { toastManager } from "../../ui/toastGeneral";
+import { setOrderDetails } from "../../../features/orderSlice";
 
 const SideBar = () => {
   const { selectedCourse } = useSelector((state) => state.course);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   if (!selectedCourse) return null;
   const {
     price,
@@ -28,12 +33,36 @@ const SideBar = () => {
     level,
     language,
     courseStudents,
+    currentPrice,
+    title,
   } = selectedCourse;
 
   const location = window.location.href;
   const onCopyClick = () => {
     navigator.clipboard.writeText(location);
     toastManager.success("Course link copied to clipboard.");
+  };
+
+  const onEnrollClick = () => {
+    const orderDetails = {
+      totalPrice: currentPrice,
+      subTotal: price,
+      currency: "bdt",
+      productData: [
+        {
+          name: title,
+          price: price,
+          discount: discount,
+          realPrice: currentPrice,
+          quantity: 1,
+          image: selectedCourse.instructor.profilePicture,
+          isCourse: true,
+          courseCreator: selectedCourse.instructor.name,
+        },
+      ],
+    };
+    dispatch(setOrderDetails(orderDetails));
+    navigate("/cart/checkout");
   };
 
   return (
@@ -65,7 +94,7 @@ const SideBar = () => {
       <div className="w-full h-px bg-gray-200"></div>
       {/* Button Section */}
       <div className="flex flex-col gap-3 w-full px-6">
-        <Button title="Enroll Now" className="w-full" />
+        <Button title="Enroll Now" className="w-full" onClick={onEnrollClick} />
         <Button title="Add to cart" className="w-full" />
         <Button title="Add to wishlist" className="w-full" />
       </div>
