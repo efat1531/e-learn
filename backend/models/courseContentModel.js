@@ -29,11 +29,6 @@ const courseContentItemsSchema = mongoose.Schema({
       ref: "Comment",
     },
   ],
-  finished: {
-    type: Boolean,
-    default: false,
-    select: false,
-  },
 });
 
 const courseContent = mongoose.model("CourseContent", courseContentItemsSchema);

@@ -19,6 +19,7 @@ import StudentDashboard from "./pages/StudentDashboard";
 import StuDashboard from "./components/StudentDashboard/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
 import Checkout from "./pages/Checkout";
+import Stripe_Successful from "./pages/Stripe_Successful";
 
 function App() {
   return (
@@ -125,6 +126,16 @@ function App() {
             element={
               <Layout>
                 <Checkout />
+              </Layout>
+            }
+          />
+        </Route>
+        <Route path="" element={<PrivateRoute />}>
+          <Route
+            path="/stripe/payment/successful"
+            element={
+              <Layout>
+                <Stripe_Successful />
               </Layout>
             }
           />

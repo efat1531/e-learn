@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 
 const DesktopNav = () => {
   const { userInfo } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.user);
 
   return (
     <nav className="hidden tablet:block">
@@ -61,11 +62,11 @@ const DesktopNav = () => {
               </Link>
             </div>
           )}
-          {userInfo && (
+          {userInfo && user && (
             <Link to="/student" className="group">
               <div className="avatar">
                 <div className="w-12 rounded-full">
-                  <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                  <img src={user.profilePicture} />
                 </div>
               </div>
             </Link>

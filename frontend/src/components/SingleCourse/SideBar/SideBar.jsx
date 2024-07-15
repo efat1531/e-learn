@@ -21,6 +21,7 @@ import { setOrderDetails } from "../../../features/orderSlice";
 
 const SideBar = () => {
   const { selectedCourse } = useSelector((state) => state.course);
+  const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -50,6 +51,7 @@ const SideBar = () => {
       currency: "bdt",
       productData: [
         {
+          id: selectedCourse._id,
           name: title,
           price: price,
           discount: discount,
@@ -69,11 +71,7 @@ const SideBar = () => {
     <div className="flex flex-col py-6 gap-6 justify-center items-center bg-white border border-gray-100 shadow-md">
       {/* Price Card */}
       <div className="px-6">
-        <PriceCard
-          price={price}
-          discount={discount}
-          endTime={discountExpires}
-        />
+        <PriceCard />
       </div>
       <div className="w-full h-px bg-gray-200"></div>
       {/* Feature Section */}
@@ -93,12 +91,20 @@ const SideBar = () => {
       </div>
       <div className="w-full h-px bg-gray-200"></div>
       {/* Button Section */}
-      <div className="flex flex-col gap-3 w-full px-6">
-        <Button title="Enroll Now" className="w-full" onClick={onEnrollClick} />
-        <Button title="Add to cart" className="w-full" />
-        <Button title="Add to wishlist" className="w-full" />
-      </div>
-      <div className="w-full h-px bg-gray-200"></div>
+      {(!user || !user?.courses.includes(selectedCourse._id)) && (
+        <div className="flex flex-col gap-3 w-full px-6">
+          <Button
+            title="Enroll Now"
+            className="w-full"
+            onClick={onEnrollClick}
+          />
+          <Button title="Add to cart" className="w-full" />
+          <Button title="Add to wishlist" className="w-full" />
+        </div>
+      )}
+      {(!user || !user?.courses.includes(selectedCourse._id)) && (
+        <div className="w-full h-px bg-gray-200"></div>
+      )}
       {/* Include Section */}
       <div className="flex w-full flex-col justify-start items-center px-6 gap-4">
         <div className="w-full text-[1rem] font-[500] leading-[1.375rem] text-CustomGray-900">
