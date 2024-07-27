@@ -8,14 +8,18 @@ const TopBar = () => {
 
   return (
     <div className="bg-white">
-      <div className="container  px-2 py-8">
+      <div className="container px-2 py-8">
         <div className="flex justify-between">
           {/* Left */}
-          <div>
-            <p className="text-CustomGray-600 text-sm">Good Morning</p>
-            <p className="font-bold">
-              {currentPage.split("-").join(" ").toUpperCase()}
-            </p>
+          <div className="flex gap-2">
+            {/* Ham BTN */}
+            <div>ok</div>
+            <div>
+              <p className="text-CustomGray-600 text-sm">Good Morning</p>
+              <p className="font-bold">
+                {currentPage.split("-").join(" ").toUpperCase()}
+              </p>
+            </div>
           </div>
           {/* Right */}
           <div className="flex gap-4 items-center">
@@ -25,7 +29,7 @@ const TopBar = () => {
             </div>
             <div className="avatar">
               <div className="w-12 rounded-full">
-                <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXJA32WU4rBpx7maglqeEtt3ot1tPIRWptxA&s" />
               </div>
             </div>
           </div>

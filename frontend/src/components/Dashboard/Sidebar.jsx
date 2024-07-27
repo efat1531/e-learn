@@ -6,8 +6,8 @@ import { MdOutlineSignalCellularAlt } from "react-icons/md";
 
 const Sidebar = () => {
   return (
-    <div className="max-w-[240px] w-full h-screen">
-      <div className="flex flex-col fixed top-0 left-0 h-full w-fit bg-CustomGray-900 py-4 text-white">
+    <div className="max-w-[280px] w-full min-h-screen">
+      <div className="flex flex-col top-0 left-0 h-full w-full bg-CustomGray-900 py-4 text-white">
         {/* Logo */}
         <div className="flex items-center gap-[0.575rem] ps-8 border-b border-CustomGray-600 pb-2">
           {/* Logo */}
@@ -27,12 +27,9 @@ const Sidebar = () => {
             <NavLink to={"/dashboard"} className="dashboardNavLinks">
               <MdOutlineSignalCellularAlt /> Dashboard
             </NavLink>
-            <NavLink to={"/dashboard"} className="dashboardNavLinks">
-              <MdOutlineSignalCellularAlt /> Dashboard
-            </NavLink>
-            <NavLink to={"/dashboard"} className="dashboardNavLinks">
-              <MdOutlineSignalCellularAlt /> Dashboard
-            </NavLink>
+            <NavLink to={"course/create"} className="dashboardNavLinks">
+              <MdOutlineSignalCellularAlt /> Create New Course
+            </NavLink>   
             <NavLink to={"/dashboard"} className="dashboardNavLinks">
               <MdOutlineSignalCellularAlt /> Dashboard
             </NavLink>
