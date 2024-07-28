@@ -22,6 +22,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useFetchUserQuery } from "./features/api/userApiSlice";
 import { setUser } from "./features/userSlice";
 import { useEffect } from "react";
+import CreateCourse from "./pages/CreateCourse";
 
 function App() {
   return (
@@ -106,6 +107,14 @@ function App() {
           element={
             <DashboardLayout>
               <UserDashboard />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/dashboard/create-course"
+          element={
+            <DashboardLayout>
+              <CreateCourse />
             </DashboardLayout>
           }
         />

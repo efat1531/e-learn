@@ -2,6 +2,7 @@ import { FaCommentDots, FaRegUserCircle } from "react-icons/fa";
 import { IoPlayCircleOutline } from "react-icons/io5";
 import DashboardCard from "../components/Dashboard/Cards/DashboardCard";
 import OverallReviewCard from "../components/Dashboard/Cards/OverallReviewCard";
+import { formatDistance } from "date-fns";
 
 const UserDashboard = () => {
   return (
@@ -47,7 +48,11 @@ const UserDashboard = () => {
                   adipisicing elit. Praesentium corporis odio, est quo nostrum
                   fuga!
                 </p>
-                <span className="text-gray-500">Just now</span>
+                <span className="text-gray-500">
+                  {formatDistance(new Date(), new Date(), {
+                    addSuffix: true,
+                  })}
+                </span>
               </div>
             </div>
           </div>
