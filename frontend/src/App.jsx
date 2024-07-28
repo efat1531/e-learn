@@ -23,6 +23,11 @@ import Error from "./pages/Error";
 import StudentDashboard from "./pages/StudentDashboard";
 import StuDashboard from "./components/StudentDashboard/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
+import { useSelector, useDispatch } from "react-redux";
+import { useFetchUserQuery } from "./features/api/userApiSlice";
+import { setUser } from "./features/userSlice";
+import { useEffect } from "react";
+import CreateCourse from "./pages/CreateCourse";
 import Checkout from "./pages/Checkout";
 import Stripe_Successful from "./pages/Stripe_Successful";
 import LayoutMin from "./components/LayoutMin";
@@ -124,6 +129,14 @@ function App() {
           element={
             <DashboardLayout>
               <UserDashboard />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/dashboard/create-course"
+          element={
+            <DashboardLayout>
+              <CreateCourse />
             </DashboardLayout>
           }
         />

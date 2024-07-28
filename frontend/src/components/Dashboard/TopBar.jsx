@@ -1,7 +1,8 @@
 import { useLocation } from "react-router-dom";
 import { SlBell } from "react-icons/sl";
+import { CiMenuKebab } from "react-icons/ci";
 
-const TopBar = () => {
+const TopBar = ({ setSidebarOpen }) => {
   const location = useLocation();
   const currentPage =
     location.pathname.split("/")[location.pathname.split("/").length - 1];
@@ -11,12 +12,17 @@ const TopBar = () => {
       <div className="container px-2 py-8">
         <div className="flex justify-between">
           {/* Left */}
-          <div className="flex gap-2">
+          <div className="flex gap-4">
             {/* Ham BTN */}
-            <div>ok</div>
+            <div className="bg-Primary-200 flex items-center justify-center px-2 cursor-pointer xl:hidden">
+              <CiMenuKebab
+                className="text-2xl fill-Primary-500"
+                onClick={() => setSidebarOpen(true)}
+              />
+            </div>
             <div>
               <p className="text-CustomGray-600 text-sm">Good Morning</p>
-              <p className="font-bold">
+              <p className="font-bold mt-2">
                 {currentPage.split("-").join(" ").toUpperCase()}
               </p>
             </div>
