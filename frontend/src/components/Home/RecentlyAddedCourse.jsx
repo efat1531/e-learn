@@ -8,25 +8,22 @@ import { useDispatch } from "react-redux";
 import { useFetchRecentCourseQuery } from "../../features/api/courseApiSlice";
 import { setNewCourses } from "../../features/courseSlice";
 
-const recentlyAdded = CourseData.sort((a, b) => b.createAt - a.createAt).slice(
-  0,
-  4
-);
-
 const RecentlyAddedCourse = () => {
   const dispatch = useDispatch();
-  const { data, isLoading } = useFetchRecentCourseQuery();
+  const { newCourses } = useSelector((state) => state.course);
+  const shouldFetch = !newCourses || newCourses.length === 0;
+  const { data } = useFetchRecentCourseQuery(
+    { limit: 2 },
+    {
+      skip: !shouldFetch,
+    }
+  );
 
   useEffect(() => {
     if (data) {
       dispatch(setNewCourses(data.data));
     }
   }, [data, dispatch]);
-  const { newCourses } = useSelector((state) => state.course);
-
-  if (isLoading) {
-    return <div className="cursor-progress">Loading...</div>;
-  }
 
   return (
     <section id="best-selling-course" className="bg-fff py-16">

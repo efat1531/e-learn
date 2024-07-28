@@ -421,10 +421,11 @@ const getTopCourses = asyncHandler(async (req, res) => {
 // @route GET /api/courses/recent
 // @access Public
 const getRecentCourses = asyncHandler(async (req, res) => {
+  const courseLimit = req.query.limit || 10;
   const courses = await courseModel
     .find({})
     .sort({ createdAt: -1 })
-    .limit(10)
+    .limit(courseLimit)
     .populate("instructor", "name");
 
   res.status(200).json({

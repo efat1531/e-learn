@@ -10,8 +10,8 @@ import NavLinks from "./NavLinksDesktop";
 import { useSelector } from "react-redux";
 
 const DesktopNav = () => {
-  const { userInfo } = useSelector((state) => state.auth);
-  const { user } = useSelector((state) => state.user);
+  const profilePicture = useSelector((state) => state.auth.profilePicture);
+  const userID = useSelector((state) => state.auth.id);
 
   return (
     <nav className="hidden tablet:block">
@@ -50,7 +50,7 @@ const DesktopNav = () => {
             </button>
           </div>
           {/* <!-- Create Account Button --> */}
-          {!userInfo && (
+          {!userID && (
             <div className="flex gap-3">
               <Link to="/register" className="group">
                 <Button title="Create Account" />
@@ -62,11 +62,11 @@ const DesktopNav = () => {
               </Link>
             </div>
           )}
-          {userInfo && user && (
+          {profilePicture && (
             <Link to="/student" className="group">
               <div className="avatar">
                 <div className="w-12 rounded-full">
-                  <img src={user.profilePicture} />
+                  <img src={profilePicture} />
                 </div>
               </div>
             </Link>

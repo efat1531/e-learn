@@ -5,7 +5,7 @@ import asyncHandler from "../middlewere/asyncHandler.js";
 // @route   GET /api/users/profile
 // @access  Private
 const getUserProfile = asyncHandler(async (req, res) => {
-  const existingUser = await userModel.findById(req.user._id);
+  const existingUser = await userModel.findById(req.user._id).select("+role");
 
   if (!existingUser) {
     res.status(404);

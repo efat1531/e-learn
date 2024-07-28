@@ -1,5 +1,10 @@
+import { useEffect } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { Navigate } from "react-router";
+
+import { useFetchUserQuery } from "./features/api/userApiSlice";
+import { useDispatch } from "react-redux";
+import { setUserInformation } from "./features/authSlice";
 
 import DashboardLayout from "./components/DashboardLayout";
 import Layout from "./components/Layout";
@@ -22,6 +27,18 @@ import Checkout from "./pages/Checkout";
 import Stripe_Successful from "./pages/Stripe_Successful";
 
 function App() {
+  const alreadyLoggedIn = localStorage.getItem("eLearn-userInfo");
+  const needFetch = !!alreadyLoggedIn;
+  const { data } = useFetchUserQuery(undefined, {
+    skip: !needFetch,
+  });
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (alreadyLoggedIn && data) {
+      dispatch(setUserInformation(data.data));
+    }
+  }, [data, dispatch, alreadyLoggedIn]);
+
   return (
     <Router>
       <ScrollToTop />

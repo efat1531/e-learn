@@ -4,7 +4,7 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import PageHeader from "../components/Common/PageHeader";
 import { useCreateOrderMutation } from "../features/api/orderApiSlice";
 import { toastManager } from "../components/ui/toastGeneral";
-import { calculateDiscountPercentageByPriceRealPrice } from "../utils/Calculation";
+import { calculateDiscountPercentageByPriceRealPrice } from "../utils/Calculation.js";
 import Button from "../components/ui/Button";
 import { clearOrderDetails } from "../features/orderSlice";
 

@@ -9,6 +9,7 @@ const orderApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body,
       }),
+      invalidatesTags: ["User"],
     }),
   }),
 });

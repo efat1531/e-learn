@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import { calculateDiscountPercentageByPriceRealPrice } from "../../utils/Calculation";
+import { calculateDiscountPercentageByPriceRealPrice } from "../../utils/Calculation.js";
 import Button from "../ui/Button";
 import { useCreatePaymentMutation } from "../../features/api/paymentApiSlice";
 import { toastManager } from "../../components/ui/toastGeneral";
