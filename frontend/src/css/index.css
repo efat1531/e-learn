@@ -17,7 +17,7 @@ h2 {
 }
 
 h3 {
-  @apply text-xl sm:text-4xl font-bold mb-2;
+  @apply text-xl sm:text-3xl font-bold;
 }
 
 h4 {
@@ -30,6 +30,14 @@ h4 {
 
 .btn-secondary {
   @apply bg-zinc-700 text-white px-4 py-2 mt-4 hover:bg-zinc-900 font-semibold;
+}
+
+.row {
+  @apply flex flex-col md:flex-row justify-between gap-4;
+}
+
+.row>div{
+  @apply w-full;
 }
 
 @layer utilities {
@@ -50,4 +58,17 @@ h4 {
 }
 .dashboardNavLinks svg {
   @apply text-xl;
+}
+
+/* Create  Course */
+.createCourseTab {
+ @apply flex items-center gap-2 p-4 border-b-4 border-transparent w-full cursor-pointer text-CustomGray-600;
+}
+
+.createCourseTab.active{
+  @apply border-Primary-500 text-black;
+}
+
+.createCourseTab.active p{
+  @apply font-bold;
 }

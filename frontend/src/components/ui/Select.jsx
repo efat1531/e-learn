@@ -7,9 +7,10 @@ const Select = ({ id, label, optional = false, items = [], ...rest }) => {
           id={id}
           name={id}
           {...rest}
-          className="px-4 py-2 bg-white border w-full"
+          className="px-4 py-3 bg-white border w-full"
           required={!optional}
         >
+          <option hidden>Select...</option>
           {items.map((i, ind) => (
             <option key={ind} value={i.value}>
               {" "}
