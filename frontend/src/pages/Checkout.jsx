@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PageHeader from "../components/Common/PageHeader";
 import { useSelector } from "react-redux";
 import PaymentMethods from "../components/Checkout/PaymentMethods";
@@ -21,13 +21,14 @@ const breadcrumb = [
 
 function Checkout() {
   const { user } = useSelector((state) => state.user);
+  const [paymentBy, setPaymentBy] = useState("card");
 
   return (
     <div>
       <PageHeader title="Checkout" breadcrumb={breadcrumb} />
       <div className="flex py-24 flex-col lg:flex-row gap-12 w-full justify-center items-center">
-        <PaymentMethods />
-        <CartInfo />
+        <PaymentMethods paymentBy={paymentBy} setPaymentBy={setPaymentBy} />
+        <CartInfo paymentBy={paymentBy} />
       </div>
     </div>
   );

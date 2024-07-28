@@ -4,10 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../../features/api/authApiSlice";
 import { clearCredentials } from "../../features/authSlice";
 import { toastManager } from "../ui/toastGeneral";
-import { clearUser } from "../../features/userSlice";
-import { useFetchUserQuery } from "../../features/api/userApiSlice";
-import { useEffect } from "react";
-import { setUser } from "../../features/userSlice";
 
 const routes = [
   { path: "/home", label: "Home" },
@@ -20,34 +16,24 @@ const routes = [
 ];
 
 const NavList = () => {
-  const { userInfo } = useSelector((state) => state.auth);
-  const { data, error, isLoading } = useFetchUserQuery();
-
-  const [logoutApiCall] = useLogoutMutation();
-
+  const userID = useSelector((state) => state.auth.id);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (data) {
-      dispatch(setUser(data.data));
-    }
-  }, [data, dispatch]);
+  const [logoutApiCall] = useLogoutMutation();
 
   const handleLogout = async () => {
     const toastID = toastManager.loading("Logging out...");
     try {
       await logoutApiCall().unwrap();
       dispatch(clearCredentials());
-      dispatch(clearUser());
-
       toastManager.updateStatus(toastID, {
         render: "Logged out successfully",
         type: "success",
       });
     } catch (error) {
-      const message = error.data
-        ? error.data.message
-        : error.error.message || "Something went wrong";
+      const message = error?.data
+        ? error?.data?.message
+        : error?.error?.message || "Something went wrong";
       toastManager.updateStatus(toastID, {
         render: message,
         type: "reject",
@@ -75,7 +61,7 @@ const NavList = () => {
           </NavLink>
         </li>
       ))}
-      {!userInfo && (
+      {!userID && (
         <li>
           <NavLink
             to="/login"
@@ -87,7 +73,7 @@ const NavList = () => {
           </NavLink>
         </li>
       )}
-      {userInfo && (
+      {userID && (
         <li>
           <div
             to="/profile"

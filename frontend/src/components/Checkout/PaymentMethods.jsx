@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { CiCreditCard1 } from "react-icons/ci";
 import { RiCheckboxCircleFill } from "react-icons/ri";
 import Bkash from "../../assets/Icon/Bkash";
+import PropTypes from "prop-types";
 
-function PaymentMethods() {
-  const [paymentBy, setPaymentBy] = useState("card");
-
+function PaymentMethods({ paymentBy, setPaymentBy }) {
   return (
     <div className="flex flex-col gap-10">
       <div className="text-CustomGray-900 text-[2rem] font-semibold leading-10 tracking-tight">
@@ -52,5 +51,10 @@ function PaymentMethods() {
     </div>
   );
 }
+
+PaymentMethods.propTypes = {
+  paymentBy: PropTypes.string.isRequired,
+  setPaymentBy: PropTypes.func.isRequired,
+};
 
 export default PaymentMethods;

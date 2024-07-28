@@ -1,5 +1,10 @@
+import { useEffect } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { Navigate } from "react-router";
+
+import { useFetchUserQuery } from "./features/api/userApiSlice";
+import { useDispatch } from "react-redux";
+import { setUserInformation } from "./features/authSlice";
 
 import DashboardLayout from "./components/DashboardLayout";
 import Layout from "./components/Layout";
@@ -19,8 +24,21 @@ import StudentDashboard from "./pages/StudentDashboard";
 import StuDashboard from "./components/StudentDashboard/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
 import Checkout from "./pages/Checkout";
+import Stripe_Successful from "./pages/Stripe_Successful";
 
 function App() {
+  const alreadyLoggedIn = localStorage.getItem("eLearn-userInfo");
+  const needFetch = !!alreadyLoggedIn;
+  const { data } = useFetchUserQuery(undefined, {
+    skip: !needFetch,
+  });
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (alreadyLoggedIn && data) {
+      dispatch(setUserInformation(data.data));
+    }
+  }, [data, dispatch, alreadyLoggedIn]);
+
   return (
     <Router>
       <ScrollToTop />
@@ -125,6 +143,16 @@ function App() {
             element={
               <Layout>
                 <Checkout />
+              </Layout>
+            }
+          />
+        </Route>
+        <Route path="" element={<PrivateRoute />}>
+          <Route
+            path="/stripe/payment/successful"
+            element={
+              <Layout>
+                <Stripe_Successful />
               </Layout>
             }
           />

@@ -1,11 +1,19 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import { calculateDiscountPercentageByPriceRealPrice } from "../../utils/Calculation";
+import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
+import { calculateDiscountPercentageByPriceRealPrice } from "../../utils/Calculation.js";
 import Button from "../ui/Button";
+import { useCreatePaymentMutation } from "../../features/api/paymentApiSlice";
+import { toastManager } from "../../components/ui/toastGeneral";
 
-const CartInfo = () => {
+const CartInfo = ({ paymentBy }) => {
   const { orderDetails } = useSelector((state) => state.order);
-  if (!orderDetails) return null;
+  const { user } = useSelector((state) => state.user);
+  const [createPayment] = useCreatePaymentMutation();
+  const navigate = useNavigate();
+
+  if (!orderDetails || !user) return null;
   const { totalPrice, currency, productData, subTotal } = orderDetails;
 
   const courseItems = productData.filter((item) => item.isCourse);
@@ -13,6 +21,29 @@ const CartInfo = () => {
 
   const numberOfCourses = courseItems.length;
   const numberOfItems = nonCourseItems.length;
+
+  const checkoutHandler = async () => {
+    if (paymentBy === "card") {
+      const toastID = toastManager.loading("Processing payment");
+      try {
+        const response = await createPayment(orderDetails, user);
+        toastManager.updateStatus(toastID, {
+          render: "Payment processed successfully",
+          type: "success",
+        });
+        const redirectURL = response?.data?.url;
+
+        setTimeout(() => {
+          window.location.href = redirectURL;
+        }, 2500);
+      } catch (error) {
+        toastManager.updateStatus(toastID, {
+          render: error?.message || "Failed to process payment",
+          type: "error",
+        });
+      }
+    }
+  };
 
   return (
     <div className="py-6 flex flex-col items-center gap-6 border-CustomGray-100 border">
@@ -127,10 +158,18 @@ const CartInfo = () => {
         </div>
       </div>
       <div className="w-full px-5">
-        <Button title="Complete Payment" className={"w-full "} />
+        <Button
+          title="Complete Payment"
+          className={"w-full "}
+          onClick={checkoutHandler}
+        />
       </div>
     </div>
   );
+};
+
+CartInfo.propTypes = {
+  paymentBy: PropTypes.string.isRequired,
 };
 
 export default CartInfo;

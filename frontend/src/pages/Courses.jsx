@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-// import courses from "../../Data/courseData.json";
 import CourseCard from "../components/Common/CourseCard";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import CustomSelect from "../components/ui/CustomSelect";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useFetchAllCourseQuery } from "../features/api/courseApiSlice";
-import { setAllCourses, setSingleCourse } from "../features/courseSlice";
+import { setAllCourses } from "../features/courseSlice";
 
 const Courses = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -117,11 +116,7 @@ const Courses = () => {
       </div>
       <div className="w-[80vw] grid grid-cols-1 gap-6 minmax-[15.25rem,1fr] md:grid-cols-2 lg:grid-cols-3 desktop:grid-cols-4 place-items-center">
         {newCourses.map((course, index) => (
-          <Link
-            key={index}
-            to={`/courses/${course.slug}`}
-            onClick={() => handleCourseOnClick(course)}
-          >
+          <Link key={index} to={`/courses/${course.slug}`}>
             <CourseCard course={course} />
           </Link>
         ))}

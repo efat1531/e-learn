@@ -3,25 +3,24 @@ import Button from "../components/ui/Button";
 import Input from "../components/ui/Input";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useLoginMutation } from "../features/api/authApiSlice";
-import { setCredentials, setTempCredentials } from "../features/authSlice";
+import { setCredentials } from "../features/authSlice";
 import { toastManager } from "../components/ui/toastGeneral";
+import { useFetchUserQuery } from "../features/api/userApiSlice";
+import { setUserInformation } from "../features/authSlice";
 
 const Login = () => {
   const [remember, setRemember] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const alreadyLoggedIn = localStorage.getItem("eLearn-userInfo");
+  const needFetch = !!alreadyLoggedIn;
+  const { data } = useFetchUserQuery(undefined, {
+    skip: !needFetch,
+  });
 
   const [login, { isLoading }] = useLoginMutation();
-
-  const { userInfo } = useSelector((state) => state.auth);
-
-  useEffect(() => {
-    if (userInfo) {
-      navigate("/home");
-    }
-  }, [navigate, userInfo]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -33,14 +32,11 @@ const Login = () => {
       const { token } = response;
       if (remember) {
         dispatch(setCredentials(token));
-      } else {
-        dispatch(setTempCredentials(token));
       }
       toastManager.updateStatus(toastId, {
         render: "Logged in successfully",
         type: "success",
       });
-      navigate("/home");
     } catch (error) {
       const message = await (error?.data
         ? error?.data?.message
@@ -51,6 +47,12 @@ const Login = () => {
       });
     }
   };
+  useEffect(() => {
+    if (data) {
+      dispatch(setUserInformation(data.data));
+      navigate(-1);
+    }
+  }, [data, dispatch, navigate]);
   return (
     <div>
       <div className="flex justify-evenly">

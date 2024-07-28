@@ -16,7 +16,7 @@ const courseApiSlice = apiSlice.injectEndpoints({
       keepUnusedDataFor: 5,
     }),
     fetchRecentCourse: builder.query({
-      query: () => `${COURSE_URL}/recent`,
+      query: ({ limit }) => `${COURSE_URL}/recent?limit=${limit}`,
       keepUnusedDataFor: 5,
     }),
   }),

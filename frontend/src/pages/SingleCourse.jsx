@@ -18,8 +18,11 @@ import StudentsReview from "../components/SingleCourse/CourseContainer/StudentsR
 const SingleCourse = () => {
   const { slug } = useParams();
   const dispatch = useDispatch();
-  const { data, error, isLoading } = useFetchCourseQuery(slug);
-  const { user } = useSelector((state) => state.user);
+  const selectedCourse = useSelector((state) => state.course.selectedCourse);
+  const needFetch = !selectedCourse || selectedCourse.slug !== slug;
+  const { data, error, isLoading } = useFetchCourseQuery(slug, {
+    skip: !needFetch,
+  });
 
   useEffect(() => {
     if (data) {
@@ -30,12 +33,7 @@ const SingleCourse = () => {
   if (isLoading || error) return null;
 
   const canReview = () => {
-    return (
-      user &&
-      user.role === "student" &&
-      user.isVerified &&
-      user.courses.includes(data.data._id)
-    );
+    return false;
   };
 
   return (

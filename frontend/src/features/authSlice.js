@@ -1,30 +1,37 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  userInfo: localStorage.getItem("eLearn-userInfo")
-    ? JSON.parse(localStorage.getItem("eLearn-userInfo"))
-    : null,
+  id: null,
+  name: null,
+  role: null,
+  email: null,
+  courseList: [],
+  profilePicture: null,
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setCredentials(state, action) {
-      state.userInfo = action.payload;
-      localStorage.setItem("eLearn-userInfo", JSON.stringify(action.payload));
-    },
-    clearCredentials(state, action) {
-      state.userInfo = null;
+    clearCredentials: (state) => {
+      Object.assign(state, initialState);
       localStorage.removeItem("eLearn-userInfo");
     },
-    setTempCredentials(state, action) {
-      state.userInfo = action.payload;
+    setCredentials: (state, action) => {
+      localStorage.setItem("eLearn-userInfo", JSON.stringify(action.payload));
+    },
+    setUserInformation: (state, action) => {
+      state.id = action.payload._id;
+      state.name = action.payload.name;
+      state.role = action.payload.role;
+      state.email = action.payload.email;
+      state.courseList = action.payload.courses;
+      state.profilePicture = action.payload.profilePicture;
     },
   },
 });
 
-export const { setCredentials, clearCredentials, setTempCredentials } =
+export const { clearCredentials, setCredentials, setUserInformation } =
   authSlice.actions;
 
 export default authSlice.reducer;
