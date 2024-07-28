@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../../features/api/authApiSlice";
 import { clearCredentials } from "../../features/authSlice";
@@ -18,6 +18,7 @@ const routes = [
 const NavList = () => {
   const userID = useSelector((state) => state.auth.id);
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
 
   const [logoutApiCall] = useLogoutMutation();
 
@@ -66,6 +67,7 @@ const NavList = () => {
           <NavLink
             to="/login"
             className="group inline-flex p-4 bg-CustomGray-900 items-start duration-100 font-[500]"
+            state={{ from: pathname }}
           >
             <span className="text-[0.875rem] leading-5 tracking-[-0.00875rem] group-hover:text-white duration-100 group-hover:font-[600]">
               Sign In

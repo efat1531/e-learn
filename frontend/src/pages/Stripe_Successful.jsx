@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import PageHeader from "../components/Common/PageHeader";
@@ -24,7 +24,6 @@ const breadcrumb = [
 ];
 
 function Stripe_Successful() {
-  const { user } = useSelector((state) => state.user);
   const { orderDetails } = useSelector((state) => state.order);
   const [createOrder] = useCreateOrderMutation();
   const [orderID, setOrderID] = useState();
@@ -32,48 +31,47 @@ function Stripe_Successful() {
   const sessionId = searchParams.get("session_id");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const hasEffectRun = useRef(false);
+
+  const createOrderHandler = async () => {
+    if (!orderDetails) return;
+    const toastID = toastManager.loading("Processing payment");
+    try {
+      const orderInfo = {
+        orderDetails,
+        paymentInfo: {
+          paymentMethod: "stripe",
+          sessionId,
+        },
+      };
+      const response = await createOrder(orderInfo).unwrap();
+      toastManager.updateStatus(toastID, {
+        render: "Payment processed successfully",
+        type: "success",
+      });
+      setOrderID(response?.data?._id);
+    } catch (error) {
+      toastManager.updateStatus(toastID, {
+        render: error?.message,
+        type: "error",
+      });
+
+      if (error.message === "Payment session already used") {
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
+      }
+    }
+  };
 
   useEffect(() => {
-    const createOrderHandler = async () => {
-      if (!orderDetails || !user) return;
-      const toastID = toastManager.loading("Processing payment");
-      try {
-        const orderInfo = {
-          orderDetails,
-          paymentInfo: {
-            paymentMethod: "stripe",
-            sessionId,
-          },
-        };
-        const response = await createOrder(orderInfo);
-        if (response.error) {
-          throw new Error(
-            response?.error?.data?.message || "Failed to process payment"
-          );
-        }
-        toastManager.updateStatus(toastID, {
-          render: "Payment processed successfully",
-          type: "success",
-        });
-        dispatch(clearOrderDetails());
-        setOrderID(response?.data?.data?._id);
-      } catch (error) {
-        toastManager.updateStatus(toastID, {
-          render: error?.message,
-          type: "error",
-        });
+    if (!hasEffectRun.current) {
+      createOrderHandler();
+      hasEffectRun.current = true;
+    }
+  }, []);
 
-        if (error.message === "Payment session already used") {
-          setTimeout(() => {
-            navigate("/");
-          }, 3000);
-        }
-      }
-    };
-    createOrderHandler();
-  }, [createOrder, navigate, orderDetails, sessionId, orderID, user, dispatch]);
-
-  if (!orderDetails || !user) {
+  if (!orderDetails) {
     return (
       <div className="text-[1.125rem] leading-6 font-[500] text-CustomGray-900 py-20 text-center w-full">
         No order found. Please create an order.
@@ -221,14 +219,7 @@ function Stripe_Successful() {
             </div>
           </div>
           <div className="w-full px-5">
-            <Button
-              title="Go Home"
-              className={"w-full "}
-              onClick={(e) => {
-                e.preventDefault();
-                navigate("/");
-              }}
-            />
+            <Button title="Go Home" className={"w-full "} />
           </div>
         </div>
       </div>

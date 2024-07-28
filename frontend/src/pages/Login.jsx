@@ -1,7 +1,7 @@
 import LoginBanner from "../assets/images/LoginBanner.png";
 import Button from "../components/ui/Button";
 import Input from "../components/ui/Input";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useLoginMutation } from "../features/api/authApiSlice";
@@ -9,13 +9,18 @@ import { setCredentials } from "../features/authSlice";
 import { toastManager } from "../components/ui/toastGeneral";
 import { useFetchUserQuery } from "../features/api/userApiSlice";
 import { setUserInformation } from "../features/authSlice";
+import { useSelector } from "react-redux";
 
 const Login = () => {
   const [remember, setRemember] = useState(false);
+  const [needFetch, setNeedFetch] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const alreadyLoggedIn = localStorage.getItem("eLearn-userInfo");
-  const needFetch = !!alreadyLoggedIn;
+  const { id: userID } = useSelector((state) => state.auth);
+
+  const location = useLocation();
+  const from = location.state?.from || "/";
+
   const { data } = useFetchUserQuery(undefined, {
     skip: !needFetch,
   });
@@ -30,6 +35,7 @@ const Login = () => {
     try {
       const response = await login({ email, password }).unwrap();
       const { token } = response;
+      setNeedFetch(true);
       if (remember) {
         dispatch(setCredentials(token));
       }
@@ -47,12 +53,18 @@ const Login = () => {
       });
     }
   };
+
   useEffect(() => {
+    if (userID) {
+      if (from !== "/login" || from !== "/register") {
+        navigate(from);
+      }
+      navigate("/");
+    }
     if (data) {
       dispatch(setUserInformation(data.data));
-      navigate(-1);
     }
-  }, [data, dispatch, navigate]);
+  }, [data, dispatch, navigate, needFetch, userID]);
   return (
     <div>
       <div className="flex justify-evenly">

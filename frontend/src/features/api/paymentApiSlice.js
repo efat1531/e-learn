@@ -4,14 +4,13 @@ import { PAYMENT_URL } from "./constants";
 const paymentApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     createPayment: builder.mutation({
-      query: (orderDetails, userData) => ({
+      query: (orderDetails) => ({
         url: `${PAYMENT_URL}/create-checkout-session`,
         method: "POST",
         body: {
           price: orderDetails.totalPrice,
           currency: orderDetails.currency,
           productData: orderDetails.productData,
-          userData: userData,
         },
       }),
     }),

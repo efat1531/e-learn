@@ -8,10 +8,12 @@ import NotificationIcon from "../../assets/Icon/NotificationIcon";
 import Button from "../ui/Button";
 import NavLinks from "./NavLinksDesktop";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 const DesktopNav = () => {
   const profilePicture = useSelector((state) => state.auth.profilePicture);
   const userID = useSelector((state) => state.auth.id);
+  const { pathname } = useLocation();
 
   return (
     <nav className="hidden tablet:block">
@@ -57,7 +59,7 @@ const DesktopNav = () => {
               </Link>
 
               {/* <!-- Sign In Button --> */}
-              <Link to="/login" className="group">
+              <Link to="/login" className="group" state={{ from: pathname }}>
                 <Button title="Sign In" />
               </Link>
             </div>

@@ -38,9 +38,9 @@ const Input = ({ id, type, label, optional = false, ...rest }) => {
 };
 
 Input.propTypes = {
-  id: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  type: PropTypes.string,
+  label: PropTypes.string,
   optional: PropTypes.bool,
 };
 

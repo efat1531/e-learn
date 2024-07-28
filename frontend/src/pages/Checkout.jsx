@@ -20,7 +20,6 @@ const breadcrumb = [
 ];
 
 function Checkout() {
-  const { user } = useSelector((state) => state.user);
   const [paymentBy, setPaymentBy] = useState("card");
 
   return (

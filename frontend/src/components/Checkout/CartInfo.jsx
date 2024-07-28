@@ -9,11 +9,10 @@ import { toastManager } from "../../components/ui/toastGeneral";
 
 const CartInfo = ({ paymentBy }) => {
   const { orderDetails } = useSelector((state) => state.order);
-  const { user } = useSelector((state) => state.user);
+  const userID = useSelector((state) => state.auth.id);
   const [createPayment] = useCreatePaymentMutation();
-  const navigate = useNavigate();
 
-  if (!orderDetails || !user) return null;
+  if (!orderDetails || !userID) return null;
   const { totalPrice, currency, productData, subTotal } = orderDetails;
 
   const courseItems = productData.filter((item) => item.isCourse);
@@ -26,7 +25,7 @@ const CartInfo = ({ paymentBy }) => {
     if (paymentBy === "card") {
       const toastID = toastManager.loading("Processing payment");
       try {
-        const response = await createPayment(orderDetails, user);
+        const response = await createPayment(orderDetails);
         toastManager.updateStatus(toastID, {
           render: "Payment processed successfully",
           type: "success",

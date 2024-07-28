@@ -3,7 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { Navigate } from "react-router";
 
 import { useFetchUserQuery } from "./features/api/userApiSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUserInformation } from "./features/authSlice";
 
 import DashboardLayout from "./components/DashboardLayout";
@@ -29,15 +29,19 @@ import Stripe_Successful from "./pages/Stripe_Successful";
 function App() {
   const alreadyLoggedIn = localStorage.getItem("eLearn-userInfo");
   const needFetch = !!alreadyLoggedIn;
+  const isUserLoggedIn = useSelector((state) => state.auth.loggedIn);
   const { data } = useFetchUserQuery(undefined, {
     skip: !needFetch,
   });
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (alreadyLoggedIn && data) {
       dispatch(setUserInformation(data.data));
     }
   }, [data, dispatch, alreadyLoggedIn]);
+
+  if (alreadyLoggedIn && !isUserLoggedIn) return null;
 
   return (
     <Router>

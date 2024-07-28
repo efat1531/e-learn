@@ -21,7 +21,7 @@ import { setOrderDetails } from "../../../features/orderSlice";
 
 const SideBar = () => {
   const { selectedCourse } = useSelector((state) => state.course);
-  const { user } = useSelector((state) => state.user);
+  const courseList = useSelector((state) => state.auth.courseList);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -91,7 +91,7 @@ const SideBar = () => {
       </div>
       <div className="w-full h-px bg-gray-200"></div>
       {/* Button Section */}
-      {(!user || !user?.courses.includes(selectedCourse._id)) && (
+      {!courseList.includes(selectedCourse._id) && (
         <div className="flex flex-col gap-3 w-full px-6">
           <Button
             title="Enroll Now"
@@ -102,7 +102,7 @@ const SideBar = () => {
           <Button title="Add to wishlist" className="w-full" />
         </div>
       )}
-      {(!user || !user?.courses.includes(selectedCourse._id)) && (
+      {!courseList.includes(selectedCourse._id) && (
         <div className="w-full h-px bg-gray-200"></div>
       )}
       {/* Include Section */}

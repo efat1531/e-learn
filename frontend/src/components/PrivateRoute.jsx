@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toastManager } from "./ui/toastGeneral";
 import PropTypes from "prop-types";
 
 function PrivateRoute({ allowedRoles = [] }) {
-  const auth = true;
+  const userID = useSelector((state) => state.auth.id);
   const navigate = useNavigate();
 
-  if (auth) {
-    toastManager.error("Please login to access this page");
-    return <Navigate to="/login" />;
-  }
+  useEffect(() => {
+    if (!userID) {
+      toastManager.error("You need to login to view this page.");
+      navigate("/login");
+    }
+  }, [userID, navigate]);
 
   if (allowedRoles.length > 0) {
     toastManager.error("You are forbidden to view this page.");

@@ -19,6 +19,7 @@ const SingleCourse = () => {
   const { slug } = useParams();
   const dispatch = useDispatch();
   const selectedCourse = useSelector((state) => state.course.selectedCourse);
+  const { courseList, id: userID } = useSelector((state) => state.auth);
   const needFetch = !selectedCourse || selectedCourse.slug !== slug;
   const { data, error, isLoading } = useFetchCourseQuery(slug, {
     skip: !needFetch,
@@ -30,10 +31,17 @@ const SingleCourse = () => {
     }
   }, [data, dispatch]);
 
-  if (isLoading || error) return null;
+  if (isLoading || error || !selectedCourse) return null;
 
   const canReview = () => {
-    return false;
+    if (!courseList.includes(selectedCourse._id)) return false;
+    if (selectedCourse.reviews.length > 0) {
+      const userReview = selectedCourse.reviews.find(
+        (review) => review.user._id === userID
+      );
+      if (userReview) return false;
+    }
+    return true;
   };
 
   return (
