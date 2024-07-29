@@ -2,14 +2,15 @@ import PropTypes from "prop-types";
 import Button from "../../ui/Button";
 import Input from "../../ui/Input";
 import { Formik } from "formik";
-import { Link } from "react-router-dom";
+import { json, Link } from "react-router-dom";
 import BasicInformation from "./Tabs/BasicInformation";
-import AdvanceInformation from "./Tabs/AdvanceInformation";
+import AdvanceInformation from "./Tabs/AdvanceInformation/AdvanceInformation";
+import { useState } from "react";
 
 const validate = (values) => {
   const errors = {};
-  if (!values.email) {
-    errors.email = "Email Missing";
+  if (!values.title) {
+    errors.title = "Email Missing";
   }
   if (!values.description) {
     errors.description = "Description Missing";
@@ -18,6 +19,15 @@ const validate = (values) => {
 };
 
 const CreateCourseForm = ({ tab, setCurrentTab }) => {
+  const [courseOutlines, setCourseOutlines] = useState(["", ""]);
+  const [courseRequirements, setCourseRequirements] = useState(["", ""]);
+  const [targetAudience, setTargetAudience] = useState(["", ""]);
+
+  function isEmpty(obj) {
+    console.log(Object.keys(obj).length === 0);
+    return Object.keys(obj).length === 0;
+  }
+
   return (
     <div>
       <Formik
@@ -29,6 +39,10 @@ const CreateCourseForm = ({ tab, setCurrentTab }) => {
         onSubmit={async (values, { setSubmitting }) => {
           setSubmitting(true);
           //   Action
+          console.log(values);
+          console.log(courseOutlines);
+          console.log(targetAudience);
+          console.log(courseRequirements);
           setSubmitting(false);
         }}
       >
@@ -61,6 +75,12 @@ const CreateCourseForm = ({ tab, setCurrentTab }) => {
                 handleBlur={handleBlur}
                 handleChange={handleChange}
                 setCurrentTab={setCurrentTab}
+                courseOutlines={courseOutlines}
+                setCourseOutlines={setCourseOutlines}
+                courseRequirements={courseRequirements}
+                setCourseRequirements={setCourseRequirements}
+                targetAudience={targetAudience}
+                setTargetAudience={setTargetAudience}
               />
             )}
           </form>

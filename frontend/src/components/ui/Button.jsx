@@ -14,7 +14,7 @@ const Button = ({
       className={
         secondary
           ? twMerge(
-              `h-12 bg-Primary-500 hover:duration-[250ms] cursor-pointer  ${
+              `h-12 bg-Primary-500 hover:duration-[250ms] cursor-pointer text-white ${
                 disabled
                   ? "bg-gray-700 hover:bg-gray-700"
                   : "hover:bg-Primary-600 cursor-pointer"
@@ -36,7 +36,7 @@ const Button = ({
       <div
         className={
           secondary
-            ? "capitalize text-base font-semibold px-6 leading-[48px] hover:duration-[250ms] text-white"
+            ? "capitalize text-base font-semibold px-6 leading-[48px] hover:duration-[250ms]"
             : `capitalize text-base font-semibold text-orange-500 px-6 leading-[48px] hover:duration-[250ms] ${
                 disabled ? "text-slate-400" : "hover:text-white"
               }`
