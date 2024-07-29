@@ -83,7 +83,7 @@ const CreateCourseForm = ({ tab, setCurrentTab }) => {
                 setCourseRequirements={setCourseRequirements}
                 targetAudience={targetAudience}
                 setTargetAudience={setTargetAudience}
-                setThumbnailFile={setTargetAudience}
+                setThumbnailFile={setThumbnailFile}
               />
             )}
           </form>
