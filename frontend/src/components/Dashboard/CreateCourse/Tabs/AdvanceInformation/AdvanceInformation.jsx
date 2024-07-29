@@ -22,9 +22,9 @@ const AdvanceInformation = ({
   setCourseRequirements,
   targetAudience,
   setTargetAudience,
+  setThumbnailFile,
 }) => {
   const [thumbnail, setThumbnail] = useState("");
-  const [thumbnailFile, setThumbnailFile] = useState("");
 
   const ref = useRef();
 
