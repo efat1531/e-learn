@@ -22,6 +22,7 @@ const CreateCourseForm = ({ tab, setCurrentTab }) => {
   const [courseOutlines, setCourseOutlines] = useState(["", ""]);
   const [courseRequirements, setCourseRequirements] = useState(["", ""]);
   const [targetAudience, setTargetAudience] = useState(["", ""]);
+  const [thumbnailFile, setThumbnailFile] = useState("");
 
   function isEmpty(obj) {
     console.log(Object.keys(obj).length === 0);
@@ -43,6 +44,7 @@ const CreateCourseForm = ({ tab, setCurrentTab }) => {
           console.log(courseOutlines);
           console.log(targetAudience);
           console.log(courseRequirements);
+          console.log(thumbnailFile);
           setSubmitting(false);
         }}
       >
@@ -81,6 +83,7 @@ const CreateCourseForm = ({ tab, setCurrentTab }) => {
                 setCourseRequirements={setCourseRequirements}
                 targetAudience={targetAudience}
                 setTargetAudience={setTargetAudience}
+                setThumbnailFile={setTargetAudience}
               />
             )}
           </form>
