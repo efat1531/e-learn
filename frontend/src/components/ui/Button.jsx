@@ -14,7 +14,7 @@ const Button = ({
       className={
         secondary
           ? twMerge(
-              `h-12 bg-Primary-500 hover:duration-[250ms] cursor-pointer text-white ${
+              `px-6 py-3 bg-Primary-500 hover:duration-[250ms] cursor-pointer text-white ${
                 disabled
                   ? "bg-gray-700 hover:bg-gray-700"
                   : "hover:bg-Primary-600 cursor-pointer"
@@ -22,7 +22,7 @@ const Button = ({
               className
             )
           : twMerge(
-              `h-12 bg-Primary-100 hover:duration-[250ms] ${
+              `px-6 py-3 bg-Primary-100 hover:duration-[250ms] ${
                 disabled
                   ? "bg-gray-700 hover:bg-gray-700"
                   : "hover:bg-Primary-500 cursor-pointer"
@@ -36,8 +36,8 @@ const Button = ({
       <div
         className={
           secondary
-            ? "capitalize text-base font-semibold px-6 leading-[48px] hover:duration-[250ms]"
-            : `capitalize text-base font-semibold text-orange-500 px-6 leading-[48px] hover:duration-[250ms] ${
+            ? "capitalize font-semibold hover:duration-[250ms]"
+            : `capitalize font-semibold text-orange-500 hover:duration-[250ms] ${
                 disabled ? "text-slate-400" : "hover:text-white"
               }`
         }

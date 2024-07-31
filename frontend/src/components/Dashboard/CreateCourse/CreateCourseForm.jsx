@@ -6,6 +6,7 @@ import { json, Link } from "react-router-dom";
 import BasicInformation from "./Tabs/BasicInformation";
 import AdvanceInformation from "./Tabs/AdvanceInformation/AdvanceInformation";
 import { useState } from "react";
+import Curriculum from "./Tabs/Curriculum/Curriculum";
 
 const validate = (values) => {
   const errors = {};
@@ -84,6 +85,16 @@ const CreateCourseForm = ({ tab, setCurrentTab }) => {
                 targetAudience={targetAudience}
                 setTargetAudience={setTargetAudience}
                 setThumbnailFile={setThumbnailFile}
+              />
+            )}
+            {tab == "curriculum" && (
+              <Curriculum
+                values={values}
+                errors={errors}
+                touched={touched}
+                handleBlur={handleBlur}
+                handleChange={handleChange}
+                setCurrentTab={setCurrentTab}
               />
             )}
           </form>
