@@ -26,7 +26,7 @@ const Curriculum = ({
       ...prev,
       {
         sectionName: "Section name",
-        lectures: [{ lectureName: "Lecture Name" }],
+        lectures: [{ lectureName: "Lecture Name", videoURL: "", file: null }],
       },
     ]);
   };
@@ -40,7 +40,7 @@ const Curriculum = ({
 
   const editLectureName = (sectionIndex, lectureIndex, value) => {
     const newSection = _.cloneDeep(curriculums);
-    newSection[sectionIndex].lectures[lectureIndex].lectureName = value; 
+    newSection[sectionIndex].lectures[lectureIndex].lectureName = value;
 
     setCurriculums(newSection);
   };
@@ -57,14 +57,30 @@ const Curriculum = ({
 
   const deleteSection = (index) => {
     let newSection = _.cloneDeep(curriculums);
-    newSection = newSection.filter((n,ind) => ind != index);
+    newSection = newSection.filter((n, ind) => ind != index);
 
     setCurriculums(newSection);
   };
-  
+
   const deleteLecture = (sectionIndex, lectureIndex) => {
     let newSection = _.cloneDeep(curriculums);
-    newSection[sectionIndex].lectures = newSection[sectionIndex].lectures.filter((n,ind) => ind != lectureIndex);
+    newSection[sectionIndex].lectures = newSection[
+      sectionIndex
+    ].lectures.filter((n, ind) => ind != lectureIndex);
+
+    setCurriculums(newSection);
+  };
+
+  const addVideoToLecture = (sectionIndex, lectureIndex, value) => {
+    const newSection = _.cloneDeep(curriculums);
+    newSection[sectionIndex].lectures[lectureIndex].videoURL = value;
+
+    setCurriculums(newSection);
+  };
+
+  const addFileToLecture = (sectionIndex, lectureIndex, value) => {
+    const newSection = _.cloneDeep(curriculums);
+    newSection[sectionIndex].lectures[lectureIndex].file = value;
 
     setCurriculums(newSection);
   };
@@ -86,6 +102,8 @@ const Curriculum = ({
             editLectureName={editLectureName}
             deleteSection={deleteSection}
             deleteLecture={deleteLecture}
+            addVideoToLecture={addVideoToLecture}
+            addFileToLecture={addFileToLecture}
           />
         ))}
         {/* Add More Button */}

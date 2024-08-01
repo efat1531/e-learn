@@ -13,7 +13,9 @@ const CurriculumSection = ({
   editSectionName,
   editLectureName,
   deleteSection,
-  deleteLecture
+  deleteLecture,
+  addVideoToLecture,
+  addFileToLecture
 }) => {
   //   console.log(data);
   const [editSectionModalOpen, setEditSectionModalOpen] = useState(false);
@@ -24,7 +26,7 @@ const CurriculumSection = ({
       <div className="flex justify-between items-center">
         <p className="flex gap-1">
           <span className="font-bold flex gap-1 items-center">
-            <IoIosMenu className="text-xl" /> Sections {index + 1} :
+            <IoIosMenu className="text-xl" /> Section {index + 1} :
           </span>{" "}
           {data.sectionName}
         </p>
@@ -62,6 +64,8 @@ const CurriculumSection = ({
             sectionIndex={index}
             lectureIndex={ind}
             deleteLecture={deleteLecture}
+            addVideoToLecture={addVideoToLecture}
+            addFileToLecture={addFileToLecture}
           />
         ))}
       </div>
