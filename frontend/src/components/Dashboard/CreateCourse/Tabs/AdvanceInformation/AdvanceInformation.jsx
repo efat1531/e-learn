@@ -137,7 +137,7 @@ const AdvanceInformation = ({
         <div className="mt-4 flex justify-between">
           <Button
             title="Previous"
-            className="bg-transparent text-black border hover:bg-CustomGray-50"
+            className="bg-transparent text-black border hover:bg-CustomGray-50 hover:text-black"
             secondary
             type="button"
             onClick={() => setCurrentTab("basic")}
@@ -146,7 +146,7 @@ const AdvanceInformation = ({
             title="Save & Next"
             secondary
             type="button"
-            onClick={() => console.log(values)}
+            onClick={() => setCurrentTab("curriculum")}
           />
         </div>
       </div>

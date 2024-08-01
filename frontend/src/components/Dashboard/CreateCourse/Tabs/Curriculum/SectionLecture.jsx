@@ -2,8 +2,13 @@
 import { IoIosMenu } from "react-icons/io";
 import Button from "../../../../ui/Button";
 import { FaRegEdit, FaRegTrashAlt } from "react-icons/fa";
+import EditLectureNameModal from "./Modals/EditLectureNameModal";
+import { useState } from "react";
 
-const SectionLecture = ({ lecture }) => {
+const SectionLecture = ({ lecture, sectionIndex, lectureIndex, editLectureName }) => {
+  const [editLectureNameModalOpen, setEditLectureNameModalOpen] =
+    useState(false);
+
   return (
     <div className="flex justify-between items-center bg-white p-4">
       <p className="flex items-center gap-2">
@@ -17,13 +22,23 @@ const SectionLecture = ({ lecture }) => {
             className="text-sm px-4 py-2"
           />
         </span>
-        <span className="cursor-pointer">
+        <span className="cursor-pointer" onClick={() => setEditLectureNameModalOpen(true)}>
           <FaRegEdit />
         </span>
         <span className="cursor-pointer">
           <FaRegTrashAlt className="text-Primary-500" />
         </span>
       </p>
+      {/* Modals */}
+      {editLectureNameModalOpen && (
+        <EditLectureNameModal
+          setEditLectureNameModalOpen={setEditLectureNameModalOpen}
+          name={lecture.lectureName}
+          sectionIndex={sectionIndex}
+          lectureIndex={lectureIndex}
+          editLectureName={editLectureName}
+        />
+      )}
     </div>
   );
 };

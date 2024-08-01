@@ -25,6 +25,9 @@ const CreateCourseForm = ({ tab, setCurrentTab }) => {
   const [targetAudience, setTargetAudience] = useState(["", ""]);
   const [thumbnailFile, setThumbnailFile] = useState("");
 
+  // Curriculum
+  const [curriculums, setCurriculums] = useState([]);
+
   function isEmpty(obj) {
     console.log(Object.keys(obj).length === 0);
     return Object.keys(obj).length === 0;
@@ -95,6 +98,8 @@ const CreateCourseForm = ({ tab, setCurrentTab }) => {
                 handleBlur={handleBlur}
                 handleChange={handleChange}
                 setCurrentTab={setCurrentTab}
+                curriculums={curriculums} 
+                setCurriculums={setCurriculums}
               />
             )}
           </form>
