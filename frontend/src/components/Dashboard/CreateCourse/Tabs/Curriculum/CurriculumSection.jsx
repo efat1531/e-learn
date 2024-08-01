@@ -12,6 +12,8 @@ const CurriculumSection = ({
   addSectionLecture,
   editSectionName,
   editLectureName,
+  deleteSection,
+  deleteLecture
 }) => {
   //   console.log(data);
   const [editSectionModalOpen, setEditSectionModalOpen] = useState(false);
@@ -43,7 +45,9 @@ const CurriculumSection = ({
           >
             <FaRegEdit />
           </span>
-          <span className="cursor-pointer">
+          <span className="cursor-pointer"  onClick={() => {
+              deleteSection(index);
+            }}>
             <FaRegTrashAlt />
           </span>
         </p>
@@ -57,6 +61,7 @@ const CurriculumSection = ({
             editLectureName={editLectureName}
             sectionIndex={index}
             lectureIndex={ind}
+            deleteLecture={deleteLecture}
           />
         ))}
       </div>

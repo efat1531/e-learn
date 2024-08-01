@@ -5,7 +5,7 @@ import { FaRegEdit, FaRegTrashAlt } from "react-icons/fa";
 import EditLectureNameModal from "./Modals/EditLectureNameModal";
 import { useState } from "react";
 
-const SectionLecture = ({ lecture, sectionIndex, lectureIndex, editLectureName }) => {
+const SectionLecture = ({ lecture, sectionIndex, lectureIndex, editLectureName, deleteLecture }) => {
   const [editLectureNameModalOpen, setEditLectureNameModalOpen] =
     useState(false);
 
@@ -26,7 +26,7 @@ const SectionLecture = ({ lecture, sectionIndex, lectureIndex, editLectureName }
           <FaRegEdit />
         </span>
         <span className="cursor-pointer">
-          <FaRegTrashAlt className="text-Primary-500" />
+          <FaRegTrashAlt className="text-Primary-500"  onClick={() => deleteLecture(sectionIndex, lectureIndex)} />
         </span>
       </p>
       {/* Modals */}

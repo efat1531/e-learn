@@ -55,7 +55,19 @@ const Curriculum = ({
     setCurriculums(newSection);
   };
 
-  const deleteSection = () => {};
+  const deleteSection = (index) => {
+    let newSection = _.cloneDeep(curriculums);
+    newSection = newSection.filter((n,ind) => ind != index);
+
+    setCurriculums(newSection);
+  };
+  
+  const deleteLecture = (sectionIndex, lectureIndex) => {
+    let newSection = _.cloneDeep(curriculums);
+    newSection[sectionIndex].lectures = newSection[sectionIndex].lectures.filter((n,ind) => ind != lectureIndex);
+
+    setCurriculums(newSection);
+  };
 
   return (
     <>
@@ -72,6 +84,8 @@ const Curriculum = ({
             addSectionLecture={addSectionLecture}
             editSectionName={editSectionName}
             editLectureName={editLectureName}
+            deleteSection={deleteSection}
+            deleteLecture={deleteLecture}
           />
         ))}
         {/* Add More Button */}
