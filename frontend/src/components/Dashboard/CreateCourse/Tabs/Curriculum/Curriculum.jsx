@@ -18,9 +18,9 @@ const Curriculum = ({
   handleChange,
   handleBlur,
   setCurrentTab,
+  curriculums,
+  setCurriculums,
 }) => {
-  const [curriculums, setCurriculums] = useState([]);
-
   const addSection = () => {
     setCurriculums((prev) => [
       ...prev,
@@ -31,17 +31,27 @@ const Curriculum = ({
     ]);
   };
 
-  const editSectionName = (index,value) => {
+  const editSectionName = (index, value) => {
     const newSection = _.cloneDeep(curriculums);
     newSection[index].sectionName = value;
 
     setCurriculums(newSection);
-  }
+  };
+
+  const editLectureName = (sectionIndex, lectureIndex, value) => {
+    const newSection = _.cloneDeep(curriculums);
+    newSection[sectionIndex].lectures[lectureIndex].lectureName = value; 
+
+    setCurriculums(newSection);
+  };
 
   const addSectionLecture = (index) => {
     const newSection = _.cloneDeep(curriculums);
-    newSection[index].lectures = [...newSection[index].lectures, { lectureName: "Lecture Name" }];
-    
+    newSection[index].lectures = [
+      ...newSection[index].lectures,
+      { lectureName: "Lecture Name" },
+    ];
+
     setCurriculums(newSection);
   };
 
@@ -61,6 +71,7 @@ const Curriculum = ({
             index={ind}
             addSectionLecture={addSectionLecture}
             editSectionName={editSectionName}
+            editLectureName={editLectureName}
           />
         ))}
         {/* Add More Button */}
@@ -78,16 +89,16 @@ const Curriculum = ({
         <div className="mt-4 flex justify-between">
           <Button
             title="Previous"
-            className="bg-transparent text-black border hover:bg-CustomGray-50"
+            className="bg-transparent text-black border hover:bg-CustomGray-50 hover:text-black"
             secondary
             type="button"
-            onClick={() => setCurrentTab("basic")}
+            onClick={() => setCurrentTab("advance")}
           />
           <Button
             title="Save & Next"
             secondary
             type="button"
-            onClick={() => console.log(values)}
+            onClick={() => setCurrentTab("curriculum")}
           />
         </div>
       </div>
