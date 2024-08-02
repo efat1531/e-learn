@@ -7,6 +7,7 @@ import BasicInformation from "./Tabs/BasicInformation";
 import AdvanceInformation from "./Tabs/AdvanceInformation/AdvanceInformation";
 import { useState } from "react";
 import Curriculum from "./Tabs/Curriculum/Curriculum";
+import PublishCourse from "./Tabs/PublishCourse";
 
 const validate = (values) => {
   const errors = {};
@@ -15,6 +16,12 @@ const validate = (values) => {
   }
   if (!values.description) {
     errors.description = "Description Missing";
+  }
+  if (!values.welcomeMessage) {
+    errors.welcomeMessage = "Welcome Message Missing";
+  }
+  if (!values.congratulationsMessage) {
+    errors.congratulationsMessage = "Congratulations Message Missing";
   }
   return errors;
 };
@@ -39,6 +46,8 @@ const CreateCourseForm = ({ tab, setCurrentTab }) => {
         initialValues={{
           title: "",
           description: "",
+          welcomeMessage: "",
+          congratulationsMessage: "",
         }}
         validate={validate}
         onSubmit={async (values, { setSubmitting }) => {
@@ -100,6 +109,16 @@ const CreateCourseForm = ({ tab, setCurrentTab }) => {
                 setCurrentTab={setCurrentTab}
                 curriculums={curriculums} 
                 setCurriculums={setCurriculums}
+              />
+            )}
+            {tab == "publish" && (
+              <PublishCourse
+                values={values}
+                errors={errors}
+                touched={touched}
+                handleBlur={handleBlur}
+                handleChange={handleChange}
+                setCurrentTab={setCurrentTab}
               />
             )}
           </form>
