@@ -41,8 +41,6 @@ function App() {
     }
   }, [data, dispatch, alreadyLoggedIn]);
 
-  if (alreadyLoggedIn && !isUserLoggedIn) return null;
-
   return (
     <Router>
       <ScrollToTop />

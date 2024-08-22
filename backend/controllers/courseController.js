@@ -2,12 +2,36 @@ import courseModel from "../models/courseModel.js";
 import asyncHandler from "../middlewere/asyncHandler.js";
 import courseContentModel from "../models/courseContentModel.js";
 
+import DynamicFilter from "../utils/dynamicFilter.js";
+import DynamicSort from "../utils/dynamicSort.js";
+import AppError from "../utils/AppError.js";
+
 // @desc    Get all courses
 // @route   GET /api/courses
 // @access  Public
 const getCourses = asyncHandler(async (req, res) => {
+  const { limit = 20, page = 1 } = req.query;
+
+  const dynamicFilter = new DynamicFilter(req.query);
+  const dynamicSort = new DynamicSort(req.query);
+
+  // Filter Options
+  const filterOptions = dynamicFilter.process();
+  const sortOptions = dynamicSort.process();
+
+  const totalResults = await courseModel.countDocuments({
+    ...filterOptions,
+  });
+
   const courses = await courseModel
-    .find({})
+    .find({
+      ...filterOptions,
+    })
+    .sort({
+      ...sortOptions,
+    })
+    .limit(limit * 1)
+    .skip((page - 1) * limit)
     .populate("instructor", "name")
     .populate({
       path: "courseContent.sectionContainer",
@@ -16,7 +40,10 @@ const getCourses = asyncHandler(async (req, res) => {
 
   res.status(200).json({
     status: "success",
-    numberOfCourses: courses.length,
+    totalResults,
+    currentPage: page,
+    limit,
+    totalPage: Math.ceil(totalResults / limit),
     data: courses,
   });
 });
@@ -46,11 +73,11 @@ const getCourse = asyncHandler(async (req, res) => {
     });
 
   if (!course) {
-    res.status(404);
-    throw new Error("Course not found. Please try again.");
+    throw new AppError.notFound("Course not found. Please try again.");
   }
 
   res.status(200).json({
+    status: "success",
     data: course,
   });
 });
@@ -85,8 +112,7 @@ const createCourse = asyncHandler(async (req, res) => {
   const existingCourse = await courseModel.findOne({ slug });
 
   if (existingCourse) {
-    res.status(400);
-    throw new Error("Course already exists. Please try again.");
+    throw new AppError.badRequest("Course with this title already exists.");
   }
 
   const courseData = {
@@ -144,14 +170,15 @@ const updateCourse = asyncHandler(async (req, res) => {
   const course = await courseModel
     .findOne({ slug: req.params.slug })
     .populate("courseContent.sectionContainer");
+
   if (!course) {
-    res.status(404);
-    throw new Error("Course not found. Please try again.");
+    throw new AppError.notFound("Course not found. Please try again.");
   }
 
   if (course.instructor.toString() !== req.user._id.toString()) {
-    res.status(401);
-    throw new Error("You are not authorized to update this course.");
+    throw new AppError.unauthorized(
+      "You are not authorized to update this course"
+    );
   }
 
   const allowedFields = [
@@ -181,12 +208,10 @@ const updateCourse = asyncHandler(async (req, res) => {
     const price = updateData.price || course.price;
     const discount = updateData.discount || course.discount;
     if (discount > price) {
-      res.status(400);
-      throw new Error("Discount cannot be greater than the price.");
+      throw new AppError.badRequest("Discount cannot be greater than price.");
     }
     if (price <= 0) {
-      res.status(400);
-      throw new Error("Price must be greater than 0.");
+      throw new AppError.badRequest("Price must be greater than 0.");
     }
   }
 
@@ -212,21 +237,22 @@ const updateCourse = asyncHandler(async (req, res) => {
 const deleteCourse = asyncHandler(async (req, res) => {
   const course = await courseModel.findOne({ slug: req.params.slug });
   if (!course) {
-    res.status(404);
-    throw new Error("Course not found. Please try again.");
+    throw new AppError.notFound("Course not found. Please try again.");
   }
 
   if (
     course.instructor.toString() !== req.user._id.toString() &&
     req.user.role !== "admin"
   ) {
-    res.status(401);
-    throw new Error("You are not authorized to delete this course.");
+    throw new AppError.unauthorized(
+      "You are not authorized to delete this course"
+    );
   }
 
   if (course.courseStudents > 0) {
-    res.status(400);
-    throw new Error("Course cannot be deleted as it has enrolled users.");
+    throw new AppError.badRequest(
+      "Course cannot be deleted as students are enrolled."
+    );
   }
 
   // Delete course content

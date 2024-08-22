@@ -25,16 +25,6 @@ const CartInfo = ({ paymentBy }) => {
     if (paymentBy === "card") {
       const toastID = toastManager.loading("Processing payment");
       try {
-        const response = await createPayment(orderDetails);
-        toastManager.updateStatus(toastID, {
-          render: "Payment processed successfully",
-          type: "success",
-        });
-        const redirectURL = response?.data?.url;
-
-        setTimeout(() => {
-          window.location.href = redirectURL;
-        }, 2500);
       } catch (error) {
         toastManager.updateStatus(toastID, {
           render: error?.message || "Failed to process payment",

@@ -6,7 +6,6 @@ import { useCreateOrderMutation } from "../features/api/orderApiSlice";
 import { toastManager } from "../components/ui/toastGeneral";
 import { calculateDiscountPercentageByPriceRealPrice } from "../utils/Calculation.js";
 import Button from "../components/ui/Button";
-import { clearOrderDetails } from "../features/orderSlice";
 
 const breadcrumb = [
   {
@@ -25,48 +24,11 @@ const breadcrumb = [
 
 function Stripe_Successful() {
   const { orderDetails } = useSelector((state) => state.order);
-  const [createOrder] = useCreateOrderMutation();
   const [orderID, setOrderID] = useState();
-  const [searchParams] = useSearchParams();
-  const sessionId = searchParams.get("session_id");
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   const hasEffectRun = useRef(false);
-
-  const createOrderHandler = async () => {
-    if (!orderDetails) return;
-    const toastID = toastManager.loading("Processing payment");
-    try {
-      const orderInfo = {
-        orderDetails,
-        paymentInfo: {
-          paymentMethod: "stripe",
-          sessionId,
-        },
-      };
-      const response = await createOrder(orderInfo).unwrap();
-      toastManager.updateStatus(toastID, {
-        render: "Payment processed successfully",
-        type: "success",
-      });
-      setOrderID(response?.data?._id);
-    } catch (error) {
-      toastManager.updateStatus(toastID, {
-        render: error?.message,
-        type: "error",
-      });
-
-      if (error.message === "Payment session already used") {
-        setTimeout(() => {
-          navigate("/");
-        }, 3000);
-      }
-    }
-  };
 
   useEffect(() => {
     if (!hasEffectRun.current) {
-      createOrderHandler();
       hasEffectRun.current = true;
     }
   }, []);

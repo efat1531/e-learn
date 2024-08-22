@@ -9,6 +9,7 @@ import {
   resendVerificationEmail,
   sendResetPasswordEmail,
 } from "../utils/emailSender.js";
+import AppError from "../utils/AppError.js";
 
 // @desc    Register user
 // @route   POST /api/auth/register
@@ -20,7 +21,7 @@ const register = asyncHandler(async (req, res) => {
 
   // Check if user exists
   if (userExists) {
-    throw new Error("User already exists");
+    throw new AppError.badRequest("Account with this email already exists.");
   }
 
   // Create user
@@ -37,6 +38,7 @@ const register = asyncHandler(async (req, res) => {
   const url = `${req.protocol}://${req.get("host")}/api/auth/verify/${encrypt(
     email
   )}`;
+
   await sendWelcomeEmail(newUser.email, newUser.name, token, url);
 
   // Send response
@@ -57,11 +59,11 @@ const verifyUser = asyncHandler(async (req, res) => {
   const user = await userModel.findOne({ email });
 
   if (!user) {
-    throw new Error("User not found");
+    throw new AppError.notFound("No account found with this email.");
   }
 
   if (user.isVerified) {
-    throw new Error("User already verified");
+    throw new AppError.badRequest("This account is already verified.");
   }
 
   const oldToken = await tokenModel.findOne({
@@ -70,19 +72,19 @@ const verifyUser = asyncHandler(async (req, res) => {
   });
 
   if (!oldToken) {
-    throw new Error("Invalid token. Please request a new one.");
+    throw new AppError.badRequest("Invalid token. Please request a new one.");
   }
 
   const isMatch = await oldToken.isCorrect(token);
 
   if (!isMatch) {
-    throw new Error("Invalid token");
+    throw new AppError.badRequest("Invalid token. Please request a new one.");
   }
 
   const isValid = oldToken.isValid();
 
   if (!isValid) {
-    throw new Error("Token expired");
+    throw new AppError.badRequest("Token expired. Please request a new one.");
   }
 
   // Delete token
@@ -92,7 +94,7 @@ const verifyUser = asyncHandler(async (req, res) => {
   await userModel.findByIdAndUpdate(user._id, { isVerified: true });
 
   // JWT Cookie
-  const JWTtoken = await generateToken(res, user._id, user.role);
+  const JWTtoken = generateToken(res, user._id, user.role);
 
   // Send response
   res.status(200).json({
@@ -114,11 +116,11 @@ const resendToken = asyncHandler(async (req, res) => {
   });
 
   if (!user) {
-    throw new Error("User not found");
+    throw new AppError.notFound("No account found with this email.");
   }
 
   if (user.isVerified) {
-    throw new Error("User already verified");
+    throw new AppError.badRequest("This account is already verified.");
   }
 
   const oldToken = await tokenModel.findOne({
@@ -127,6 +129,7 @@ const resendToken = asyncHandler(async (req, res) => {
   });
 
   if (oldToken) {
+    res.status(400);
     await tokenModel.findByIdAndDelete(oldToken._id);
   }
 
@@ -151,22 +154,24 @@ const resendToken = asyncHandler(async (req, res) => {
 const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const user = await userModel.findOne({ email }).select("+password");
+
   if (!user) {
-    throw new Error("Invalid credentials");
+    throw new AppError.notFound("No account found with this email.");
   }
 
   const isMatch = await user.matchPassword(password);
 
   if (!user || !isMatch) {
-    throw new Error("Invalid credentials");
+    throw new AppError.badRequest("Invalid email or password");
   }
 
   // JWT Cookie
-  const JTWToken = await generateToken(res, user._id, user.role);
+  const JTWToken = generateToken(res, user._id, user.role);
 
   // Send response
   res.status(200).json({
     status: "success",
+    message: "User logged in successfully",
     token: JTWToken,
   });
 });
@@ -182,7 +187,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
   });
 
   if (!existingUser) {
-    throw new Error("User not found with this email");
+    throw new AppError.notFound("No account found with this email.");
   }
 
   const token = await generateOTPToken(existingUser, "reset");
@@ -214,28 +219,29 @@ const verifyResetPasswordRequest = asyncHandler(async (req, res) => {
   });
 
   if (!user) {
-    throw new Error("User not found with this email");
+    throw new AppError.notFound("No account found with this email.");
   }
 
   const existingToken = await tokenModel.findOne({
     email,
     TokenType: "reset",
+    isVerified: false,
   });
 
   const isMatch = await existingToken.isCorrect(token);
 
   if (!existingToken || !isMatch) {
-    throw new Error("Invalid token. Please request a new one.");
+    throw new AppError.badRequest("Invalid token. Please request a new one.");
   }
 
   const isValid = existingToken.isValid();
 
   if (!isValid) {
-    throw new Error("Token expired");
+    throw new AppError.badRequest("Token expired. Please request a new one.");
   }
 
-  // Delete token
-  await tokenModel.findByIdAndDelete(existingToken._id);
+  // Mark token as used
+  existingToken.isVerified = true;
 
   // Send response
   res.status(200).json({
@@ -252,13 +258,31 @@ const resetPassword = asyncHandler(async (req, res) => {
   const { password } = req.body;
 
   const email = decryptEmail(encryptedEmail);
-  const existingUser = await userModel.findOne({
-    email,
-  });
+  const existingUser = await userModel
+    .findOne({
+      email,
+    })
+    .select("+password");
 
   if (!existingUser) {
-    throw new Error(
-      "No user found with this email. Please check your verification link."
+    throw new AppError.notFound("No account found with this email.");
+  }
+
+  const existingToken = await tokenModel.findOne({
+    email,
+    TokenType: "reset",
+    isVerified: true,
+  });
+
+  if (!existingToken) {
+    throw new AppError.badRequest("Invalid token. Please request a new one.");
+  }
+
+  const previousPassword = await existingUser.matchPassword(password);
+
+  if (previousPassword) {
+    throw new AppError.badRequest(
+      "New password cannot be the same as the current password."
     );
   }
 

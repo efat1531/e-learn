@@ -1,5 +1,9 @@
 import userModel from "../models/userModel.js";
 import asyncHandler from "../middlewere/asyncHandler.js";
+import AppError from "../utils/AppError.js";
+import DynamicFilter from "../utils/dynamicFilter.js";
+import DynamicSort from "../utils/dynamicSort.js";
+import { generateToken } from "../utils/generateJWTToken.js";
 
 // @desc    Get user profile
 // @route   GET /api/users/profile
@@ -8,11 +12,11 @@ const getUserProfile = asyncHandler(async (req, res) => {
   const existingUser = await userModel.findById(req.user._id).select("+role");
 
   if (!existingUser) {
-    res.status(404);
-    throw new Error("User not found. Please try again.");
+    throw new AppError.notFound("User not found. Please try again.");
   }
 
   res.status(201).json({
+    status: "success",
     data: existingUser,
   });
 });
@@ -24,8 +28,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   const existingUser = await userModel.findById(req.user._id);
 
   if (!existingUser) {
-    res.status(404);
-    throw new Error("User not found. Please try again.");
+    throw new AppError.notFound("User not found. Please try again.");
   }
   const updateFields = ["name", "address", "profilePicture"];
 
@@ -51,6 +54,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   );
 
   res.status(201).json({
+    status: "success",
     data: updatedData,
   });
 });
@@ -66,20 +70,19 @@ const updateUserPassword = asyncHandler(async (req, res) => {
   const { currentPassword, newPassword } = req.body;
 
   if (!existingUser) {
-    res.status(404);
-    throw new Error("User not found. Please try again.");
+    throw new AppError.notFound("User not found. Please try again.");
   }
 
   const isPasswordMatch = await existingUser.matchPassword(currentPassword);
 
   if (!isPasswordMatch) {
-    res.status(401);
-    throw new Error("Invalid password. Please try again.");
+    throw new AppError.badRequest("Invalid password. Please try again.");
   }
 
   if (currentPassword === newPassword) {
-    res.status(400);
-    throw new Error("New password cannot be the same as the current password.");
+    throw new AppError.badRequest(
+      "New password cannot be same as old password. Please try again."
+    );
   }
 
   existingUser.password = req.body.newPassword;
@@ -88,6 +91,7 @@ const updateUserPassword = asyncHandler(async (req, res) => {
   await existingUser.save({ validateBeforeSave: true });
 
   res.status(201).json({
+    status: "success",
     message: "Password updated successfully.",
   });
 });
@@ -96,9 +100,33 @@ const updateUserPassword = asyncHandler(async (req, res) => {
 // @route   GET /api/users
 // @access  Private/Admin
 const getUsers = asyncHandler(async (req, res) => {
-  const users = await userModel.find({});
+  const { page = 1, limit = 10 } = req.query;
+  const dynamicFilter = DynamicFilter(req.query);
+  const dynamicSort = DynamicSort(req.query);
+
+  const filterOptions = dynamicFilter.process();
+  const sortOptions = dynamicSort.process();
+
+  const totalResults = await userModel.countDocuments({
+    ...filterOptions,
+  });
+
+  const users = await userModel
+    .find({
+      ...filterOptions,
+    })
+    .sort({
+      ...sortOptions,
+    })
+    .limit(limit * 1)
+    .skip((page - 1) * limit);
 
   res.status(201).json({
+    status: "success",
+    totalResults,
+    currentPage: page * 1,
+    limit: limit * 1,
+    totalPage: Math.ceil(totalResults / limit),
     data: users,
   });
 });
@@ -110,8 +138,7 @@ const deleteUser = asyncHandler(async (req, res) => {
   const existingUser = await userModel.findByIdAndDelete(req.user._id);
 
   if (!existingUser) {
-    res.status(404);
-    throw new Error("User not found. Please try again.");
+    throw new AppError.notFound("User not found. Please try again.");
   }
 
   res.status(200).json({

@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import VideoPlayer from "../../ui/VideoPlayer";
 
 import { useSelector } from "react-redux";
 
 const IntroVideo = () => {
   const { selectedCourse } = useSelector((state) => state.course);
-  if (!selectedCourse) return null;
-  const youtubeLink = selectedCourse.introVideo;
+  const [youtubeLink, setYoutubeLink] = useState("");
+
+  useEffect(() => {
+    if (selectedCourse) {
+      setYoutubeLink(selectedCourse.introVideo);
+    }
+  }, [selectedCourse]);
   return (
     <div>
       <div className="flex justify-center">
