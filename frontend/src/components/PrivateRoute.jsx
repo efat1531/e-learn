@@ -5,15 +5,15 @@ import { toastManager } from "./ui/toastGeneral";
 import PropTypes from "prop-types";
 
 function PrivateRoute({ allowedRoles = [] }) {
-  const userID = useSelector((state) => state.auth.id);
+  const { authenticated } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!userID) {
+    if (!authenticated) {
       toastManager.error("You need to login to view this page.");
       navigate("/login");
     }
-  }, [userID, navigate]);
+  }, [authenticated, navigate]);
 
   if (allowedRoles.length > 0) {
     toastManager.error("You are forbidden to view this page.");

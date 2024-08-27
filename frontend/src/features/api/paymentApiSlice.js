@@ -3,20 +3,26 @@ import { PAYMENT_URL } from "./constants";
 
 const paymentApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    createPayment: builder.mutation({
-      query: (orderDetails) => ({
-        url: `${PAYMENT_URL}/create-checkout-session`,
+    createStripePaymentSession: builder.mutation({
+      query: (body) => ({
+        url: `${PAYMENT_URL}/stripe/create-payment-intent`,
         method: "POST",
-        body: {
-          price: orderDetails.totalPrice,
-          currency: orderDetails.currency,
-          productData: orderDetails.productData,
-        },
+        body,
+      }),
+    }),
+    updateStripePaymentSession: builder.mutation({
+      query: (body) => ({
+        url: `${PAYMENT_URL}/stripe/update-payment-intent`,
+        method: "POST",
+        body,
       }),
     }),
   }),
 });
 
-export const { useCreatePaymentMutation } = paymentApiSlice;
+export const {
+  useCreateStripePaymentSessionMutation,
+  useUpdateStripePaymentSessionMutation,
+} = paymentApiSlice;
 
 export default paymentApiSlice;

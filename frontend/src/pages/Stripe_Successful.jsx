@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import PageHeader from "../components/Common/PageHeader";
-import { useCreateOrderMutation } from "../features/api/orderApiSlice";
+import { useUpdateStripePaymentSessionMutation } from "../features/api/paymentApiSlice";
 import { toastManager } from "../components/ui/toastGeneral";
 import { calculateDiscountPercentageByPriceRealPrice } from "../utils/Calculation.js";
 import Button from "../components/ui/Button";
@@ -26,12 +26,44 @@ function Stripe_Successful() {
   const { orderDetails } = useSelector((state) => state.order);
   const [orderID, setOrderID] = useState();
   const hasEffectRun = useRef(false);
+  const [searchParams] = useSearchParams();
+
+  const sessionID = searchParams.get("session_id");
+  const [updateStripePayment] = useUpdateStripePaymentSessionMutation();
+
+  const updateStripePaymentSession = async () => {
+    const toastId = toastManager.loading("Processing payment...");
+    try {
+      const body = { sessionID };
+      const { data } = await updateStripePayment(body).unwrap();
+      const { session } = data;
+      setOrderID(session.client_reference_id);
+      toastManager.updateStatus(toastId, {
+        render: "Payment successful",
+        type: "success",
+      });
+    } catch (error) {
+      const errorMessage =
+        error?.data?.message ?? error?.message ?? "Something went wrong";
+      toastManager.updateStatus(toastId, {
+        render: errorMessage,
+        type: "error",
+      });
+    }
+  };
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!hasEffectRun.current) {
       hasEffectRun.current = true;
+      updateStripePaymentSession();
     }
   }, []);
+
+  const handleGoToHomeButton = () => {
+    navigate("/");
+  };
 
   if (!orderDetails) {
     return (
@@ -181,7 +213,11 @@ function Stripe_Successful() {
             </div>
           </div>
           <div className="w-full px-5">
-            <Button title="Go Home" className={"w-full "} />
+            <Button
+              title="Go Home"
+              className={"w-full "}
+              onClick={handleGoToHomeButton}
+            />
           </div>
         </div>
       </div>

@@ -4,13 +4,15 @@ import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { calculateDiscountPercentageByPriceRealPrice } from "../../utils/Calculation.js";
 import Button from "../ui/Button";
-import { useCreatePaymentMutation } from "../../features/api/paymentApiSlice";
+import { useCreateStripePaymentSessionMutation } from "../../features/api/paymentApiSlice";
 import { toastManager } from "../../components/ui/toastGeneral";
+import { useCreateOrderMutation } from "../../features/api/orderApiSlice.js";
 
 const CartInfo = ({ paymentBy }) => {
   const { orderDetails } = useSelector((state) => state.order);
   const userID = useSelector((state) => state.auth.id);
-  const [createPayment] = useCreatePaymentMutation();
+  const [createPaymentStripe] = useCreateStripePaymentSessionMutation();
+  const [createOrder] = useCreateOrderMutation();
 
   if (!orderDetails || !userID) return null;
   const { totalPrice, currency, productData, subTotal } = orderDetails;
@@ -25,9 +27,31 @@ const CartInfo = ({ paymentBy }) => {
     if (paymentBy === "card") {
       const toastID = toastManager.loading("Processing payment");
       try {
+        const { data: orderData } = await createOrder({
+          ...orderDetails,
+          paymentMethod: paymentBy,
+        }).unwrap();
+
+        const { data: paymentData } = await createPaymentStripe({
+          currency,
+          productData,
+          orderID: orderData._id,
+        }).unwrap();
+
+        toastManager.updateStatus(toastID, {
+          render: "Order created successfully",
+          type: "success",
+        });
+
+        setTimeout(() => {
+          window.location.href = paymentData.url;
+        }, 2000);
       } catch (error) {
         toastManager.updateStatus(toastID, {
-          render: error?.message || "Failed to process payment",
+          render:
+            error?.data?.message ??
+            error?.message ??
+            "Failed to process payment",
           type: "error",
         });
       }

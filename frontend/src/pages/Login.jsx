@@ -33,7 +33,7 @@ const Login = () => {
     const formData = new FormData(event.target);
     const { email, password } = Object.fromEntries(formData.entries());
     try {
-      const response = await login({ email, password }).unwrap();
+      const response = await login({ email, password, remember }).unwrap();
       const { token } = response;
       setNeedFetch(true);
       if (remember) {

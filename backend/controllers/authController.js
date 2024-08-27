@@ -152,7 +152,7 @@ const resendToken = asyncHandler(async (req, res) => {
 // @route   POST /api/auth/login
 // @access  Public
 const login = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, remember = false } = req.body;
   const user = await userModel.findOne({ email }).select("+password");
 
   if (!user) {
@@ -166,7 +166,7 @@ const login = asyncHandler(async (req, res) => {
   }
 
   // JWT Cookie
-  const JTWToken = generateToken(res, user._id, user.role);
+  const JTWToken = generateToken(res, user._id, user.role, remember);
 
   // Send response
   res.status(200).json({

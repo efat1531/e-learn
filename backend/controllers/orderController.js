@@ -4,22 +4,28 @@ import userModel from "../models/userModel.js";
 import courseModel from "../models/courseModel.js";
 import courseProgressModel from "../models/courseProgressModel.js";
 import AppError from "../utils/AppError.js";
+import { areFieldsValid } from "../utils/nullValueCheck.js";
 
 // @desc    Create new order
 // @route   POST /api/order/
 // @access  Private
 const createOrder = asyncHandler(async (req, res) => {
   const user = req.user._id;
-  const { productsData, totalPrice, paymentMethod } = req.body;
+  const { productData, totalPrice, paymentMethod } = req.body;
 
-  const orderItems = productsData.map((item) => ({
+  const requiredFields = ["productData", "totalPrice", "paymentMethod"];
+  if (!areFieldsValid(req.body, requiredFields)) {
+    throw AppError.badRequest("Please provide all required fields");
+  }
+
+  const orderItems = productData.map((item) => ({
     name: item.name,
     price: item.price,
     discount: item.discount,
     quantity: item.quantity,
     isCourse: item.isCourse,
     deliveryStatus: "pending",
-    course: item.course,
+    course: item.isCourse ? item.id : null,
   }));
 
   // Check if user has already purchased the course

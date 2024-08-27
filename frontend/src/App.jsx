@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { Navigate } from "react-router";
 
@@ -27,19 +27,19 @@ import Checkout from "./pages/Checkout";
 import Stripe_Successful from "./pages/Stripe_Successful";
 
 function App() {
-  const alreadyLoggedIn = localStorage.getItem("eLearn-userInfo");
-  const needFetch = !!alreadyLoggedIn;
-  const isUserLoggedIn = useSelector((state) => state.auth.loggedIn);
-  const { data } = useFetchUserQuery(undefined, {
+  const dispatch = useDispatch();
+  const { authenticated } = useSelector((state) => state.auth);
+  const [needFetch, setNeedFetch] = useState(authenticated);
+  const { data } = useFetchUserQuery({
     skip: !needFetch,
   });
-  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (alreadyLoggedIn && data) {
+    if (data && !authenticated) {
       dispatch(setUserInformation(data.data));
+      setNeedFetch(false);
     }
-  }, [data, dispatch, alreadyLoggedIn]);
+  }, [data, dispatch]);
 
   return (
     <Router>
@@ -149,16 +149,14 @@ function App() {
             }
           />
         </Route>
-        <Route path="" element={<PrivateRoute />}>
-          <Route
-            path="/stripe/payment/successful"
-            element={
-              <Layout>
-                <Stripe_Successful />
-              </Layout>
-            }
-          />
-        </Route>
+        <Route
+          path="/stripe/payment/successful"
+          element={
+            <Layout>
+              <Stripe_Successful />
+            </Layout>
+          }
+        />
         <Route
           path="*"
           element={

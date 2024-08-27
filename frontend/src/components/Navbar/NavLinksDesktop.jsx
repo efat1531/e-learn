@@ -13,6 +13,7 @@ const routes = [
   { path: "/become-an-instructor", label: "Become an Instructor" },
   { path: "/forum", label: "Forum" },
   { path: "/shop", label: "Shop" },
+  { path: "/cart/checkout", label: "Cart" },
 ];
 
 const NavList = () => {

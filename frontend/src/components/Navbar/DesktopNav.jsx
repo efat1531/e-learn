@@ -12,7 +12,8 @@ import { useLocation } from "react-router-dom";
 
 const DesktopNav = () => {
   const profilePicture = useSelector((state) => state.auth.profilePicture);
-  const userID = useSelector((state) => state.auth.id);
+  const { authenticated } = useSelector((state) => state.auth);
+  console.log(authenticated);
   const { pathname } = useLocation();
 
   return (
@@ -52,7 +53,7 @@ const DesktopNav = () => {
             </button>
           </div>
           {/* <!-- Create Account Button --> */}
-          {!userID && (
+          {!authenticated && (
             <div className="flex gap-3">
               <Link to="/register" className="group">
                 <Button title="Create Account" />

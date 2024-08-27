@@ -44,8 +44,6 @@ const orderSchema = mongoose.Schema(
   }
 );
 
-orderSchema.index({ "paymentResult.transaction_id": 1 }, { unique: true });
-
 const Order = mongoose.model("Order", orderSchema);
 
 export default Order;

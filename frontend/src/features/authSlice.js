@@ -7,7 +7,8 @@ const initialState = {
   email: null,
   courseList: [],
   profilePicture: null,
-  loggedIn: false,
+  authenticated: false,
+  needFetch: true,
 };
 
 const authSlice = createSlice({
@@ -28,7 +29,8 @@ const authSlice = createSlice({
       state.email = action.payload.email;
       state.courseList = action.payload.courses;
       state.profilePicture = action.payload.profilePicture;
-      state.loggedIn = true;
+      state.authenticated = true;
+      state.needFetch = false;
     },
   },
 });
