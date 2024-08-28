@@ -25,6 +25,7 @@ import StuDashboard from "./components/StudentDashboard/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
 import Checkout from "./pages/Checkout";
 import Stripe_Successful from "./pages/Stripe_Successful";
+import LayoutMin from "./components/LayoutMin";
 
 function App() {
   const dispatch = useDispatch();
@@ -57,17 +58,17 @@ function App() {
         <Route
           path="/login"
           element={
-            <Layout>
+            <LayoutMin>
               <Login />
-            </Layout>
+            </LayoutMin>
           }
         />
         <Route
           path="/register"
           element={
-            <Layout>
+            <LayoutMin>
               <Register />
-            </Layout>
+            </LayoutMin>
           }
         />
         <Route

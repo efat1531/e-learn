@@ -13,7 +13,6 @@ import { useLocation } from "react-router-dom";
 const DesktopNav = () => {
   const profilePicture = useSelector((state) => state.auth.profilePicture);
   const { authenticated } = useSelector((state) => state.auth);
-  console.log(authenticated);
   const { pathname } = useLocation();
 
   return (
