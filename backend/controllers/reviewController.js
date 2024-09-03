@@ -49,7 +49,7 @@ const getReview = asyncHandler(async (req, res) => {
     select: "name email",
   });
   if (!review) {
-    throw new AppError.notFound("Review not found. Please try again.");
+    throw AppError.notFound("Review not found. Please try again.");
   }
   res.status(200).json({
     status: "success",
@@ -64,7 +64,7 @@ const createReview = asyncHandler(async (req, res) => {
   req.body.user = req.user._id;
 
   if (!req.params.courseId) {
-    throw new AppError.badRequest("Please provide a course ID.");
+    throw AppError.badRequest("Please provide a course ID.");
   }
 
   const reviewFields = {
@@ -80,13 +80,13 @@ const createReview = asyncHandler(async (req, res) => {
   });
 
   if (previousReview) {
-    throw new AppError.badRequest("You have already reviewed this course.");
+    throw AppError.badRequest("You have already reviewed this course.");
   }
 
   const ifAllowed = await req.user.checkIfAllowedToReview(req.params.courseId);
 
   if (!ifAllowed && req.user.role !== "admin") {
-    throw new AppError.badRequest(
+    throw AppError.badRequest(
       "You are not allowed to review this course. Please try again."
     );
   }
@@ -106,11 +106,11 @@ const createReview = asyncHandler(async (req, res) => {
 const updateReview = asyncHandler(async (req, res) => {
   let review = await reviewModel.findById(req.params.id);
   if (!review) {
-    throw new AppError.notFound("Review not found. Please try again.");
+    throw AppError.notFound("Review not found. Please try again.");
   }
 
   if (review.user.toString() !== req.user._id.toString()) {
-    throw new AppError.unauthorized(
+    throw AppError.unauthorized(
       "You are not authorized to update this review."
     );
   }
@@ -141,14 +141,14 @@ const updateReview = asyncHandler(async (req, res) => {
 const deleteReview = asyncHandler(async (req, res) => {
   const review = await reviewModel.findById(req.params.id);
   if (!review) {
-    throw new AppError.notFound("Review not found. Please try again.");
+    throw AppError.notFound("Review not found. Please try again.");
   }
 
   if (
     review.user.toString() !== req.user._id.toString() &&
     req.user.role !== "admin"
   ) {
-    throw new AppError.unauthorized(
+    throw AppError.unauthorized(
       "You are not authorized to delete this review."
     );
   }

@@ -38,7 +38,7 @@ const createOrder = asyncHandler(async (req, res) => {
   );
 
   if (hasBrought) {
-    throw new AppError.badRequest("You have already purchased this course");
+    throw AppError.badRequest("You have already purchased this course");
   }
 
   const paymentResult = {

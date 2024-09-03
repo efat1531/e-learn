@@ -21,7 +21,7 @@ const register = asyncHandler(async (req, res) => {
 
   // Check if user exists
   if (userExists) {
-    throw new AppError.badRequest("Account with this email already exists.");
+    throw AppError.badRequest("Account with this email already exists.");
   }
 
   // Create user
@@ -59,11 +59,11 @@ const verifyUser = asyncHandler(async (req, res) => {
   const user = await userModel.findOne({ email });
 
   if (!user) {
-    throw new AppError.notFound("No account found with this email.");
+    throw AppError.notFound("No account found with this email.");
   }
 
   if (user.isVerified) {
-    throw new AppError.badRequest("This account is already verified.");
+    throw AppError.badRequest("This account is already verified.");
   }
 
   const oldToken = await tokenModel.findOne({
@@ -72,19 +72,19 @@ const verifyUser = asyncHandler(async (req, res) => {
   });
 
   if (!oldToken) {
-    throw new AppError.badRequest("Invalid token. Please request a new one.");
+    throw AppError.badRequest("Invalid token. Please request a new one.");
   }
 
   const isMatch = await oldToken.isCorrect(token);
 
   if (!isMatch) {
-    throw new AppError.badRequest("Invalid token. Please request a new one.");
+    throw AppError.badRequest("Invalid token. Please request a new one.");
   }
 
   const isValid = oldToken.isValid();
 
   if (!isValid) {
-    throw new AppError.badRequest("Token expired. Please request a new one.");
+    throw AppError.badRequest("Token expired. Please request a new one.");
   }
 
   // Delete token
@@ -116,11 +116,11 @@ const resendToken = asyncHandler(async (req, res) => {
   });
 
   if (!user) {
-    throw new AppError.notFound("No account found with this email.");
+    throw AppError.notFound("No account found with this email.");
   }
 
   if (user.isVerified) {
-    throw new AppError.badRequest("This account is already verified.");
+    throw AppError.badRequest("This account is already verified.");
   }
 
   const oldToken = await tokenModel.findOne({
@@ -156,13 +156,13 @@ const login = asyncHandler(async (req, res) => {
   const user = await userModel.findOne({ email }).select("+password");
 
   if (!user) {
-    throw new AppError.notFound("No account found with this email.");
+    throw AppError.notFound("No account found with this email.");
   }
 
   const isMatch = await user.matchPassword(password);
 
   if (!user || !isMatch) {
-    throw new AppError.badRequest("Invalid email or password");
+    throw AppError.badRequest("Invalid email or password");
   }
 
   // JWT Cookie
@@ -187,7 +187,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
   });
 
   if (!existingUser) {
-    throw new AppError.notFound("No account found with this email.");
+    throw AppError.notFound("No account found with this email.");
   }
 
   const token = await generateOTPToken(existingUser, "reset");
@@ -219,7 +219,7 @@ const verifyResetPasswordRequest = asyncHandler(async (req, res) => {
   });
 
   if (!user) {
-    throw new AppError.notFound("No account found with this email.");
+    throw AppError.notFound("No account found with this email.");
   }
 
   const existingToken = await tokenModel.findOne({
@@ -231,13 +231,13 @@ const verifyResetPasswordRequest = asyncHandler(async (req, res) => {
   const isMatch = await existingToken.isCorrect(token);
 
   if (!existingToken || !isMatch) {
-    throw new AppError.badRequest("Invalid token. Please request a new one.");
+    throw AppError.badRequest("Invalid token. Please request a new one.");
   }
 
   const isValid = existingToken.isValid();
 
   if (!isValid) {
-    throw new AppError.badRequest("Token expired. Please request a new one.");
+    throw AppError.badRequest("Token expired. Please request a new one.");
   }
 
   // Mark token as used
@@ -265,7 +265,7 @@ const resetPassword = asyncHandler(async (req, res) => {
     .select("+password");
 
   if (!existingUser) {
-    throw new AppError.notFound("No account found with this email.");
+    throw AppError.notFound("No account found with this email.");
   }
 
   const existingToken = await tokenModel.findOne({
@@ -275,13 +275,13 @@ const resetPassword = asyncHandler(async (req, res) => {
   });
 
   if (!existingToken) {
-    throw new AppError.badRequest("Invalid token. Please request a new one.");
+    throw AppError.badRequest("Invalid token. Please request a new one.");
   }
 
   const previousPassword = await existingUser.matchPassword(password);
 
   if (previousPassword) {
-    throw new AppError.badRequest(
+    throw AppError.badRequest(
       "New password cannot be the same as the current password."
     );
   }

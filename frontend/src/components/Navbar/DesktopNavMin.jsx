@@ -9,7 +9,7 @@ const DesktopNavMin = () => {
   const path = location.pathname;
   return (
     <div className="w-full py-5 px-[18.25rem] flex justify-between items-center">
-      <NavLink className="flex items-center gap-2 justify-center">
+      <NavLink className="flex items-center gap-2 justify-center" to={"/home"}>
         <ReactSVG
           src={Logo}
           beforeInjection={(svg) => {

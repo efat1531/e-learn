@@ -20,7 +20,10 @@ const DesktopNav = () => {
       <NavLinks />
       <div className="flex px-8 py-[1.81rem] items-center justify-between shadow-[inset_0px_-1px_0px_0px_#E9EAF0]">
         {/* Logo */}
-        <NavLink className="flex items-center gap-2 justify-center">
+        <NavLink
+          className="flex items-center gap-2 justify-center"
+          to={"/home"}
+        >
           <ReactSVG
             src={Logo}
             beforeInjection={(svg) => {

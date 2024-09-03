@@ -12,7 +12,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
   const existingUser = await userModel.findById(req.user._id).select("+role");
 
   if (!existingUser) {
-    throw new AppError.notFound("User not found. Please try again.");
+    throw AppError.notFound("User not found. Please try again.");
   }
 
   res.status(201).json({
@@ -28,7 +28,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   const existingUser = await userModel.findById(req.user._id);
 
   if (!existingUser) {
-    throw new AppError.notFound("User not found. Please try again.");
+    throw AppError.notFound("User not found. Please try again.");
   }
   const updateFields = ["name", "address", "profilePicture"];
 
@@ -70,17 +70,17 @@ const updateUserPassword = asyncHandler(async (req, res) => {
   const { currentPassword, newPassword } = req.body;
 
   if (!existingUser) {
-    throw new AppError.notFound("User not found. Please try again.");
+    throw AppError.notFound("User not found. Please try again.");
   }
 
   const isPasswordMatch = await existingUser.matchPassword(currentPassword);
 
   if (!isPasswordMatch) {
-    throw new AppError.badRequest("Invalid password. Please try again.");
+    throw AppError.badRequest("Invalid password. Please try again.");
   }
 
   if (currentPassword === newPassword) {
-    throw new AppError.badRequest(
+    throw AppError.badRequest(
       "New password cannot be same as old password. Please try again."
     );
   }
@@ -138,7 +138,7 @@ const deleteUser = asyncHandler(async (req, res) => {
   const existingUser = await userModel.findByIdAndDelete(req.user._id);
 
   if (!existingUser) {
-    throw new AppError.notFound("User not found. Please try again.");
+    throw AppError.notFound("User not found. Please try again.");
   }
 
   res.status(200).json({

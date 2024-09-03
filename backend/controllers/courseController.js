@@ -74,7 +74,7 @@ const getCourse = asyncHandler(async (req, res) => {
     });
 
   if (!course) {
-    throw new AppError.notFound("Course not found. Please try again.");
+    throw AppError.notFound("Course not found. Please try again.");
   }
 
   res.status(200).json({
@@ -113,7 +113,7 @@ const createCourse = asyncHandler(async (req, res) => {
   const existingCourse = await courseModel.findOne({ slug });
 
   if (existingCourse) {
-    throw new AppError.badRequest("Course with this title already exists.");
+    throw AppError.badRequest("Course with this title already exists.");
   }
 
   const requiredFields = [
@@ -132,7 +132,7 @@ const createCourse = asyncHandler(async (req, res) => {
   ];
 
   if (!areFieldsValid(req.body, requiredFields)) {
-    throw new AppError.badRequest("Please fill all the required fields.");
+    throw AppError.badRequest("Please fill all the required fields.");
   }
 
   const courseData = {
@@ -192,13 +192,11 @@ const updateCourse = asyncHandler(async (req, res) => {
     .populate("courseContent.sectionContainer");
 
   if (!course) {
-    throw new AppError.notFound("Course not found. Please try again.");
+    throw AppError.notFound("Course not found. Please try again.");
   }
 
   if (course.instructor.toString() !== req.user._id.toString()) {
-    throw new AppError.unauthorized(
-      "You are not authorized to update this course"
-    );
+    throw AppError.unauthorized("You are not authorized to update this course");
   }
 
   const allowedFields = [
@@ -228,10 +226,10 @@ const updateCourse = asyncHandler(async (req, res) => {
     const price = updateData.price || course.price;
     const discount = updateData.discount || course.discount;
     if (discount > price) {
-      throw new AppError.badRequest("Discount cannot be greater than price.");
+      throw AppError.badRequest("Discount cannot be greater than price.");
     }
     if (price <= 0) {
-      throw new AppError.badRequest("Price must be greater than 0.");
+      throw AppError.badRequest("Price must be greater than 0.");
     }
   }
 
@@ -257,20 +255,18 @@ const updateCourse = asyncHandler(async (req, res) => {
 const deleteCourse = asyncHandler(async (req, res) => {
   const course = await courseModel.findOne({ slug: req.params.slug });
   if (!course) {
-    throw new AppError.notFound("Course not found. Please try again.");
+    throw AppError.notFound("Course not found. Please try again.");
   }
 
   if (
     course.instructor.toString() !== req.user._id.toString() &&
     req.user.role !== "admin"
   ) {
-    throw new AppError.unauthorized(
-      "You are not authorized to delete this course"
-    );
+    throw AppError.unauthorized("You are not authorized to delete this course");
   }
 
   if (course.courseStudents > 0) {
-    throw new AppError.badRequest(
+    throw AppError.badRequest(
       "Course cannot be deleted as students are enrolled."
     );
   }
@@ -305,11 +301,11 @@ const deleteCourse = asyncHandler(async (req, res) => {
 const deleteLecture = asyncHandler(async (req, res) => {
   const course = await courseModel.findOne({ slug: req.params.slug });
   if (!course) {
-    throw new AppError.notFound("Course not found. Please try again.");
+    throw AppError.notFound("Course not found. Please try again.");
   }
 
   if (course.instructor.toString() !== req.user._id.toString()) {
-    throw new AppError.unauthorized(
+    throw AppError.unauthorized(
       "You are not authorized to delete this lecture."
     );
   }
@@ -319,7 +315,7 @@ const deleteLecture = asyncHandler(async (req, res) => {
   );
 
   if (!section) {
-    throw new AppError.notFound("Section not found. Please try again.");
+    throw AppError.notFound("Section not found. Please try again.");
   }
 
   const lectureIndex = section.sectionContainer.findIndex(
@@ -327,7 +323,7 @@ const deleteLecture = asyncHandler(async (req, res) => {
   );
 
   if (lectureIndex === -1) {
-    throw new AppError.notFound("Lecture not found. Please try again.");
+    throw AppError.notFound("Lecture not found. Please try again.");
   }
 
   section.sectionContainer.splice(lectureIndex, 1);
@@ -351,11 +347,11 @@ const updateLecture = asyncHandler(async (req, res) => {
     .findOne({ slug: req.params.slug })
     .populate("courseContent.sectionContainer");
   if (!course) {
-    throw new AppError.notFound("Course not found. Please try again.");
+    throw AppError.notFound("Course not found. Please try again.");
   }
 
   if (course.instructor.toString() !== req.user._id.toString()) {
-    throw new AppError.unauthorized(
+    throw AppError.unauthorized(
       "You are not authorized to update this lecture."
     );
   }
@@ -397,13 +393,11 @@ const createLecture = asyncHandler(async (req, res) => {
   const course = await courseModel.findOne({ slug: req.params.slug });
 
   if (!course) {
-    throw new AppError.notFound("Course not found. Please try again.");
+    throw AppError.notFound("Course not found. Please try again.");
   }
 
   if (course.instructor.toString() !== req.user._id.toString()) {
-    throw new AppError.unauthorized(
-      "You are not authorized to create lecture."
-    );
+    throw AppError.unauthorized("You are not authorized to create lecture.");
   }
 
   const section = course.courseContent.find(
@@ -411,7 +405,7 @@ const createLecture = asyncHandler(async (req, res) => {
   );
 
   if (!section) {
-    throw new AppError.notFound("Section not found. Please try again.");
+    throw AppError.notFound("Section not found. Please try again.");
   }
 
   const allowedFields = [

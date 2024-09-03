@@ -11,8 +11,8 @@ const routes = [
   { path: "/contact", label: "Contact" },
   { path: "/courses", label: "Courses" },
   { path: "/become-an-instructor", label: "Become an Instructor" },
-  { path: "/forum", label: "Forum" },
-  { path: "/shop", label: "Shop" },
+  // { path: "/forum", label: "Forum" },
+  // { path: "/shop", label: "Shop" },
   { path: "/cart/checkout", label: "Cart" },
 ];
 
