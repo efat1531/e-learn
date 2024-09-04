@@ -96,7 +96,7 @@ const AdminCourseCard = ({ course }) => {
                   <Link to={`/courses/${course.slug}`} className="block px-4 py-2 hover:bg-Primary-500 hover:text-white">View Details</Link>
                 </li>
                 <li>
-                  <Link to="" className="block px-4 py-2 hover:bg-Primary-500 hover:text-white">Edit Course</Link>
+                  <Link to={`/dashboard/edit-course/${course.slug}`} className="block px-4 py-2 hover:bg-Primary-500 hover:text-white">Edit Course</Link>
                 </li>
                 <li>
                   <Link to="" className="block px-4 py-2 hover:bg-Primary-500 hover:text-white">Delete Course</Link>

@@ -24,6 +24,7 @@ import { setUser } from "./features/userSlice";
 import { useEffect } from "react";
 import CreateCourse from "./pages/CreateCourse";
 import AdminCourses from "./pages/AdminCourses";
+import EditCourse from "./pages/EditCourse";
 
 function App() {
   return (
@@ -116,6 +117,14 @@ function App() {
           element={
             <DashboardLayout>
               <CreateCourse />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/dashboard/edit-course/:slug"
+          element={
+            <DashboardLayout>
+              <EditCourse />
             </DashboardLayout>
           }
         />

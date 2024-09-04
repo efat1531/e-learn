@@ -60,7 +60,7 @@ const PublishCourse = ({
             type="button"
             onClick={() => setCurrentTab("curriculum")}
           />
-          <Button title="Submit" secondary type="submit" />
+          <Button title="Update" secondary type="submit" />
         </div>
       </div>
     </>

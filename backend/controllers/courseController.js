@@ -60,19 +60,19 @@ const getCourse = asyncHandler(async (req, res) => {
 // @access  Private/Instructor
 const createCourse = asyncHandler(async (req, res) => {
   const {
-    title,
-    description,
-    duration,
-    price,
-    introVideo,
-    whatYouWillLearn,
-    requirements,
-    discount = 0,
-    discountExpires,
-    courseContent,
-    summary,
-    level,
-    language,
+    title, //
+    description, //
+    duration, //
+    price, //
+    introVideo, //
+    whatYouWillLearn, //
+    requirements, //
+    discount = 0, //
+    discountExpires, //
+    courseContent, //
+    summary, //
+    level, //
+    language, //
   } = req.body;
   const slug = title
     .replace(/[^\w\s]/gi, "")
@@ -123,6 +123,8 @@ const createCourse = asyncHandler(async (req, res) => {
   }
 
   courseData.courseContent = courseContentProcess;
+
+  return res.send('ok');
 
   const course = await courseModel.create(courseData);
 

@@ -19,7 +19,8 @@ router.use("/:courseId/reviews", reviewRouter);
 router
   .route("/")
   .get(getCourses)
-  .post(protect(["instructor"]), createCourse);
+  .post(createCourse);
+  // .post(protect(["instructor"]), createCourse);
 router
   .route("/:slug")
   .get(getCourse)
