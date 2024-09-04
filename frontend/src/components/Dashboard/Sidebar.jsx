@@ -57,7 +57,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 <IoAddCircleOutline /> Create New Course
               </NavLink>
               <NavLink
-                to={"/dashboard/all-courses"}
+                to={"/dashboard/courses"}
                 className="dashboardNavLinks"
                 end
               >

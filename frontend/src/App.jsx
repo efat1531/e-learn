@@ -23,6 +23,7 @@ import { useFetchUserQuery } from "./features/api/userApiSlice";
 import { setUser } from "./features/userSlice";
 import { useEffect } from "react";
 import CreateCourse from "./pages/CreateCourse";
+import AdminCourses from "./pages/AdminCourses";
 
 function App() {
   return (
@@ -115,6 +116,14 @@ function App() {
           element={
             <DashboardLayout>
               <CreateCourse />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/dashboard/courses"
+          element={
+            <DashboardLayout>
+              <AdminCourses />
             </DashboardLayout>
           }
         />

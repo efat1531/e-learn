@@ -130,7 +130,7 @@ const Curriculum = ({
             title="Save & Next"
             secondary
             type="button"
-            onClick={() => setCurrentTab("curriculum")}
+            onClick={() => setCurrentTab("publish")}
           />
         </div>
       </div>
