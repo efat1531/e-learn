@@ -14,7 +14,7 @@ const CurriculumSection = ({
   editLectureName,
   deleteSection,
   deleteLecture,
-  addVideoToLecture,
+  addContentToLecture,
   addFileToLecture
 }) => {
   //   console.log(data);
@@ -64,7 +64,7 @@ const CurriculumSection = ({
             sectionIndex={index}
             lectureIndex={ind}
             deleteLecture={deleteLecture}
-            addVideoToLecture={addVideoToLecture}
+            addContentToLecture={addContentToLecture}
             addFileToLecture={addFileToLecture}
           />
         ))}

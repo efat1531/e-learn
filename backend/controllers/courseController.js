@@ -124,7 +124,7 @@ const createCourse = asyncHandler(async (req, res) => {
 
   courseData.courseContent = courseContentProcess;
 
-  return res.send('ok');
+  return res.send(courseData);
 
   const course = await courseModel.create(courseData);
 

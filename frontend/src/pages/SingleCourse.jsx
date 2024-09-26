@@ -29,6 +29,9 @@ const SingleCourse = () => {
 
   if (isLoading || error) return null;
 
+  console.log(data);
+  
+
   const canReview = () => {
     return (
       user &&

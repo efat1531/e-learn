@@ -71,7 +71,7 @@ const Curriculum = ({
     setCurriculums(newSection);
   };
 
-  const addVideoToLecture = (sectionIndex, lectureIndex, value) => {
+  const addContentToLecture = (sectionIndex, lectureIndex, value) => {
     const newSection = _.cloneDeep(curriculums);
     newSection[sectionIndex].lectures[lectureIndex].videoURL = value;
 
@@ -102,7 +102,7 @@ const Curriculum = ({
             editLectureName={editLectureName}
             deleteSection={deleteSection}
             deleteLecture={deleteLecture}
-            addVideoToLecture={addVideoToLecture}
+            addContentToLecture={addContentToLecture}
             addFileToLecture={addFileToLecture}
           />
         ))}

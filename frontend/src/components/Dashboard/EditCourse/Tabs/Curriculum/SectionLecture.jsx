@@ -13,7 +13,7 @@ const SectionLecture = ({
   lectureIndex,
   editLectureName,
   deleteLecture,
-  addVideoToLecture,
+  addContentToLecture,
   addFileToLecture,
 }) => {
   const [editLectureNameModalOpen, setEditLectureNameModalOpen] =
@@ -102,7 +102,7 @@ const SectionLecture = ({
           setAddVideoModal={setAddVideoModal}
           sectionIndex={sectionIndex}
           lectureIndex={lectureIndex}
-          addVideoToLecture={addVideoToLecture}
+          addContentToLecture={addContentToLecture}
         />
       )}
       {addFileModalOpen && (

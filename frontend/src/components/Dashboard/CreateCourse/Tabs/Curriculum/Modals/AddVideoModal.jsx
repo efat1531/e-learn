@@ -3,15 +3,18 @@ import { X } from "lucide-react";
 import Button from "../../../../../ui/Button";
 import Input from "../../../../../ui/Input";
 import { useState } from "react";
+import TextArea from "../../../../../ui/TextArea";
 
 const AddVideoModal = ({
-  url,
+  content,
   setAddVideoModal,
   sectionIndex,
   lectureIndex,
-  addVideoToLecture,
+  addContentToLecture,
 }) => {
-  const [videoURL, setVideoURL] = useState(url);
+  const [contentURL, setContentURL] = useState(content.contentURL);
+  const [contentDuration, setContentDuration] = useState(content.contentDuration);
+  const [contentDescription, setContentDescription] = useState(content.contentDescription);
 
   const handleOutsideClick = (e) => {
     if (e.target.classList.contains("modalContainer")) {
@@ -21,7 +24,12 @@ const AddVideoModal = ({
 
   const handleSubmit = () => {
     // console.log(videoURL);
-    addVideoToLecture(sectionIndex, lectureIndex, videoURL);
+    addContentToLecture(sectionIndex, lectureIndex, {
+      contentType: 'video',
+      contentURL: contentURL,
+      contentDuration: Number(contentDuration),
+      contentDescription: contentDescription
+    });
     setAddVideoModal(false);
   };
 
@@ -44,13 +52,33 @@ const AddVideoModal = ({
         <div className="p-4">
           <div className="row">
             <Input
-              id="lectureName"
-              label="Video"
+              id="videoURL"
+              label="Video URL"
               placeholder="Enter your video URL here..."
               required
+              type="url"
+              value={contentURL}
+              onChange={(e) => setContentURL(e.target.value)}
+            />
+            <Input
+              id="contentDuration"
+              label="Video Duration (in minutes)"
+              placeholder="Enter your video duration here..."
+              required
+              type="number"
+              value={contentDuration}
+              onChange={(e) => setContentDuration(e.target.value)}
+            />
+          </div>
+          <div className="row mt-4">
+            <TextArea
+              id="contentDescription"
+              label="Video Description"
+              placeholder="Enter your video description here..."
+              required
               type="text"
-              value={videoURL}
-              onChange={(e) => setVideoURL(e.target.value)}
+              value={contentDescription}
+              onChange={(e) => setContentDescription(e.target.value)}
             />
           </div>
           {/* Button */}
