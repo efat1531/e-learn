@@ -1,6 +1,10 @@
-import React from "react";
-import StudentProfile from "../components/StudentDashboard/StudentProfile";
+import React, { Suspense, lazy } from "react";
 import { Outlet } from "react-router-dom";
+
+// Lazy load the StudentProfile component
+const StudentProfile = lazy(() =>
+  import("../components/StudentDashboard/StudentProfile")
+);
 
 function StudentDashboard() {
   return (
@@ -10,7 +14,9 @@ function StudentDashboard() {
       {/* Main Container */}
       <div className="w-full py-20">
         <div className="flex flex-col items-start gap-10 max-w-[82.5rem] mx-auto bg-white">
-          <StudentProfile />
+          <Suspense fallback={<div>Loading Student Profile...</div>}>
+            <StudentProfile />
+          </Suspense>
           <Outlet />
         </div>
       </div>

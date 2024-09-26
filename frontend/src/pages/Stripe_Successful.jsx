@@ -1,11 +1,13 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, Suspense, lazy } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import PageHeader from "../components/Common/PageHeader";
 import { useUpdateStripePaymentSessionMutation } from "../features/api/paymentApiSlice";
 import { toastManager } from "../components/ui/toastGeneral";
 import { calculateDiscountPercentageByPriceRealPrice } from "../utils/Calculation.js";
-import Button from "../components/ui/Button";
+
+// Lazy load components
+const PageHeader = lazy(() => import("../components/Common/PageHeader"));
+const Button = lazy(() => import("../components/ui/Button"));
 
 const breadcrumb = [
   {
@@ -82,7 +84,9 @@ function Stripe_Successful() {
 
   return (
     <div className="w-full">
-      <PageHeader title="Payment Successful" breadcrumb={breadcrumb} />
+      <Suspense fallback={<div>Loading Page Header...</div>}>
+        <PageHeader title="Payment Successful" breadcrumb={breadcrumb} />
+      </Suspense>
       <div className="py-20 max-w-[30rem] mx-auto">
         <div className="flex flex-col gap-10">
           <div className="flex flex-col pb-6 gap-2">
@@ -213,11 +217,13 @@ function Stripe_Successful() {
             </div>
           </div>
           <div className="w-full px-5">
-            <Button
-              title="Go Home"
-              className={"w-full "}
-              onClick={handleGoToHomeButton}
-            />
+            <Suspense fallback={<div>Loading Button...</div>}>
+              <Button
+                title="Go Home"
+                className={"w-full "}
+                onClick={handleGoToHomeButton}
+              />
+            </Suspense>
           </div>
         </div>
       </div>
