@@ -5,32 +5,31 @@ import Input from "../../../../../ui/Input";
 import { useState } from "react";
 import TextArea from "../../../../../ui/TextArea";
 
-const AddVideoModal = ({
+const AddDocumentModal = ({
   content,
-  setAddVideoModal,
+  setAddDocumentModal,
   sectionIndex,
   lectureIndex,
   addContentToLecture,
 }) => {
   const [contentURL, setContentURL] = useState(content.contentURL);
-  const [contentDuration, setContentDuration] = useState(content.contentDuration);
   const [contentDescription, setContentDescription] = useState(content.contentDescription);
 
   const handleOutsideClick = (e) => {
     if (e.target.classList.contains("modalContainer")) {
-      setAddVideoModal(false);
+      setAddDocumentModal(false);
     }
   };
 
   const handleSubmit = () => {
     // console.log(videoURL);
     addContentToLecture(sectionIndex, lectureIndex, {
-      contentType: 'video',
+      contentType: 'document',
       contentURL: contentURL,
-      contentDuration: Number(contentDuration),
+      contentDuration: 0,
       contentDescription: contentDescription
     });
-    setAddVideoModal(false);
+    setAddDocumentModal(false);
   };
 
   return (
@@ -40,10 +39,10 @@ const AddVideoModal = ({
     >
       <div className="max-w-[768px] mx-auto mt-40 bg-white">
         <div className="border-b p-4 flex justify-between">
-          <h5>Add Video</h5>
+          <h5>Add Document</h5>
           <span
             className="text-CustomGray-400 cursor-pointer"
-            onClick={() => setAddVideoModal(false)}
+            onClick={() => setAddDocumentModal(false)}
           >
             <X />
           </span>
@@ -53,28 +52,19 @@ const AddVideoModal = ({
           <div className="row">
             <Input
               id="videoURL"
-              label="Video URL"
-              placeholder="Enter your video URL here..."
+              label="Document URL"
+              placeholder="Enter your document url here..."
               required
               type="url"
               value={contentURL}
               onChange={(e) => setContentURL(e.target.value)}
-            />
-            <Input
-              id="contentDuration"
-              label="Video Duration (in minutes)"
-              placeholder="Enter your video duration here..."
-              required
-              type="number"
-              value={contentDuration}
-              onChange={(e) => setContentDuration(e.target.value)}
-            />
+            />    
           </div>
           <div className="row mt-4">
             <TextArea
               id="contentDescription"
-              label="Video Description"
-              placeholder="Enter your video description here..."
+              label="Document Description"
+              placeholder="Enter your document description here..."
               required
               type="text"
               value={contentDescription}
@@ -102,4 +92,4 @@ const AddVideoModal = ({
     </div>
   );
 };
-export default AddVideoModal;
+export default AddDocumentModal;

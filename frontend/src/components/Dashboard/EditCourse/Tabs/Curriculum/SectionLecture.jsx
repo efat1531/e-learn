@@ -6,6 +6,7 @@ import EditLectureNameModal from "./Modals/EditLectureNameModal";
 import { useState } from "react";
 import AddVideoModal from "./Modals/AddVideoModal";
 import AddFileModal from "./Modals/AddFileModal";
+import AddDocumentModal from "./Modals/AddDocumentModal";
 
 const SectionLecture = ({
   lecture,
@@ -14,7 +15,7 @@ const SectionLecture = ({
   editLectureName,
   deleteLecture,
   addContentToLecture,
-  addFileToLecture,
+  // addFileToLecture,
 }) => {
   const [editLectureNameModalOpen, setEditLectureNameModalOpen] =
     useState(false);
@@ -23,22 +24,22 @@ const SectionLecture = ({
 
   const [addVideoModal, setAddVideoModal] = useState(false);
 
-  const [addFileModalOpen, setAddFileModalOpen] = useState(false);
+  const [addDocumentModal, setAddDocumentModal] = useState(false);
 
   return (
     <div className="flex justify-between items-center bg-white p-4">
       <div className="flex items-center gap-2">
-        <IoIosMenu className="text-xl" /> {lecture.lectureName}
-        {lecture.videoURL && (
+        <IoIosMenu className="text-xl" /> {lecture.contentTitle}
+        {lecture.contentType == "video" && (
           <span className="px-3 py-1 bg-green-200 rounded-full text-sm">
             {" "}
             Video
           </span>
         )}
-        {lecture.file && (
+        {lecture.contentType == "document" && (
           <span className="px-3 py-1 bg-green-200 rounded-full text-sm">
             {" "}
-            File
+            Document
           </span>
         )}
       </div>
@@ -55,19 +56,24 @@ const SectionLecture = ({
             <div className="absolute bg-white border right-0 mt-2 w-40 z-20">
               <div className="grid gap-2 text-sm">
                 <p
-                  className="px-4 py-2 hover:bg-CustomGray-50 cursor-pointer"
-                  onClick={() => setAddVideoModal(true)}
+                  className={`px-4 py-2 hover:bg-CustomGray-50 cursor-pointer ${
+                    lecture.contentType == "document" && "bg-CustomGray-200 hover:bg-CustomGray-200"
+                  }`}
+                  onClick={() =>
+                    lecture.contentType != "document" && setAddVideoModal(true)
+                  }
                 >
                   Video
                 </p>
                 <p
-                  className="px-4 py-2 hover:bg-CustomGray-50 cursor-pointer"
-                  onClick={() => setAddFileModalOpen(true)}
+                  className={`px-4 py-2 hover:bg-CustomGray-50 cursor-pointer ${
+                    lecture.contentType == "video" && "bg-CustomGray-200 hover:bg-CustomGray-200"
+                  }`}
+                  onClick={() =>
+                    lecture.contentType != "video" && setAddDocumentModal(true)
+                  }
                 >
-                  Attach File
-                </p>
-                <p className="px-4 py-2 hover:bg-CustomGray-50 cursor-pointer">
-                  Description
+                  Document
                 </p>
               </div>
             </div>
@@ -90,7 +96,7 @@ const SectionLecture = ({
       {editLectureNameModalOpen && (
         <EditLectureNameModal
           setEditLectureNameModalOpen={setEditLectureNameModalOpen}
-          name={lecture.lectureName}
+          name={lecture.contentTitle}
           sectionIndex={sectionIndex}
           lectureIndex={lectureIndex}
           editLectureName={editLectureName}
@@ -98,20 +104,20 @@ const SectionLecture = ({
       )}
       {addVideoModal && (
         <AddVideoModal
-          url={lecture.videoURL}
+          content={lecture}
           setAddVideoModal={setAddVideoModal}
           sectionIndex={sectionIndex}
           lectureIndex={lectureIndex}
           addContentToLecture={addContentToLecture}
         />
       )}
-      {addFileModalOpen && (
-        <AddFileModal
-          file={lecture.file}
-          setAddFileModalOpen={setAddFileModalOpen}
+      {addDocumentModal && (
+        <AddDocumentModal
+          content={lecture}
+          setAddDocumentModal={setAddDocumentModal}
           sectionIndex={sectionIndex}
           lectureIndex={lectureIndex}
-          addFileToLecture={addFileToLecture}
+          addContentToLecture={addContentToLecture}
         />
       )}
     </div>

@@ -19,9 +19,6 @@ const validate = (values) => {
   if (!values.description) {
     errors.description = "Description Missing";
   }
-  if (!values.duration) {
-    errors.duration = "Course duration Missing";
-  }
   if (!values.price) {
     errors.price = "Course price Missing";
   }
@@ -57,11 +54,14 @@ const EditCourseForm = ({ tab, setCurrentTab }) => {
       // console.log(data);
       setCourseOutlines(data.data.whatYouWillLearn);
       setCourseRequirements(data.data.requirements);
-      // setCurriculums(data.data.courseContent)
+      setCurriculums(data.data.courseContent)
     }
   }, [data]);
 
   if (isLoading || error) return null;
+
+  console.log(data);
+  
 
   const {
     title,

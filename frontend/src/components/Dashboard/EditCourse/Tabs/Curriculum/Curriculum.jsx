@@ -25,31 +25,46 @@ const Curriculum = ({
     setCurriculums((prev) => [
       ...prev,
       {
-        sectionName: "Section name",
-        lectures: [{ lectureName: "Lecture Name", videoURL: "", file: null }],
+        sectionTitle: "Section name",
+        sectionContainer: [
+          {
+            contentTitle: "Lecture Name",
+            contentURL: "",
+            contentType: "",
+            contentDuration: 0,
+            contentDescription: "",
+          },
+        ],
       },
     ]);
   };
 
   const editSectionName = (index, value) => {
     const newSection = _.cloneDeep(curriculums);
-    newSection[index].sectionName = value;
+    newSection[index].sectionTitle = value;
 
     setCurriculums(newSection);
   };
 
   const editLectureName = (sectionIndex, lectureIndex, value) => {
     const newSection = _.cloneDeep(curriculums);
-    newSection[sectionIndex].lectures[lectureIndex].lectureName = value;
+    newSection[sectionIndex].sectionContainer[lectureIndex].contentTitle =
+      value;
 
     setCurriculums(newSection);
   };
 
   const addSectionLecture = (index) => {
     const newSection = _.cloneDeep(curriculums);
-    newSection[index].lectures = [
-      ...newSection[index].lectures,
-      { lectureName: "Lecture Name" },
+    newSection[index].sectionContainer = [
+      ...newSection[index].sectionContainer,
+      {
+        contentTitle: "Lecture Name",
+        contentURL: "",
+        contentType: "",
+        contentDuration: 0,
+        contentDescription: "",
+      },
     ];
 
     setCurriculums(newSection);
@@ -64,23 +79,20 @@ const Curriculum = ({
 
   const deleteLecture = (sectionIndex, lectureIndex) => {
     let newSection = _.cloneDeep(curriculums);
-    newSection[sectionIndex].lectures = newSection[
+    newSection[sectionIndex].sectionContainer = newSection[
       sectionIndex
-    ].lectures.filter((n, ind) => ind != lectureIndex);
+    ].sectionContainer.filter((n, ind) => ind != lectureIndex);
 
     setCurriculums(newSection);
   };
 
   const addContentToLecture = (sectionIndex, lectureIndex, value) => {
     const newSection = _.cloneDeep(curriculums);
-    newSection[sectionIndex].lectures[lectureIndex].videoURL = value;
-
-    setCurriculums(newSection);
-  };
-
-  const addFileToLecture = (sectionIndex, lectureIndex, value) => {
-    const newSection = _.cloneDeep(curriculums);
-    newSection[sectionIndex].lectures[lectureIndex].file = value;
+    newSection[sectionIndex].sectionContainer[lectureIndex] = {
+      contentTitle:
+        newSection[sectionIndex].sectionContainer[lectureIndex].contentTitle,
+      ...value,
+    };
 
     setCurriculums(newSection);
   };
@@ -103,7 +115,7 @@ const Curriculum = ({
             deleteSection={deleteSection}
             deleteLecture={deleteLecture}
             addContentToLecture={addContentToLecture}
-            addFileToLecture={addFileToLecture}
+            // addFileToLecture={addFileToLecture}
           />
         ))}
         {/* Add More Button */}

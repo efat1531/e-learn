@@ -15,7 +15,7 @@ const CurriculumSection = ({
   deleteSection,
   deleteLecture,
   addContentToLecture,
-  addFileToLecture
+  // addFileToLecture
 }) => {
   //   console.log(data);
   const [editSectionModalOpen, setEditSectionModalOpen] = useState(false);
@@ -28,7 +28,7 @@ const CurriculumSection = ({
           <span className="font-bold flex gap-1 items-center">
             <IoIosMenu className="text-xl" /> Section {index + 1} :
           </span>{" "}
-          {data.sectionName}
+          {data.sectionTitle}
         </p>
         <p className="flex gap-3 text-xl text-CustomGray-400">
           <span
@@ -56,7 +56,7 @@ const CurriculumSection = ({
       </div>
       {/* Body */}
       <div className="mt-4 space-y-4">
-        {data.lectures.map((lecture, ind) => (
+        {data.sectionContainer.map((lecture, ind) => (
           <SectionLecture
             key={ind}
             lecture={lecture}
@@ -65,7 +65,7 @@ const CurriculumSection = ({
             lectureIndex={ind}
             deleteLecture={deleteLecture}
             addContentToLecture={addContentToLecture}
-            addFileToLecture={addFileToLecture}
+            // addFileToLecture={addFileToLecture}
           />
         ))}
       </div>
@@ -74,7 +74,7 @@ const CurriculumSection = ({
         <EditSectionNameModal
           setEditSectionModalOpen={setEditSectionModalOpen}
           editSectionName={editSectionName}
-          name={data.sectionName}
+          name={data.sectionTitle}
           index={index}
         />
       )}

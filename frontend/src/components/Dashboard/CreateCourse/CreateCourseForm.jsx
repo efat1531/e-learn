@@ -17,9 +17,6 @@ const validate = (values) => {
   if (!values.description) {
     errors.description = "Description Missing";
   }
-  if (!values.duration) {
-    errors.duration = "Course duration Missing";
-  }
   if (!values.price) {
     errors.price = "Course price Missing";
   }

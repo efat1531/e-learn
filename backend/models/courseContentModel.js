@@ -13,7 +13,7 @@ const courseContentItemsSchema = mongoose.Schema({
   contentURL: {
     type: String,
     required: true,
-    select: false,
+    select: true,
   },
   contentDuration: {
     type: Number,
@@ -21,7 +21,7 @@ const courseContentItemsSchema = mongoose.Schema({
   },
   contentDescription: {
     type: String,
-    select: false,
+    select: true,
   },
   comments: [
     {
