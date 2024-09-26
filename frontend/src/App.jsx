@@ -1,9 +1,12 @@
 import { useEffect, useState, Suspense, lazy } from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { Navigate } from "react-router";
-
-import { useFetchUserQuery } from "./features/api/userApiSlice";
+import {
+  Route,
+  BrowserRouter as Router,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useFetchUserQuery } from "./features/api/userApiSlice";
 import { setUserInformation } from "./features/authSlice";
 
 import ScrollToTop from "./components/ui/ScrollToTop";
@@ -31,6 +34,8 @@ const StuDashboard = lazy(() =>
 const CreateCourse = lazy(() => import("./pages/CreateCourse"));
 const Checkout = lazy(() => import("./pages/Checkout"));
 const Stripe_Successful = lazy(() => import("./pages/Stripe_Successful"));
+const AdminCourses = lazy(() => import("./pages/AdminCourses"));
+const EditCourse = lazy(() => import("./pages/EditCourse"));
 
 function App() {
   const dispatch = useDispatch();
@@ -45,7 +50,7 @@ function App() {
       dispatch(setUserInformation(data.data));
       setNeedFetch(false);
     }
-  }, [data, dispatch]);
+  }, [data, dispatch, authenticated]);
 
   return (
     <Router>
@@ -108,7 +113,7 @@ function App() {
                 <Courses />
               </Layout>
             }
-          ></Route>
+          />
           <Route
             path="/courses/:slug"
             element={
@@ -141,6 +146,22 @@ function App() {
               </DashboardLayout>
             }
           />
+          <Route
+            path="/dashboard/edit-course/:slug"
+            element={
+              <DashboardLayout>
+                <EditCourse />
+              </DashboardLayout>
+            }
+          />
+          <Route
+            path="/dashboard/courses"
+            element={
+              <DashboardLayout>
+                <AdminCourses />
+              </DashboardLayout>
+            }
+          />
           <Route path="" element={<PrivateRoute />}>
             <Route
               path="/student"
@@ -153,8 +174,6 @@ function App() {
               <Route index element={<Navigate to="dashboard" replace />} />
               <Route path="dashboard" element={<StuDashboard />} />
             </Route>
-          </Route>
-          <Route path="" element={<PrivateRoute />}>
             <Route
               path="/cart/checkout"
               element={

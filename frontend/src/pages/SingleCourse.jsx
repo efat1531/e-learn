@@ -57,6 +57,9 @@ const SingleCourse = () => {
 
   if (isLoading || error || !selectedCourse) return null;
 
+  console.log(data);
+  
+
   const canReview = () => {
     if (!courseList.includes(selectedCourse._id)) return false;
     if (selectedCourse.reviews.length > 0) {

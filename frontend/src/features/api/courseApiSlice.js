@@ -19,6 +19,20 @@ const courseApiSlice = apiSlice.injectEndpoints({
       query: ({ limit }) => `${COURSE_URL}/recent?limit=${limit}`,
       keepUnusedDataFor: 5,
     }),
+    createCourse: builder.mutation({
+      query: (body) => ({
+        url: `${COURSE_URL}`,
+        method: "POST",
+        body: body,
+      }),
+    }),
+    updateCourse: builder.mutation({
+      query: ({ slug, body }) => ({
+        url: `${COURSE_URL}/${slug}`,
+        method: "PATCH",
+        body: body,
+      }),
+    }),
   }),
 });
 
@@ -27,4 +41,6 @@ export const {
   useFetchCourseQuery,
   useFetchTopCourseQuery,
   useFetchRecentCourseQuery,
+  useCreateCourseMutation,
+  useUpdateCourseMutation,
 } = courseApiSlice;

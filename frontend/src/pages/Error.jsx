@@ -1,7 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { useNavigate } from "react-router-dom";
 import Error404 from "../assets/images/Error404.png";
-import SkeletonLoader from "../components/ui/SkeletonLoader";
 
 // Lazy load the Button component
 const Button = lazy(() => import("../components/ui/Button"));
@@ -27,7 +26,7 @@ const MainErrorPage = () => {
           Something went wrong. It&apos;s look that your requested could not be
           found. It&apos;s look like the link is broken or the page is removed.
         </div>
-        <Suspense fallback={<SkeletonLoader width="100px" height="40px" />}>
+        <Suspense fallback={null}>
           <Button
             title="Go Back"
             className={"max-w-36"}

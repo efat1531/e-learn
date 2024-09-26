@@ -47,12 +47,9 @@ const CurriculumSection = ({
           >
             <FaRegEdit />
           </span>
-          <span
-            className="cursor-pointer"
-            onClick={() => {
+          <span className="cursor-pointer"  onClick={() => {
               deleteSection(index);
-            }}
-          >
+            }}>
             <FaRegTrashAlt />
           </span>
         </p>

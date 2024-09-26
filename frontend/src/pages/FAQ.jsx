@@ -1,5 +1,4 @@
 import React, { Suspense, lazy } from "react";
-import SkeletonLoader from "../components/ui/SkeletonLoader";
 
 // Lazy load components
 const PageHeader = lazy(() => import("../components/Common/PageHeader"));
@@ -9,7 +8,7 @@ const Select = lazy(() => import("../components/ui/Select"));
 const FAQ = () => {
   return (
     <div>
-      <Suspense fallback={<SkeletonLoader width="100%" height="50px" />}>
+      <Suspense fallback={null}>
         <PageHeader
           title="FAQs"
           breadcrumb={[
@@ -23,13 +22,13 @@ const FAQ = () => {
         <div className="lg:flex justify-between text-center lg:text-start">
           <h1>Frequently asked questions</h1>
           <div className="max-w-[200px] w-full mx-auto lg:mx-0 mt-8 lg:mt-0">
-            <Suspense fallback={<SkeletonLoader width="100%" height="40px" />}>
+            <Suspense fallback={null}>
               <Select items={[{ value: "Student", label: "Student" }]} />
             </Suspense>
           </div>
         </div>
         {/* Main */}
-        <Suspense fallback={<SkeletonLoader width="100%" height="200px" />}>
+        <Suspense fallback={null}>
           <FAQBody />
         </Suspense>
       </section>

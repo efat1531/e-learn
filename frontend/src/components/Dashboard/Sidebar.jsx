@@ -25,7 +25,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           <div className="flex justify-between px-4 border-b pb-2">
             {/* Logo */}
             <div className="flex items-center gap-[0.575rem] border-CustomGray-600">
-              {/* Logo */}
               <ReactSVG
                 src={GraduationCap}
                 beforeInjection={(svg) => {
@@ -45,7 +44,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           </div>
           {/* Links */}
           <div className="flex-grow mt-4">
-            <div className="grid" onClick={() => sidebarOpen(false)}>
+            <div className="grid" onClick={() => setSidebarOpen(false)}>
               <NavLink to={"/dashboard"} className="dashboardNavLinks" end>
                 <MdOutlineSignalCellularAlt /> Dashboard
               </NavLink>

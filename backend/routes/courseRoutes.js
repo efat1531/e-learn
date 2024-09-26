@@ -21,6 +21,7 @@ router.use("/:courseId/reviews", reviewRouter);
 router
   .route("/")
   .get(getCourses)
+  // .post(createCourse);
   .post(protect(["instructor"]), createCourse);
 
 router.route("/top").get(getTopCourses);
@@ -28,6 +29,7 @@ router.route("/recent").get(getRecentCourses);
 router
   .route("/:slug")
   .get(getCourse)
+  // .patch(updateCourse)
   .patch(protect(["instructor"]), updateCourse)
   .delete(protect(["instructor", "admin"]), deleteCourse);
 

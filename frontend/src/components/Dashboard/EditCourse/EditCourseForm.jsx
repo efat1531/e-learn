@@ -2,13 +2,17 @@ import PropTypes from "prop-types";
 import Button from "../../ui/Button";
 import Input from "../../ui/Input";
 import { Formik } from "formik";
-import { json, Link } from "react-router-dom";
+import { json, Link, useParams } from "react-router-dom";
 import BasicInformation from "./Tabs/BasicInformation";
 import AdvanceInformation from "./Tabs/AdvanceInformation/AdvanceInformation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Curriculum from "./Tabs/Curriculum/Curriculum";
 import PublishCourse from "./Tabs/PublishCourse";
-import { useCreateCourseMutation } from "../../../features/api/courseApiSlice";
+import {
+  useFetchCourseQuery,
+  useUpdateCourseMutation,
+} from "../../../features/api/courseApiSlice";
+import { useSelector } from "react-redux";
 
 const validate = (values) => {
   const errors = {};
@@ -24,9 +28,6 @@ const validate = (values) => {
   if (!values.introVideo) {
     errors.introVideo = "Course intro video Missing";
   }
-  if (!values.summary) {
-    errors.summary = "Course summary Missing";
-  }
   if (!values.level) {
     errors.level = "Course level Missing";
   }
@@ -36,7 +37,7 @@ const validate = (values) => {
   return errors;
 };
 
-const CreateCourseForm = ({ tab, setCurrentTab }) => {
+const EditCourseForm = ({ tab, setCurrentTab }) => {
   const [courseOutlines, setCourseOutlines] = useState(["", ""]);
   const [courseRequirements, setCourseRequirements] = useState(["", ""]);
   const [targetAudience, setTargetAudience] = useState(["", ""]);
@@ -45,27 +46,58 @@ const CreateCourseForm = ({ tab, setCurrentTab }) => {
   // Curriculum
   const [curriculums, setCurriculums] = useState([]);
 
+  const { slug } = useParams();
+  const { data, error, isLoading } = useFetchCourseQuery(slug);
+
+  useEffect(() => {
+    if (data) {
+      // console.log(data);
+      setCourseOutlines(data.data.whatYouWillLearn);
+      setCourseRequirements(data.data.requirements);
+      setCurriculums(data.data.courseContent);
+    }
+  }, [data]);
+
+  const [updateCourse] = useUpdateCourseMutation();
+
+  if (isLoading || error) return null;
+
+  // console.log(data);
+
+  const {
+    title,
+    duration,
+    price,
+    discount,
+    discountExpires,
+    introVideo,
+    summary,
+    level,
+    language,
+    description,
+  } = data.data;
+
   function isEmpty(obj) {
     console.log(Object.keys(obj).length === 0);
     return Object.keys(obj).length === 0;
   }
 
-  const [createCourse] = useCreateCourseMutation();
-
   return (
     <div>
       <Formik
         initialValues={{
-          title: "",
-          duration: 0,
-          price: 0,
-          discount: 0,
-          discountExpires: "",
-          introVideo: "",
-          summary: "",
-          level: "",
-          language: "",
-          description: "",
+          title: title,
+          duration: duration,
+          price: price,
+          discount: discount,
+          discountExpires: new Date(discountExpires)
+            .toISOString()
+            .split("T")[0],
+          introVideo: introVideo,
+          summary: summary,
+          level: level,
+          language: language,
+          description: description,
         }}
         validate={validate}
         onSubmit={async (values, { setSubmitting }) => {
@@ -86,10 +118,10 @@ const CreateCourseForm = ({ tab, setCurrentTab }) => {
             requirements: courseRequirements,
             courseContent: curriculums,
           };
-          // console.log(data);
-          const res = await createCourse(data);
+          console.log(data);
+          const res = await updateCourse({ slug: slug, body: data });
           console.log(res);
-
+          
           setSubmitting(false);
         }}
       >
@@ -159,9 +191,9 @@ const CreateCourseForm = ({ tab, setCurrentTab }) => {
     </div>
   );
 };
-export default CreateCourseForm;
+export default EditCourseForm;
 
-CreateCourseForm.propTypes = {
+EditCourseForm.propTypes = {
   tab: PropTypes.string.isRequired,
   setCurrentTab: PropTypes.func.isRequired,
 };

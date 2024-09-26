@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useLocation } from "react-router-dom";
 import { SlBell } from "react-icons/sl";
 import { CiMenuKebab } from "react-icons/ci";
@@ -14,11 +15,11 @@ const TopBar = ({ setSidebarOpen }) => {
           {/* Left */}
           <div className="flex gap-4">
             {/* Ham BTN */}
-            <div className="bg-Primary-200 flex items-center justify-center px-2 cursor-pointer xl:hidden">
-              <CiMenuKebab
-                className="text-2xl fill-Primary-500"
-                onClick={() => setSidebarOpen(true)}
-              />
+            <div
+              className="bg-Primary-200 flex items-center justify-center px-2 cursor-pointer xl:hidden"
+              onClick={() => setSidebarOpen(true)}
+            >
+              <CiMenuKebab className="text-2xl fill-Primary-500" />
             </div>
             <div>
               <p className="text-CustomGray-600 text-sm">Good Morning</p>

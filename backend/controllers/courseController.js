@@ -88,20 +88,21 @@ const getCourse = asyncHandler(async (req, res) => {
 // @access  Private/Instructor
 const createCourse = asyncHandler(async (req, res) => {
   const {
-    title,
-    description,
-    duration,
-    price,
-    introVideo,
-    whatYouWillLearn,
-    requirements,
-    discount = 0,
-    discountExpires,
-    courseContent,
-    summary,
-    level,
-    language,
+    title, //
+    description, //
+    duration, //
+    price, //
+    introVideo, //
+    whatYouWillLearn, //
+    requirements, //
+    discount = 0, //
+    discountExpires, //
+    courseContent, //
+    summary, //
+    level, //
+    language, //
   } = req.body;
+
   const slug = title
     .replace(/[^\w\s]/gi, "")
     .toLowerCase()
@@ -170,6 +171,8 @@ const createCourse = asyncHandler(async (req, res) => {
 
   courseData.courseContent = courseContentProcess;
 
+  // return res.send(courseData);
+
   const course = await courseModel.create(courseData);
 
   instructor.courses.push(course._id);
@@ -221,6 +224,8 @@ const updateCourse = asyncHandler(async (req, res) => {
     }
     return obj;
   }, {});
+
+  // return res.send(updateData);
 
   if (updateData.price || updateData.discount) {
     const price = updateData.price || course.price;
