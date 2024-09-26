@@ -9,7 +9,26 @@ const courseApiSlice = apiSlice.injectEndpoints({
     fetchCourse: builder.query({
       query: (slug) => `${COURSE_URL}/${slug}`,
     }),
+    createCourse: builder.mutation({
+      query: (body) => ({
+        url: `${COURSE_URL}`,
+        method: "POST",
+        body: body,
+      }),
+    }),
+    updateCourse: builder.mutation({
+      query: ({ slug, body }) => ({
+        url: `${COURSE_URL}/${slug}`,
+        method: "PATCH",
+        body: body,
+      }),
+    }),
   }),
 });
 
-export const { useFetchAllCourseQuery, useFetchCourseQuery } = courseApiSlice;
+export const {
+  useFetchAllCourseQuery,
+  useFetchCourseQuery,
+  useCreateCourseMutation,
+  useUpdateCourseMutation,
+} = courseApiSlice;

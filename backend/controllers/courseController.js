@@ -74,6 +74,7 @@ const createCourse = asyncHandler(async (req, res) => {
     level, //
     language, //
   } = req.body;
+
   const slug = title
     .replace(/[^\w\s]/gi, "")
     .toLowerCase()
@@ -124,7 +125,7 @@ const createCourse = asyncHandler(async (req, res) => {
 
   courseData.courseContent = courseContentProcess;
 
-  return res.send(courseData);
+  // return res.send(courseData);
 
   const course = await courseModel.create(courseData);
 
@@ -178,6 +179,8 @@ const updateCourse = asyncHandler(async (req, res) => {
     }
     return obj;
   }, {});
+
+  // return res.send(updateData);
 
   if (updateData.price || updateData.discount) {
     const price = updateData.price || course.price;

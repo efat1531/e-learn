@@ -8,7 +8,10 @@ import AdvanceInformation from "./Tabs/AdvanceInformation/AdvanceInformation";
 import { useEffect, useState } from "react";
 import Curriculum from "./Tabs/Curriculum/Curriculum";
 import PublishCourse from "./Tabs/PublishCourse";
-import { useFetchCourseQuery } from "../../../features/api/courseApiSlice";
+import {
+  useFetchCourseQuery,
+  useUpdateCourseMutation,
+} from "../../../features/api/courseApiSlice";
 import { useSelector } from "react-redux";
 
 const validate = (values) => {
@@ -24,9 +27,6 @@ const validate = (values) => {
   }
   if (!values.introVideo) {
     errors.introVideo = "Course intro video Missing";
-  }
-  if (!values.summary) {
-    errors.summary = "Course summary Missing";
   }
   if (!values.level) {
     errors.level = "Course level Missing";
@@ -54,14 +54,15 @@ const EditCourseForm = ({ tab, setCurrentTab }) => {
       // console.log(data);
       setCourseOutlines(data.data.whatYouWillLearn);
       setCourseRequirements(data.data.requirements);
-      setCurriculums(data.data.courseContent)
+      setCurriculums(data.data.courseContent);
     }
   }, [data]);
 
+  const [updateCourse] = useUpdateCourseMutation();
+
   if (isLoading || error) return null;
 
-  console.log(data);
-  
+  // console.log(data);
 
   const {
     title,
@@ -89,7 +90,9 @@ const EditCourseForm = ({ tab, setCurrentTab }) => {
           duration: duration,
           price: price,
           discount: discount,
-          discountExpires: new Date(discountExpires).toISOString().split('T')[0],
+          discountExpires: new Date(discountExpires)
+            .toISOString()
+            .split("T")[0],
           introVideo: introVideo,
           summary: summary,
           level: level,
@@ -116,7 +119,9 @@ const EditCourseForm = ({ tab, setCurrentTab }) => {
             courseContent: curriculums,
           };
           console.log(data);
-
+          const res = await updateCourse({ slug: slug, body: data });
+          console.log(res);
+          
           setSubmitting(false);
         }}
       >

@@ -8,6 +8,7 @@ import AdvanceInformation from "./Tabs/AdvanceInformation/AdvanceInformation";
 import { useState } from "react";
 import Curriculum from "./Tabs/Curriculum/Curriculum";
 import PublishCourse from "./Tabs/PublishCourse";
+import { useCreateCourseMutation } from "../../../features/api/courseApiSlice";
 
 const validate = (values) => {
   const errors = {};
@@ -49,6 +50,8 @@ const CreateCourseForm = ({ tab, setCurrentTab }) => {
     return Object.keys(obj).length === 0;
   }
 
+  const [createCourse] = useCreateCourseMutation();
+
   return (
     <div>
       <Formik
@@ -83,7 +86,9 @@ const CreateCourseForm = ({ tab, setCurrentTab }) => {
             requirements: courseRequirements,
             courseContent: curriculums,
           }
-          console.log(data);
+          // console.log(data);
+          const res = await createCourse(data);
+          console.log(res);
           
           setSubmitting(false);
         }}

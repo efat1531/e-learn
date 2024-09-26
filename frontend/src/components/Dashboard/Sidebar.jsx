@@ -45,7 +45,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           </div>
           {/* Links */}
           <div className="flex-grow mt-4">
-            <div className="grid" onClick={() => sidebarOpen(false)}>
+            <div className="grid" onClick={() => setSidebarOpen(false)}>
               <NavLink to={"/dashboard"} className="dashboardNavLinks" end>
                 <MdOutlineSignalCellularAlt /> Dashboard
               </NavLink>
