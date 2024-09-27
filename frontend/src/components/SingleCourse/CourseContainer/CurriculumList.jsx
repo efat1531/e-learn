@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { MdPlayCircle } from "react-icons/md";
 import { FaFileAlt } from "react-icons/fa";
 import { GiDuration } from "react-icons/gi";
+import { Link } from "react-router-dom";
 
 const CourseCurriculumList = ({ lesson }) => {
   return (
@@ -14,7 +15,7 @@ const CourseCurriculumList = ({ lesson }) => {
           <FaFileAlt className="text-gray-600 group-hover:text-Primary-500" />
         )}
         <div className="text-gray-700 text-sm font-normal leading-[1.375rem] tracking-tighter group-hover:text-Primary-500">
-          {lesson.contentTitle}
+          <Link to={`lecture/${lesson._id}`}>{lesson.contentTitle}</Link>
         </div>
       </div>
       {lesson.contentType === "video" && (
@@ -34,6 +35,7 @@ CourseCurriculumList.propTypes = {
     contentTitle: PropTypes.string.isRequired,
     contentType: PropTypes.string.isRequired,
     contentDuration: PropTypes.number,
+    _id: PropTypes.string.isRequired
   }),
 };
 

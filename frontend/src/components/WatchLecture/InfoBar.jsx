@@ -3,15 +3,30 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import { useParams } from "react-router-dom";
 import CourseData from "../../../Data/courseData.json";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { durationConversion } from "../../utils/Transformations";
 
 function InfoBar() {
   const { slug, lectureId } = useParams();
-  const course = CourseData.find((course) => course.slug === slug);
 
   const navigate = useNavigate();
   const goBackFunction = () => {
     navigate(-1);
   };
+
+  //  --------------------------
+  const { selectedCourse } = useSelector((state) => state.course);
+  if (!selectedCourse) return null;
+  const { courseContent, title } = selectedCourse;
+
+  let currentLecture = {};
+  courseContent.filter((content) =>
+    content.sectionContainer.map((lecture) => {
+      if (lecture._id === lectureId) {
+        currentLecture = lecture;
+      }
+    })
+  );
 
   return (
     <div className="w-full px-8 py-5 bg-gray-50 flex justify-between">
@@ -24,10 +39,10 @@ function InfoBar() {
         </div>
         <div className="flex flex-col gap-3">
           <div className="text-CustomGray-900  font-[500] text-[1.25] leading-6">
-            {course.title}
+            {title}
           </div>
           <div className="text-CustomGray-600 font-inter font-normal text-sm">
-            {course.curriculum[lectureId].title}
+            {currentLecture.contentTitle}
           </div>
         </div>
       </div>
