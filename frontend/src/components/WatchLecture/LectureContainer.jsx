@@ -1,6 +1,7 @@
 import InfoBar from "./InfoBar";
 import { useSelector } from "react-redux";
 import SectionList from "./SectionList";
+import LectureViewer from "./LectureViewer";
 
 const LectureContainer = () => {
   const { selectedCourse } = useSelector((state) => state.course);
@@ -22,7 +23,9 @@ const LectureContainer = () => {
           ))}
         </div>
         {/* Right Content Body */}
-        <div className="w-full">Ye</div>
+        <div className="max-w-[800px] w-full mx-auto p-4">
+          <LectureViewer />
+        </div>
       </div>
     </div>
   );
