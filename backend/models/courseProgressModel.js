@@ -44,9 +44,39 @@ const courseProgressionSchema = mongoose.Schema(
     },
   },
   {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
     versionKey: false,
   }
 );
+
+courseProgressionSchema.virtual("completionPercentage").get(function () {
+  if (!this.courseContent || this.courseContent.length === 0) {
+    return 0;
+  }
+
+  const totalContent = this.courseContent.reduce((acc, section) => {
+    return (
+      acc +
+      section.sectionContainer.filter(
+        (item) => item.content_id.contentType === "video"
+      ).length
+    );
+  }, 0);
+
+  const completedContent = this.courseContent.reduce((acc, section) => {
+    return (
+      acc +
+      section.sectionContainer.filter(
+        (item) => item.content_id.contentType === "video" && item.isCompleted
+      ).length
+    );
+  }, 0);
+
+  const completionPercentage =
+    totalContent === 0 ? 0 : (completedContent / totalContent) * 100;
+  return Math.floor(completionPercentage);
+});
 
 courseProgressionSchema.index({ user: 1, course: 1 }, { unique: true });
 

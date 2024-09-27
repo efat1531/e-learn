@@ -2,6 +2,8 @@ import express from "express";
 import multer from "multer";
 import path from "path";
 import sharp from "sharp";
+import fs from "fs";
+import { encode } from "blurhash";
 
 const router = express.Router();
 // Use memoryStorage to store the file in memory
@@ -30,22 +32,52 @@ router.post("/user", (req, res) => {
       return res.status(400).send({ message: err.message });
     }
 
-    // Define the output path
-    const outputPath = `frontend/uploads/users/${
-      req.file.fieldname
-    }-${Date.now()}${path.extname(req.file.originalname)}`;
+    // Define the output paths
+    const timestamp = Date.now();
+    const ext = path.extname(req.file.originalname);
+    const baseOutputPath = `frontend/uploads/users/${req.file.fieldname}-${timestamp}`;
+    const avatarOutputPath = `${baseOutputPath}-avatar${ext}`;
+    const profileOutputPath = `${baseOutputPath}-profile${ext}`;
+    const blurhashOutputPath = `${baseOutputPath}-blurhash${ext}`;
 
     try {
-      // Use sharp to resize the image
+      // Use sharp to resize the image for avatar
       await sharp(req.file.buffer)
-        .resize(500, 500)
+        .resize(50, 50)
         .toFormat("png")
         .png({ quality: 90 })
-        .toFile(outputPath);
-      const resizedOutputPath = outputPath.replace("frontend/", "");
+        .toFile(avatarOutputPath);
+
+      // Use sharp to resize the image for profile picture
+      await sharp(req.file.buffer)
+        .resize(150, 150)
+        .toFormat("png")
+        .png({ quality: 90 })
+        .toFile(profileOutputPath);
+
+      // Generate blurhash
+      const image = await sharp(req.file.buffer)
+        .raw()
+        .ensureAlpha()
+        .toBuffer({ resolveWithObject: true });
+      const blurhash = encode(
+        new Uint8ClampedArray(image.data),
+        image.info.width,
+        image.info.height,
+        4,
+        4
+      );
+      const avatarResizedOutputPath = avatarOutputPath.replace("frontend/", "");
+      const profileResizedOutputPath = profileOutputPath.replace(
+        "frontend/",
+        ""
+      );
+
       res.status(200).send({
-        message: "Image uploaded and resized successfully",
-        image: `/${resizedOutputPath}`,
+        message: "Images uploaded and resized successfully",
+        avatar: `/${avatarResizedOutputPath}`,
+        profile: `/${profileResizedOutputPath}`,
+        blurhash: blurhash,
       });
     } catch (error) {
       res.status(500).send({ message: error.message });

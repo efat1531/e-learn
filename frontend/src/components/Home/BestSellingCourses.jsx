@@ -1,5 +1,4 @@
 import CourseData from "../../../Data/courseData.json";
-import CourseCard from "../Common/CourseCard";
 import { Link } from "react-router-dom";
 
 const top10Course = CourseData.sort((a, b) => b.rating - a.rating).slice(0, 8);

@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useState, useEffect } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useLoginMutation } from "../features/api/authApiSlice";
@@ -7,10 +7,12 @@ import { toastManager } from "../components/ui/toastGeneral";
 import { useFetchUserQuery } from "../features/api/userApiSlice";
 import { setUserInformation } from "../features/authSlice";
 
+// Directly import the image
+import LoginBanner from "../assets/images/LoginBanner.png";
+
 // Lazy load components
-const LoginBanner = lazy(() => import("../assets/images/LoginBanner.png"));
-const Button = lazy(() => import("../components/ui/Button"));
-const Input = lazy(() => import("../components/ui/Input"));
+const Button = React.lazy(() => import("../components/ui/Button"));
+const Input = React.lazy(() => import("../components/ui/Input"));
 
 const Login = () => {
   const [remember, setRemember] = useState(false);
@@ -72,9 +74,7 @@ const Login = () => {
       <div className="flex justify-evenly">
         <div className="w-full bg-[#EBEBFF] hidden tablet:block">
           <div className="max-w-prose mx-auto">
-            <Suspense fallback={<div>Loading Banner...</div>}>
-              <img src={LoginBanner} alt="Login Banner" />
-            </Suspense>
+            <img src={LoginBanner} alt="Login Banner" />
           </div>
         </div>
         <div className="w-full flex items-center">
