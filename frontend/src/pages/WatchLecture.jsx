@@ -1,15 +1,27 @@
-import React from "react";
-import InfoBar from "../components/WatchLecture/InfoBar";
-import { Info } from "lucide-react";
+import React, { useEffect } from "react";
+import LectureContainer from "../components/WatchLecture/LectureContainer";
+import { useParams } from "react-router-dom";
+import { useFetchCourseQuery } from "../features/api/courseApiSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setSingleCourse } from "../features/courseSlice";
 
 function WatchLecture() {
-  return (
-    <div className="w-full">
-      <div className="flex flex-col items-center w-full gap-10">
-        <InfoBar />
-      </div>
-    </div>
-  );
+  const { slug, lectureId } = useParams();
+  
+
+  const dispatch = useDispatch();
+  const { data, error, isLoading } = useFetchCourseQuery(slug);
+  const { user } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    if (data) {
+      dispatch(setSingleCourse(data.data));
+    }
+  }, [data, dispatch]);
+
+  if (isLoading || error) return null;
+
+  return <LectureContainer />;
 }
 
 export default WatchLecture;
