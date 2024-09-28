@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
-// import courses from "../../Data/courseData.json";
-import CourseCard from "../components/Common/CourseCard";
+import React, { Suspense, lazy, useState, useEffect } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import CustomSelect from "../components/ui/CustomSelect";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useFetchAllCourseQuery } from "../features/api/courseApiSlice";
-import { setAllCourses, setSingleCourse } from "../features/courseSlice";
+import { setAllCourses } from "../features/courseSlice";
+
+// Lazy load components
+const CourseCard = lazy(() => import("../components/Common/CourseCard"));
+const CustomSelect = lazy(() => import("../components/ui/CustomSelect"));
 
 const Courses = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -32,16 +33,6 @@ const Courses = () => {
     hoverColor: "#E8F0F7",
     textColor: "#334155",
   }));
-
-  // useEffect(() => {
-  //   if (selectedCategory) {
-  //     setNewCourses(
-  //       courses.filter(
-  //         (course) => course.category.name === selectedCategory.value
-  //       )
-  //     );
-  //   }
-  // }, [selectedCategory]);
 
   useEffect(() => {
     setNewCourses((prevCourses) => {
@@ -95,34 +86,36 @@ const Courses = () => {
             <div className="text-gray-600 text-sm font-normal leading-6">
               Sort By :
             </div>
-            <CustomSelect
-              customPlaceholder={"Select an option"}
-              options={options}
-              setSelectedOption={setSelectedOption}
-              selectedOption={selectedOption}
-            />
+            <Suspense fallback={null}>
+              <CustomSelect
+                customPlaceholder={"Select an option"}
+                options={options}
+                setSelectedOption={setSelectedOption}
+                selectedOption={selectedOption}
+              />
+            </Suspense>
           </div>
           <div className="flex justify-center items-center gap-4">
             <div className="text-gray-600 text-sm font-normal leading-6">
               Filter By :
             </div>
-            <CustomSelect
-              customPlaceholder={"Select an option"}
-              options={categoryOptions}
-              setSelectedOption={setSelectedCategory}
-              selectedOption={selectedCategory}
-            />
+            <Suspense fallback={null}>
+              <CustomSelect
+                customPlaceholder={"Select an option"}
+                options={categoryOptions}
+                setSelectedOption={setSelectedCategory}
+                selectedOption={selectedCategory}
+              />
+            </Suspense>
           </div>
         </div>
       </div>
       <div className="w-[80vw] grid grid-cols-1 gap-6 minmax-[15.25rem,1fr] md:grid-cols-2 lg:grid-cols-3 desktop:grid-cols-4 place-items-center">
         {newCourses.map((course, index) => (
-          <Link
-            key={index}
-            to={`/courses/${course.slug}`}
-            onClick={() => handleCourseOnClick(course)}
-          >
-            <CourseCard course={course} />
+          <Link key={index} to={`/courses/${course.slug}`}>
+            <Suspense fallback={null}>
+              <CourseCard course={course} />
+            </Suspense>
           </Link>
         ))}
       </div>

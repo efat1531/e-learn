@@ -25,7 +25,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           <div className="flex justify-between px-4 border-b pb-2">
             {/* Logo */}
             <div className="flex items-center gap-[0.575rem] border-CustomGray-600">
-              {/* Logo */}
               <ReactSVG
                 src={GraduationCap}
                 beforeInjection={(svg) => {
@@ -57,7 +56,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 <IoAddCircleOutline /> Create New Course
               </NavLink>
               <NavLink
-                to={"/dashboard/courses"}
+                to={"/dashboard/all-courses"}
                 className="dashboardNavLinks"
                 end
               >

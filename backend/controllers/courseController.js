@@ -2,12 +2,37 @@ import courseModel from "../models/courseModel.js";
 import asyncHandler from "../middlewere/asyncHandler.js";
 import courseContentModel from "../models/courseContentModel.js";
 
+import DynamicFilter from "../utils/dynamicFilter.js";
+import DynamicSort from "../utils/dynamicSort.js";
+import AppError from "../utils/AppError.js";
+import { areFieldsValid } from "../utils/nullValueCheck.js";
+
 // @desc    Get all courses
 // @route   GET /api/courses
 // @access  Public
 const getCourses = asyncHandler(async (req, res) => {
+  const { limit = 20, page = 1 } = req.query;
+
+  const dynamicFilter = new DynamicFilter(req.query);
+  const dynamicSort = new DynamicSort(req.query);
+
+  // Filter Options
+  const filterOptions = dynamicFilter.process();
+  const sortOptions = dynamicSort.process();
+
+  const totalResults = await courseModel.countDocuments({
+    ...filterOptions,
+  });
+
   const courses = await courseModel
-    .find({})
+    .find({
+      ...filterOptions,
+    })
+    .sort({
+      ...sortOptions,
+    })
+    .limit(limit * 1)
+    .skip((page - 1) * limit)
     .populate("instructor", "name")
     .populate({
       path: "courseContent.sectionContainer",
@@ -16,7 +41,10 @@ const getCourses = asyncHandler(async (req, res) => {
 
   res.status(200).json({
     status: "success",
-    numberOfCourses: courses.length,
+    totalResults,
+    currentPage: page,
+    limit,
+    totalPage: Math.ceil(totalResults / limit),
     data: courses,
   });
 });
@@ -46,11 +74,11 @@ const getCourse = asyncHandler(async (req, res) => {
     });
 
   if (!course) {
-    res.status(404);
-    throw new Error("Course not found. Please try again.");
+    throw AppError.notFound("Course not found. Please try again.");
   }
 
   res.status(200).json({
+    status: "success",
     data: course,
   });
 });
@@ -86,8 +114,26 @@ const createCourse = asyncHandler(async (req, res) => {
   const existingCourse = await courseModel.findOne({ slug });
 
   if (existingCourse) {
-    res.status(400);
-    throw new Error("Course already exists. Please try again.");
+    throw AppError.badRequest("Course with this title already exists.");
+  }
+
+  const requiredFields = [
+    "title",
+    "description",
+    "duration",
+    "price",
+    "introVideo",
+    "whatYouWillLearn",
+    "requirements",
+    "discountExpires",
+    "courseContent",
+    "summary",
+    "level",
+    "language",
+  ];
+
+  if (!areFieldsValid(req.body, requiredFields)) {
+    throw AppError.badRequest("Please fill all the required fields.");
   }
 
   const courseData = {
@@ -147,14 +193,13 @@ const updateCourse = asyncHandler(async (req, res) => {
   const course = await courseModel
     .findOne({ slug: req.params.slug })
     .populate("courseContent.sectionContainer");
+
   if (!course) {
-    res.status(404);
-    throw new Error("Course not found. Please try again.");
+    throw AppError.notFound("Course not found. Please try again.");
   }
 
   if (course.instructor.toString() !== req.user._id.toString()) {
-    res.status(401);
-    throw new Error("You are not authorized to update this course.");
+    throw AppError.unauthorized("You are not authorized to update this course");
   }
 
   const allowedFields = [
@@ -186,12 +231,10 @@ const updateCourse = asyncHandler(async (req, res) => {
     const price = updateData.price || course.price;
     const discount = updateData.discount || course.discount;
     if (discount > price) {
-      res.status(400);
-      throw new Error("Discount cannot be greater than the price.");
+      throw AppError.badRequest("Discount cannot be greater than price.");
     }
     if (price <= 0) {
-      res.status(400);
-      throw new Error("Price must be greater than 0.");
+      throw AppError.badRequest("Price must be greater than 0.");
     }
   }
 
@@ -217,21 +260,20 @@ const updateCourse = asyncHandler(async (req, res) => {
 const deleteCourse = asyncHandler(async (req, res) => {
   const course = await courseModel.findOne({ slug: req.params.slug });
   if (!course) {
-    res.status(404);
-    throw new Error("Course not found. Please try again.");
+    throw AppError.notFound("Course not found. Please try again.");
   }
 
   if (
     course.instructor.toString() !== req.user._id.toString() &&
     req.user.role !== "admin"
   ) {
-    res.status(401);
-    throw new Error("You are not authorized to delete this course.");
+    throw AppError.unauthorized("You are not authorized to delete this course");
   }
 
   if (course.courseStudents > 0) {
-    res.status(400);
-    throw new Error("Course cannot be deleted as it has enrolled users.");
+    throw AppError.badRequest(
+      "Course cannot be deleted as students are enrolled."
+    );
   }
 
   // Delete course content
@@ -264,13 +306,13 @@ const deleteCourse = asyncHandler(async (req, res) => {
 const deleteLecture = asyncHandler(async (req, res) => {
   const course = await courseModel.findOne({ slug: req.params.slug });
   if (!course) {
-    res.status(404);
-    throw new Error("Course not found. Please try again.");
+    throw AppError.notFound("Course not found. Please try again.");
   }
 
   if (course.instructor.toString() !== req.user._id.toString()) {
-    res.status(401);
-    throw new Error("You are not authorized to delete this lecture.");
+    throw AppError.unauthorized(
+      "You are not authorized to delete this lecture."
+    );
   }
 
   const section = course.courseContent.find(
@@ -278,8 +320,7 @@ const deleteLecture = asyncHandler(async (req, res) => {
   );
 
   if (!section) {
-    res.status(404);
-    throw new Error("Section not found. Please try again.");
+    throw AppError.notFound("Section not found. Please try again.");
   }
 
   const lectureIndex = section.sectionContainer.findIndex(
@@ -287,8 +328,7 @@ const deleteLecture = asyncHandler(async (req, res) => {
   );
 
   if (lectureIndex === -1) {
-    res.status(404);
-    throw new Error("Lecture not found. Please try again.");
+    throw AppError.notFound("Lecture not found. Please try again.");
   }
 
   section.sectionContainer.splice(lectureIndex, 1);
@@ -312,13 +352,13 @@ const updateLecture = asyncHandler(async (req, res) => {
     .findOne({ slug: req.params.slug })
     .populate("courseContent.sectionContainer");
   if (!course) {
-    res.status(404);
-    throw new Error("Course not found. Please try again.");
+    throw AppError.notFound("Course not found. Please try again.");
   }
 
   if (course.instructor.toString() !== req.user._id.toString()) {
-    res.status(401);
-    throw new Error("You are not authorized to update this lecture.");
+    throw AppError.unauthorized(
+      "You are not authorized to update this lecture."
+    );
   }
   const allowedFields = [
     "contentType",
@@ -358,13 +398,11 @@ const createLecture = asyncHandler(async (req, res) => {
   const course = await courseModel.findOne({ slug: req.params.slug });
 
   if (!course) {
-    res.status(404);
-    throw new Error("Course not found. Please try again.");
+    throw AppError.notFound("Course not found. Please try again.");
   }
 
   if (course.instructor.toString() !== req.user._id.toString()) {
-    res.status(401);
-    throw new Error("You are not authorized to create this lecture.");
+    throw AppError.unauthorized("You are not authorized to create lecture.");
   }
 
   const section = course.courseContent.find(
@@ -372,8 +410,7 @@ const createLecture = asyncHandler(async (req, res) => {
   );
 
   if (!section) {
-    res.status(404);
-    throw new Error("Section not found. Please try again.");
+    throw AppError.notFound("Section not found. Please try again.");
   }
 
   const allowedFields = [
@@ -406,6 +443,39 @@ const createLecture = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc    Get top rated courses
+// @route   GET /api/courses/top
+// @access  Public
+const getTopCourses = asyncHandler(async (req, res) => {
+  const courses = await courseModel
+    .find({})
+    .sort({ rating: -1 })
+    .limit(10)
+    .populate("instructor", "name");
+
+  res.status(200).json({
+    status: "success",
+    data: courses,
+  });
+});
+
+// @desc  Recently added courses
+// @route GET /api/courses/recent
+// @access Public
+const getRecentCourses = asyncHandler(async (req, res) => {
+  const courseLimit = req.query.limit || 10;
+  const courses = await courseModel
+    .find({})
+    .sort({ createdAt: -1 })
+    .limit(courseLimit)
+    .populate("instructor", "name");
+
+  res.status(200).json({
+    status: "success",
+    data: courses,
+  });
+});
+
 export {
   getCourses,
   getCourse,
@@ -415,4 +485,6 @@ export {
   deleteLecture,
   updateLecture,
   createLecture,
+  getTopCourses,
+  getRecentCourses,
 };

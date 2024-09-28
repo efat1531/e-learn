@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import PriceCard from "./PriceCard";
 import FeatureLabel from "./FeatureLabel";
 import { LuClock } from "react-icons/lu";
@@ -7,6 +6,8 @@ import { FaRegChartBar, FaRegCopy } from "react-icons/fa";
 import { GoPeople } from "react-icons/go";
 import { GrResources } from "react-icons/gr";
 import { FaLanguage } from "react-icons/fa6";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   MdOutlineLockClock,
   MdMonitor,
@@ -16,9 +17,14 @@ import {
 import Button from "../../ui/Button";
 import { useSelector } from "react-redux";
 import { toastManager } from "../../ui/toastGeneral";
+import { setOrderDetails } from "../../../features/orderSlice";
 
 const SideBar = () => {
   const { selectedCourse } = useSelector((state) => state.course);
+  const courseList = useSelector((state) => state.auth.courseList);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   if (!selectedCourse) return null;
   const {
     price,
@@ -28,6 +34,8 @@ const SideBar = () => {
     level,
     language,
     courseStudents,
+    currentPrice,
+    title,
   } = selectedCourse;
 
   const location = window.location.href;
@@ -36,15 +44,34 @@ const SideBar = () => {
     toastManager.success("Course link copied to clipboard.");
   };
 
+  const onEnrollClick = () => {
+    const orderDetails = {
+      totalPrice: currentPrice,
+      subTotal: price,
+      currency: "bdt",
+      productData: [
+        {
+          id: selectedCourse._id,
+          name: title,
+          price: price,
+          discount: discount,
+          realPrice: currentPrice,
+          quantity: 1,
+          image: selectedCourse.instructor.profilePicture,
+          isCourse: true,
+          courseCreator: selectedCourse.instructor.name,
+        },
+      ],
+    };
+    dispatch(setOrderDetails(orderDetails));
+    navigate("/cart/checkout");
+  };
+
   return (
     <div className="flex flex-col py-6 gap-6 justify-center items-center bg-white border border-gray-100 shadow-md">
       {/* Price Card */}
       <div className="px-6">
-        <PriceCard
-          price={price}
-          discount={discount}
-          endTime={discountExpires}
-        />
+        <PriceCard />
       </div>
       <div className="w-full h-px bg-gray-200"></div>
       {/* Feature Section */}
@@ -64,12 +91,20 @@ const SideBar = () => {
       </div>
       <div className="w-full h-px bg-gray-200"></div>
       {/* Button Section */}
-      <div className="flex flex-col gap-3 w-full px-6">
-        <Button title="Enroll Now" className="w-full" />
-        <Button title="Add to cart" className="w-full" />
-        <Button title="Add to wishlist" className="w-full" />
-      </div>
-      <div className="w-full h-px bg-gray-200"></div>
+      {!courseList.includes(selectedCourse._id) && (
+        <div className="flex flex-col gap-3 w-full px-6">
+          <Button
+            title="Enroll Now"
+            className="w-full"
+            onClick={onEnrollClick}
+          />
+          <Button title="Add to cart" className="w-full" />
+          <Button title="Add to wishlist" className="w-full" />
+        </div>
+      )}
+      {!courseList.includes(selectedCourse._id) && (
+        <div className="w-full h-px bg-gray-200"></div>
+      )}
       {/* Include Section */}
       <div className="flex w-full flex-col justify-start items-center px-6 gap-4">
         <div className="w-full text-[1rem] font-[500] leading-[1.375rem] text-CustomGray-900">

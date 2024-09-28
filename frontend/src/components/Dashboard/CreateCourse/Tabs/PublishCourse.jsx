@@ -26,7 +26,10 @@ const PublishCourse = ({
               id="level"
               label="Course Level"
               required
-              items={[{value:'Beginner', label:'Beginner'},{value:'Advanced', label:'Advanced'}]}
+              items={[
+                { value: "Beginner", label: "Beginner" },
+                { value: "Advanced", label: "Advanced" },
+              ]}
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.level}
@@ -41,7 +44,10 @@ const PublishCourse = ({
               id="language"
               label="Course language"
               required
-              items={[{value:'Bangla', label:'Bangla'},{value:'English', label:'English'}]}
+              items={[
+                { value: "Bangla", label: "Bangla" },
+                { value: "English", label: "English" },
+              ]}
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.language}

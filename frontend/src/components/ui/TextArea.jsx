@@ -1,3 +1,6 @@
+import React from "react";
+import PropTypes from "prop-types";
+
 const TextArea = ({ id, label, optional = false, ...rest }) => {
   return (
     <div className="grid gap-2 w-full">
@@ -14,6 +17,12 @@ const TextArea = ({ id, label, optional = false, ...rest }) => {
       </div>
     </div>
   );
+};
+
+TextArea.propTypes = {
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  optional: PropTypes.bool,
 };
 
 export default TextArea;

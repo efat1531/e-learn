@@ -85,11 +85,11 @@ const CreateCourseForm = ({ tab, setCurrentTab }) => {
             whatYouWillLearn: courseOutlines,
             requirements: courseRequirements,
             courseContent: curriculums,
-          }
+          };
           // console.log(data);
           const res = await createCourse(data);
           console.log(res);
-          
+
           setSubmitting(false);
         }}
       >
@@ -139,7 +139,7 @@ const CreateCourseForm = ({ tab, setCurrentTab }) => {
                 handleBlur={handleBlur}
                 handleChange={handleChange}
                 setCurrentTab={setCurrentTab}
-                curriculums={curriculums} 
+                curriculums={curriculums}
                 setCurriculums={setCurriculums}
               />
             )}

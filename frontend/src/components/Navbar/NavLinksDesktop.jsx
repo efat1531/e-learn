@@ -1,13 +1,9 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../../features/api/authApiSlice";
 import { clearCredentials } from "../../features/authSlice";
 import { toastManager } from "../ui/toastGeneral";
-import { clearUser } from "../../features/userSlice";
-import { useFetchUserQuery } from "../../features/api/userApiSlice";
-import { useEffect } from "react";
-import { setUser } from "../../features/userSlice";
 
 const routes = [
   { path: "/home", label: "Home" },
@@ -15,39 +11,31 @@ const routes = [
   { path: "/contact", label: "Contact" },
   { path: "/courses", label: "Courses" },
   { path: "/become-an-instructor", label: "Become an Instructor" },
-  { path: "/forum", label: "Forum" },
-  { path: "/shop", label: "Shop" },
+  // { path: "/forum", label: "Forum" },
+  // { path: "/shop", label: "Shop" },
+  { path: "/cart/checkout", label: "Cart" },
 ];
 
 const NavList = () => {
-  const { userInfo } = useSelector((state) => state.auth);
-  const { data, error, isLoading } = useFetchUserQuery();
+  const userID = useSelector((state) => state.auth.id);
+  const dispatch = useDispatch();
+  const { pathname } = useLocation();
 
   const [logoutApiCall] = useLogoutMutation();
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (data) {
-      dispatch(setUser(data.data));
-    }
-  }, [data, dispatch]);
 
   const handleLogout = async () => {
     const toastID = toastManager.loading("Logging out...");
     try {
       await logoutApiCall().unwrap();
       dispatch(clearCredentials());
-      dispatch(clearUser());
-
       toastManager.updateStatus(toastID, {
         render: "Logged out successfully",
         type: "success",
       });
     } catch (error) {
-      const message = error.data
-        ? error.data.message
-        : error.error.message || "Something went wrong";
+      const message = error?.data
+        ? error?.data?.message
+        : error?.error?.message || "Something went wrong";
       toastManager.updateStatus(toastID, {
         render: message,
         type: "reject",
@@ -75,11 +63,12 @@ const NavList = () => {
           </NavLink>
         </li>
       ))}
-      {!userInfo && (
+      {!userID && (
         <li>
           <NavLink
             to="/login"
             className="group inline-flex p-4 bg-CustomGray-900 items-start duration-100 font-[500]"
+            state={{ from: pathname }}
           >
             <span className="text-[0.875rem] leading-5 tracking-[-0.00875rem] group-hover:text-white duration-100 group-hover:font-[600]">
               Sign In
@@ -87,7 +76,7 @@ const NavList = () => {
           </NavLink>
         </li>
       )}
-      {userInfo && (
+      {userID && (
         <li>
           <div
             to="/profile"

@@ -8,6 +8,8 @@ import {
   deleteLecture,
   updateLecture,
   createLecture,
+  getTopCourses,
+  getRecentCourses,
 } from "../controllers/courseController.js";
 import protect from "../middlewere/protectMiddleware.js";
 import reviewRouter from "./reviewRoutes.js";
@@ -21,6 +23,9 @@ router
   .get(getCourses)
   // .post(createCourse);
   .post(protect(["instructor"]), createCourse);
+
+router.route("/top").get(getTopCourses);
+router.route("/recent").get(getRecentCourses);
 router
   .route("/:slug")
   .get(getCourse)

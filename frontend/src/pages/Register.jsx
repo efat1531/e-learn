@@ -22,15 +22,10 @@ const Register = () => {
                 placeholder="Enter first and last name"
               />
               <Input
-                label="Username"
-                id="username"
-                placeholder="Enter Username"
-              />
-              <Input
                 label="Email"
                 id="email"
                 type="email"
-                placeholder="Username or email address..."
+                placeholder="Email address..."
               />
               <div className="flex gap-4">
                 <Input

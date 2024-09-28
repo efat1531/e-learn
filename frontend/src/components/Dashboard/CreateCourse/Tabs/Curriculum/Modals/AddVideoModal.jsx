@@ -13,8 +13,12 @@ const AddVideoModal = ({
   addContentToLecture,
 }) => {
   const [contentURL, setContentURL] = useState(content.contentURL);
-  const [contentDuration, setContentDuration] = useState(content.contentDuration);
-  const [contentDescription, setContentDescription] = useState(content.contentDescription);
+  const [contentDuration, setContentDuration] = useState(
+    content.contentDuration
+  );
+  const [contentDescription, setContentDescription] = useState(
+    content.contentDescription
+  );
 
   const handleOutsideClick = (e) => {
     if (e.target.classList.contains("modalContainer")) {
@@ -25,10 +29,10 @@ const AddVideoModal = ({
   const handleSubmit = () => {
     // console.log(videoURL);
     addContentToLecture(sectionIndex, lectureIndex, {
-      contentType: 'video',
+      contentType: "video",
       contentURL: contentURL,
       contentDuration: Number(contentDuration),
-      contentDescription: contentDescription
+      contentDescription: contentDescription,
     });
     setAddVideoModal(false);
   };

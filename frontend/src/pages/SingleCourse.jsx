@@ -1,25 +1,53 @@
-import react, { useEffect } from "react";
+import React, { useEffect, Suspense, lazy } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useFetchCourseQuery } from "../features/api/courseApiSlice";
 import { setSingleCourse } from "../features/courseSlice";
-import CourseTitle from "../components/SingleCourse/CourseContainer/CourseTitle";
-import IntroVideo from "../components/SingleCourse/CourseContainer/IntroVideo";
-import SideBar from "../components/SingleCourse/SideBar/SideBar";
-import CourseDescription from "../components/SingleCourse/CourseContainer/CourseDescription";
-import WhatYouWillLearn from "../components/SingleCourse/CourseContainer/WhatYouWillLearn";
-import CourseRequirement from "../components/SingleCourse/CourseContainer/CourseRequirement";
-import Curriculum from "../components/SingleCourse/CourseContainer/Curriculum";
-import InstructorInfo from "../components/SingleCourse/CourseContainer/InstructorInfo";
-import ReviewInput from "../components/SingleCourse/CourseContainer/ReviewInput";
-import CourseRating from "../components/SingleCourse/CourseContainer/CourseRating";
-import StudentsReview from "../components/SingleCourse/CourseContainer/StudentsReview";
+
+// Lazy load components
+const CourseTitle = lazy(() =>
+  import("../components/SingleCourse/CourseContainer/CourseTitle")
+);
+const IntroVideo = lazy(() =>
+  import("../components/SingleCourse/CourseContainer/IntroVideo")
+);
+const SideBar = lazy(() =>
+  import("../components/SingleCourse/SideBar/SideBar")
+);
+const CourseDescription = lazy(() =>
+  import("../components/SingleCourse/CourseContainer/CourseDescription")
+);
+const WhatYouWillLearn = lazy(() =>
+  import("../components/SingleCourse/CourseContainer/WhatYouWillLearn")
+);
+const CourseRequirement = lazy(() =>
+  import("../components/SingleCourse/CourseContainer/CourseRequirement")
+);
+const Curriculum = lazy(() =>
+  import("../components/SingleCourse/CourseContainer/Curriculum")
+);
+const InstructorInfo = lazy(() =>
+  import("../components/SingleCourse/CourseContainer/InstructorInfo")
+);
+const ReviewInput = lazy(() =>
+  import("../components/SingleCourse/CourseContainer/ReviewInput")
+);
+const CourseRating = lazy(() =>
+  import("../components/SingleCourse/CourseContainer/CourseRating")
+);
+const StudentsReview = lazy(() =>
+  import("../components/SingleCourse/CourseContainer/StudentsReview")
+);
 
 const SingleCourse = () => {
   const { slug } = useParams();
   const dispatch = useDispatch();
-  const { data, error, isLoading } = useFetchCourseQuery(slug);
-  const { user } = useSelector((state) => state.user);
+  const selectedCourse = useSelector((state) => state.course.selectedCourse);
+  const { courseList, id: userID } = useSelector((state) => state.auth);
+  const needFetch = !selectedCourse || selectedCourse.slug !== slug;
+  const { data, error, isLoading } = useFetchCourseQuery(slug, {
+    skip: !needFetch,
+  });
 
   useEffect(() => {
     if (data) {
@@ -27,18 +55,20 @@ const SingleCourse = () => {
     }
   }, [data, dispatch]);
 
-  if (isLoading || error) return null;
+  if (isLoading || error || !selectedCourse) return null;
 
   console.log(data);
   
 
   const canReview = () => {
-    return (
-      user &&
-      user.role === "student" &&
-      user.isVerified &&
-      user.courses.includes(data.data._id)
-    );
+    if (!courseList.includes(selectedCourse._id)) return false;
+    if (selectedCourse.reviews.length > 0) {
+      const userReview = selectedCourse.reviews.find(
+        (review) => review.user._id === userID
+      );
+      if (userReview) return false;
+    }
+    return true;
   };
 
   return (
@@ -49,19 +79,43 @@ const SingleCourse = () => {
       <div className="w-full justify-center flex flex-col lg:flex-row gap-6 items-center lg:items-start py-20">
         {/* Course Details */}
         <div className="flex max-w-[54.5rem] flex-col gap-10">
-          <CourseTitle />
-          <IntroVideo />
-          <CourseDescription />
-          <WhatYouWillLearn />
-          <CourseRequirement />
-          <Curriculum />
-          <InstructorInfo />
-          {canReview() && <ReviewInput />}
-          <CourseRating />
-          <StudentsReview />
+          <Suspense fallback={<div>Loading Course Title...</div>}>
+            <CourseTitle />
+          </Suspense>
+          <Suspense fallback={<div>Loading Intro Video...</div>}>
+            <IntroVideo />
+          </Suspense>
+          <Suspense fallback={<div>Loading Course Description...</div>}>
+            <CourseDescription />
+          </Suspense>
+          <Suspense fallback={<div>Loading What You Will Learn...</div>}>
+            <WhatYouWillLearn />
+          </Suspense>
+          <Suspense fallback={<div>Loading Course Requirement...</div>}>
+            <CourseRequirement />
+          </Suspense>
+          <Suspense fallback={<div>Loading Curriculum...</div>}>
+            <Curriculum />
+          </Suspense>
+          <Suspense fallback={<div>Loading Instructor Info...</div>}>
+            <InstructorInfo />
+          </Suspense>
+          {canReview() && (
+            <Suspense fallback={<div>Loading Review Input...</div>}>
+              <ReviewInput />
+            </Suspense>
+          )}
+          <Suspense fallback={<div>Loading Course Rating...</div>}>
+            <CourseRating />
+          </Suspense>
+          <Suspense fallback={<div>Loading Students Review...</div>}>
+            <StudentsReview />
+          </Suspense>
         </div>
         {/* Side Bar */}
-        <SideBar />
+        <Suspense fallback={<div>Loading Side Bar...</div>}>
+          <SideBar />
+        </Suspense>
       </div>
     </div>
   );

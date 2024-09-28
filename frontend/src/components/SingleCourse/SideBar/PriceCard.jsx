@@ -1,26 +1,24 @@
 import CountDownTimer from "../../ui/CountDownTimer";
-import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { LuClock } from "react-icons/lu";
+import { useSelector } from "react-redux";
+const PriceCard = () => {
+  const { selectedCourse } = useSelector((state) => state.course);
+  const [discountState, setDiscountState] = useState(0);
 
-import {
-  calculatedPrice,
-  calculatePercentage,
-} from "../../../utils/Calculation";
+  if (!selectedCourse) return null;
 
-const PriceCard = ({
-  price,
-  discount = 0,
-  endTime = Date.now().toString(),
-}) => {
-  endTime = new Date(endTime).getTime();
-  const [discountState, setDiscountState] = useState(discount);
+  const { price, discount, discountExpires, currentPrice } = selectedCourse;
+  const endTime = new Date(discountExpires).getTime();
+
+  const percentage = ((price - currentPrice) * 100) / price;
+  if (currentPrice !== price) {
+    setDiscountState(1);
+  }
+
   const onEndTimer = () => {
     setDiscountState(0);
   };
-
-  const percentage = calculatePercentage(price, discountState);
-  const discountPrice = calculatedPrice(price, discountState);
 
   return (
     <div className="flex flex-col items-start gap-3">
@@ -29,7 +27,7 @@ const PriceCard = ({
           <div className="flex justify-center items-center gap-2">
             {discountState > 0 && (
               <div className="text-gray-900 font-inter font-normal text-2xl leading-8">
-                ${discountPrice.toFixed(2)}
+                ${currentPrice.toFixed(2)}
               </div>
             )}
             <div
@@ -63,12 +61,6 @@ const PriceCard = ({
       )}
     </div>
   );
-};
-
-PriceCard.propTypes = {
-  price: PropTypes.number.isRequired,
-  discount: PropTypes.number,
-  endTime: PropTypes.string,
 };
 
 export default PriceCard;

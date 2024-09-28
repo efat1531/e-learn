@@ -52,7 +52,7 @@ const BasicInformation = ({
             <p className="text-xs text-red-400 font-bold mt-2">
               {errors.summary && touched.summary && errors.summary}
             </p>
-          </div>   
+          </div>
         </div>
         <div className="row mt-4">
           {/* Price */}
@@ -103,9 +103,11 @@ const BasicInformation = ({
               value={values.discountExpires}
             />
             <p className="text-xs text-red-400 font-bold mt-2">
-              {errors.discountExpires && touched.discountExpires && errors.discountExpires}
+              {errors.discountExpires &&
+                touched.discountExpires &&
+                errors.discountExpires}
             </p>
-          </div>   
+          </div>
         </div>
         {/* Button */}
         <div className="mt-4">

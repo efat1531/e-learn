@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { version } from "mongoose";
 import bcrypt from "bcryptjs";
 import { token } from "morgan";
 
@@ -21,9 +21,14 @@ const tokenSchema = mongoose.Schema(
       required: true,
       enum: ["verify", "reset"],
     },
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
+    versionKey: false,
   }
 );
 

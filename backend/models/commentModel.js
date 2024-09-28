@@ -30,7 +30,7 @@ const commentSchema = mongoose.Schema(
       ref: "CourseContent",
     },
   },
-  { timestamp: true }
+  { timestamp: true, versionKey: false }
 );
 
 const Comment = mongoose.model("Comment", commentSchema);

@@ -57,7 +57,8 @@ const SectionLecture = ({
               <div className="grid gap-2 text-sm">
                 <p
                   className={`px-4 py-2 hover:bg-CustomGray-50 cursor-pointer ${
-                    lecture.contentType == "document" && "bg-CustomGray-200 hover:bg-CustomGray-200"
+                    lecture.contentType == "document" &&
+                    "bg-CustomGray-200 hover:bg-CustomGray-200"
                   }`}
                   onClick={() =>
                     lecture.contentType != "document" && setAddVideoModal(true)
@@ -67,7 +68,8 @@ const SectionLecture = ({
                 </p>
                 <p
                   className={`px-4 py-2 hover:bg-CustomGray-50 cursor-pointer ${
-                    lecture.contentType == "video" && "bg-CustomGray-200 hover:bg-CustomGray-200"
+                    lecture.contentType == "video" &&
+                    "bg-CustomGray-200 hover:bg-CustomGray-200"
                   }`}
                   onClick={() =>
                     lecture.contentType != "video" && setAddDocumentModal(true)

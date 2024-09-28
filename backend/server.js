@@ -14,6 +14,9 @@ import authMiddlewere from "./middlewere/authMiddlewere.js";
 import courseRoutes from "./routes/courseRoutes.js";
 import reviewRoutes from "./routes/reviewRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
+import paymentRoutes from "./routes/PaymentRoute.js";
+import orderRoutes from "./routes/orderRoutes.js";
+import courseProgressionRoutes from "./routes/courseProgressRoutes.js";
 
 dotenv.config();
 
@@ -39,6 +42,9 @@ app.use("/api/users", userRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/api/reviews", reviewRoutes);
 app.use("/api/upload", uploadRoutes);
+app.use("/api/payment", paymentRoutes);
+app.use("/api/order", orderRoutes);
+app.use("/api/course-progresses", courseProgressionRoutes);
 
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();

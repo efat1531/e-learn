@@ -1,5 +1,7 @@
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 
 const Input = ({ id, type, label, optional = false, ...rest }) => {
   const [hide, setHide] = useState(false);
@@ -33,6 +35,13 @@ const Input = ({ id, type, label, optional = false, ...rest }) => {
       </div>
     </div>
   );
+};
+
+Input.propTypes = {
+  id: PropTypes.string,
+  type: PropTypes.string,
+  label: PropTypes.string,
+  optional: PropTypes.bool,
 };
 
 export default Input;

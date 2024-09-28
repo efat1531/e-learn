@@ -8,16 +8,22 @@ import NotificationIcon from "../../assets/Icon/NotificationIcon";
 import Button from "../ui/Button";
 import NavLinks from "./NavLinksDesktop";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 const DesktopNav = () => {
-  const { userInfo } = useSelector((state) => state.auth);
+  const profilePicture = useSelector((state) => state.auth.profilePicture);
+  const { authenticated } = useSelector((state) => state.auth);
+  const { pathname } = useLocation();
 
   return (
     <nav className="hidden tablet:block">
       <NavLinks />
       <div className="flex px-8 py-[1.81rem] items-center justify-between shadow-[inset_0px_-1px_0px_0px_#E9EAF0]">
         {/* Logo */}
-        <NavLink className="flex items-center gap-2 justify-center">
+        <NavLink
+          className="flex items-center gap-2 justify-center"
+          to={"/home"}
+        >
           <ReactSVG
             src={Logo}
             beforeInjection={(svg) => {
@@ -49,23 +55,23 @@ const DesktopNav = () => {
             </button>
           </div>
           {/* <!-- Create Account Button --> */}
-          {!userInfo && (
+          {!authenticated && (
             <div className="flex gap-3">
               <Link to="/register" className="group">
                 <Button title="Create Account" />
               </Link>
 
               {/* <!-- Sign In Button --> */}
-              <Link to="/login" className="group">
+              <Link to="/login" className="group" state={{ from: pathname }}>
                 <Button title="Sign In" />
               </Link>
             </div>
           )}
-          {userInfo && (
+          {profilePicture && (
             <Link to="/student" className="group">
               <div className="avatar">
                 <div className="w-12 rounded-full">
-                  <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                  <img src={profilePicture} />
                 </div>
               </div>
             </Link>

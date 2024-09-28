@@ -1,8 +1,15 @@
+import React, { Suspense, lazy } from "react";
 import { FaCommentDots, FaRegUserCircle } from "react-icons/fa";
 import { IoPlayCircleOutline } from "react-icons/io5";
-import DashboardCard from "../components/Dashboard/Cards/DashboardCard";
-import OverallReviewCard from "../components/Dashboard/Cards/OverallReviewCard";
 import { formatDistance } from "date-fns";
+
+// Lazy load components
+const DashboardCard = lazy(() =>
+  import("../components/Dashboard/Cards/DashboardCard")
+);
+const OverallReviewCard = lazy(() =>
+  import("../components/Dashboard/Cards/OverallReviewCard")
+);
 
 const UserDashboard = () => {
   return (
@@ -10,23 +17,27 @@ const UserDashboard = () => {
       {/* Dashboard Cards */}
       <section className="flex gap-8 flex-wrap">
         {/* Dashboard Card  */}
-        <DashboardCard
-          color="Primary"
-          icon={
-            <IoPlayCircleOutline className="text-4xl stroke-Primary-500 fill-Primary-400" />
-          }
-          title="57"
-          text="Total Courses"
-        />
+        <Suspense fallback={null}>
+          <DashboardCard
+            color="Primary"
+            icon={
+              <IoPlayCircleOutline className="text-4xl stroke-Primary-500 fill-Primary-400" />
+            }
+            title="57"
+            text="Total Courses"
+          />
+        </Suspense>
         {/* Dashboard Card  */}
-        <DashboardCard
-          color="blue"
-          icon={
-            <FaRegUserCircle className="text-4xl stroke-blue-500 fill-blue-400" />
-          }
-          title="957"
-          text="Total Students"
-        />
+        <Suspense fallback={null}>
+          <DashboardCard
+            color="blue"
+            icon={
+              <FaRegUserCircle className="text-4xl stroke-blue-500 fill-blue-400" />
+            }
+            title="957"
+            text="Total Students"
+          />
+        </Suspense>
       </section>
 
       <section className="mt-8 flex flex-col lg:flex-row items-start gap-8">
@@ -62,9 +73,9 @@ const UserDashboard = () => {
           <div className="p-4 border-b">
             <h4 className="m-0">Overall Course Rating</h4>
           </div>
-          <div>
+          <Suspense fallback={null}>
             <OverallReviewCard />
-          </div>
+          </Suspense>
         </div>
       </section>
     </div>

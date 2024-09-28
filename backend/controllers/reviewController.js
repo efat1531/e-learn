@@ -1,37 +1,58 @@
 import reviewModel from "../models/reviewModel.js";
 import asyncHandler from "../middlewere/asyncHandler.js";
+import AppError from "../utils/AppError.js";
+import DynamicFilter from "../utils/dynamicFilter.js";
+import DynamicSort from "../utils/dynamicSort.js";
 
 // @desc    Get all reviews
 // @route   GET /api/reviews | /api/courses/:courseId/reviews
 // @access  Public
 const getReviews = asyncHandler(async (req, res) => {
-  if (req.params.courseId) {
-    const reviews = await reviewModel.find({ course: req.params.courseId });
-    res.status(200).json({
-      status: "success",
-      numberOfReviews: reviews.length,
-      data: reviews,
+  const { limit = 10, page = 1 } = req.query;
+  const dynamicFilter = new DynamicFilter(req.query);
+  const dynamicSort = new DynamicSort(req.query);
+
+  const filterOptions = dynamicFilter.process();
+  const sortOptions = dynamicSort.process();
+
+  const query = req.params.courseId
+    ? { course: req.params.courseId, ...filterOptions }
+    : { ...filterOptions };
+
+  const totalResults = await reviewModel.countDocuments(query);
+  const reviews = await reviewModel
+    .find(query)
+    .sort(sortOptions)
+    .limit(limit * 1)
+    .skip((page - 1) * limit)
+    .populate({
+      path: "user",
+      select: "name email",
     });
-  } else {
-    const reviews = await reviewModel.find({});
-    res.status(200).json({
-      status: "success",
-      numberOfReviews: reviews.length,
-      data: reviews,
-    });
-  }
+
+  res.status(200).json({
+    status: "success",
+    totalResults,
+    currentPage: page * 1,
+    limit: limit * 1,
+    totalPage: Math.ceil(totalResults / limit),
+    data: reviews,
+  });
 });
 
 // @desc    Get single review
 // @route   GET /api/reviews/:id
 // @access  Public
 const getReview = asyncHandler(async (req, res) => {
-  const review = await reviewModel.findById(req.params.id);
+  const review = await reviewModel.findById(req.params.id).populate({
+    path: "user",
+    select: "name email",
+  });
   if (!review) {
-    res.status(404);
-    throw new Error("Review not found. Please try again.");
+    throw AppError.notFound("Review not found. Please try again.");
   }
   res.status(200).json({
+    status: "success",
     data: review,
   });
 });
@@ -43,8 +64,7 @@ const createReview = asyncHandler(async (req, res) => {
   req.body.user = req.user._id;
 
   if (!req.params.courseId) {
-    res.status(400);
-    throw new Error("Please provide a course id.");
+    throw AppError.badRequest("Please provide a course ID.");
   }
 
   const reviewFields = {
@@ -60,15 +80,15 @@ const createReview = asyncHandler(async (req, res) => {
   });
 
   if (previousReview) {
-    res.status(400);
-    throw new Error("You have already reviewed this course.");
+    throw AppError.badRequest("You have already reviewed this course.");
   }
 
   const ifAllowed = await req.user.checkIfAllowedToReview(req.params.courseId);
 
   if (!ifAllowed && req.user.role !== "admin") {
-    res.status(400);
-    throw new Error("You must enroll in this course before reviewing it.");
+    throw AppError.badRequest(
+      "You are not allowed to review this course. Please try again."
+    );
   }
 
   const review = await reviewModel.create(reviewFields);
@@ -86,13 +106,13 @@ const createReview = asyncHandler(async (req, res) => {
 const updateReview = asyncHandler(async (req, res) => {
   let review = await reviewModel.findById(req.params.id);
   if (!review) {
-    res.status(404);
-    throw new Error("Review not found. Please try again.");
+    throw AppError.notFound("Review not found. Please try again.");
   }
 
   if (review.user.toString() !== req.user._id.toString()) {
-    res.status(401);
-    throw new Error("You are not authorized to update this review.");
+    throw AppError.unauthorized(
+      "You are not authorized to update this review."
+    );
   }
 
   const allowedFields = ["comment", "rating"];
@@ -121,16 +141,16 @@ const updateReview = asyncHandler(async (req, res) => {
 const deleteReview = asyncHandler(async (req, res) => {
   const review = await reviewModel.findById(req.params.id);
   if (!review) {
-    res.status(404);
-    throw new Error("Review not found. Please try again.");
+    throw AppError.notFound("Review not found. Please try again.");
   }
 
   if (
     review.user.toString() !== req.user._id.toString() &&
     req.user.role !== "admin"
   ) {
-    res.status(401);
-    throw new Error("You are not authorized to delete this review.");
+    throw AppError.unauthorized(
+      "You are not authorized to delete this review."
+    );
   }
 
   await reviewModel.findByIdAndDelete(req.params.id);
@@ -138,7 +158,7 @@ const deleteReview = asyncHandler(async (req, res) => {
 
   res.status(204).json({
     status: "success",
-    data: null,
+    message: "Review deleted successfully.",
   });
 });
 

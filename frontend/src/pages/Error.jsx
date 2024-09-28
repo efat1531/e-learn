@@ -1,7 +1,9 @@
+import React, { Suspense, lazy } from "react";
 import { useNavigate } from "react-router-dom";
-
-import Button from "../components/ui/Button";
 import Error404 from "../assets/images/Error404.png";
+
+// Lazy load the Button component
+const Button = lazy(() => import("../components/ui/Button"));
 
 const MainErrorPage = () => {
   const navigate = useNavigate();
@@ -24,11 +26,13 @@ const MainErrorPage = () => {
           Something went wrong. It&apos;s look that your requested could not be
           found. It&apos;s look like the link is broken or the page is removed.
         </div>
-        <Button
-          title="Go Back"
-          className={"max-w-36"}
-          onClick={gotoPreviousPage}
-        ></Button>
+        <Suspense fallback={null}>
+          <Button
+            title="Go Back"
+            className={"max-w-36"}
+            onClick={gotoPreviousPage}
+          />
+        </Suspense>
       </div>
       <div>
         <img src={Error404} alt="Error" className="aspect-auto" />
