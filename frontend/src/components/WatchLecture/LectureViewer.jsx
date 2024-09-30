@@ -9,6 +9,7 @@ const LectureViewer = () => {
   const { selectedCourse } = useSelector((state) => state.course);
   if (!selectedCourse) return null;
   const { courseContent, title } = selectedCourse;
+  const { content_id:content } = courseContent;
 
   //   let currentLecture = {};
   //   courseContent.filter((content) =>
@@ -28,18 +29,18 @@ const LectureViewer = () => {
   const getMetaForViewer = () => {
     for (let i = 0; i < courseContent.length; i++) {
       courseContent[i].sectionContainer.map((lecture) => {
-        if (lecture._id === lectureId && currentLecture == null) {
-          currentLecture = lecture;
+        if (lecture.content_id._id === lectureId && currentLecture == null) {
+          currentLecture = lecture.content_id;
           found = 1;
           if (traversingLecture != null) previousLecture = traversingLecture;
         } 
         else if(currentLecture != null && found == 1)
         {
-            nextLecture = lecture;
+            nextLecture = lecture.content_id;
             found = 0;
         }
         else {
-          traversingLecture = lecture;
+          traversingLecture = lecture.content_id;
         }
       });
     }

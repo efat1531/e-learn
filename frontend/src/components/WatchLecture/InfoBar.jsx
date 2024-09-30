@@ -17,13 +17,13 @@ function InfoBar() {
   //  --------------------------
   const { selectedCourse } = useSelector((state) => state.course);
   if (!selectedCourse) return null;
-  const { courseContent, title } = selectedCourse;
+  const { courseContent, course } = selectedCourse;
 
   let currentLecture = {};
   courseContent.filter((content) =>
     content.sectionContainer.map((lecture) => {
-      if (lecture._id === lectureId) {
-        currentLecture = lecture;
+      if (lecture.content_id._id === lectureId) {
+        currentLecture = lecture.content_id;
       }
     })
   );
@@ -39,7 +39,7 @@ function InfoBar() {
         </div>
         <div className="flex flex-col gap-3">
           <div className="text-CustomGray-900  font-[500] text-[1.25] leading-6">
-            {title}
+            {course.title}
           </div>
           <div className="text-CustomGray-600 font-inter font-normal text-sm">
             {currentLecture.contentTitle}

@@ -21,6 +21,7 @@ import { setOrderDetails } from "../../../features/orderSlice";
 
 const SideBar = () => {
   const { selectedCourse } = useSelector((state) => state.course);
+  const { auth } = useSelector((state) => state);
   const courseList = useSelector((state) => state.auth.courseList);
   const dispatch = useDispatch();
   const navigate = useNavigate();

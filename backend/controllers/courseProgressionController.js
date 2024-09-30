@@ -1,3 +1,4 @@
+import courseModel from "../models/courseModel.js";
 import courseProgressionModel from "../models/courseProgressModel.js";
 import asyncHandler from "../middlewere/asyncHandler.js";
 import AppError from "../utils/AppError.js";
@@ -19,6 +20,41 @@ const getMyCourseProgress = asyncHandler(async (req, res) => {
   res.status(200).json({
     status: "success",
     totalResults,
+    data: courseProgress,
+  });
+});
+
+// @desc    Get single course progress by slug
+// @route   GET /api/course-progresses/me/:slug
+// @access  Private
+const getSingleCourseProgress = asyncHandler(async (req, res) => {
+  // Find the course
+  const course = await courseModel.findOne({ slug: req.params.slug });
+
+  if (!course) {
+    throw AppError.notFound("No course found.");
+  }
+
+  const courseProgress = await courseProgressionModel
+    .findOne({
+      user: req.user._id,
+      course: course._id,
+    })
+    .populate({
+      path: "course",
+      select: "title",
+    })
+    .populate({
+      path: "courseContent.sectionContainer.content_id",
+      select: "contentType contentTitle contentURL contentDuration",
+    });
+
+  if (!courseProgress) {
+    throw AppError.notFound("No course progress found for this user.");
+  }
+
+  res.status(200).json({
+    status: "success",
     data: courseProgress,
   });
 });
@@ -106,4 +142,9 @@ const updateCourseProgress = asyncHandler(async (req, res) => {
   });
 });
 
-export { getMyCourseProgress, getCourseProgressById, updateCourseProgress };
+export {
+  getMyCourseProgress,
+  getCourseProgressById,
+  updateCourseProgress,
+  getSingleCourseProgress,
+};

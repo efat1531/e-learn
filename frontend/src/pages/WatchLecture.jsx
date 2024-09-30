@@ -4,14 +4,17 @@ import { useParams } from "react-router-dom";
 import { useFetchCourseQuery } from "../features/api/courseApiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { setSingleCourse } from "../features/courseSlice";
+import { useFetchCourseProgressionQuery } from "../features/api/courseProgressionApiSlice";
 
 function WatchLecture() {
   const { slug, lectureId } = useParams();
-  
 
   const dispatch = useDispatch();
-  const { data, error, isLoading } = useFetchCourseQuery(slug);
-  const { user } = useSelector((state) => state.user);
+  // const { data, error, isLoading } = useFetchCourseQuery(slug);
+  const { data, error, isLoading } = useFetchCourseProgressionQuery(slug);
+  const { auth } = useSelector((state) => state);
+
+  console.log(data);
 
   useEffect(() => {
     if (data) {
@@ -21,6 +24,7 @@ function WatchLecture() {
 
   if (isLoading || error) return null;
 
+  // return <>hi</>;
   return <LectureContainer />;
 }
 

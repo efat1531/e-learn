@@ -10,6 +10,8 @@ const VideoViewer = ({ currentLecture, previousLecture, nextLecture }) => {
   const { contentURL, contentDescription, contentDuration, contentTitle } =
     currentLecture;
 
+  // console.log(currentLecture);
+
   return (
     <div>
       <div className="flex justify-center">
