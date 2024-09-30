@@ -8,7 +8,9 @@ const LectureViewer = () => {
 
   const { selectedCourseProgression } = useSelector((state) => state.course);
   if (!selectedCourseProgression) return null;
-  const { courseContent, title } = selectedCourseProgression;
+  // console.log(selectedCourseProgression);
+  
+  const { courseContent, _id } = selectedCourseProgression;
   const { content_id:content } = courseContent;
 
   //   let currentLecture = {};
@@ -21,6 +23,7 @@ const LectureViewer = () => {
   //   );
 
   let currentLecture = null;
+  let currentLectureCompleted = false;
   let previousLecture = null;
   let traversingLecture = null;
   let found = 0;
@@ -31,6 +34,7 @@ const LectureViewer = () => {
       courseContent[i].sectionContainer.map((lecture) => {
         if (lecture.content_id._id === lectureId && currentLecture == null) {
           currentLecture = lecture.content_id;
+          currentLectureCompleted = lecture.isCompleted;
           found = 1;
           if (traversingLecture != null) previousLecture = traversingLecture;
         } 
@@ -49,9 +53,9 @@ const LectureViewer = () => {
   getMetaForViewer();  
 
   return currentLecture.contentType === "video" ? (
-    <VideoViewer currentLecture={currentLecture} previousLecture={previousLecture} nextLecture={nextLecture} />
+    <VideoViewer currentLecture={currentLecture} previousLecture={previousLecture} nextLecture={nextLecture} currentLectureCompleted={currentLectureCompleted} progressId={_id} />
   ) : (
-    <DocumentViewer currentLecture={currentLecture} previousLecture={previousLecture} nextLecture={nextLecture} />
+    <DocumentViewer currentLecture={currentLecture} previousLecture={previousLecture} nextLecture={nextLecture} currentLectureCompleted={currentLectureCompleted} progressId={_id} />
   );
 };
 export default LectureViewer;

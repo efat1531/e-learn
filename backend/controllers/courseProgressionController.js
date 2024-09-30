@@ -93,8 +93,16 @@ const getCourseProgressById = asyncHandler(async (req, res) => {
 // @desc Update course progress
 // @route PATCH /api/course-progresses/:id
 // @access Private
-const updateCourseProgress = asyncHandler(async (req, res) => {
-  const courseProgress = await courseProgressionModel.findById(req.params.id);
+const updateCourseProgress = async (req, res) => {
+  const courseProgress = await courseProgressionModel.findById(req.params.id)
+    .populate({
+      path: "course",
+      select: "title",
+    })
+    .populate({
+      path: "courseContent.sectionContainer.content_id",
+      select: "contentType contentTitle contentURL contentDuration",
+    });;
 
   if (!courseProgress) {
     throw AppError.notFound("No course progress found for this user.");
@@ -110,9 +118,11 @@ const updateCourseProgress = asyncHandler(async (req, res) => {
 
   const { courseContentId, isCompleted } = req.body;
 
+  console.log(courseContentId);
+
   const sectionIndex = courseProgress.courseContent.findIndex((section) =>
     section.sectionContainer.find(
-      (content) => content.content_id.toString() === courseContentId
+      (content) => content.content_id.id == courseContentId
     )
   );
 
@@ -134,13 +144,14 @@ const updateCourseProgress = asyncHandler(async (req, res) => {
     contentIndex
   ].isCompleted = isCompleted;
 
-  await courseProgress.save();
+  // await courseProgress.save();
 
   res.status(200).json({
     status: "success",
     message: "Course progress updated successfully.",
+    data: courseProgress
   });
-});
+};
 
 export {
   getMyCourseProgress,

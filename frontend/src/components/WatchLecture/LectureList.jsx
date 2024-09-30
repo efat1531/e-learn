@@ -17,10 +17,11 @@ const LectureList = ({ lesson }) => {
           }`}
       >
         {content.contentType === "video" &&
-          (content._id == lectureId ? (
-            isCompleted ? <FaCheckCircle className="group-hover:text-Primary-500" /> : <MdOutlinePauseCircleFilled className="group-hover:text-Primary-500" />
+          (!isCompleted ? (
+            content._id != lectureId ? <MdPlayCircle className=" group-hover:text-Primary-500" />  : <MdOutlinePauseCircleFilled className="group-hover:text-Primary-500" />
           ) : (
-            <MdPlayCircle className=" group-hover:text-Primary-500" />
+            <FaCheckCircle className="group-hover:text-Primary-500" />
+            
           ))}
         {content.contentType === "document" && (
           <FaFileAlt className=" group-hover:text-Primary-500" />
