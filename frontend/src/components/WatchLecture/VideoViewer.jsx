@@ -26,9 +26,8 @@ const VideoViewer = ({ currentLecture, previousLecture, nextLecture, progressId,
         render: "Course marked as completed",
         type: "success",
       });
-      console.log(response.data.data);
-      
-      // dispatch(setCourseProgression(response.data.data));
+
+      dispatch(setCourseProgression(response.data.data));
     } catch (error) {
       const message = await (error?.data
         ? error?.data?.message

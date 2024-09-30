@@ -122,7 +122,7 @@ const updateCourseProgress = async (req, res) => {
 
   const sectionIndex = courseProgress.courseContent.findIndex((section) =>
     section.sectionContainer.find(
-      (content) => content.content_id.id == courseContentId
+      (content) => content.content_id.id === courseContentId
     )
   );
 
@@ -133,9 +133,9 @@ const updateCourseProgress = async (req, res) => {
   const contentIndex = courseProgress.courseContent[
     sectionIndex
   ].sectionContainer.findIndex(
-    (content) => content.content_id.toString() === courseContentId
+    (content) => content.content_id.id === courseContentId
   );
-
+  
   if (contentIndex === -1) {
     throw AppError.badRequest("Invalid course content ID.");
   }
@@ -144,7 +144,7 @@ const updateCourseProgress = async (req, res) => {
     contentIndex
   ].isCompleted = isCompleted;
 
-  // await courseProgress.save();
+  await courseProgress.save();
 
   res.status(200).json({
     status: "success",
