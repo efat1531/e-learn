@@ -6,9 +6,9 @@ import DocumentViewer from "./DocumentViewer";
 const LectureViewer = () => {
   const { lectureId } = useParams();
 
-  const { selectedCourse } = useSelector((state) => state.course);
-  if (!selectedCourse) return null;
-  const { courseContent, title } = selectedCourse;
+  const { selectedCourseProgression } = useSelector((state) => state.course);
+  if (!selectedCourseProgression) return null;
+  const { courseContent, title } = selectedCourseProgression;
   const { content_id:content } = courseContent;
 
   //   let currentLecture = {};

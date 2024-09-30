@@ -15,9 +15,11 @@ function InfoBar() {
   };
 
   //  --------------------------
-  const { selectedCourse } = useSelector((state) => state.course);
-  if (!selectedCourse) return null;
-  const { courseContent, course } = selectedCourse;
+  const { selectedCourseProgression } = useSelector((state) => state.course);
+  console.log(selectedCourseProgression);
+  
+  if (!selectedCourseProgression) return null;
+  const { courseContent, course } = selectedCourseProgression;
 
   let currentLecture = {};
   courseContent.filter((content) =>

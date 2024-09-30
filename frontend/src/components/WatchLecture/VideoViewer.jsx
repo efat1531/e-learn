@@ -18,9 +18,9 @@ const VideoViewer = ({ currentLecture, previousLecture, nextLecture }) => {
         <div className="hidden lg:flex">
           <VideoPlayer url={contentURL} width={765} height={425} />
         </div>
-        <div className="lg:hidden">
+        {/* <div className="lg:hidden">
           <VideoPlayer url={contentURL} width={640} height={360} />
-        </div>
+        </div> */}
       </div>
       <div className="mt-4 border p-4">
         <div className="flex justify-between text-CustomGray-900 font-[500] leading-6">
