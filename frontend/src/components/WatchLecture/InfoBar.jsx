@@ -16,7 +16,7 @@ function InfoBar() {
 
   //  --------------------------
   const { selectedCourseProgression } = useSelector((state) => state.course);
-  console.log(selectedCourseProgression);
+  // console.log(selectedCourseProgression);
   
   if (!selectedCourseProgression) return null;
   const { courseContent, course } = selectedCourseProgression;

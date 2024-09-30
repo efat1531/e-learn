@@ -8,12 +8,17 @@ import { toastManager } from "../ui/toastGeneral";
 import { setCourseProgression } from "../../features/courseSlice";
 import { useDispatch } from "react-redux";
 
-const VideoViewer = ({ currentLecture, previousLecture, nextLecture, progressId,currentLectureCompleted }) => {
+const VideoViewer = ({
+  currentLecture,
+  previousLecture,
+  nextLecture,
+  progressId,
+  currentLectureCompleted,
+}) => {
   const { slug } = useParams();
   const dispatch = useDispatch();
   const { contentURL, contentDescription, contentDuration, contentTitle, _id } =
     currentLecture;
-
 
   const [updateCourseProgression] = useUpdateCourseProgressionMutation();
   // console.log(currentLecture);
@@ -21,7 +26,10 @@ const VideoViewer = ({ currentLecture, previousLecture, nextLecture, progressId,
   const handleClick = async () => {
     const toastId = toastManager.loading("Updating...");
     try {
-      const response = await updateCourseProgression({ id: progressId, body: { courseContentId: _id, isCompleted: true } });
+      const response = await updateCourseProgression({
+        id: progressId,
+        body: { courseContentId: _id, isCompleted: true },
+      });
       toastManager.updateStatus(toastId, {
         render: "Course marked as completed",
         type: "success",
@@ -37,7 +45,7 @@ const VideoViewer = ({ currentLecture, previousLecture, nextLecture, progressId,
         type: "reject",
       });
     }
-  }
+  };
 
   return (
     <div>
@@ -64,7 +72,12 @@ const VideoViewer = ({ currentLecture, previousLecture, nextLecture, progressId,
           >
             <Button title="Prev" disabled={previousLecture === null} />
           </Link>
-          <Button secondary title="Mart as complete" disabled={currentLectureCompleted} onClick={handleClick} />
+          <Button
+            secondary
+            title="Mart as complete"
+            disabled={currentLectureCompleted}
+            onClick={handleClick}
+          />
           <Link
             to={
               nextLecture != null &&
