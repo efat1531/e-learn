@@ -1,14 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { calculateDiscountPercentageByPriceRealPrice } from "../../utils/Calculation.js";
 import Button from "../ui/Button";
 import { useCreateStripePaymentSessionMutation } from "../../features/api/paymentApiSlice";
-import { toastManager } from "../../components/ui/toastGeneral";
 import { useCreateOrderMutation } from "../../features/api/orderApiSlice.js";
+import CardPaymentHandler from "./cardPaymentHandler.js";
 
-const CartInfo = ({ paymentBy }) => {
+const CartInfo = ({ paymentBy, userEmail = "" }) => {
   const { orderDetails } = useSelector((state) => state.order);
   const userID = useSelector((state) => state.auth.id);
   const [createPaymentStripe] = useCreateStripePaymentSessionMutation();
@@ -23,40 +22,53 @@ const CartInfo = ({ paymentBy }) => {
   const numberOfCourses = courseItems.length;
   const numberOfItems = nonCourseItems.length;
 
-  const checkoutHandler = async () => {
+  const handleCheckout = () => {
     if (paymentBy === "card") {
-      const toastID = toastManager.loading("Processing payment");
-      try {
-        const { data: orderData } = await createOrder({
-          ...orderDetails,
-          paymentMethod: paymentBy,
-        }).unwrap();
-
-        const { data: paymentData } = await createPaymentStripe({
-          currency,
-          productData,
-          orderID: orderData._id,
-        }).unwrap();
-
-        toastManager.updateStatus(toastID, {
-          render: "Order created successfully",
-          type: "success",
-        });
-
-        setTimeout(() => {
-          window.location.href = paymentData.url;
-        }, 2000);
-      } catch (error) {
-        toastManager.updateStatus(toastID, {
-          render:
-            error?.data?.message ??
-            error?.message ??
-            "Failed to process payment",
-          type: "error",
-        });
-      }
+      const cardPaymentHandler = new CardPaymentHandler();
+      cardPaymentHandler.processPayment({
+        orderDetails,
+        currency,
+        productData,
+        createOrder,
+        createPaymentStripe,
+      });
     }
   };
+
+  // const checkoutHandler = async () => {
+  //   if (paymentBy === "card") {
+  //     const toastID = toastManager.loading("Processing payment");
+  //     try {
+  //       const { data: orderData } = await createOrder({
+  //         ...orderDetails,
+  //         paymentMethod: paymentBy,
+  //       }).unwrap();
+
+  //       const { data: paymentData } = await createPaymentStripe({
+  //         currency,
+  //         productData,
+  //         orderID: orderData._id,
+  //       }).unwrap();
+
+  //       toastManager.updateStatus(toastID, {
+  //         render: "Order created successfully",
+  //         type: "success",
+  //       });
+
+  //       setTimeout(() => {
+  //         window.location.href = paymentData.url;
+  //       }, 2000);
+  //     } catch (error) {
+  //       toastManager.updateStatus(toastID, {
+  //         render:
+  //           error?.data?.message ??
+  //           error?.message ??
+  //           "Failed to process payment",
+  //         type: "error",
+  //       });
+  //     }
+  //   }
+  // };
 
   return (
     <div className="py-6 flex flex-col items-center gap-6 border-CustomGray-100 border">
@@ -174,7 +186,7 @@ const CartInfo = ({ paymentBy }) => {
         <Button
           title="Complete Payment"
           className={"w-full "}
-          onClick={checkoutHandler}
+          onClick={handleCheckout}
         />
       </div>
     </div>
@@ -183,6 +195,7 @@ const CartInfo = ({ paymentBy }) => {
 
 CartInfo.propTypes = {
   paymentBy: PropTypes.string.isRequired,
+  userEmail: PropTypes.string,
 };
 
 export default CartInfo;

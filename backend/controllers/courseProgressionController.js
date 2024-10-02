@@ -27,14 +27,11 @@ const getMyCourseProgress = asyncHandler(async (req, res) => {
 // @route   GET /api/course-progresses/:id
 // @access  Private
 const getCourseProgressById = asyncHandler(async (req, res) => {
-  if (req.user.role !== "instructor" && req.user.role !== "admin") {
-    if (req.user.courses.includes(req.params.id)) {
-      throw AppError.forbidden("You are not allowed to access this course.");
-    }
-  }
+  const userId = req.user._id;
+  const courseId = req.params.id;
 
   const courseProgress = await courseProgressionModel
-    .findById(req.params.id)
+    .findOne({ user: userId, course: courseId })
     .populate({
       path: "course",
       select: "title",
@@ -45,7 +42,9 @@ const getCourseProgressById = asyncHandler(async (req, res) => {
     });
 
   if (!courseProgress) {
-    throw AppError.notFound("No course progress found for this user.");
+    throw AppError.notFound(
+      "No course progress found for this user and course."
+    );
   }
 
   res.status(200).json({

@@ -16,6 +16,7 @@ const paymentApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body,
       }),
+      invalidatesTags: ["User"],
     }),
   }),
 });
