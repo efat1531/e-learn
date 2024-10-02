@@ -6,6 +6,7 @@ const initState = {
   trendingCourses: [],
   courses: [],
   selectedCourse: null,
+  selectedCourseProgression: null
 };
 
 const courseSlice = createSlice({
@@ -30,6 +31,9 @@ const courseSlice = createSlice({
     setSingleCourse(state, action) {
       state.selectedCourse = action.payload;
     },
+    setCourseProgression(state, action) {
+      state.selectedCourseProgression = action.payload;
+    },
   },
 });
 
@@ -39,6 +43,7 @@ export const {
   setNewCourses,
   setTrendingCourses,
   setAllCourses,
+  setCourseProgression
 } = courseSlice.actions;
 
 export default courseSlice.reducer;

@@ -11,6 +11,7 @@ const store = configureStore({
     course: courseReducer,
     cart: cartSlice,
     order: orderSlice,
+    order: orderSlice,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>

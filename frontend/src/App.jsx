@@ -69,17 +69,17 @@ function App() {
           <Route
             path="/login"
             element={
-              <LayoutMin>
+              <Layout>
                 <Login />
-              </LayoutMin>
+              </Layout>
             }
           />
           <Route
             path="/register"
             element={
-              <LayoutMin>
+              <Layout>
                 <Register />
-              </LayoutMin>
+              </Layout>
             }
           />
           <Route

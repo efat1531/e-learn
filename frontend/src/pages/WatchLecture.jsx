@@ -1,23 +1,26 @@
 import React, { useEffect } from "react";
 import LectureContainer from "../components/WatchLecture/LectureContainer";
 import { useParams } from "react-router-dom";
-import { useFetchCourseQuery } from "../features/api/courseApiSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { setSingleCourse } from "../features/courseSlice";
+import { setCourseProgression } from "../features/courseSlice";
+import { useFetchCourseProgressionQuery } from "../features/api/courseProgressionApiSlice";
 
 function WatchLecture() {
   const { slug, lectureId } = useParams();
   
 
   const dispatch = useDispatch();
-  const { data, error, isLoading } = useFetchCourseQuery(slug);
-  const { user } = useSelector((state) => state.user);
+  const { data, error, isLoading } = useFetchCourseProgressionQuery(slug);
+  const s = useSelector((state) => state.user);
 
   useEffect(() => {
     if (data) {
-      dispatch(setSingleCourse(data.data));
+      dispatch(setCourseProgression(data.data));
     }
   }, [data, dispatch]);
+
+  console.log(data);
+  
 
   if (isLoading || error) return null;
 

@@ -6,9 +6,12 @@ import DocumentViewer from "./DocumentViewer";
 const LectureViewer = () => {
   const { lectureId } = useParams();
 
-  const { selectedCourse } = useSelector((state) => state.course);
-  if (!selectedCourse) return null;
-  const { courseContent, title } = selectedCourse;
+  const { selectedCourseProgression } = useSelector((state) => state.course);
+  if (!selectedCourseProgression) return null;
+  // console.log(selectedCourseProgression);
+  
+  const { courseContent, _id } = selectedCourseProgression;
+  const { content_id:content } = courseContent;
 
   //   let currentLecture = {};
   //   courseContent.filter((content) =>
@@ -20,6 +23,7 @@ const LectureViewer = () => {
   //   );
 
   let currentLecture = null;
+  let currentLectureCompleted = false;
   let previousLecture = null;
   let traversingLecture = null;
   let found = 0;
@@ -28,18 +32,19 @@ const LectureViewer = () => {
   const getMetaForViewer = () => {
     for (let i = 0; i < courseContent.length; i++) {
       courseContent[i].sectionContainer.map((lecture) => {
-        if (lecture._id === lectureId && currentLecture == null) {
-          currentLecture = lecture;
+        if (lecture.content_id._id === lectureId && currentLecture == null) {
+          currentLecture = lecture.content_id;
+          currentLectureCompleted = lecture.isCompleted;
           found = 1;
           if (traversingLecture != null) previousLecture = traversingLecture;
         } 
         else if(currentLecture != null && found == 1)
         {
-            nextLecture = lecture;
+            nextLecture = lecture.content_id;
             found = 0;
         }
         else {
-          traversingLecture = lecture;
+          traversingLecture = lecture.content_id;
         }
       });
     }
@@ -48,9 +53,9 @@ const LectureViewer = () => {
   getMetaForViewer();  
 
   return currentLecture.contentType === "video" ? (
-    <VideoViewer currentLecture={currentLecture} previousLecture={previousLecture} nextLecture={nextLecture} />
+    <VideoViewer currentLecture={currentLecture} previousLecture={previousLecture} nextLecture={nextLecture} currentLectureCompleted={currentLectureCompleted} progressId={_id} />
   ) : (
-    <DocumentViewer currentLecture={currentLecture} previousLecture={previousLecture} nextLecture={nextLecture} />
+    <DocumentViewer currentLecture={currentLecture} previousLecture={previousLecture} nextLecture={nextLecture} currentLectureCompleted={currentLectureCompleted} progressId={_id} />
   );
 };
 export default LectureViewer;

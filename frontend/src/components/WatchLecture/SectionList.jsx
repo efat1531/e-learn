@@ -49,12 +49,12 @@ export default SectionList;
 
 const totalDuration = (courseSection) => {
   return courseSection.sectionContainer
-    .filter((lesson) => lesson.contentType !== "resource")
-    .reduce((total, lesson) => total + lesson.contentDuration, 0);
+    .filter((lesson) => lesson.content_id.contentType !== "resource")
+    .reduce((total, lesson) => total + lesson.content_id.contentDuration, 0);
 };
 
 const totalLectures = (courseSection) => {
   return courseSection.sectionContainer.filter(
-    (lesson) => lesson.contentType !== "resource"
+    (lesson) => lesson.content_id.contentType !== "resource"
   ).length;
 };
