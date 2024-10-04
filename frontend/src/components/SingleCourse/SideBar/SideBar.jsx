@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import PriceCard from "./PriceCard";
 import FeatureLabel from "./FeatureLabel";
 import { LuClock } from "react-icons/lu";
@@ -18,10 +18,21 @@ import Button from "../../ui/Button";
 import { useSelector } from "react-redux";
 import { toastManager } from "../../ui/toastGeneral";
 import { setOrderDetails } from "../../../features/orderSlice";
+import { CURRENCY_CODE } from "../../../utils/Static_Currency_Variables";
+import { useAddToWishListMutation, useRemoveFromWishListMutation } from "../../../features/api/courseApiSlice";
+
+
 
 const SideBar = () => {
   const { selectedCourse } = useSelector((state) => state.course);
-  const { auth } = useSelector((state) => state);
+  const { currency, wishList } = useSelector((state) => state.auth);
+
+  const [addToWishList] = useAddToWishListMutation();
+  const [removeFromWishList] = useRemoveFromWishListMutation();
+
+  const [userWishList, setUserWishList] = useState(wishList);
+
+  const currencyCode = CURRENCY_CODE(currency);
   const courseList = useSelector((state) => state.auth.courseList);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -30,7 +41,6 @@ const SideBar = () => {
   const {
     price,
     discount,
-    discountExpires,
     duration = 0,
     level,
     language,
@@ -49,7 +59,7 @@ const SideBar = () => {
     const orderDetails = {
       totalPrice: currentPrice,
       subTotal: price,
-      currency: "bdt",
+      currency: currencyCode,
       productData: [
         {
           id: selectedCourse._id,
@@ -66,6 +76,34 @@ const SideBar = () => {
     };
     dispatch(setOrderDetails(orderDetails));
     navigate("/cart/checkout");
+  };
+
+  const handleWishList = async() => {
+    let toastID;
+    try {
+      if(userWishList.includes(selectedCourse._id)){
+        toastID = toastManager.loading("Removing from wishlist");
+        await removeFromWishList(selectedCourse.slug).unwrap();
+        toastManager.updateStatus(toastID, {
+          render: "Removed from wishlist",
+          type: "success",
+        });
+        setUserWishList(userWishList.filter((course) => course !== selectedCourse._id));
+      } else {
+        toastID = toastManager.loading("Adding to wishlist");
+        await addToWishList(selectedCourse.slug).unwrap();
+        toastManager.updateStatus(toastID, {
+          render: "Added to wishlist",
+          type: "success",
+        });
+        setUserWishList([...userWishList, selectedCourse._id]);
+      }
+    } catch (error) {
+      toastManager.updateStatus(toastID, {
+        render: error?.data?.message ?? "Please try again",
+        type: "error",
+      });
+    }
   };
 
   return (
@@ -100,7 +138,7 @@ const SideBar = () => {
             onClick={onEnrollClick}
           />
           <Button title="Add to cart" className="w-full" />
-          <Button title="Add to wishlist" className="w-full" />
+          <Button title={`${userWishList.includes(selectedCourse._id) ? "Remove from wishlist" : "Add to wishlist"}`} className="w-full" onClick={handleWishList} />
         </div>
       )}
       {!courseList.includes(selectedCourse._id) && (

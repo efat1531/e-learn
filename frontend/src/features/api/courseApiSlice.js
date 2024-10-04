@@ -7,8 +7,9 @@ const courseApiSlice = apiSlice.injectEndpoints({
       query: () => `${COURSE_URL}/`,
       keepUnusedDataFor: 5,
     }),
-    fetchCourse: builder.query({
+     fetchCourse: builder.query({
       query: (slug) => `${COURSE_URL}/${slug}`,
+      providesTags:["singleCourse"],
       keepUnusedDataFor: 5,
     }),
     fetchTopCourse: builder.query({
@@ -33,6 +34,20 @@ const courseApiSlice = apiSlice.injectEndpoints({
         body: body,
       }),
     }),
+    addToWishList: builder.mutation({
+      query: (slug) => ({
+        url: `${COURSE_URL}/${slug}/wishlist`,
+        method: "POST",
+      }),
+      invalidatesTags: ["User"],
+    }),
+    removeFromWishList: builder.mutation({
+      query: (slug) => ({
+        url: `${COURSE_URL}/${slug}/wishlist`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["User"],
+    }),
   }),
 });
 
@@ -43,4 +58,6 @@ export const {
   useFetchRecentCourseQuery,
   useCreateCourseMutation,
   useUpdateCourseMutation,
+  useAddToWishListMutation,
+  useRemoveFromWishListMutation,
 } = courseApiSlice;

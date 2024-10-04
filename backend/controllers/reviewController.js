@@ -3,6 +3,7 @@ import asyncHandler from "../middlewere/asyncHandler.js";
 import AppError from "../utils/AppError.js";
 import DynamicFilter from "../utils/dynamicFilter.js";
 import DynamicSort from "../utils/dynamicSort.js";
+import courseModel from "../models/courseModel.js";
 
 // @desc    Get all reviews
 // @route   GET /api/reviews | /api/courses/:courseId/reviews
@@ -73,6 +74,21 @@ const createReview = asyncHandler(async (req, res) => {
     course: req.params.courseId,
     user: req.user._id,
   };
+  console.log("🚀 ~ createReview ~ reviewFields:", reviewFields)
+
+  if(!reviewFields.comment || !reviewFields.rating) {
+    throw AppError.badRequest("Please provide a comment and rating.");
+  }
+
+  if(reviewFields.rating < 1 || reviewFields.rating > 5) {
+    throw AppError.badRequest("Rating must be between 1 and 5.");
+  }
+
+  const existingCourse = await courseModel.findById(req.params.courseId);
+
+  if (!existingCourse) {
+    throw AppError.badRequest("Course not found. Please try again.");
+  }
 
   const previousReview = await reviewModel.findOne({
     course: req.params.courseId,
@@ -90,6 +106,8 @@ const createReview = asyncHandler(async (req, res) => {
       "You are not allowed to review this course. Please try again."
     );
   }
+
+  
 
   const review = await reviewModel.create(reviewFields);
   await reviewModel.calculateAvgRating(req.params.courseId);

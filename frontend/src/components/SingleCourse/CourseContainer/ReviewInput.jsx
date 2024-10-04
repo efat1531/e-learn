@@ -4,6 +4,9 @@ import { FaChevronCircleDown } from "react-icons/fa";
 import { FaCircleXmark } from "react-icons/fa6";
 import { PiPaperPlaneRightFill } from "react-icons/pi";
 import RatingInput from "../../ui/StarRatingInput";
+import { useCreateReviewMutation } from "../../../features/api/reviewAPISlice";
+import {toastManager} from "../../ui/toastGeneral";
+import { useSelector } from "react-redux";
 
 const initials = {
   rating: 0,
@@ -23,9 +26,7 @@ const reducer = (state, action) => {
   }
 };
 
-const handleSubmitBtn = (state, dispatch) => {
-  dispatch({ type: "reset" });
-};
+
 
 const ratingOutput = (rating) => {
   if (rating > 4) return "Excellent";
@@ -36,14 +37,39 @@ const ratingOutput = (rating) => {
 };
 
 const WriteReview = () => {
+  const course_id = useSelector((state) => state.course.selectedCourse._id);
   const [isOpen, setIsOpen] = useState(true);
   const [state, dispatch] = useReducer(reducer, initials);
+  const [createReview] = useCreateReviewMutation();
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
   };
 
-  return (
+  const handleSubmitBtn = async (state, dispatch) => {
+    const toastID = toastManager.loading("Submitting review...");
+    try {
+      await createReview({
+        courseId: course_id,
+        rating: state.rating,
+        comment: state.feedback,
+      }).unwrap();
+      dispatch({ type: "reset" });
+      toastManager.updateStatus(toastID, {
+        type: "success",
+        render: "Review submitted successfully",
+      });
+    } catch (error) {
+      const message = error?.data?.message || "Failed to submit review";
+      toastManager.updateStatus(toastID, {
+        type: "error",
+        render: message,
+      });
+    }
+
+  }
+
+      return (
     <div className="flex flex-col justify-center items-center gap-6 self-stretch pb-6 w-full">
       <div
         className="flex w-full p-4 justify-between items-center bg-white shadow-[inset_0_-1px_0_0_#e9eaf0] group cursor-pointer"

@@ -63,10 +63,10 @@ const StudentsRating = () => {
   if (reviews.length === 0) {
     return (
       <div className="flex flex-col items-start gap-5 w-full">
-        <div className="text-[#1d2026] text-1.5rem font-semibold leading-8 tracking-[-0.015rem]">
+        <div className="text-[#1d2026] text-[1.5rem] font-semibold leading-8 tracking-[-0.015rem]">
           Student&apos;s Feedback
         </div>
-        <div className="text-gray-700 text-1.5rem font-semibold leading-8 tracking-[-0.015rem]">
+        <div className="text-gray-700 text-[1rem] font-semibold leading-8 tracking-[-0.015rem]">
           No feedback available
         </div>
       </div>
@@ -93,7 +93,7 @@ const StudentsRating = () => {
       {filteredAndSortedRatings
         .slice(0, visibleReviews)
         .map((review, index) => (
-          <div key={index} className="flex flex-col items-start gap-5">
+          <div key={index} className="flex flex-col items-start gap-5 w-full">
             <StudentFeedbackCard feedback={review} />
           </div>
         ))}

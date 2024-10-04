@@ -10,6 +10,8 @@ import {
   createLecture,
   getTopCourses,
   getRecentCourses,
+  addCourseToWishlist,
+  removeCourseFromWishlist,
 } from "../controllers/courseController.js";
 import protect from "../middlewere/protectMiddleware.js";
 import reviewRouter from "./reviewRoutes.js";
@@ -32,6 +34,8 @@ router
   // .patch(updateCourse)
   .patch(protect(["instructor"]), updateCourse)
   .delete(protect(["instructor", "admin"]), deleteCourse);
+
+router.route("/:slug/wishlist").post(protect([]), addCourseToWishlist).delete(protect([]), removeCourseFromWishlist);
 
 router
   .route("/:slug/:sectionId/:lectureId")

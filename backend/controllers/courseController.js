@@ -476,6 +476,52 @@ const getRecentCourses = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc    Add course to wishlist
+// @route   POST /api/courses/:slug/wishlist
+// @access  Private
+const addCourseToWishlist = asyncHandler(async (req, res) => {
+  const course = await courseModel.findOne({ slug: req.params.slug });
+  if (!course) {
+    throw AppError.notFound("Course not found. Please try again.");
+  }
+
+  if (req.user.wishList.includes(course._id)) {
+    throw AppError.badRequest("Course already in wishlist.");
+  }
+
+  req.user.wishList.push(course._id);
+  await req.user.save();
+
+  res.status(200).json({
+    status: "success",
+    message: "Course added to wishlist successfully.",
+  });
+});
+
+// @desc    Remove course from wishlist
+// @route   DELETE /api/courses/:slug/wishlist
+// @access  Private
+const removeCourseFromWishlist = asyncHandler(async (req, res) => {
+  const course = await courseModel.findOne({ slug: req.params.slug });
+  if (!course) {
+    throw AppError.notFound("Course not found. Please try again.");
+  }
+
+  if (!req.user.wishList.includes(course._id)) {
+    throw AppError.badRequest("Course not in wishlist.");
+  }
+
+  req.user.wishList = req.user.wishList.filter(
+    (courseId) => courseId.toString() !== course._id.toString()
+  );
+  await req.user.save();
+
+  res.status(200).json({
+    status: "success",
+    message: "Course removed from wishlist successfully.",
+  });
+});
+
 export {
   getCourses,
   getCourse,
@@ -487,4 +533,6 @@ export {
   createLecture,
   getTopCourses,
   getRecentCourses,
+  addCourseToWishlist,
+  removeCourseFromWishlist,
 };

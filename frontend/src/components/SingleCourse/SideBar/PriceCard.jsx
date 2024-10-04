@@ -2,13 +2,18 @@ import CountDownTimer from "../../ui/CountDownTimer";
 import React, { useState } from "react";
 import { LuClock } from "react-icons/lu";
 import { useSelector } from "react-redux";
+import { CURRENCY_SYMBOL } from "../../../utils/Static_Currency_Variables.js";
+
 const PriceCard = () => {
   const { selectedCourse } = useSelector((state) => state.course);
+  const {currency} = useSelector((state) => state.auth);
   const [discountState, setDiscountState] = useState(0);
 
   if (!selectedCourse) return null;
 
-  const { price, discount, discountExpires, currentPrice } = selectedCourse;
+  const currencySymbol = CURRENCY_SYMBOL(currency);
+
+  const { price, discountExpires, currentPrice } = selectedCourse;
   const endTime = new Date(discountExpires).getTime();
 
   const percentage = ((price - currentPrice) * 100) / price;
@@ -27,7 +32,7 @@ const PriceCard = () => {
           <div className="flex justify-center items-center gap-2">
             {discountState > 0 && (
               <div className="text-gray-900 font-inter font-normal text-2xl leading-8">
-                ${currentPrice.toFixed(2)}
+                {currencySymbol}&nbsp;{currentPrice.toFixed(2)}
               </div>
             )}
             <div
@@ -37,7 +42,7 @@ const PriceCard = () => {
                   : "text-Primary-500 text-2xl"
               }`}
             >
-              ${price.toFixed(2)}
+              {currencySymbol}&nbsp;{price.toFixed(2)}
             </div>
           </div>
         </div>

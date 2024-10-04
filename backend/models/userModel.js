@@ -102,6 +102,7 @@ const userSchema = mongoose.Schema(
       default: 0,
       select: false,
     },
+    wishList: [ { type: mongoose.Schema.Types.ObjectId, ref: "Course" } ],
     courses: [
       {
         type: mongoose.Schema.Types.ObjectId,

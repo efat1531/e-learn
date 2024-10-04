@@ -7,13 +7,8 @@ const baseQuery = fetchBaseQuery({
   mode: "cors",
 });
 
-async function baseQueryWithAuth(args, api, extra) {
-  const result = await baseQuery(args, api, extra);
-  return result;
-}
-
 export const apiSlice = createApi({
   baseQuery,
-  tagTypes: ["Course", "Review", "User"],
+  tagTypes: ["Course", "Review", "User", "singleCourse"],
   endpoints: (builder) => ({}),
 });

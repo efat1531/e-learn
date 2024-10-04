@@ -158,7 +158,7 @@ const CartInfo = ({ paymentBy, userEmail = "" }) => {
           <div className="flex justify-between items-center w-full">
             <div className="text-sm text-CustomGray-600">Subtotal</div>
             <div className="text-sm text-CustomGray-900 font-[500]">
-              {subTotal}&nbsp;{currency === "bdt" ? "BDT" : "USD"}
+              {subTotal}&nbsp;{currency.toUpperCase()}
             </div>
           </div>
           <div className="w-full flex justify-between items-center">
@@ -178,7 +178,7 @@ const CartInfo = ({ paymentBy, userEmail = "" }) => {
             Total:
           </div>
           <div className="text-[#202029] text-right text-2xl font-semibold">
-            {totalPrice}&nbsp;{currency === "bdt" ? "BDT" : "USD"}
+            {totalPrice}&nbsp;{currency.toUpperCase()}
           </div>
         </div>
       </div>

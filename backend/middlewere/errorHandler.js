@@ -28,7 +28,7 @@ const errorHandler = (error, req, res, next) => {
   } else if (error.name === "CastError" && error.kind === "ObjectId") {
     // Handle invalid ObjectId errors
     statusCode = 400;
-    errorResponse.message = "Invalid ID";
+    errorResponse.message = "Invalid Object. Please provide a valid Object Id";
   } else if (error.name === "JsonWebTokenError") {
     // Handle JWT errors
     statusCode = 401;

@@ -1,7 +1,9 @@
-import react from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { FaStar } from "react-icons/fa6";
 import { numberToEnFormat } from "../../utils/Transformations";
+import { useSelector } from "react-redux";
+import { CURRENCY_SYMBOL } from "../../utils/Static_Currency_Variables";
 const imageSrc =
   "https://www.pcinvasion.com/wp-content/uploads/2021/09/Lost-in-Random-Bloobs-5.jpg?fit=1200%2C675";
 
@@ -12,6 +14,9 @@ const category = {
 };
 
 const CourseCard = ({ course }) => {
+  const {currency} = useSelector((state) => state.auth);
+  const currencySymbol = CURRENCY_SYMBOL(currency);
+  
   const { title, courseRating, price, courseStudents, currentPrice } = course;
   return (
     <div className="inline-flex pb-[0.875rem] flex-col justify-center items-center gap-[0.88rem] bg-white max-w-[15.25rem] border-gray-100 border drop-shadow-lg hover:scale-105">
@@ -48,7 +53,7 @@ const CourseCard = ({ course }) => {
                   : ""
               }`}
             >
-              {currentPrice === 0 ? "Free" : `${currentPrice}$`}
+              {currentPrice === 0 ? "Free" : `${currentPrice} ${currencySymbol}`}
             </span>
           </div>
         </div>

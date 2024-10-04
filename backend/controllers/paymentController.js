@@ -124,12 +124,18 @@ const updatePaymentIntentStripe = asyncHandler(async (req, res) => {
     existingUser.courses.push(
       ...existingOrder.orderItems.map((item) => item.course)
     );
+    existingUser.wishList = existingUser.wishList.filter(
+      (course) =>
+        !existingOrder.orderItems.map((item) => item.course).includes(course)
+    );
     await existingUser.save();
     await existingOrder.save();
 
     for (const item of existingOrder.orderItems) {
       if (item.isCourse) {
         const course = await courseModel.findById(item.course);
+        course.incrementStudents();
+
         const newCourseProgress = new courseProgressionModel({
           user: existingOrder.user,
           course: item.course,
