@@ -147,6 +147,14 @@ function App() {
             }
           />
           <Route
+            path="/dashboard/all-courses"
+            element={
+              <DashboardLayout>
+                <AdminCourses />
+              </DashboardLayout>
+            }
+          />
+          <Route
             path="/dashboard/edit-course/:slug"
             element={
               <DashboardLayout>
