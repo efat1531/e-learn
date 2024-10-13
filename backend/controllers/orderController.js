@@ -91,4 +91,36 @@ const getOrderById = asyncHandler(async (req, res) => {
   });
 });
 
-export { createOrder, getOrderById };
+// @desc    Fetch Order by Session ID
+// @route   GET /api/order/payment/:id
+// @access  Private[Admin, User]
+const getOrderByPaymentID = asyncHandler(async (req, res) => {
+  const order = await orderModel.findOne({
+    "paymentResult.transaction_id": req.params.id,
+  }).populate({
+    path: "orderItems.course",
+    select: "title instructor",
+    populate: {
+      path: "instructor",
+      select: "name",
+    },
+  });
+
+  if (!order) {
+    throw AppError.notFound("Order not found");
+  }
+
+  if (
+    order.user.toString() !== req.user._id.toString() &&
+    req.user.role !== "admin"
+  ) {
+    throw AppError.forbidden("You are not authorized to view this order");
+  }
+
+  res.status(200).json({
+    status: "success",
+    data: order,
+  });
+});
+
+export { createOrder, getOrderById, getOrderByPaymentID };

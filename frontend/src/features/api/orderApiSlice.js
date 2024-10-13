@@ -11,7 +11,11 @@ const orderApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["User"],
     }),
+    getOrderByPaymentID: builder.query({
+      query: (id) => `${ORDER_URL}/payment/${id}`,
+      providesTags: ["Order"],
+    }),
   }),
 });
 
-export const { useCreateOrderMutation } = orderApiSlice;
+export const { useCreateOrderMutation, useGetOrderByPaymentIDQuery } = orderApiSlice;

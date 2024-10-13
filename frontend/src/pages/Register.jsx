@@ -2,8 +2,36 @@ import { Link } from "react-router-dom";
 import RegisterBanner from "../assets/images/RegisterBanner.png";
 import Button from "../components/ui/Button";
 import Input from "../components/ui/Input";
+import { toastManager } from "../components/ui/toastGeneral.jsx";
+import { passwordValidator } from "../utils/validatorFunctions.js";
 const Register = () => {
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = {
+      fullName: formData.get("full_name"),
+      email: formData.get("email"),
+      password: formData.get("password"),
+      confirmPassword: formData.get("confirm_password"),
+      agree: formData.get("agree_toc") === "on",
+    };
+    if (!data.agree) {
+      toastManager.error("Please agree to the terms and conditions");
+      return;
+    }
+    
+    const passwordValidation = passwordValidator(data.password);
+    if (passwordValidation) {
+      toastManager.error(passwordValidation);
+      return;
+    }
+    if (data.password !== data.confirmPassword) {
+      toastManager.error("Passwords do not match");
+      return;
+    }
+    // Call API to create user 
+    console.log(data);
+  };
   return (
     <div>
       <div className="flex justify-evenly">
@@ -46,9 +74,10 @@ const Register = () => {
                   <input
                     type="checkbox"
                     className="h-5 w-5 border accent-Primary-600"
-                    id="remember"
+                    id="agree_toc"
+                    name="agree_toc"
                   />
-                  <label htmlFor="remember" className="cursor-pointer">
+                  <label htmlFor="agree_toc" className="cursor-pointer">
                     I Agree with your{" "}
                     <Link
                       to="/terms_conditions"

@@ -4,6 +4,7 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import { useUpdateStripePaymentSessionMutation } from "../features/api/paymentApiSlice";
 import { toastManager } from "../components/ui/toastGeneral";
 import { calculateDiscountPercentageByPriceRealPrice } from "../utils/Calculation.js";
+import { useGetOrderByPaymentIDQuery} from "../features/api/orderApiSlice.js"
 
 // Lazy load components
 const PageHeader = lazy(() => import("../components/Common/PageHeader"));
@@ -25,12 +26,12 @@ const breadcrumb = [
 ];
 
 function Stripe_Successful() {
-  const { orderDetails } = useSelector((state) => state.order);
   const [orderID, setOrderID] = useState();
   const hasEffectRun = useRef(false);
   const [searchParams] = useSearchParams();
 
   const sessionID = searchParams.get("session_id");
+  const { data: orderDetails } = useGetOrderByPaymentIDQuery(sessionID, {skip: !sessionID});
   const [updateStripePayment] = useUpdateStripePaymentSessionMutation();
 
   const updateStripePaymentSession = async () => {
