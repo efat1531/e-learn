@@ -4,10 +4,10 @@ import {
   IoMdHome,
   IoMdBook,
   IoMdBookmarks,
-  IoMdPerson,
   IoMdSettings,
 } from "react-icons/io";
 import { NavLink } from "react-router-dom";
+import { FaMoneyBillWave } from "react-icons/fa";
 
 const navLinks = [
   {
@@ -26,9 +26,9 @@ const navLinks = [
     icon: <IoMdBookmarks className="text-[1.25rem] " />,
   },
   {
-    title: "Profile",
-    href: "/profile",
-    icon: <IoMdPerson className="text-[1.25rem] " />,
+    title: "Purchases",
+    href: "/purchases",
+    icon: <FaMoneyBillWave  className="text-[1.25rem] " />,
   },
   {
     title: "Settings",

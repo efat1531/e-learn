@@ -11,7 +11,14 @@ const orderApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["User"],
     }),
+    getUserOrders: builder.query({
+      query: () => ({
+        url: `${ORDER_URL}`,
+        method: "GET",
+      }),
+      invalidatesTags: ["User"],
+    }),
   }),
 });
 
-export const { useCreateOrderMutation } = orderApiSlice;
+export const { useCreateOrderMutation, useGetUserOrdersQuery } = orderApiSlice;
