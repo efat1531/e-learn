@@ -14,6 +14,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Layout from "./components/Layout";
 import LayoutMin from "./components/LayoutMin";
 import DashboardLayout from "./components/DashboardLayout";
+import StudentDashboardSettings from "./pages/StudentDashboardSettings";
 
 // Lazy load components
 const AboutUs = lazy(() => import("./pages/AboutUs"));
@@ -181,6 +182,7 @@ function App() {
             >
               <Route index element={<Navigate to="dashboard" replace />} />
               <Route path="dashboard" element={<StuDashboard />} />
+              <Route path="settings" element={<StudentDashboardSettings />} />
             </Route>
             <Route
               path="/cart/checkout"
