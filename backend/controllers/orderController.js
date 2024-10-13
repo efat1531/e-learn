@@ -123,4 +123,32 @@ const getOrderByPaymentID = asyncHandler(async (req, res) => {
   });
 });
 
-export { createOrder, getOrderById, getOrderByPaymentID };
+// @desc   Get All Orders
+// @route  GET /api/order/
+// @access Private[Admin, User]
+const getAllOrders = asyncHandler(async (req, res) => {
+  const filter = {};
+
+  if(req.role !== "admin"){
+    filter.user = req.user._id;
+  }
+  const totalOrders = await orderModel.countDocuments(filter);
+  const orders = await orderModel.find(filter).populate({
+    path: "orderItems.course",
+    select: "title instructor",
+    populate: {
+      path: "instructor",
+      select: "name",
+    },
+  });
+
+  res.status(200).json({
+    status: "success",
+    totalOrders,
+    data: orders,
+  });
+})
+
+
+
+export { createOrder, getOrderById, getOrderByPaymentID, getAllOrders };

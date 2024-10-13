@@ -32,6 +32,7 @@ const NavList = () => {
         render: "Logged out successfully",
         type: "success",
       });
+      
     } catch (error) {
       const message = error?.data
         ? error?.data?.message
