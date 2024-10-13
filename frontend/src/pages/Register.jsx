@@ -4,12 +4,14 @@ import Button from "../components/ui/Button";
 import Input from "../components/ui/Input";
 import { toastManager } from "../components/ui/toastGeneral.jsx";
 import { passwordValidator } from "../utils/validatorFunctions.js";
+import { useRegisterMutation } from "../features/api/authApiSlice.js";
 const Register = () => {
-  const handleSubmit = (e) => {
+  const [register, { isLoading }] = useRegisterMutation();
+  const handleSubmit = async(e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = {
-      fullName: formData.get("full_name"),
+      name: formData.get("full_name"),
       email: formData.get("email"),
       password: formData.get("password"),
       confirmPassword: formData.get("confirm_password"),
@@ -29,8 +31,18 @@ const Register = () => {
       toastManager.error("Passwords do not match");
       return;
     }
-    // Call API to create user 
-    console.log(data);
+
+    try {
+      await register(data).unwrap();
+      toastManager.success("Account created successfully");
+      setTimeout(() => {
+        window.location.href = "/verify?email=" + data.email;
+      }, 2000);
+    } catch (error) {
+      const errorMessage = error?.data?.message ?? "An error occurred";
+      toastManager.error(errorMessage);
+    }
+    
   };
   return (
     <div>

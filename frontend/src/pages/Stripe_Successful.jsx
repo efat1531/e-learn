@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useRef, Suspense, lazy } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams, useNavigate, json } from "react-router-dom";
 import { useUpdateStripePaymentSessionMutation } from "../features/api/paymentApiSlice";
 import { toastManager } from "../components/ui/toastGeneral";
 import { calculateDiscountPercentageByPriceRealPrice } from "../utils/Calculation.js";
 import { useGetOrderByPaymentIDQuery} from "../features/api/orderApiSlice.js"
+import { CURRENCY_CODE } from "../utils/Static_Currency_Variables.js";
+
 
 // Lazy load components
 const PageHeader = lazy(() => import("../components/Common/PageHeader"));
@@ -27,11 +29,12 @@ const breadcrumb = [
 
 function Stripe_Successful() {
   const [orderID, setOrderID] = useState();
+  const [orderDetails, setOrderDetails] = useState(null);
   const hasEffectRun = useRef(false);
   const [searchParams] = useSearchParams();
-
+  const {currency} = useSelector((state) => state.auth) 
   const sessionID = searchParams.get("session_id");
-  const { data: orderDetails } = useGetOrderByPaymentIDQuery(sessionID, {skip: !sessionID});
+  const { data: orderData } = useGetOrderByPaymentIDQuery(sessionID, {skip: !sessionID});
   const [updateStripePayment] = useUpdateStripePaymentSessionMutation();
 
   const updateStripePaymentSession = async () => {
@@ -64,6 +67,15 @@ function Stripe_Successful() {
     }
   }, []);
 
+  useEffect(() => {
+    if (orderData) {
+      console.log(orderData);
+      setOrderID(orderData.data._id);
+      setOrderDetails(orderData.data);
+    }
+  }, [orderData]);
+
+
   const handleGoToHomeButton = () => {
     navigate("/");
   };
@@ -76,12 +88,13 @@ function Stripe_Successful() {
     );
   }
 
-  const { totalPrice, currency, productData, subTotal } = orderDetails;
-  const courseItems = productData.filter((item) => item.isCourse);
-  const nonCourseItems = productData.filter((item) => !item.isCourse);
-
+  const { totalPrice, orderItems, subTotal } = orderDetails;
+  const courseItems = orderItems.filter((item) => item.isCourse);
+  const nonCourseItems = orderItems.filter((item) => !item.isCourse);
+  const Currency = CURRENCY_CODE(currency).toLocaleUpperCase();
   const numberOfCourses = courseItems.length;
   const numberOfItems = nonCourseItems.length;
+
 
   return (
     <div className="w-full">
@@ -136,9 +149,9 @@ function Stripe_Successful() {
                     </div>
                     <div className="flex items-center gap-1">
                       <div className="text-Primary-500 text-sm font-[500]">
-                        {item.realPrice}
+                        {item.price}
                       </div>
-                      {item.realPrice !== item.price && (
+                      {item.price !== item.price && (
                         <div className="text-CustomGray-400 text-sm line-through">
                           {item.price}
                         </div>
@@ -193,7 +206,7 @@ function Stripe_Successful() {
               <div className="flex justify-between items-center w-full">
                 <div className="text-sm text-CustomGray-600">Subtotal</div>
                 <div className="text-sm text-CustomGray-900 font-[500]">
-                  {subTotal}&nbsp;{currency === "bdt" ? "BDT" : "USD"}
+                  {subTotal}&nbsp;{Currency}
                 </div>
               </div>
               <div className="w-full flex justify-between items-center">
@@ -213,7 +226,7 @@ function Stripe_Successful() {
                 Total:
               </div>
               <div className="text-[#202029] text-right text-2xl font-semibold">
-                {totalPrice}&nbsp;{currency === "bdt" ? "BDT" : "USD"}
+                {totalPrice}&nbsp;{Currency}
               </div>
             </div>
           </div>

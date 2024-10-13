@@ -36,17 +36,19 @@ const Checkout = lazy(() => import("./pages/Checkout"));
 const Stripe_Successful = lazy(() => import("./pages/Stripe_Successful"));
 const AdminCourses = lazy(() => import("./pages/AdminCourses"));
 const EditCourse = lazy(() => import("./pages/EditCourse"));
+const VerifyUser = lazy(() => import("./pages/VerifyUser"));
 
 function App() {
   const dispatch = useDispatch();
   const { authenticated } = useSelector((state) => state.auth);
-  const [needFetch, setNeedFetch] = useState(authenticated);
+  const localStorageUser = JSON.parse(localStorage.getItem("eLearn-userInfo"));
+  const [needFetch, setNeedFetch] = useState(authenticated.needFetch);
   const { data } = useFetchUserQuery({
     skip: !needFetch,
   });
 
   useEffect(() => {
-    if (data && !authenticated) {
+    if (data && !authenticated && localStorageUser) {
       dispatch(setUserInformation(data.data));
       setNeedFetch(false);
     }
@@ -80,6 +82,14 @@ function App() {
               <Layout>
                 <Register />
               </Layout>
+            }
+          />
+          <Route
+            path="/verify"
+            element={
+              <LayoutMin>
+                <VerifyUser />
+              </LayoutMin>
             }
           />
           <Route

@@ -147,10 +147,28 @@ const deleteUser = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc    Get Best Instructors
+// @route   GET /api/users/best-instructors
+// @access  Public
+const getBestInstructors = asyncHandler(async (req, res) => {
+  const { page = 1, limit = 5 } = req.query;
+  const bestInstructors = await userModel
+    .find({ role: "instructor" })
+    .sort("-rating")
+    .skip((page - 1) * limit)
+    .limit(limit * 1).select("+designation +numberOfStudents +rating"); 
+
+  res.status(200).json({
+    status: "success",
+    data: bestInstructors,
+  });
+});
+
 export {
   getUserProfile,
   updateUserProfile,
   updateUserPassword,
   getUsers,
   deleteUser,
+  getBestInstructors,
 };

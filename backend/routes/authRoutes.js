@@ -13,7 +13,7 @@ import {
 const router = express.Router();
 
 router.route("/register").post(register);
-router.route("/verify/:email").post(verifyUser).get(resendToken);
+router.route("/verify").post(verifyUser).get(resendToken);
 router.route("/login").post(login);
 router.route("/logout").post(logout);
 router.route("/forgot").post(forgotPassword);

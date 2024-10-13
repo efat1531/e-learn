@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { NavLink, Link } from "react-router-dom";
 import { ReactSVG } from "react-svg";
 import Logo from "../..//assets/svg/GraduationCap.svg";
@@ -7,13 +7,23 @@ import FollowIcon from "../../assets/Icon/FollowIcon";
 import NotificationIcon from "../../assets/Icon/NotificationIcon";
 import Button from "../ui/Button";
 import NavLinks from "./NavLinksDesktop";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { setProfilePicture } from "../../features/authSlice";
+
+const defaultProfilePicture = "https://avatar.iran.liara.run/public/boy?username=Ash";
 
 const DesktopNav = () => {
   const profilePicture = useSelector((state) => state.auth.profilePicture);
   const { authenticated } = useSelector((state) => state.auth);
   const { pathname } = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!profilePicture) {
+      dispatch(setProfilePicture(defaultProfilePicture));
+    }
+  }, [profilePicture]);
 
   return (
     <nav className="hidden tablet:block">

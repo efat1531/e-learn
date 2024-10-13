@@ -8,7 +8,12 @@ const userApiSlice = apiSlice.injectEndpoints({
       providesTags: ["User"],
       keepUnusedDataFor: 5,
     }),
+    fetchBestInstructors: builder.query({
+      query: () => `${USER_URL}/best-instructors`,
+      providesTags: ["User"],
+      keepUnusedDataFor: 5,
+    }),
   }),
 });
 
-export const { useFetchUserQuery } = userApiSlice;
+export const { useFetchUserQuery, useFetchBestInstructorsQuery } = userApiSlice;

@@ -49,13 +49,12 @@ const register = asyncHandler(async (req, res) => {
 });
 
 // @desc    Verify user
-// @route   POST /api/auth/:email
+// @route   POST /api/auth/verify
 // @access  Public
 const verifyUser = asyncHandler(async (req, res) => {
-  const encryptedEmail = req.params.email;
+  const email = req.body.email;
   const token = req.body.token;
 
-  const email = decryptEmail(encryptedEmail);
   const user = await userModel.findOne({ email });
 
   if (!user) {
@@ -105,12 +104,11 @@ const verifyUser = asyncHandler(async (req, res) => {
 });
 
 // @desc    Resend verification token
-// @route   GET /api/auth/:email
+// @route   GET /api/verify?email=email
 // @access  Public
 const resendToken = asyncHandler(async (req, res) => {
-  const encryptedEmail = req.params.email;
-
-  const email = decryptEmail(encryptedEmail);
+  const email = req.query.email;
+  
   const user = await userModel.findOne({
     email,
   });

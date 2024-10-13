@@ -14,21 +14,17 @@ const orderSlice = createSlice({
     },
     setOrderDetails(state, action) {
       state.orderDetails = action.payload;
-      localStorage.setItem(
-        "eLearnOrderDetails",
-        JSON.stringify(action.payload)
-      );
+      
     },
 
     clearOrderDetails(state) {
       state.orderDetails = null;
-      localStorage.removeItem("eLearnOrderDetails");
+ 
     },
 
     clearOrder(state) {
       state.previousOrders = [];
       state.orderDetails = null;
-      localStorage.removeItem("eLearnOrderDetails");
     },
   },
 });

@@ -2,30 +2,29 @@ import React from "react";
 import { numberToEnFormat } from "../../utils/Transformations";
 import { Link } from "react-router-dom";
 
-const rating = 5;
-const count = 2759;
-const description = `student${count < 2 ? "" : "s"}`;
-const imageURL =
-  "https://cdn.builder.io/api/v1/image/assets/TEMP/f50fdda79c58e6003124c096bb51d2502f636c820f1fbd1bda8c0089e11a7df7?apiKey=23afa202bc2b43d8bffafdcae0891485&";
-const name = "Mahadi Ahmed";
-const title = "English Lecturer";
 
-const InstructorCard = () => {
-  const formattedCount = numberToEnFormat(count);
+const InstructorCard = ({instructor}) => {
+
+  const { rating, numberOfStudents, profilePicture, name, designation } = instructor;
+
+  const formattedCount = numberToEnFormat(numberOfStudents);
   const slug = name.toLowerCase().replace(" ", "-");
+
+  const studentsDescription = numberOfStudents > 999 ? "K" : "\u00A0";
+  
 
   return (
     <Link to={`/instructor/${slug}`} style={{ textDecoration: "none" }}>
       <section style={style.profileCard}>
         <img
           loading="lazy"
-          src={imageURL}
+          src={profilePicture}
           style={style.profileImage}
           alt={`Profile picture of ${name}`}
         />
         <div style={style.profileInfo}>
           <h2 style={style.profileName}>{name}</h2>
-          <p style={style.profileTitle}>{title}</p>
+          <p style={style.profileTitle}>{designation}</p>
         </div>
         <hr style={style.divider} />
         <div style={style.profileDetails}>
@@ -34,7 +33,7 @@ const InstructorCard = () => {
           </div>
           <div style={style.stats}>
             <div style={style.statsCount}>{formattedCount}</div>
-            <div style={style.statsDescription}>&nbsp;{description}</div>
+            <div style={style.statsDescription}>&nbsp;{studentsDescription}</div>
           </div>
         </div>
       </section>

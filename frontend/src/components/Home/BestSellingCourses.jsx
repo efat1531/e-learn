@@ -1,9 +1,24 @@
-import CourseData from "../../../Data/courseData.json";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-const top10Course = CourseData.sort((a, b) => b.rating - a.rating).slice(0, 8);
+import { useFetchTopCourseQuery } from "../../features/api/courseApiSlice";
+import { setTopCourses } from "../../features/courseSlice";
+import CourseCard from "../Common/CourseCard";
 
 const BestSellingCourses = () => {
+  const dispatch = useDispatch();
+  const {topCourses} = useSelector((state) => state.course);
+  const { data: fetchTopCourses } = useFetchTopCourseQuery(  {skip: !topCourses} );
+
+  useEffect(() => {
+    if (fetchTopCourses) {
+      
+      dispatch(setTopCourses(fetchTopCourses.data));
+    }
+  }, [fetchTopCourses, dispatch]);
+
+
   return (
     <section id="best-selling-course" className="bg-gray-50 py-16">
       <div className="py-[5rem] flex flex-col gap-[2.5rem] justify-center items-center">
@@ -11,9 +26,9 @@ const BestSellingCourses = () => {
           Best Selling Courses
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 desktop:grid-cols-4 gap-4">
-          {top10Course.map((course, index) => (
+          {topCourses.map((course, index) => (
             <Link to={`/courses/${course.slug}`} key={index}>
-              {/* <CourseCard key={index} course={course} /> */}
+              <CourseCard key={index} course={course} />
             </Link>
           ))}
         </div>

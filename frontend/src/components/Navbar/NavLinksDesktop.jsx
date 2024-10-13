@@ -27,12 +27,13 @@ const NavList = () => {
     const toastID = toastManager.loading("Logging out...");
     try {
       await logoutApiCall().unwrap();
+      localStorage.removeItem("eLearn-userInfo");
       dispatch(clearCredentials());
       toastManager.updateStatus(toastID, {
         render: "Logged out successfully",
         type: "success",
       });
-      
+
     } catch (error) {
       const message = error?.data
         ? error?.data?.message

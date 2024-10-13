@@ -13,7 +13,7 @@ const RecentlyAddedCourse = () => {
   const { newCourses } = useSelector((state) => state.course);
   const shouldFetch = !newCourses || newCourses.length === 0;
   const { data } = useFetchRecentCourseQuery(
-    { limit: 2 },
+    { limit: 4 },
     {
       skip: !shouldFetch,
     }
@@ -21,6 +21,7 @@ const RecentlyAddedCourse = () => {
 
   useEffect(() => {
     if (data) {
+      console.log(data);
       dispatch(setNewCourses(data.data));
     }
   }, [data, dispatch]);

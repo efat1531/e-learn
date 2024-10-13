@@ -1,11 +1,10 @@
 import orderModel from "../models/orderModel.js";
 import asyncHandler from "../middlewere/asyncHandler.js";
-import userModel from "../models/userModel.js";
-import courseModel from "../models/courseModel.js";
-import courseProgressModel from "../models/courseProgressModel.js";
 import AppError from "../utils/AppError.js";
 import { areFieldsValid } from "../utils/nullValueCheck.js";
-import { populate } from "dotenv";
+import DynamicFilter from "../utils/dynamicFilter.js";
+import DynamicSort from "../utils/dynamicSort.js";
+
 
 // @desc    Create new order
 // @route   POST /api/order/
@@ -95,6 +94,7 @@ const getOrderById = asyncHandler(async (req, res) => {
 // @route   GET /api/order/payment/:id
 // @access  Private[Admin, User]
 const getOrderByPaymentID = asyncHandler(async (req, res) => {
+  console.log(req.params.id);
   const order = await orderModel.findOne({
     "paymentResult.transaction_id": req.params.id,
   }).populate({
@@ -110,16 +110,17 @@ const getOrderByPaymentID = asyncHandler(async (req, res) => {
     throw AppError.notFound("Order not found");
   }
 
-  if (
-    order.user.toString() !== req.user._id.toString() &&
-    req.user.role !== "admin"
-  ) {
-    throw AppError.forbidden("You are not authorized to view this order");
-  }
+  const subTotal = order.orderItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
+
+  const orderObject = order.toObject(); 
+  orderObject.subTotal = subTotal;
 
   res.status(200).json({
     status: "success",
-    data: order,
+    data: orderObject,
   });
 });
 
@@ -127,11 +128,17 @@ const getOrderByPaymentID = asyncHandler(async (req, res) => {
 // @route  GET /api/order/
 // @access Private[Admin, User]
 const getAllOrders = asyncHandler(async (req, res) => {
-  const filter = {};
+  
+  const dynamicFilter = new DynamicFilter(req.query);
+  const dynamicSort = new DynamicSort(req.query);
+  const sort = dynamicSort.process();
+  const filter = dynamicFilter.process();
 
-  if(req.role !== "admin"){
+
+  if(req.user.role !== "admin"){
     filter.user = req.user._id;
   }
+
   const totalOrders = await orderModel.countDocuments(filter);
   const orders = await orderModel.find(filter).populate({
     path: "orderItems.course",
