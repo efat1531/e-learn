@@ -37,6 +37,7 @@ const Stripe_Successful = lazy(() => import("./pages/Stripe_Successful"));
 const AdminCourses = lazy(() => import("./pages/AdminCourses"));
 const EditCourse = lazy(() => import("./pages/EditCourse"));
 const VerifyUser = lazy(() => import("./pages/VerifyUser"));
+const BecomeAnInstructor = lazy(() => import("./pages/BecomeAnInstructor"));
 
 function App() {
   const dispatch = useDispatch();
@@ -206,6 +207,14 @@ function App() {
             element={
               <Layout>
                 <Stripe_Successful />
+              </Layout>
+            }
+          />
+          <Route
+            path="/become-an-instructor"
+            element={
+              <Layout>
+                <BecomeAnInstructor />
               </Layout>
             }
           />

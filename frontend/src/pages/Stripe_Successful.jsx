@@ -96,7 +96,6 @@ function Stripe_Successful() {
       setOrderID(orderData.data._id);
       setOrderDetails(orderData.data);
     }else if(orderDataById){
-      console.log("🚀 ~ useEffect ~ orderDataById:", orderDataById)
       setOrderID(orderDataById.data._id);
       setOrderDetails(orderDataById.data);
     }

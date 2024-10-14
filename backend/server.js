@@ -17,6 +17,7 @@ import uploadRoutes from "./routes/uploadRoutes.js";
 import paymentRoutes from "./routes/PaymentRoute.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import courseProgressionRoutes from "./routes/courseProgressRoutes.js";
+import instructorRequestRoutes from "./routes/becomeAnInstructorRoutes.js";
 
 dotenv.config();
 
@@ -45,6 +46,7 @@ app.use("/api/upload", uploadRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/api/order", orderRoutes);
 app.use("/api/course-progresses", courseProgressionRoutes);
+app.use("/api/instructor-request", instructorRequestRoutes);
 
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();
