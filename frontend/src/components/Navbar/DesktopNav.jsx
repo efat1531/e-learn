@@ -11,10 +11,10 @@ import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 const DesktopNav = () => {
-  const profilePicture = useSelector((state) => state.auth.profilePicture);
+  const auth = useSelector((state) => state.auth);
   const { authenticated } = useSelector((state) => state.auth);
   const { pathname } = useLocation();
-
+  
   return (
     <nav className="hidden tablet:block">
       <NavLinks />
@@ -67,11 +67,11 @@ const DesktopNav = () => {
               </Link>
             </div>
           )}
-          {profilePicture && (
-            <Link to="/student" className="group">
+          {auth?.profilePicture && (
+            <Link to={auth.role === 'admin' ? "/dashboard" : "/student"} className="group">
               <div className="avatar">
                 <div className="w-12 rounded-full">
-                  <img src={profilePicture} />
+                  <img src={auth.profilePicture} />
                 </div>
               </div>
             </Link>

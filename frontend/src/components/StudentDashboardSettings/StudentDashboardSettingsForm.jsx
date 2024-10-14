@@ -3,8 +3,9 @@ import Input from "../ui/Input";
 import Button from "../ui/Button";
 import ChangePasswordForm from "./ChangePasswordForm";
 import { Formik } from "formik";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ProfileContext } from "../../pages/StudentDashboard";
+import { useUploadUserImageMutation } from "../../features/api/uploadApiSlice";
 
 const validate = (values) => {
   const errors = {};
@@ -20,6 +21,25 @@ const validate = (values) => {
 const StudentDashboardSettingsForm = () => {
   const profile = useContext(ProfileContext);
 
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
+
+  const [uploadUserImage] = useUploadUserImageMutation();
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setSelectedImage(file);
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        setPreviewUrl(reader.result); // Generate the preview URL
+      };
+
+      reader.readAsDataURL(file); // Read the image file as a data URL
+    }
+  };
+
   return (
     <>
       <div className="max-w-[82.5rem] mx-auto px-4">
@@ -29,14 +49,15 @@ const StudentDashboardSettingsForm = () => {
             <div className="border p-8">
               <div className="relative">
                 <img
-                  src={`${profile.profilePicture}`}
+                  src={previewUrl ? previewUrl : `${profile.profilePicture}`}
                   alt="Profile"
                   className="w-full aspect-square object-cover"
                 />
-                <button className="absolute bottom-0 bg-black/30 w-full py-2 text-white flex items-center justify-center gap-1 shadow font-normal cursor-pointer hover:bg-black/50">
+                <label className="absolute bottom-0 bg-black/30 w-full py-2 text-white flex items-center justify-center gap-1 shadow font-normal cursor-pointer hover:bg-black/50" htmlFor="photoInput">
                   <Upload size={16} />
                   Upload Photo
-                </button>
+                  <input type="file" hidden id="photoInput" accept=".jpg, .png" onChange={handleImageChange} />
+                </label>
               </div>
               <p className="text-sm text-gray-500 mt-4 text-center">
                 Image size should be under 1MB and image ratio needs to be 1:1
@@ -52,7 +73,9 @@ const StudentDashboardSettingsForm = () => {
               validate={validate}
               onSubmit={async (values, { setSubmitting }) => {
                 setSubmitting(true);
-                console.log("here");
+                
+                const res = await uploadUserImage({image: selectedImage});
+                console.log(res);
 
                 setSubmitting(false);
               }}

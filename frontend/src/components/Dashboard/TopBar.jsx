@@ -2,11 +2,14 @@
 import { useLocation } from "react-router-dom";
 import { SlBell } from "react-icons/sl";
 import { CiMenuKebab } from "react-icons/ci";
+import { useSelector } from "react-redux";
 
 const TopBar = ({ setSidebarOpen }) => {
   const location = useLocation();
   const currentPage =
     location.pathname.split("/")[location.pathname.split("/").length - 1];
+
+  const auth = useSelector((state) => state.auth);
 
   return (
     <div className="bg-white">
@@ -36,7 +39,9 @@ const TopBar = ({ setSidebarOpen }) => {
             </div>
             <div className="avatar">
               <div className="w-12 rounded-full">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXJA32WU4rBpx7maglqeEtt3ot1tPIRWptxA&s" />
+                {auth  && 
+                  <img src={auth.profilePicture} />
+                }
               </div>
             </div>
           </div>

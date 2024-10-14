@@ -2,9 +2,16 @@ import { useState } from "react";
 import Sidebar from "./Dashboard/Sidebar";
 import TopBar from "./Dashboard/TopBar";
 import DashboardFooter from "./Dashboard/DashboardFooter";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const DashboardLayout = ({ children }) => {
   const [sidebarOpen,setSidebarOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const auth = useSelector((state) => state.auth);
+
+  if(!auth || auth.role != 'admin') navigate('/');
 
   return (
     <div className="flex">
