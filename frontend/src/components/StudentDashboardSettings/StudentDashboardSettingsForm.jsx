@@ -6,6 +6,7 @@ import { Formik } from "formik";
 import { useContext, useState } from "react";
 import { ProfileContext } from "../../pages/StudentDashboard";
 import { useUploadUserImageMutation } from "../../features/api/uploadApiSlice";
+import { useUpdateUserMutation } from "../../features/api/userApiSlice";
 
 const validate = (values) => {
   const errors = {};
@@ -25,6 +26,7 @@ const StudentDashboardSettingsForm = () => {
   const [previewUrl, setPreviewUrl] = useState(null);
 
   const [uploadUserImage] = useUploadUserImageMutation();
+  const [updateUser] = useUpdateUserMutation();
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -53,10 +55,19 @@ const StudentDashboardSettingsForm = () => {
                   alt="Profile"
                   className="w-full aspect-square object-cover"
                 />
-                <label className="absolute bottom-0 bg-black/30 w-full py-2 text-white flex items-center justify-center gap-1 shadow font-normal cursor-pointer hover:bg-black/50" htmlFor="photoInput">
+                <label
+                  className="absolute bottom-0 bg-black/30 w-full py-2 text-white flex items-center justify-center gap-1 shadow font-normal cursor-pointer hover:bg-black/50"
+                  htmlFor="photoInput"
+                >
                   <Upload size={16} />
                   Upload Photo
-                  <input type="file" hidden id="photoInput" accept=".jpg, .png" onChange={handleImageChange} />
+                  <input
+                    type="file"
+                    hidden
+                    id="photoInput"
+                    accept=".jpg, .png"
+                    onChange={handleImageChange}
+                  />
                 </label>
               </div>
               <p className="text-sm text-gray-500 mt-4 text-center">
@@ -74,7 +85,11 @@ const StudentDashboardSettingsForm = () => {
               onSubmit={async (values, { setSubmitting }) => {
                 setSubmitting(true);
                 
-                const res = await uploadUserImage({image: selectedImage});
+                const formData = new FormData();
+                formData.append("image", selectedImage);
+
+                const res = await uploadUserImage(formData);
+                // const res = await updateUser({ name: values.name, email: values.email });
                 console.log(res);
 
                 setSubmitting(false);

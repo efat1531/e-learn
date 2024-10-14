@@ -1,11 +1,11 @@
 import { apiSlice } from "./apiSlice";
-import { USER_URL } from "./constants";
+import { UPLOAD_URL } from "./constants";
 
 const uploadApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     uploadUserImage: builder.mutation({
       query: (body) => ({
-        url: `${USER_URL}/upload/user`,
+        url: `${UPLOAD_URL}/user`,
         method: 'POST',
         body: body
       }),

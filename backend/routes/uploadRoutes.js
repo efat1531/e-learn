@@ -27,6 +27,9 @@ const upload = multer({ storage, fileFilter });
 const uploadSingleImage = upload.single("image");
 
 router.post("/user", (req, res) => {
+  console.log(req.file);
+
+  res.status(500).send({ message: error.message });
   uploadSingleImage(req, res, async function (err) {
     if (err) {
       return res.status(400).send({ message: err.message });

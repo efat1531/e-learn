@@ -8,7 +8,14 @@ const userApiSlice = apiSlice.injectEndpoints({
       providesTags: ["User"],
       keepUnusedDataFor: 5,
     }),
+    updateUser: builder.mutation({
+      query: (body) => ({
+        url: `${USER_URL}/profile`,
+        method: "PATCH",
+        body: body
+      })
+    }),
   }),
 });
 
-export const { useFetchUserQuery } = userApiSlice;
+export const { useFetchUserQuery, useUpdateUserMutation } = userApiSlice;
