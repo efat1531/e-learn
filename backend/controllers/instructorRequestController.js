@@ -1,7 +1,7 @@
-import AppError from "../utils/AppError";
-import asyncHandler from "../utils/asyncHandler";
-import InstructorRequestModel from "../models/InstructorRequest";
-import UserModel from "../models/User";
+import asyncHandler from "../middlewere/asyncHandler.js";
+import InstructorRequestModel from "../models/instructorRequestModel.js";
+import UserModel from "../models/userModel.js";
+import AppError from "../utils/AppError.js";
 
 // @desc    Create new instructor request
 // @route   POST /api/instructor-request

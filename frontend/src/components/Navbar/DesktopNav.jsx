@@ -77,7 +77,7 @@ const DesktopNav = () => {
               </Link>
             </div>
           )}
-          {profilePicture && (
+          {profilePicture && authenticated && (
             <Link to="/student" className="group">
               <div className="avatar">
                 <div className="w-12 rounded-full">

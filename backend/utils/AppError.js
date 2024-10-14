@@ -45,6 +45,10 @@ class AppError extends Error {
     return new AppError("Unauthorized", 401, message);
   }
 
+  static notLoggedIn(message) {
+    return new AppError("Not Logged In", 401, message);
+  }
+
   static forbidden(message) {
     return new AppError("Forbidden", 403, message);
   }

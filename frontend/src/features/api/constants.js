@@ -7,3 +7,4 @@ export const REVIEW_URL = "/api/reviews";
 export const UPLOAD_URL = "/api/upload";
 export const PAYMENT_URL = "/api/payment";
 export const ORDER_URL = "/api/order";
+export const INSTRUCTOR_REQUEST_URL = "/api/instructor-request";

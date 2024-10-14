@@ -14,6 +14,10 @@ export default {
         laptop: "1024px",
 
         desktop: "1280px",
+
+        "desktop-lg": "1440px",
+
+        "desktop-xl": "1920px",
       },
       colors: {
         CustomGray: {
