@@ -1,3 +1,4 @@
+import { getOrderById } from "../../../../backend/controllers/orderController";
 import { apiSlice } from "./apiSlice";
 import { ORDER_URL } from "./constants";
 
@@ -15,7 +16,11 @@ const orderApiSlice = apiSlice.injectEndpoints({
       query: (id) => `${ORDER_URL}/payment/${id}`,
       providesTags: ["Order"],
     }),
+    getOrderById: builder.query({
+      query: (id) => `${ORDER_URL}/${id}`,
+      providesTags: ["Order"],
+    }),
   }),
 });
 
-export const { useCreateOrderMutation, useGetOrderByPaymentIDQuery } = orderApiSlice;
+export const { useCreateOrderMutation, useGetOrderByPaymentIDQuery, useGetOrderByIdQuery } = orderApiSlice;

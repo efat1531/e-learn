@@ -3,14 +3,15 @@ import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { calculateDiscountPercentageByPriceRealPrice } from "../../utils/Calculation.js";
 import Button from "../ui/Button";
-import { useCreateStripePaymentSessionMutation } from "../../features/api/paymentApiSlice";
+import { useCreateStripePaymentSessionMutation, useCreateAmarPayPaymentSessionMutation } from "../../features/api/paymentApiSlice";
 import { useCreateOrderMutation } from "../../features/api/orderApiSlice.js";
-import CardPaymentHandler from "./cardPaymentHandler.js";
+import {CardPaymentHandler, amarPayPaymentHandler} from "./cardPaymentHandler.js";
 
 const CartInfo = ({ paymentBy, userEmail = "" }) => {
   const { orderDetails } = useSelector((state) => state.order);
   const userID = useSelector((state) => state.auth.id);
   const [createPaymentStripe] = useCreateStripePaymentSessionMutation();
+  const [createPaymentAmarPay] = useCreateAmarPayPaymentSessionMutation();
   const [createOrder] = useCreateOrderMutation();
 
   if (!orderDetails || !userID) return null;
@@ -31,6 +32,15 @@ const CartInfo = ({ paymentBy, userEmail = "" }) => {
         productData,
         createOrder,
         createPaymentStripe,
+      });
+    }else if(paymentBy === "amarPay"){
+      // handle amarPay payment
+      const AmarPayPaymentHandler = new amarPayPaymentHandler();
+      AmarPayPaymentHandler.processPayment({
+        orderDetails,
+        currency,
+        createOrder,
+        createPaymentAmarPay,
       });
     }
   };

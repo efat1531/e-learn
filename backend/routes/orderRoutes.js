@@ -5,7 +5,7 @@ import { createOrder, getOrderById, getOrderByPaymentID, getAllOrders } from "..
 const router = express.Router();
 
 router.route("/").post(protect([]), createOrder).get(protect([]), getAllOrders);
-router.route("/:id").get(protect([]), getOrderById);
+router.route("/:id").get(getOrderById);
 router.route("/payment/:id").get( getOrderByPaymentID);
 
 

@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef, Suspense, lazy } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useSearchParams, useNavigate, json } from "react-router-dom";
-import { useUpdateStripePaymentSessionMutation } from "../features/api/paymentApiSlice";
+import { useUpdateStripePaymentSessionMutation, useUpdateAmarPayPaymentSessionMutation } from "../features/api/paymentApiSlice";
 import { toastManager } from "../components/ui/toastGeneral";
 import { calculateDiscountPercentageByPriceRealPrice } from "../utils/Calculation.js";
-import { useGetOrderByPaymentIDQuery} from "../features/api/orderApiSlice.js"
+import { useGetOrderByPaymentIDQuery, useGetOrderByIdQuery} from "../features/api/orderApiSlice.js"
 import { CURRENCY_CODE } from "../utils/Static_Currency_Variables.js";
 
 
@@ -34,8 +34,11 @@ function Stripe_Successful() {
   const [searchParams] = useSearchParams();
   const {currency} = useSelector((state) => state.auth) 
   const sessionID = searchParams.get("session_id");
+  const order_id = searchParams.get("order_id");
   const { data: orderData } = useGetOrderByPaymentIDQuery(sessionID, {skip: !sessionID});
+  const { data: orderDataById } = useGetOrderByIdQuery(order_id, {skip: !order_id});
   const [updateStripePayment] = useUpdateStripePaymentSessionMutation();
+  const [updateAmarPayPayment] = useUpdateAmarPayPaymentSessionMutation();
 
   const updateStripePaymentSession = async () => {
     const toastId = toastManager.loading("Processing payment...");
@@ -58,20 +61,44 @@ function Stripe_Successful() {
     }
   };
 
+  const updateAmarPayPaymentSession = async () => {
+    const toastId = toastManager.loading("Processing payment...");
+    try {
+      const body = { orderID: order_id };
+      const data = await updateAmarPayPayment(body).unwrap();
+      toastManager.updateStatus(toastId, {
+        render: "Payment successful",
+        type: "success",
+      });
+    } catch (error) {
+      const errorMessage = error?.data?.message ?? "Something went wrong";
+      toastManager.updateStatus(toastId, {
+        render: errorMessage,
+        type: "error",
+      });
+    }
+  };
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!hasEffectRun.current) {
+    if (!hasEffectRun.current && sessionID) {
       hasEffectRun.current = true;
       updateStripePaymentSession();
+    } else if (!hasEffectRun.current && order_id) {
+      hasEffectRun.current = true;
+      updateAmarPayPaymentSession();
     }
   }, []);
 
   useEffect(() => {
     if (orderData) {
-      console.log(orderData);
       setOrderID(orderData.data._id);
       setOrderDetails(orderData.data);
+    }else if(orderDataById){
+      console.log("🚀 ~ useEffect ~ orderDataById:", orderDataById)
+      setOrderID(orderDataById.data._id);
+      setOrderDetails(orderDataById.data);
     }
   }, [orderData]);
 

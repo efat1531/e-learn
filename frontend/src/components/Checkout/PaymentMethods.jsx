@@ -3,7 +3,7 @@ import { CiCreditCard1 } from "react-icons/ci";
 import { FaHandshake } from "react-icons/fa";
 import { RiCheckboxCircleFill } from "react-icons/ri";
 import { LiaAmazonPay } from "react-icons/lia";
-import Bkash from "../../assets/Icon/Bkash";
+// import Bkash from "../../assets/Icon/Bkash";
 import { MdEmail } from "react-icons/md";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";

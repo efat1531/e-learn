@@ -18,12 +18,29 @@ const paymentApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["User"],
     }),
+    createAmarPayPaymentSession: builder.mutation({
+      query: (body) => ({
+        url: `${PAYMENT_URL}/amarPay/create-payment-intent`,
+        method: "POST",
+        body,
+      }),
+    }),
+    updateAmarPayPaymentSession: builder.mutation({
+      query: (body) => ({
+        url: `${PAYMENT_URL}/amarPay/update-payment-intent`,
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["User"],
+    }),
   }),
 });
 
 export const {
   useCreateStripePaymentSessionMutation,
   useUpdateStripePaymentSessionMutation,
+  useCreateAmarPayPaymentSessionMutation,
+  useUpdateAmarPayPaymentSessionMutation,
 } = paymentApiSlice;
 
 export default paymentApiSlice;
