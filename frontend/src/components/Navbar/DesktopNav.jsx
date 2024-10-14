@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { ReactSVG } from "react-svg";
 import Logo from "../..//assets/svg/GraduationCap.svg";
@@ -11,7 +11,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { setProfilePicture } from "../../features/authSlice";
 
-const defaultProfilePicture = "https://avatar.iran.liara.run/public/boy?username=Ash";
+const defaultProfilePicture =
+  "https://avatar.iran.liara.run/public/boy?username=Ash";
 
 const DesktopNav = () => {
   const profilePicture = useSelector((state) => state.auth.profilePicture);
@@ -41,7 +42,7 @@ const DesktopNav = () => {
             }}
           />
           <span className="text-[2rem] font-[600] text-CustomGray-900 leading-9 tracking-tighter">
-            Sonorus
+            E-Learn
           </span>
         </NavLink>
         {/* Right Side */}

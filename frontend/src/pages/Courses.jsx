@@ -27,12 +27,12 @@ const Courses = () => {
     }
   }, [data, dispatch]);
 
-  const categoryOptions = courses.map((course) => ({
-    value: "category",
-    label: "Hello My",
-    hoverColor: "#E8F0F7",
-    textColor: "#334155",
-  }));
+  // const categoryOptions = courses.map((course) => ({
+  //   value: "category",
+  //   label: "Hello My",
+  //   hoverColor: "#E8F0F7",
+  //   textColor: "#334155",
+  // }));
 
   useEffect(() => {
     setNewCourses((prevCourses) => {
@@ -95,7 +95,7 @@ const Courses = () => {
               />
             </Suspense>
           </div>
-          <div className="flex justify-center items-center gap-4">
+          {/* <div className="flex justify-center items-center gap-4">
             <div className="text-gray-600 text-sm font-normal leading-6">
               Filter By :
             </div>
@@ -107,7 +107,7 @@ const Courses = () => {
                 selectedOption={selectedCategory}
               />
             </Suspense>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="w-[80vw] grid grid-cols-1 gap-6 minmax-[15.25rem,1fr] md:grid-cols-2 lg:grid-cols-3 desktop:grid-cols-4 place-items-center">

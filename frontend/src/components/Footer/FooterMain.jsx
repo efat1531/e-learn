@@ -28,7 +28,7 @@ const FooterMain = () => {
                 className="w-[2.875rem] h-[2.875rem]"
               />
               <span className="text-justify text-[2.3rem] font-[600] leading-[2.852rem] tracking-[-0.069rem]">
-                Sonorus
+                E-Learn
               </span>
             </div>
             <div className="text-gray-500 text-justify font-inter text-sm font-normal leading-[1.375rem] tracking-tight max-w-[26.5rem]">
@@ -92,7 +92,7 @@ const FooterMain = () => {
       {/* Footer Copyright start */}
       <div className="flex px-[18.75rem] py-[1.5rem] justify-between items-center bg-[#1D2026] shadow-[inset_0px_1px_0px_0px_rgba(54,59,71,0.5)] max-w-[100%]">
         <span className="text-[#8C94A3] text-justify font-inter text-[0.875rem] font-normal leading-[1.375rem] tracking-[-0.00875rem]">
-          &copy; 2024 - <span className="font-[600] text-white">Sonorus</span>.
+          &copy; 2024 - <span className="font-[600] text-white">E-Learn</span>.
           Designed by{" "}
           <span className="font-[500] text-Primary-500">Efat Sikder</span>. All
           rights reserved

@@ -17,7 +17,7 @@ const DesktopNavMin = () => {
           }}
         />
         <span className="text-[2rem] font-[600] text-CustomGray-900 leading-9 tracking-tighter">
-          Sonorus
+          E-Learn
         </span>
       </NavLink>
       <div className="flex justify-center gap-4 items-center">

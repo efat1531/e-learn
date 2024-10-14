@@ -5,7 +5,6 @@ import { areFieldsValid } from "../utils/nullValueCheck.js";
 import DynamicFilter from "../utils/dynamicFilter.js";
 import DynamicSort from "../utils/dynamicSort.js";
 
-
 // @desc    Create new order
 // @route   POST /api/order/
 // @access  Private
@@ -66,7 +65,7 @@ const createOrder = asyncHandler(async (req, res) => {
 const getOrderById = asyncHandler(async (req, res) => {
   const order = await orderModel.findById(req.params.id).populate({
     path: "orderItems.course",
-    select: "title instructor",
+    select: "title instructor titleImage",
     populate: {
       path: "instructor",
       select: "name",
@@ -95,16 +94,18 @@ const getOrderById = asyncHandler(async (req, res) => {
 // @access  Private[Admin, User]
 const getOrderByPaymentID = asyncHandler(async (req, res) => {
   console.log(req.params.id);
-  const order = await orderModel.findOne({
-    "paymentResult.transaction_id": req.params.id,
-  }).populate({
-    path: "orderItems.course",
-    select: "title instructor",
-    populate: {
-      path: "instructor",
-      select: "name",
-    },
-  });
+  const order = await orderModel
+    .findOne({
+      "paymentResult.transaction_id": req.params.id,
+    })
+    .populate({
+      path: "orderItems.course",
+      select: "title instructor titleImage",
+      populate: {
+        path: "instructor",
+        select: "name",
+      },
+    });
 
   if (!order) {
     throw AppError.notFound("Order not found");
@@ -115,7 +116,7 @@ const getOrderByPaymentID = asyncHandler(async (req, res) => {
     0
   );
 
-  const orderObject = order.toObject(); 
+  const orderObject = order.toObject();
   orderObject.subTotal = subTotal;
 
   res.status(200).json({
@@ -128,21 +129,19 @@ const getOrderByPaymentID = asyncHandler(async (req, res) => {
 // @route  GET /api/order/
 // @access Private[Admin, User]
 const getAllOrders = asyncHandler(async (req, res) => {
-  
   const dynamicFilter = new DynamicFilter(req.query);
   const dynamicSort = new DynamicSort(req.query);
   const sort = dynamicSort.process();
   const filter = dynamicFilter.process();
 
-
-  if(req.user.role !== "admin"){
+  if (req.user.role !== "admin") {
     filter.user = req.user._id;
   }
 
   const totalOrders = await orderModel.countDocuments(filter);
   const orders = await orderModel.find(filter).populate({
     path: "orderItems.course",
-    select: "title instructor",
+    select: "title instructor titleImage",
     populate: {
       path: "instructor",
       select: "name",
@@ -154,8 +153,6 @@ const getAllOrders = asyncHandler(async (req, res) => {
     totalOrders,
     data: orders,
   });
-})
-
-
+});
 
 export { createOrder, getOrderById, getOrderByPaymentID, getAllOrders };

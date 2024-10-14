@@ -4,8 +4,6 @@ import { FaStar } from "react-icons/fa6";
 import { numberToEnFormat } from "../../utils/Transformations";
 import { useSelector } from "react-redux";
 import { CURRENCY_SYMBOL } from "../../utils/Static_Currency_Variables";
-const imageSrc =
-  "https://www.pcinvasion.com/wp-content/uploads/2021/09/Lost-in-Random-Bloobs-5.jpg?fit=1200%2C675";
 
 const category = {
   name: "Development",
@@ -14,17 +12,25 @@ const category = {
 };
 
 const CourseCard = ({ course }) => {
-  const {currency} = useSelector((state) => state.auth);
+  const { currency } = useSelector((state) => state.auth);
   const currencySymbol = CURRENCY_SYMBOL(currency);
-  
-  const { title, courseRating, price, courseStudents, currentPrice } = course;
+
+  const {
+    title,
+    titleImage,
+    courseRating,
+    price,
+    courseStudents,
+    currentPrice,
+  } = course;
+
   return (
     <div className="inline-flex pb-[0.875rem] flex-col justify-center items-center gap-[0.88rem] bg-white max-w-[15.25rem] border-gray-100 border drop-shadow-lg hover:scale-105">
       <div
         className="w-[15.25rem] h-[11.4375rem]"
         style={{
           boxShadow: "0px -1px 0px 0px #E9EAF0 inset",
-          background: `url(${imageSrc}) lightgray 50% / cover no-repeat`,
+          background: `url(${titleImage}) lightgray 50% / cover no-repeat`,
         }}
       ></div>
       <div className="flex flex-col justify-center w-full items-center gap-[0.625rem]">
@@ -53,7 +59,9 @@ const CourseCard = ({ course }) => {
                   : ""
               }`}
             >
-              {currentPrice === 0 ? "Free" : `${currentPrice} ${currencySymbol}`}
+              {currentPrice === 0
+                ? "Free"
+                : `${currentPrice} ${currencySymbol}`}
             </span>
           </div>
         </div>

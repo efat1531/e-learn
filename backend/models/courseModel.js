@@ -33,9 +33,7 @@ const courseSchema = mongoose.Schema(
       type: Number,
     },
     titleImage: {
-      image: String,
-      lowResImage: String,
-      blurData: String,
+      type: String,
     },
     price: {
       type: Number,

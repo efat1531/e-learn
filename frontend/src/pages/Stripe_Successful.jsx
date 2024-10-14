@@ -1,12 +1,17 @@
 import React, { useEffect, useState, useRef, Suspense, lazy } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useSearchParams, useNavigate, json } from "react-router-dom";
-import { useUpdateStripePaymentSessionMutation, useUpdateAmarPayPaymentSessionMutation } from "../features/api/paymentApiSlice";
+import {
+  useUpdateStripePaymentSessionMutation,
+  useUpdateAmarPayPaymentSessionMutation,
+} from "../features/api/paymentApiSlice";
 import { toastManager } from "../components/ui/toastGeneral";
 import { calculateDiscountPercentageByPriceRealPrice } from "../utils/Calculation.js";
-import { useGetOrderByPaymentIDQuery, useGetOrderByIdQuery} from "../features/api/orderApiSlice.js"
+import {
+  useGetOrderByPaymentIDQuery,
+  useGetOrderByIdQuery,
+} from "../features/api/orderApiSlice.js";
 import { CURRENCY_CODE } from "../utils/Static_Currency_Variables.js";
-
 
 // Lazy load components
 const PageHeader = lazy(() => import("../components/Common/PageHeader"));
@@ -32,11 +37,15 @@ function Stripe_Successful() {
   const [orderDetails, setOrderDetails] = useState(null);
   const hasEffectRun = useRef(false);
   const [searchParams] = useSearchParams();
-  const {currency} = useSelector((state) => state.auth) 
+  const { currency } = useSelector((state) => state.auth);
   const sessionID = searchParams.get("session_id");
   const order_id = searchParams.get("order_id");
-  const { data: orderData } = useGetOrderByPaymentIDQuery(sessionID, {skip: !sessionID});
-  const { data: orderDataById } = useGetOrderByIdQuery(order_id, {skip: !order_id});
+  const { data: orderData } = useGetOrderByPaymentIDQuery(sessionID, {
+    skip: !sessionID,
+  });
+  const { data: orderDataById } = useGetOrderByIdQuery(order_id, {
+    skip: !order_id,
+  });
   const [updateStripePayment] = useUpdateStripePaymentSessionMutation();
   const [updateAmarPayPayment] = useUpdateAmarPayPaymentSessionMutation();
 
@@ -95,12 +104,11 @@ function Stripe_Successful() {
     if (orderData) {
       setOrderID(orderData.data._id);
       setOrderDetails(orderData.data);
-    }else if(orderDataById){
+    } else if (orderDataById) {
       setOrderID(orderDataById.data._id);
       setOrderDetails(orderDataById.data);
     }
   }, [orderData]);
-
 
   const handleGoToHomeButton = () => {
     navigate("/");
@@ -121,6 +129,7 @@ function Stripe_Successful() {
   const numberOfCourses = courseItems.length;
   const numberOfItems = nonCourseItems.length;
 
+  console.log(courseItems);
 
   return (
     <div className="w-full">
@@ -155,7 +164,7 @@ function Stripe_Successful() {
               {courseItems.map((item, index) => (
                 <div key={index} className="flex items-center gap-3 w-full">
                   <img
-                    src={item.image}
+                    src={item.course.titleImage}
                     alt="course"
                     className="w-[6.25rem] h-[4.6875rem] object-cover"
                   />
@@ -166,7 +175,7 @@ function Stripe_Successful() {
                           Course By,&nbsp;
                         </div>
                         <div className="text-CustomGray-700 text-xs">
-                          {item.courseCreator}
+                          {item.course.instructor.name}
                         </div>
                       </div>
                       <div className="w-full text-sm text-CustomGray-900">

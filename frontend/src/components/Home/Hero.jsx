@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import HeroBanner1 from "../../assets/images/hero-banner-1.png";
 import HeroBanner2 from "../../assets/images/hero-banner-2.png";
 import HeroBanner3 from "../../assets/images/hero-banner-3.png";
-import HomeBanner from "../../assets/images/sonorusEducation.png";
+import HomeBanner from "../../assets/images/SonorusEducation.png";
 import Photo from "../../assets/images/photo.jpeg";
 import NewPhoto from "../../assets/images/newPhoto.png";
 

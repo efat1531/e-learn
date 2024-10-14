@@ -32,7 +32,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 }}
               />
               <span className="text-justify text-[1.4rem] font-[600] leading-[2.852rem] tracking-[-0.069rem] ">
-                Sonorus
+                E-Learn
               </span>
             </div>
             <div
