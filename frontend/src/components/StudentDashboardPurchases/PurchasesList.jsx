@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 const PurchasesList = () => {    
     const {auth} = useSelector(state => state)
-    const [expandedIndex, setExpandedIndex] = useState(1);
+    const [expandedIndex, setExpandedIndex] = useState(0);
     const [transactions,setTransactions] = useState([]);
 
     const {data, isLoading,isError} = useGetUserOrdersQuery();

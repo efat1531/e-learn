@@ -1,5 +1,3 @@
-import { Suspense } from "react"
-import { Outlet } from "react-router-dom"
 import StudentDashboardSettingsForm from "../components/StudentDashboardSettings/StudentDashboardSettingsForm"
 
 const StudentDashboardSettings = () => {

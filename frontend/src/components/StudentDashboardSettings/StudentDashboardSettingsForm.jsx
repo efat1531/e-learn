@@ -2,8 +2,24 @@ import { Upload } from "lucide-react";
 import Input from "../ui/Input";
 import Button from "../ui/Button";
 import ChangePasswordForm from "./ChangePasswordForm";
+import { Formik } from "formik";
+import { useContext } from "react";
+import { ProfileContext } from "../../pages/StudentDashboard";
+
+const validate = (values) => {
+  const errors = {};
+  if (!values.name) {
+    errors.name = "Name Missing";
+  }
+  if (!values.email) {
+    errors.email = "Email Missing";
+  }
+  return errors;
+};
 
 const StudentDashboardSettingsForm = () => {
+  const profile = useContext(ProfileContext);
+
   return (
     <>
       <div className="max-w-[82.5rem] mx-auto px-4">
@@ -13,7 +29,7 @@ const StudentDashboardSettingsForm = () => {
             <div className="border p-8">
               <div className="relative">
                 <img
-                  src="https://picsum.photos/200/300"
+                  src={`${profile.profilePicture}`}
                   alt="Profile"
                   className="w-full aspect-square object-cover"
                 />
@@ -28,51 +44,67 @@ const StudentDashboardSettingsForm = () => {
             </div>
           </div>
           <div className="w-full col-span-2">
-            <div className="space-y-6">
-              <div className="row">
-                <Input
-                  id="firstName"
-                  label="First Name"
-                  placeholder="First name"
-                  required
-                  type="text"
-                />
-                <Input
-                  id="lastName"
-                  label="Last Name"
-                  placeholder="Last name"
-                  required
-                  type="text"
-                />
-              </div>
-              <div className="row">
-                <Input
-                  id="username"
-                  label="Username"
-                  placeholder="Enter your username"
-                  required
-                  type="text"
-                />
-              </div>
-              <div className="row">
-                <Input
-                  id="email"
-                  label="Email"
-                  placeholder="Email address"
-                  required
-                  type="email"
-                />
-              </div>
-              <div className="row">
-                <Input
-                  id="title"
-                  label="Title"
-                  placeholder="Your title, profession or small biography"
-                  required
-                />
-              </div>
-              <Button title={"Save Changes"} secondary />
-            </div>
+            <Formik
+              initialValues={{
+                name: profile.name,
+                email: profile.email,
+              }}
+              validate={validate}
+              onSubmit={async (values, { setSubmitting }) => {
+                setSubmitting(true);
+                console.log("here");
+
+                setSubmitting(false);
+              }}
+            >
+              {({
+                values,
+                errors,
+                touched,
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                //   isSubmitting,
+                /* and other goodies */
+              }) => (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="row">
+                    <Input
+                      id="name"
+                      name="name"
+                      label="Full Name"
+                      placeholder="Full name"
+                      required
+                      type="text"
+                      value={values.name}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    <p className="text-xs text-red-400 font-bold mt-2">
+                      {errors.name && touched.name && errors.name}
+                    </p>
+                  </div>
+
+                  <div className="row">
+                    <Input
+                      id="email"
+                      name="email"
+                      label="Email"
+                      placeholder="Email address"
+                      required
+                      type="email"
+                      value={values.email}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    <p className="text-xs text-red-400 font-bold mt-2">
+                      {errors.email && touched.email && errors.email}
+                    </p>
+                  </div>
+                  <Button title={"Save Changes"} type="submit" secondary />
+                </form>
+              )}
+            </Formik>
           </div>
         </div>
       </div>

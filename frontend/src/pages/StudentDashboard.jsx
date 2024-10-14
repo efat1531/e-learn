@@ -1,12 +1,21 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, createContext, lazy } from "react";
 import { Outlet } from "react-router-dom";
+import { useFetchUserQuery } from "../features/api/userApiSlice";
 
 // Lazy load the StudentProfile component
 const StudentProfile = lazy(() =>
   import("../components/StudentDashboard/StudentProfile")
 );
 
+export const ProfileContext = createContext();
+
 function StudentDashboard() {
+  const { data, isLoading, isError } = useFetchUserQuery();
+
+  if (isLoading && !isError) return;
+
+  const profile = data.data;
+
   return (
     <div className="relative w-full">
       {/* Background */}
@@ -15,9 +24,11 @@ function StudentDashboard() {
       <div className="w-full py-20">
         <div className="flex flex-col items-start gap-10 max-w-[82.5rem] mx-auto bg-white">
           <Suspense fallback={<div>Loading Student Profile...</div>}>
-            <StudentProfile />
+            <StudentProfile profile={profile} />
           </Suspense>
-          <Outlet />
+          <ProfileContext.Provider value={profile}>
+            <Outlet />
+          </ProfileContext.Provider>
         </div>
       </div>
     </div>

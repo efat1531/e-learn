@@ -8,22 +8,13 @@ import {
 } from "react-icons/io";
 import { NavLink } from "react-router-dom";
 import { FaMoneyBillWave } from "react-icons/fa";
+import { useFetchUserQuery } from "../../features/api/userApiSlice";
 
 const navLinks = [
   {
     title: "Dashboard",
     href: "/dashboard",
     icon: <IoMdHome className="text-[1.25rem] " />,
-  },
-  {
-    title: "Courses",
-    href: "/courses",
-    icon: <IoMdBook className="text-[1.25rem] " />,
-  },
-  {
-    title: "My Courses",
-    href: "/my-courses",
-    icon: <IoMdBookmarks className="text-[1.25rem] " />,
   },
   {
     title: "Purchases",
@@ -37,21 +28,21 @@ const navLinks = [
   },
 ];
 
-function StudentProfile() {
+function StudentProfile({profile}) {
   return (
     <div className="mx-auto w-full flex-col justify-center shrink-0">
       <div className="flex w-full p-10 justify-between items-center">
         <div className="flex items-center gap-5">
           <div className="w-[6.825rem] h-[6.825rem] rounded-full">
             <img
-              src="https://randomuser.me/api/portraits/men/75.jpg"
+              src={profile.profilePicture}
               alt=""
               className="w-full h-full rounded-full"
             />
           </div>
           <div className="flex flex-col justify-center items-start gap-[0.875rem]">
             <div className="text-CustomGray-900 leading-8 tracking-[-0.015rem] font-[600] text-[1.25rem]">
-              John Doe
+              {profile.name}
             </div>
             <div className="text-CustomGray-600 font-inter font-normal text-sm">
               Student
