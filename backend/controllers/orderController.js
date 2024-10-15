@@ -65,25 +65,29 @@ const createOrder = asyncHandler(async (req, res) => {
 const getAllOrders = asyncHandler(async (req, res) => {
   const filter = {};
 
-  if(req.role !== "admin"){
+  if (req.role !== "admin") {
     filter.user = req.user._id;
   }
+
   const totalOrders = await orderModel.countDocuments(filter);
-  const orders = await orderModel.find(filter).populate({
-    path: "orderItems.course",
-    select: "title instructor",
-    populate: {
-      path: "instructor",
-      select: "name",
-    },
-  });
+  const orders = await orderModel
+    .find(filter)
+    .populate({
+      path: "orderItems.course",
+      select: "title instructor titleImage",
+      populate: {
+        path: "instructor",
+        select: "name",
+      },
+    })
+    .sort("-createdAt");
 
   res.status(200).json({
     status: "success",
     totalOrders,
     data: orders,
   });
-})
+});
 
 // @desc    Get order by ID
 // @route   GET /api/order/:id
@@ -150,4 +154,39 @@ const getOrderByPaymentID = asyncHandler(async (req, res) => {
   });
 });
 
-export { createOrder, getOrderById, getOrderByPaymentID, getAllOrders };
+// @desc  Delete Order
+// @route DELETE /api/order/:id
+// @access Private[Admin], User
+const deleteOrder = asyncHandler(async (req, res) => {
+  const order = await orderModel.findById(req.params.id);
+
+  if (!order) {
+    throw AppError.notFound("Order not found");
+  }
+
+  if (
+    order.user.toString() !== req.user._id.toString() &&
+    req.user.role !== "admin"
+  ) {
+    throw AppError.forbidden("You are not authorized to delete this order");
+  }
+
+  if (order.paymentResult.status === "paid") {
+    throw AppError.badRequest("You can't delete a paid order");
+  }
+
+  await orderModel.findByIdAndDelete(req.params.id);
+
+  res.status(200).json({
+    status: "success",
+    message: "Order deleted successfully",
+  });
+});
+
+export {
+  createOrder,
+  getOrderById,
+  getOrderByPaymentID,
+  getAllOrders,
+  deleteOrder,
+};

@@ -40,6 +40,9 @@ const AdminCourses = lazy(() => import("./pages/AdminCourses"));
 const EditCourse = lazy(() => import("./pages/EditCourse"));
 const VerifyUser = lazy(() => import("./pages/VerifyUser"));
 const BecomeAnInstructor = lazy(() => import("./pages/BecomeAnInstructor"));
+const BecomeAnInstructorApplication = lazy(() =>
+  import("./pages/AdminApplicant")
+);
 
 function App() {
   const dispatch = useDispatch();
@@ -185,7 +188,7 @@ function App() {
           />
           <Route path="" element={<PrivateRoute />}>
             <Route
-              path="/student"
+              path="/user"
               element={
                 <Layout>
                   <StudentDashboard />
@@ -196,6 +199,10 @@ function App() {
               <Route path="dashboard" element={<StuDashboard />} />
               <Route path="settings" element={<StudentDashboardSettings />} />
               <Route path="purchases" element={<StudentDashboardPurchases />} />
+              <Route
+                path="applications"
+                element={<BecomeAnInstructorApplication />}
+              />
             </Route>
             <Route
               path="/cart/checkout"

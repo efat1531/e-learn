@@ -86,98 +86,127 @@ const createPaymentIntentStripe = asyncHandler(async (req, res, next) => {
 });
 
 const updatePaymentIntentStripe = asyncHandler(async (req, res) => {
-  const { sessionID } = req.body;
+  try {
+    const { sessionID } = req.body;
+    if (!sessionID) {
+      throw AppError.badRequest("Session ID is required");
+    }
 
-  const session = await stripe.checkout.sessions.retrieve(sessionID);
-  if (!session) {
-    throw AppError.notFound("Session not found. Please try again.");
-  }
+    console.log(`Retrieving session with ID: ${sessionID}`);
+    const session = await stripe.checkout.sessions.retrieve(sessionID);
+    if (!session) {
+      throw AppError.notFound("Session not found. Please try again.");
+    }
 
-  const orderID = session.client_reference_id;
-
-  const existingOrder = await orderModel.findById(orderID).populate({
-    path: "orderItems.course",
-    select: "title",
-  });
-
-  if (!existingOrder) {
-    throw AppError.notFound("Order not found. Please try again.");
-  }
-
-  if (existingOrder.paymentResult.status === "paid") {
-    return res.status(200).json({
-      status: "success",
-      data: {
-        session,
-      },
+    const orderID = session.client_reference_id;
+    console.log(`Retrieving order with ID: ${orderID}`);
+    const existingOrder = await orderModel.findById(orderID).populate({
+      path: "orderItems.course",
+      select: "title",
     });
-  }
 
-  if (session.payment_status === "paid") {
-    existingOrder.paymentResult = {
-      transaction_id: session.id,
-      status: session.payment_status,
-      update_time: session.created,
-      email_address: session.customer_details.email,
-    };
+    if (!existingOrder) {
+      throw AppError.notFound("Order not found. Please try again.");
+    }
 
-    const existingUser = await userModel.findById(existingOrder.user);
-    existingUser.courses.push(
-      ...existingOrder.orderItems.map((item) => item.course)
-    );
-    existingUser.wishList = existingUser.wishList.filter(
-      (course) =>
-        !existingOrder.orderItems.map((item) => item.course).includes(course)
-    );
-    await existingUser.save();
-    await existingOrder.save();
+    if (existingOrder.paymentResult.status === "paid") {
+      return res.status(200).json({
+        status: "success",
+        data: {
+          session,
+        },
+      });
+    }
 
-    let listOfInstructors = [];
+    if (session.payment_status === "paid") {
+      existingOrder.paymentResult = {
+        transaction_id: session.id,
+        status: session.payment_status,
+        update_time: session.created,
+        email_address: session.customer_details.email,
+      };
 
-    for (const item of existingOrder.orderItems) {
-      if (item.isCourse) {
-        const course = await courseModel.findById(item.course);
-        course.incrementStudents();
+      const existingUser = await userModel.findById(existingOrder.user);
+      if (!existingUser) {
+        throw AppError.notFound("User not found. Please try again.");
+      }
 
-        const instructor = await userModel.findById(course.instructor);
-        if (!listOfInstructors.includes(instructor._id)) {
-          listOfInstructors.push(instructor._id);
-          instructor.numberOfStudents++;
-          await instructor.save();
-        }
-        const newCourseProgress = new courseProgressionModel({
-          user: existingOrder.user,
-          course: item.course,
-          courseContent: course.courseContent.map((section) => ({
-            sectionTitle: section.sectionTitle,
-            sectionContainer: section.sectionContainer.map((contentId) => ({
-              content_id: contentId,
-              isCompleted: false,
+      existingUser.courses.push(
+        ...existingOrder.orderItems.map((item) => item.course)
+      );
+      existingUser.wishList = existingUser.wishList.filter(
+        (course) =>
+          !existingOrder.orderItems.map((item) => item.course).includes(course)
+      );
+      await existingUser.save();
+      await existingOrder.save();
+
+      let listOfInstructors = [];
+
+      for (const item of existingOrder.orderItems) {
+        if (item.isCourse) {
+          const course = await courseModel.findById(item.course);
+          if (!course) {
+            throw AppError.notFound(`Course with ID ${item.course} not found.`);
+          }
+          course.incrementStudents();
+
+          const instructor = await userModel
+            .findById(course.instructor)
+            .select("+numberOfStudents");
+          if (!instructor) {
+            throw AppError.notFound(
+              `Instructor with ID ${course.instructor} not found.`
+            );
+          }
+          console.log(instructor);
+
+          if (!listOfInstructors.includes(instructor._id)) {
+            listOfInstructors.push(instructor._id);
+            instructor.numberOfStudents = instructor.numberOfStudents + 1;
+            await instructor.save();
+          }
+          const newCourseProgress = new courseProgressionModel({
+            user: existingOrder.user,
+            course: item.course,
+            courseContent: course.courseContent.map((section) => ({
+              sectionTitle: section.sectionTitle,
+              sectionContainer: section.sectionContainer.map((contentId) => ({
+                content_id: contentId,
+                isCompleted: false,
+              })),
             })),
-          })),
-          completed: false,
-        });
+            completed: false,
+          });
+          console.log(newCourseProgress);
 
-        await newCourseProgress.save();
+          await newCourseProgress.save();
+        }
       }
     }
-  }
 
-  res.status(200).json({
-    status: "success",
-    data: {
-      order: existingOrder,
-      session: session,
-    },
-  });
+    res.status(200).json({
+      status: "success",
+      data: {
+        order: existingOrder,
+        session: session,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({
+      status: "error",
+      message: error.message,
+    });
+  }
 });
 
 // @desc    Create payment intent for amarPay
 // @route   POST /api/payment/create-payment-intent-amarPay
 // @access  Private
 const createPaymentIntentAmarPay = asyncHandler(async (req, res, next) => {
-  const {currency, totalPrice, orderID} = req.body;
-  const {email, name} = req.user;
+  const { currency, totalPrice, orderID } = req.body;
+  const { email, name } = req.user;
   const phone = "01700000000";
   const description = "E-Learning Course Purchase";
   const successUrl = `${process.env.FRONTEND_BASE_URL}/stripe/payment/successful?order_id=${orderID}`;
@@ -204,9 +233,17 @@ const createPaymentIntentAmarPay = asyncHandler(async (req, res, next) => {
 
   try {
     const response = await axios.post(`${baseUrl}/jsonpost.php`, paymentIntent);
-    if(response.data.result === false){
+    if (response.data.result === false) {
       const message = response.data.errors[0];
-      return next(new AppError(message, 500,"AmarPay Payment Failed", true, "Missing or invalid data"));
+      return next(
+        new AppError(
+          message,
+          500,
+          "AmarPay Payment Failed",
+          true,
+          "Missing or invalid data"
+        )
+      );
     }
     res.status(201).json({
       status: "success",
@@ -216,14 +253,13 @@ const createPaymentIntentAmarPay = asyncHandler(async (req, res, next) => {
     console.log(error);
     next(new AppError("Payment intent creation failed", 500));
   }
-
 });
 
 // @desc   AmarPay Payment Verification
 // @route  POST /api/payment/amarPay-verification
 // @access Public
-const amarPayVerification = asyncHandler(async(req, res) => {
-  const {orderID} = req.body;
+const amarPayVerification = asyncHandler(async (req, res) => {
+  const { orderID } = req.body;
   const baseUrl = process.env.AMARPAY_BASE_URL;
   const store_id = process.env.AMARPAY_STORE_ID;
   const signature_key = process.env.AMARPAY_SIGNATURE_KEY;
@@ -245,7 +281,10 @@ const amarPayVerification = asyncHandler(async(req, res) => {
     }
 
     // if not verified
-    if(response.data.pay_status === "Successful" || response.data.status_code === "2") {
+    if (
+      response.data.pay_status === "Successful" ||
+      response.data.status_code === "2"
+    ) {
       order.paymentResult = {
         transaction_id: response.data.pg_txnid,
         status: "paid",
@@ -254,9 +293,7 @@ const amarPayVerification = asyncHandler(async(req, res) => {
       };
 
       const existingUser = await userModel.findById(order.user);
-      existingUser.courses.push(
-        ...order.orderItems.map((item) => item.course)
-      );
+      existingUser.courses.push(...order.orderItems.map((item) => item.course));
 
       existingUser.wishList = existingUser.wishList.filter(
         (course) =>
@@ -273,10 +310,12 @@ const amarPayVerification = asyncHandler(async(req, res) => {
         if (item.isCourse) {
           const course = await courseModel.findById(item.course);
           course.incrementStudents();
-          const instructor = await userModel.findById(course.instructor);
-          if(!listOfInstructors.includes(instructor._id)){
+          const instructor = await userModel
+            .findById(course.instructor)
+            .select("+numberOfStudents");
+          if (!listOfInstructors.includes(instructor._id)) {
             listOfInstructors.push(instructor._id);
-            instructor.numberOfStudents++;
+            instructor.numberOfStudents = instructor.numberOfStudents + 1;
             await instructor.save();
           }
 
@@ -296,7 +335,7 @@ const amarPayVerification = asyncHandler(async(req, res) => {
           await newCourseProgress.save();
         }
       }
-    } 
+    }
 
     res.status(200).json({
       status: "success",
@@ -307,6 +346,9 @@ const amarPayVerification = asyncHandler(async(req, res) => {
   }
 });
 
-
-
-export { createPaymentIntentStripe, updatePaymentIntentStripe, createPaymentIntentAmarPay, amarPayVerification };
+export {
+  createPaymentIntentStripe,
+  updatePaymentIntentStripe,
+  createPaymentIntentAmarPay,
+  amarPayVerification,
+};

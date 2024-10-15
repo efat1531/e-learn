@@ -9,9 +9,36 @@ const instructorRequestApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["InstructorRequest"],
+    }),
+    viewAllApplications: builder.query({
+      query: (email) => {
+        const params = email ? `?email=${email}` : "";
+        return `${INSTRUCTOR_REQUEST_URL}${params}`;
+      },
+      keepUnusedDataFor: 5,
+      providesTags: ["InstructorRequest"],
+    }),
+    acceptApplication: builder.mutation({
+      query: (id) => ({
+        url: `${INSTRUCTOR_REQUEST_URL}/${id}/approve`,
+        method: "PUT",
+      }),
+      invalidatesTags: ["InstructorRequest"],
+    }),
+    rejectApplication: builder.mutation({
+      query: (id) => ({
+        url: `${INSTRUCTOR_REQUEST_URL}/${id}/reject`,
+        method: "PUT",
+      }),
+      invalidatesTags: ["InstructorRequest"],
     }),
   }),
 });
 
-export const { useApplyToBecomeAnInstructorMutation } =
-  instructorRequestApiSlice;
+export const {
+  useApplyToBecomeAnInstructorMutation,
+  useViewAllApplicationsQuery,
+  useAcceptApplicationMutation,
+  useRejectApplicationMutation,
+} = instructorRequestApiSlice;

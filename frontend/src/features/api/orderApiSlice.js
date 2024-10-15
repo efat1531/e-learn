@@ -13,18 +13,26 @@ const orderApiSlice = apiSlice.injectEndpoints({
     }),
     getOrderByPaymentID: builder.query({
       query: (id) => `${ORDER_URL}/payment/${id}`,
-      providesTags: ["Order"],
+      keepUnusedDataFor: 5,
     }),
     getOrderById: builder.query({
       query: (id) => `${ORDER_URL}/${id}`,
-      providesTags: ["Order"],
+      keepUnusedDataFor: 5,
     }),
     getUserOrders: builder.query({
       query: () => ({
         url: `${ORDER_URL}`,
         method: "GET",
       }),
-      invalidatesTags: ["User"],
+      keepUnusedDataFor: 5,
+      providesTags: ["Order"],
+    }),
+    deleteOrder: builder.mutation({
+      query: (id) => ({
+        url: `${ORDER_URL}/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Order"],
     }),
   }),
 });
@@ -34,4 +42,5 @@ export const {
   useGetOrderByPaymentIDQuery,
   useGetOrderByIdQuery,
   useGetUserOrdersQuery,
+  useDeleteOrderMutation,
 } = orderApiSlice;

@@ -23,7 +23,8 @@ function Dashboard() {
                 {profile.courses.length}
               </div>
               <div className="text-CustomGray-600 text-sm w-[11rem]">
-                Courses Enrolled
+                {profile.courses.length > 1 ? "Courses" : "Course"}
+                {profile.role === "instructor" ? " Created" : " Enrolled"}
               </div>
             </div>
           </div>

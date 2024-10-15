@@ -4,9 +4,8 @@ import { numberToEnFormat } from "../../../utils/Transformations";
 import { GoKebabHorizontal } from "react-icons/go";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
-const imageSrc =
-  "https://www.pcinvasion.com/wp-content/uploads/2021/09/Lost-in-Random-Bloobs-5.jpg?fit=1200%2C675";
+import { CURRENCY_SYMBOL } from "../../../utils/Static_Currency_Variables";
+import { useSelector } from "react-redux";
 
 const category = {
   name: "Development",
@@ -17,7 +16,17 @@ const category = {
 const AdminCourseCard = ({ course }) => {
   const [popupOpen, setPopupOpen] = useState(false);
 
-  const { title, courseRating, price, courseStudents, currentPrice } = course;
+  const {
+    title,
+    courseRating,
+    price,
+    courseStudents,
+    currentPrice,
+    titleImage,
+  } = course;
+
+  const { currency } = useSelector((state) => state.auth);
+  const currencySymbol = CURRENCY_SYMBOL(currency);
 
   return (
     <div className="flex pb-[0.875rem] flex-col justify-center items-center gap-[0.88rem] bg-white max-w-[15.25rem] border-gray-100 border drop-shadow-lg hover:scale-105">
@@ -25,7 +34,7 @@ const AdminCourseCard = ({ course }) => {
         className="w-[15.25rem] h-[11.4375rem]"
         style={{
           boxShadow: "0px -1px 0px 0px #E9EAF0 inset",
-          background: `url(${imageSrc}) lightgray 50% / cover no-repeat`,
+          background: `url(${titleImage}) lightgray 50% / cover no-repeat`,
         }}
       ></div>
       <div className="flex flex-col justify-center w-full items-center gap-[0.625rem]">
@@ -68,7 +77,7 @@ const AdminCourseCard = ({ course }) => {
         <div>
           {price != currentPrice && (
             <span className="text-primary font-semibold text-sm">
-              {currentPrice}$&nbsp;
+              {currentPrice}${currencySymbol}&nbsp;
             </span>
           )}
           <span
@@ -78,7 +87,7 @@ const AdminCourseCard = ({ course }) => {
                 : ""
             }`}
           >
-            {currentPrice === 0 ? "Free" : `${currentPrice}$`}
+            {currentPrice === 0 ? "Free" : `${currentPrice}${currencySymbol}`}
           </span>
         </div>
         <div className="relative">
@@ -93,13 +102,28 @@ const AdminCourseCard = ({ course }) => {
             <div className="bg-white shadow absolute -top-36 right-0 border-2 py-2 w-60">
               <ul>
                 <li>
-                  <Link to={`/courses/${course.slug}`} className="block px-4 py-2 hover:bg-Primary-500 hover:text-white">View Details</Link>
+                  <Link
+                    to={`/courses/${course.slug}`}
+                    className="block px-4 py-2 hover:bg-Primary-500 hover:text-white"
+                  >
+                    View Details
+                  </Link>
                 </li>
                 <li>
-                  <Link to={`/dashboard/edit-course/${course.slug}`} className="block px-4 py-2 hover:bg-Primary-500 hover:text-white">Edit Course</Link>
+                  <Link
+                    to={`/dashboard/edit-course/${course.slug}`}
+                    className="block px-4 py-2 hover:bg-Primary-500 hover:text-white"
+                  >
+                    Edit Course
+                  </Link>
                 </li>
                 <li>
-                  <Link to="" className="block px-4 py-2 hover:bg-Primary-500 hover:text-white">Delete Course</Link>
+                  <Link
+                    to=""
+                    className="block px-4 py-2 hover:bg-Primary-500 hover:text-white"
+                  >
+                    Delete Course
+                  </Link>
                 </li>
               </ul>
             </div>

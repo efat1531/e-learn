@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import PriceCard from "./PriceCard";
 import FeatureLabel from "./FeatureLabel";
 import { LuClock } from "react-icons/lu";
@@ -19,9 +19,10 @@ import { useSelector } from "react-redux";
 import { toastManager } from "../../ui/toastGeneral";
 import { setOrderDetails } from "../../../features/orderSlice";
 import { CURRENCY_CODE } from "../../../utils/Static_Currency_Variables";
-import { useAddToWishListMutation, useRemoveFromWishListMutation } from "../../../features/api/courseApiSlice";
-
-
+import {
+  useAddToWishListMutation,
+  useRemoveFromWishListMutation,
+} from "../../../features/api/courseApiSlice";
 
 const SideBar = () => {
   const { selectedCourse } = useSelector((state) => state.course);
@@ -68,7 +69,7 @@ const SideBar = () => {
           discount: discount,
           realPrice: currentPrice,
           quantity: 1,
-          image: selectedCourse.instructor.profilePicture,
+          image: selectedCourse.titleImage,
           isCourse: true,
           courseCreator: selectedCourse.instructor.name,
         },
@@ -78,17 +79,19 @@ const SideBar = () => {
     navigate("/cart/checkout");
   };
 
-  const handleWishList = async() => {
+  const handleWishList = async () => {
     let toastID;
     try {
-      if(userWishList.includes(selectedCourse._id)){
+      if (userWishList.includes(selectedCourse._id)) {
         toastID = toastManager.loading("Removing from wishlist");
         await removeFromWishList(selectedCourse.slug).unwrap();
         toastManager.updateStatus(toastID, {
           render: "Removed from wishlist",
           type: "success",
         });
-        setUserWishList(userWishList.filter((course) => course !== selectedCourse._id));
+        setUserWishList(
+          userWishList.filter((course) => course !== selectedCourse._id)
+        );
       } else {
         toastID = toastManager.loading("Adding to wishlist");
         await addToWishList(selectedCourse.slug).unwrap();
@@ -137,8 +140,16 @@ const SideBar = () => {
             className="w-full"
             onClick={onEnrollClick}
           />
-          <Button title="Add to cart" className="w-full" />
-          <Button title={`${userWishList.includes(selectedCourse._id) ? "Remove from wishlist" : "Add to wishlist"}`} className="w-full" onClick={handleWishList} />
+          {/* <Button title="Add to cart" className="w-full" /> */}
+          <Button
+            title={`${
+              userWishList.includes(selectedCourse._id)
+                ? "Remove from wishlist"
+                : "Add to wishlist"
+            }`}
+            className="w-full"
+            onClick={handleWishList}
+          />
         </div>
       )}
       {!courseList.includes(selectedCourse._id) && (
