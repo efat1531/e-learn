@@ -7,7 +7,8 @@ import { passwordValidator } from "../utils/validatorFunctions.js";
 import { useRegisterMutation } from "../features/api/authApiSlice.js";
 const Register = () => {
   const [register, { isLoading }] = useRegisterMutation();
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
+    const toastID = toastManager.loading("Creating account...");
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = {
@@ -18,34 +19,48 @@ const Register = () => {
       agree: formData.get("agree_toc") === "on",
     };
     if (!data.agree) {
-      toastManager.error("Please agree to the terms and conditions");
+      toastManager.updateStatus(toastID, {
+        render: "Please agree to the terms and conditions",
+        type: "error",
+      });
       return;
     }
-    
+
     const passwordValidation = passwordValidator(data.password);
     if (passwordValidation) {
-      toastManager.error(passwordValidation);
+      toastManager.updateStatus(toastID, {
+        render: passwordValidation,
+        type: "error",
+      });
       return;
     }
     if (data.password !== data.confirmPassword) {
-      toastManager.error("Passwords do not match");
+      toastManager.updateStatus(toastID, {
+        render: "Passwords do not match",
+        type: "error",
+      });
       return;
     }
 
     try {
       await register(data).unwrap();
-      toastManager.success("Account created successfully");
+      toastManager.updateStatus(toastID, {
+        render: "Account created successfully. Redirecting to verify email...",
+        type: "success",
+      });
       setTimeout(() => {
         window.location.href = "/verify?email=" + data.email;
       }, 2000);
     } catch (error) {
       const errorMessage = error?.data?.message ?? "An error occurred";
-      toastManager.error(errorMessage);
+      toastManager.updateStatus(toastID, {
+        render: errorMessage,
+        type: "error",
+      });
     }
-    
   };
   return (
-    <div>
+    <div className={`${isLoading ? "cursor-progress" : ""}`}>
       <div className="flex justify-evenly">
         <div className="w-full bg-[#EBEBFF] hidden tablet:block">
           <div className="max-w-prose mx-auto">

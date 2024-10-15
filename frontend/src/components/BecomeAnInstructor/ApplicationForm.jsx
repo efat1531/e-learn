@@ -39,6 +39,9 @@ const BecomeInstructorForm = () => {
     try {
       await applyToBecomeAnInstructor(data).unwrap();
       toastManager.success("Application submitted successfully.");
+      setResumeLink("");
+      setDescription("");
+      setQueries("");
     } catch (error) {
       let message = "Something went wrong";
       if (error.data.httpCode === 403) {
@@ -46,6 +49,8 @@ const BecomeInstructorForm = () => {
       } else if (error.data.httpCode === 401) {
         message =
           "You are not signed in or sign-in expires. Please sign in again to access.";
+      } else {
+        message = error?.data?.message ?? message;
       }
 
       toastManager.error(message);

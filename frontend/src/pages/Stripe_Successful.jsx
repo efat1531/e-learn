@@ -108,11 +108,13 @@ function Stripe_Successful() {
       setOrderID(orderDataById.data._id);
       setOrderDetails(orderDataById.data);
     }
-  }, [orderData]);
+  }, [orderData, orderDataById]);
 
   const handleGoToHomeButton = () => {
     navigate("/");
   };
+
+  console.log(orderDetails);
 
   if (!orderDetails) {
     return (
@@ -128,8 +130,6 @@ function Stripe_Successful() {
   const Currency = CURRENCY_CODE(currency).toLocaleUpperCase();
   const numberOfCourses = courseItems.length;
   const numberOfItems = nonCourseItems.length;
-
-  console.log(courseItems);
 
   return (
     <div className="w-full">

@@ -93,8 +93,12 @@ const PurchaseItem = ({ transaction, auth, expanded, onToggle }) => {
                     </p>
                   </div>
                   <div className="text-end">
-                    <p className="text-sm text-gray-600">{auth.name}</p>
-                    <p className="text-sm text-gray-600">{auth.email}</p>
+                    <p className="text-sm text-gray-600">
+                      {transaction.user.name}
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      {transaction.user.email}
+                    </p>
                     <p className="text-sm text-gray-600 max-w-[200px] truncate">
                       {transaction_id}
                     </p>

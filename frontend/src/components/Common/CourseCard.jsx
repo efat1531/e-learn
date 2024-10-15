@@ -49,7 +49,9 @@ const CourseCard = ({ course }) => {
           <div>
             {price != currentPrice && (
               <span className="text-primary font-semibold text-sm">
-                {currentPrice}$&nbsp;
+                {currentPrice === 0 ? "Free" : currentPrice}
+                {currentPrice !== 0 && currencySymbol}
+                &nbsp;
               </span>
             )}
             <span
@@ -59,9 +61,10 @@ const CourseCard = ({ course }) => {
                   : ""
               }`}
             >
-              {currentPrice === 0
+              {price === 0
                 ? "Free"
-                : `${currentPrice} ${currencySymbol}`}
+                : `${price} ${price !== 0 && currencySymbol}`}
+              `
             </span>
           </div>
         </div>

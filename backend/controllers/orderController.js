@@ -65,7 +65,7 @@ const createOrder = asyncHandler(async (req, res) => {
 const getAllOrders = asyncHandler(async (req, res) => {
   const filter = {};
 
-  if (req.role !== "admin") {
+  if (req.user.role !== "admin") {
     filter.user = req.user._id;
   }
 
@@ -80,7 +80,13 @@ const getAllOrders = asyncHandler(async (req, res) => {
         select: "name",
       },
     })
+    .populate({
+      path: "user",
+      select: "name email",
+    })
     .sort("-createdAt");
+
+  console.log(orders);
 
   res.status(200).json({
     status: "success",
@@ -113,9 +119,16 @@ const getOrderById = asyncHandler(async (req, res) => {
     throw AppError.forbidden("You are not authorized to view this order");
   }
 
+  const subTotal = order.orderItems.reduce((acc, item) => {
+    return acc + item.price * item.quantity;
+  }, 0);
+
   res.status(200).json({
     status: "success",
-    data: order,
+    data: {
+      ...order.toObject(),
+      subTotal,
+    },
   });
 });
 

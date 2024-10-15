@@ -1,12 +1,12 @@
 import CountDownTimer from "../../ui/CountDownTimer";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { LuClock } from "react-icons/lu";
 import { useSelector } from "react-redux";
 import { CURRENCY_SYMBOL } from "../../../utils/Static_Currency_Variables.js";
 
 const PriceCard = () => {
   const { selectedCourse } = useSelector((state) => state.course);
-  const {currency} = useSelector((state) => state.auth);
+  const { currency } = useSelector((state) => state.auth);
   const [discountState, setDiscountState] = useState(0);
 
   if (!selectedCourse) return null;
@@ -17,9 +17,12 @@ const PriceCard = () => {
   const endTime = new Date(discountExpires).getTime();
 
   const percentage = ((price - currentPrice) * 100) / price;
-  if (currentPrice !== price) {
-    setDiscountState(1);
-  }
+
+  useEffect(() => {
+    if (currentPrice !== price) {
+      setDiscountState(1);
+    }
+  }, [currentPrice, price]);
 
   const onEndTimer = () => {
     setDiscountState(0);

@@ -4,11 +4,14 @@ import { formatDistanceToNow } from "date-fns";
 import StarRatingCard from "./StarRatingCard";
 import { Pencil, Trash2 } from "lucide-react";
 import { useSelector } from "react-redux";
-import EditReviewPopup from "../SingleCourse/CourseContainer/ReviewEdit"; 
+import EditReviewPopup from "../SingleCourse/CourseContainer/ReviewEdit";
 
 const formatDate = (date) => {
   return formatDistanceToNow(new Date(date)) + " ago";
 };
+
+const defaultProfilePicture =
+  "https://avatar.iran.liara.run/public/boy?username=Ash";
 
 const StudentFeedbackCard = ({ feedback }) => {
   const { user, updatedAt, rating, comment } = feedback;
@@ -16,10 +19,12 @@ const StudentFeedbackCard = ({ feedback }) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedReview, setSelectedReview] = useState(null);
 
+  console.log(feedback);
+
   const handleEditReview = () => {
     setSelectedReview({
       _id: feedback._id,
-      rating, 
+      rating,
       feedback: comment,
     });
     setIsEditModalOpen(true);
@@ -29,17 +34,21 @@ const StudentFeedbackCard = ({ feedback }) => {
     console.log("Delete review");
   };
 
+  const userProfilePicture = user.profilePicture ?? defaultProfilePicture;
+
   return (
     <>
-      {isEditModalOpen && <EditReviewPopup 
-        isOpen={isEditModalOpen}
-        onClose={() => setIsEditModalOpen(false)}
-        initialReview={selectedReview}
-      />}
+      {isEditModalOpen && (
+        <EditReviewPopup
+          isOpen={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
+          initialReview={selectedReview}
+        />
+      )}
       <div className="flex justify-center items-start gap-4 w-full">
         <div className="avatar">
           <div className="w-10 rounded-full">
-            <img src={user.profilePicture} alt={user.name} />
+            <img src={defaultProfilePicture} alt={user.name} />
           </div>
         </div>
         <div className="flex flex-col items-start gap-3 w-full">

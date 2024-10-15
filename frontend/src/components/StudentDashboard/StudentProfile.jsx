@@ -20,7 +20,6 @@ const navLinks = [
     title: "Purchases",
     href: "/purchases",
     icon: <FaMoneyBillWave className="text-[1.25rem] " />,
-    studentOnly: true,
   },
   {
     title: "Applications",

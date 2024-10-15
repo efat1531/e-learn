@@ -2,6 +2,10 @@ import asyncHandler from "../middlewere/asyncHandler.js";
 import InstructorRequestModel from "../models/instructorRequestModel.js";
 import UserModel from "../models/userModel.js";
 import AppError from "../utils/AppError.js";
+import {
+  sendInstructorApprovalEmail,
+  sendInstructorRejectionEmail,
+} from "../utils/emailSender.js";
 
 // @desc    Create new instructor request
 // @route   POST /api/instructor-request
@@ -11,9 +15,12 @@ const createInstructorRequest = asyncHandler(async (req, res) => {
   const user = req.user._id;
 
   // Check if user has already submitted a request
-  const existingRequest = await InstructorRequestModel.findOne({ user });
+  const existingRequest = await InstructorRequestModel.findOne({
+    user: user,
+    status: "pending",
+  });
   if (existingRequest) {
-    throw new AppError.badRequest("You have already submitted a request");
+    throw AppError.badRequest("You have already submitted a request");
   }
 
   const newRequest = await InstructorRequestModel.create({
@@ -105,7 +112,7 @@ const getInstructorRequest = asyncHandler(async (req, res) => {
     "name email"
   );
   if (!request) {
-    throw new AppError.notFound("Request not found");
+    throw AppError.notFound("Request not found");
   }
 
   res.status(200).json({
@@ -120,7 +127,7 @@ const getInstructorRequest = asyncHandler(async (req, res) => {
 const updateInstructorRequest = asyncHandler(async (req, res) => {
   const request = await InstructorRequestModel.findById(req.params.id);
   if (!request) {
-    throw new AppError.notFound("Request not found");
+    throw AppError.notFound("Request not found");
   }
 
   const { resumeLink, whyYouWantToTeach, message } = req.body;
@@ -143,7 +150,7 @@ const updateInstructorRequest = asyncHandler(async (req, res) => {
 const deleteInstructorRequest = asyncHandler(async (req, res) => {
   const request = await InstructorRequestModel.findById(req.params.id);
   if (!request) {
-    throw new AppError.notFound("Request not found");
+    throw AppError.notFound("Request not found");
   }
 
   await request.remove();
@@ -160,13 +167,17 @@ const deleteInstructorRequest = asyncHandler(async (req, res) => {
 const approveInstructorRequest = asyncHandler(async (req, res) => {
   const request = await InstructorRequestModel.findById(req.params.id);
   if (!request) {
-    throw new AppError.notFound("Request not found");
+    throw AppError.notFound("Request not found");
   }
 
   request.status = "approved";
   await request.save();
-  const user = await UserModel.findById(req.user._id);
+  const user = await UserModel.findById(request.user);
   user.role = "instructor";
+  user.save();
+
+  await sendInstructorApprovalEmail(user.email, user.name);
+
   res.status(200).json({
     status: "success",
     data: request,
@@ -179,11 +190,15 @@ const approveInstructorRequest = asyncHandler(async (req, res) => {
 const rejectInstructorRequest = asyncHandler(async (req, res) => {
   const request = await InstructorRequestModel.findById(req.params.id);
   if (!request) {
-    throw new AppError.notFound("Request not found");
+    throw AppError.notFound("Request not found");
   }
 
   request.status = "rejected";
   await request.save();
+
+  const user = await UserModel.findById(request.user);
+
+  await sendInstructorRejectionEmail(user.email, user.name);
 
   res.status(200).json({
     status: "success",

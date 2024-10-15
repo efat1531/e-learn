@@ -108,7 +108,7 @@ const verifyUser = asyncHandler(async (req, res) => {
 // @access  Public
 const resendToken = asyncHandler(async (req, res) => {
   const email = req.query.email;
-  
+
   const user = await userModel.findOne({
     email,
   });
@@ -117,9 +117,9 @@ const resendToken = asyncHandler(async (req, res) => {
     throw AppError.notFound("No account found with this email.");
   }
 
-  if (user.isVerified) {
-    throw AppError.badRequest("This account is already verified.");
-  }
+  // if (user.isVerified) {
+  //   throw AppError.badRequest("This account is already verified.");
+  // }
 
   const oldToken = await tokenModel.findOne({
     email,
@@ -134,9 +134,7 @@ const resendToken = asyncHandler(async (req, res) => {
   const newToken = await generateOTPToken(user, "verify");
 
   // Send email
-  const url = `${req.protocol}://${req.get(
-    "host"
-  )}/api/auth/verify/${encryptedEmail}`;
+  const url = `${process.env.FRONTEND_URL}/verify?email=${email}`;
   await resendVerificationEmail(user.email, user.name, newToken, url);
 
   // Send response
@@ -155,6 +153,10 @@ const login = asyncHandler(async (req, res) => {
 
   if (!user) {
     throw AppError.notFound("No account found with this email.");
+  }
+
+  if (!user.isVerified) {
+    throw AppError.badRequest("Please verify your email to login.");
   }
 
   const isMatch = await user.matchPassword(password);

@@ -30,6 +30,7 @@ const Login = () => {
 
   const [login, { isLoading }] = useLoginMutation();
 
+  // Handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     const toastId = toastManager.loading("Logging in...");
@@ -54,6 +55,15 @@ const Login = () => {
         render: message,
         type: "reject",
       });
+
+      if (
+        error?.data?.httpCode === 400 &&
+        error?.data?.message.includes("verify")
+      ) {
+        setTimeout(() => {
+          navigate("/verify?email=" + email);
+        }, 2000);
+      }
     }
   };
 
@@ -70,7 +80,7 @@ const Login = () => {
   }, [data, dispatch, navigate, needFetch, userID]);
 
   return (
-    <div>
+    <div className={`${isLoading ? "cursor-progress" : ""}`}>
       <div className="flex justify-evenly">
         <div className="w-full bg-[#EBEBFF] hidden tablet:block">
           <div className="max-w-prose mx-auto">

@@ -3,6 +3,8 @@ import {
   welcomeVerificationEmailTemplate,
   otpResendEmailTemplate,
   resetPasswordEmailTemplate,
+  instructorApprovalEmailTemplate,
+  instructorRejectionEmailTemplate,
 } from "./emailTemplate.js";
 
 const createTransporter = () => {
@@ -55,4 +57,36 @@ const sendResetPasswordEmail = async (email, name, url) => {
   await transporter.sendMail(mailOptions);
 };
 
-export { sendWelcomeEmail, resendVerificationEmail, sendResetPasswordEmail };
+const sendInstructorApprovalEmail = async (email, name) => {
+  const transporter = createTransporter();
+
+  const emailBody = instructorApprovalEmailTemplate(name);
+  const mailOptions = {
+    from: process.env.EMAIL,
+    to: email,
+    subject: "Instructor Request Approved",
+    html: emailBody,
+  };
+  await transporter.sendMail(mailOptions);
+};
+
+const sendInstructorRejectionEmail = async (email, name) => {
+  const transporter = createTransporter();
+
+  const emailBody = instructorRejectionEmailTemplate(name);
+  const mailOptions = {
+    from: process.env.EMAIL,
+    to: email,
+    subject: "Instructor Request update!",
+    html: emailBody,
+  };
+  await transporter.sendMail(mailOptions);
+};
+
+export {
+  sendWelcomeEmail,
+  resendVerificationEmail,
+  sendResetPasswordEmail,
+  sendInstructorApprovalEmail,
+  sendInstructorRejectionEmail,
+};
