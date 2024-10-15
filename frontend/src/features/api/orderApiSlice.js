@@ -1,4 +1,3 @@
-import { getOrderById } from "../../../../backend/controllers/orderController";
 import { apiSlice } from "./apiSlice";
 import { ORDER_URL } from "./constants";
 
@@ -20,7 +19,19 @@ const orderApiSlice = apiSlice.injectEndpoints({
       query: (id) => `${ORDER_URL}/${id}`,
       providesTags: ["Order"],
     }),
+    getUserOrders: builder.query({
+      query: () => ({
+        url: `${ORDER_URL}`,
+        method: "GET",
+      }),
+      invalidatesTags: ["User"],
+    }),
   }),
 });
 
-export const { useCreateOrderMutation, useGetOrderByPaymentIDQuery, useGetOrderByIdQuery } = orderApiSlice;
+export const {
+  useCreateOrderMutation,
+  useGetOrderByPaymentIDQuery,
+  useGetOrderByIdQuery,
+  useGetUserOrdersQuery,
+} = orderApiSlice;

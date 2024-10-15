@@ -74,7 +74,6 @@ const createReview = asyncHandler(async (req, res) => {
     course: req.params.courseId,
     user: req.user._id,
   };
-  console.log("🚀 ~ createReview ~ reviewFields:", reviewFields)
 
   if(!reviewFields.comment || !reviewFields.rating) {
     throw AppError.badRequest("Please provide a comment and rating.");

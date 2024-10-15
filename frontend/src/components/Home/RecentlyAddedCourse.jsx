@@ -21,7 +21,6 @@ const RecentlyAddedCourse = () => {
 
   useEffect(() => {
     if (data) {
-      console.log(data);
       dispatch(setNewCourses(data.data));
     }
   }, [data, dispatch]);

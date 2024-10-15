@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaRegCirclePlay } from "react-icons/fa6";
 import { LuCheckSquare, LuTrophy } from "react-icons/lu";
 import { MdPeopleOutline } from "react-icons/md";
+import { ProfileContext } from "../../pages/StudentDashboard";
 
 function Dashboard() {
+  const profile = useContext(ProfileContext);
+
   return (
     <div className="w-full flex flex-col gap-10">
       <div className="flex flex-col gap-5">
@@ -17,7 +20,7 @@ function Dashboard() {
             </div>
             <div className="flex flex-col gap-1">
               <div className="text-CustomGray-900 text-[1.25rem] leading-6">
-                12
+                {profile.courses.length}
               </div>
               <div className="text-CustomGray-600 text-sm w-[11rem]">
                 Courses Enrolled
@@ -30,36 +33,10 @@ function Dashboard() {
             </div>
             <div className="flex flex-col gap-1">
               <div className="text-CustomGray-900 text-[1.25rem] leading-6">
-                12
+                {profile.courses.length}
               </div>
               <div className="text-CustomGray-600 text-sm w-[11rem]">
                 Active Courses
-              </div>
-            </div>
-          </div>
-          <div className="flex p-6 items-center gap-6 bg-Success-100">
-            <div className="bg-white p-[.875rem]">
-              <LuTrophy className="text-Success-500 text-[2rem]" />
-            </div>
-            <div className="flex flex-col gap-1">
-              <div className="text-CustomGray-900 text-[1.25rem] leading-6">
-                12
-              </div>
-              <div className="text-CustomGray-600 text-sm w-[11rem]">
-                Completed Course
-              </div>
-            </div>
-          </div>
-          <div className="flex p-6 items-center gap-6 bg-Warning-100">
-            <div className="bg-white p-[.875rem]">
-              <MdPeopleOutline className="text-Warning-500 text-[2rem]" />
-            </div>
-            <div className="flex flex-col gap-1">
-              <div className="text-CustomGray-900 text-[1.25rem] leading-6">
-                12
-              </div>
-              <div className="text-CustomGray-600 text-sm w-[11rem]">
-                Completed Course
               </div>
             </div>
           </div>

@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from "react";
-import {useFetchBestInstructorsQuery} from "../../features/api/userApiSlice.js";
+import React, { useEffect, useState } from "react";
+import { useFetchBestInstructorsQuery } from "../../features/api/userApiSlice.js";
 import InstructorCard from "./InstructorCard";
 
-
 const Instructor = () => {
-  const {data: fetchTopInstructors} = useFetchBestInstructorsQuery();
+  const { data: fetchTopInstructors } = useFetchBestInstructorsQuery();
   const [topInstructors, setTopInstructors] = useState([]);
 
   useEffect(() => {
@@ -12,8 +11,6 @@ const Instructor = () => {
       setTopInstructors(fetchTopInstructors.data);
     }
   }, [fetchTopInstructors]);
-
-  console.log(topInstructors);
 
   return (
     <section id="instructor" className="py-16 bg-gray-50">

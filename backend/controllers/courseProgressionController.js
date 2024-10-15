@@ -117,7 +117,6 @@ const updateCourseProgress = async (req, res) => {
 
   const { courseContentId, isCompleted } = req.body;
 
-  console.log(courseContentId);
 
   const sectionIndex = courseProgress.courseContent.findIndex((section) =>
     section.sectionContainer.find(

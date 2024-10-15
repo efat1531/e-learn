@@ -16,6 +16,7 @@ const defaultProfilePicture =
 
 const DesktopNav = () => {
   const profilePicture = useSelector((state) => state.auth.profilePicture);
+  const auth = useSelector((state) => state.auth);
   const { authenticated } = useSelector((state) => state.auth);
   const { pathname } = useLocation();
   const dispatch = useDispatch();
@@ -82,7 +83,7 @@ const DesktopNav = () => {
             <Link to="/student" className="group">
               <div className="avatar">
                 <div className="w-12 rounded-full">
-                  <img src={profilePicture} />
+                  <img src={auth.profilePicture} />
                 </div>
               </div>
             </Link>

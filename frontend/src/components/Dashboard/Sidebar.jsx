@@ -1,6 +1,6 @@
 import { ReactSVG } from "react-svg";
 import GraduationCap from "../../assets/svg/GraduationCap.svg";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { PiSignOutBold } from "react-icons/pi";
 import { MdOutlineSignalCellularAlt } from "react-icons/md";
 import { IoAddCircleOutline, IoCloseCircleOutline } from "react-icons/io5";
@@ -24,7 +24,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         <div className="flex flex-col top-0 left-0 h-full w-full max-w-[280px] bg-CustomGray-900 py-4 text-white">
           <div className="flex justify-between px-4 border-b pb-2">
             {/* Logo */}
-            <div className="flex items-center gap-[0.575rem] border-CustomGray-600">
+            <Link to="/" className="flex items-center gap-[0.575rem] border-CustomGray-600">
               <ReactSVG
                 src={GraduationCap}
                 beforeInjection={(svg) => {
@@ -34,7 +34,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               <span className="text-justify text-[1.4rem] font-[600] leading-[2.852rem] tracking-[-0.069rem] ">
                 E-Learn
               </span>
-            </div>
+            </Link>
             <div
               className="bg-Primary-200 flex items-center justify-center px-2 cursor-pointer xl:hidden"
               onClick={() => setSidebarOpen(false)}

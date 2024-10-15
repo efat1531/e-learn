@@ -59,6 +59,32 @@ const createOrder = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc   Get All Orders
+// @route  GET /api/order/
+// @access Private[Admin, User]
+const getAllOrders = asyncHandler(async (req, res) => {
+  const filter = {};
+
+  if(req.role !== "admin"){
+    filter.user = req.user._id;
+  }
+  const totalOrders = await orderModel.countDocuments(filter);
+  const orders = await orderModel.find(filter).populate({
+    path: "orderItems.course",
+    select: "title instructor",
+    populate: {
+      path: "instructor",
+      select: "name",
+    },
+  });
+
+  res.status(200).json({
+    status: "success",
+    totalOrders,
+    data: orders,
+  });
+})
+
 // @desc    Get order by ID
 // @route   GET /api/order/:id
 // @access  Private[Admin, User]
@@ -93,7 +119,6 @@ const getOrderById = asyncHandler(async (req, res) => {
 // @route   GET /api/order/payment/:id
 // @access  Private[Admin, User]
 const getOrderByPaymentID = asyncHandler(async (req, res) => {
-  console.log(req.params.id);
   const order = await orderModel
     .findOne({
       "paymentResult.transaction_id": req.params.id,
@@ -122,36 +147,6 @@ const getOrderByPaymentID = asyncHandler(async (req, res) => {
   res.status(200).json({
     status: "success",
     data: orderObject,
-  });
-});
-
-// @desc   Get All Orders
-// @route  GET /api/order/
-// @access Private[Admin, User]
-const getAllOrders = asyncHandler(async (req, res) => {
-  const dynamicFilter = new DynamicFilter(req.query);
-  const dynamicSort = new DynamicSort(req.query);
-  const sort = dynamicSort.process();
-  const filter = dynamicFilter.process();
-
-  if (req.user.role !== "admin") {
-    filter.user = req.user._id;
-  }
-
-  const totalOrders = await orderModel.countDocuments(filter);
-  const orders = await orderModel.find(filter).populate({
-    path: "orderItems.course",
-    select: "title instructor titleImage",
-    populate: {
-      path: "instructor",
-      select: "name",
-    },
-  });
-
-  res.status(200).json({
-    status: "success",
-    totalOrders,
-    data: orders,
   });
 });
 

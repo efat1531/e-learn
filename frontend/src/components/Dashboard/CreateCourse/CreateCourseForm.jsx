@@ -88,7 +88,6 @@ const CreateCourseForm = ({ tab, setCurrentTab }) => {
           };
           // console.log(data);
           const res = await createCourse(data);
-          console.log(res);
 
           setSubmitting(false);
         }}
