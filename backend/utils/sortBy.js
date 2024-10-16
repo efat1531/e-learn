@@ -1,6 +1,6 @@
 const SORT_BY = [
   {
-    SORT_NAME: "price",
+    SORT_NAME: "price-asc",
     SORT_VALUE: { currentPrice: 1 },
   },
   {
@@ -30,6 +30,18 @@ const SORT_BY = [
   {
     SORT_NAME: "name-desc",
     SORT_VALUE: { slug: -1 },
+  },
+  {
+    SORT_NAME: "students",
+    SORT_VALUE: { numStudents: -1 },
+  },
+  {
+    SORT_NAME: "course-rating",
+    SORT_VALUE: { courseRating: -1 },
+  },
+  {
+    SORT_NAME: "course-students",
+    SORT_VALUE: { courseStudents: -1 },
   },
 ];
 

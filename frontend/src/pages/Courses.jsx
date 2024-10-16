@@ -4,67 +4,60 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useFetchAllCourseQuery } from "../features/api/courseApiSlice";
 import { setAllCourses } from "../features/courseSlice";
+import { useDebounce } from "use-debounce";
+import { useNavigate, useLocation } from "react-router-dom";
 
 // Lazy load components
 const CourseCard = lazy(() => import("../components/Common/CourseCard"));
-const CustomSelect = lazy(() => import("../components/ui/CustomSelect"));
 
 const Courses = () => {
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearchTerm] = useDebounce(searchTerm, 500);
+  const [sortOption, setSortOption] = useState("");
 
-  const { data, error, isLoading } = useFetchAllCourseQuery();
+  const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
 
-  const { courses } = useSelector((state) => state.course);
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const name = params.get("title");
+    const sort = params.get("sort");
+    if (name) {
+      setSearchTerm(name);
+    }
+    if (sort) {
+      setSortOption(sort);
+    }
+  }, [location.search]);
 
-  const [newCourses, setNewCourses] = useState(courses);
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (debouncedSearchTerm) {
+      params.set("title", debouncedSearchTerm);
+    } else {
+      params.delete("title");
+    }
+    if (sortOption) {
+      params.set("sort", sortOption);
+    } else {
+      params.delete("sort");
+    }
+    navigate({ search: params.toString() });
+  }, [debouncedSearchTerm, sortOption, navigate, location.search]);
+
+  const { data, error, isLoading } = useFetchAllCourseQuery({
+    title: debouncedSearchTerm,
+    sort: sortOption,
+  });
+
+  const { courses } = useSelector((state) => state.course);
 
   useEffect(() => {
     if (data) {
       dispatch(setAllCourses(data.data));
-      setNewCourses(data.data);
     }
   }, [data, dispatch]);
-
-  // const categoryOptions = courses.map((course) => ({
-  //   value: "category",
-  //   label: "Hello My",
-  //   hoverColor: "#E8F0F7",
-  //   textColor: "#334155",
-  // }));
-
-  useEffect(() => {
-    setNewCourses((prevCourses) => {
-      return [...prevCourses].sort((a, b) => {
-        if (selectedOption) {
-          switch (selectedOption.value) {
-            case "trending":
-              return b.rating - a.rating;
-            case "newest":
-              return b.createAt - a.createAt;
-            case "priceHigh":
-              return (
-                calculatedPrice(b.price, b.discount) -
-                calculatedPrice(a.price, a.discount)
-              );
-            case "priceLow":
-              return (
-                calculatedPrice(a.price, a.discount) -
-                calculatedPrice(b.price, b.discount)
-              );
-            case "rating":
-              return b.rating - a.rating;
-            case "students":
-              return b.students - a.students;
-            default:
-              return 0;
-          }
-        }
-        return 0;
-      });
-    });
-  }, [selectedOption]);
 
   return (
     <section className="inline-flex flex-col justify-center items-center w-screen gap-10 py-14">
@@ -78,40 +71,36 @@ const Courses = () => {
               className="text-gray-900 bg-transparent outline-none"
               type="text"
               placeholder="Search for courses"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
         </div>
-        <div className="gap-8 hidden lg:flex">
+        <div className="gap-8 items-center hidden lg:flex">
           <div className="flex justify-center items-center gap-4">
-            <div className="text-gray-600 text-sm font-normal leading-6">
+            <div className="text-gray-600 text-sm font-normal leading-6 whitespace-nowrap">
               Sort By :
             </div>
-            <Suspense fallback={null}>
-              <CustomSelect
-                customPlaceholder={"Select an option"}
-                options={options}
-                setSelectedOption={setSelectedOption}
-                selectedOption={selectedOption}
-              />
-            </Suspense>
+
+            <select
+              className="select select-bordered w-full"
+              value={sortOption}
+              onChange={(e) => setSortOption(e.target.value)}
+            >
+              <option value="" disabled>
+                Add sorting filter
+              </option>
+              {options.map((option, index) => (
+                <option key={index} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
           </div>
-          {/* <div className="flex justify-center items-center gap-4">
-            <div className="text-gray-600 text-sm font-normal leading-6">
-              Filter By :
-            </div>
-            <Suspense fallback={null}>
-              <CustomSelect
-                customPlaceholder={"Select an option"}
-                options={categoryOptions}
-                setSelectedOption={setSelectedCategory}
-                selectedOption={selectedCategory}
-              />
-            </Suspense>
-          </div> */}
         </div>
       </div>
       <div className="w-[80vw] grid grid-cols-1 gap-6 minmax-[15.25rem,1fr] md:grid-cols-2 lg:grid-cols-3 desktop:grid-cols-4 place-items-center">
-        {newCourses.map((course, index) => (
+        {courses.map((course, index) => (
           <Link key={index} to={`/courses/${course.slug}`}>
             <Suspense fallback={null}>
               <CourseCard course={course} />
@@ -127,43 +116,23 @@ export default Courses;
 
 const options = [
   {
-    value: "trending",
-    label: "Trending",
-    hoverColor: "#F2E8FF",
-    textColor: "#334155",
-  },
-  {
     value: "newest",
     label: "Newest",
-    hoverColor: "#E8F0F7",
-    textColor: "#334155",
   },
   {
-    value: "priceLow",
+    value: "price-asc",
     label: "Price: Low to High",
-    hoverColor: "#E8F0F7",
-    textColor: "#334155",
   },
   {
-    value: "priceHigh",
+    value: "price-desc",
     label: "Price: High to Low",
-    hoverColor: "#E8F0F7",
-    textColor: "#334155",
   },
   {
-    value: "rating",
+    value: "course-rating",
     label: "Rating",
-    hoverColor: "#E8F0F7",
-    textColor: "#334155",
   },
   {
-    value: "students",
+    value: "course-students",
     label: "Number of Students",
-    hoverColor: "#E8F0F7",
-    textColor: "#334155",
   },
 ];
-
-const calculatedPrice = (price, discount) => {
-  return price - discount;
-};

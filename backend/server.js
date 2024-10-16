@@ -19,6 +19,9 @@ import orderRoutes from "./routes/orderRoutes.js";
 import courseProgressionRoutes from "./routes/courseProgressRoutes.js";
 import instructorRequestRoutes from "./routes/becomeAnInstructorRoutes.js";
 
+// Automatic discount update
+import corn from "./utils/cornJobs.js";
+
 dotenv.config();
 
 const port = process.env.PORT || 5000;

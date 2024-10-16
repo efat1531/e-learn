@@ -106,6 +106,10 @@ const courseSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
+    currentPrice: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     toJSON: { virtuals: true },
@@ -122,6 +126,11 @@ courseSchema.pre("save", function (next) {
       .toLowerCase()
       .split(" ")
       .join("-");
+  }
+  if (!this.discountExpires || this.discountExpires < Date.now()) {
+    this.currentPrice = this.price;
+  } else {
+    this.currentPrice = this.price - this.discount;
   }
   next();
 });
@@ -140,14 +149,13 @@ courseSchema.pre("findOneAndUpdate", function (next) {
       .split(" ")
       .join("-");
   }
-  next();
-});
 
-courseSchema.virtual("currentPrice").get(function () {
   if (!this.discountExpires || this.discountExpires < Date.now()) {
-    return this.price;
+    this.currentPrice = this.price;
+  } else {
+    this.currentPrice = this.price - this.discount;
   }
-  return this.price - this.discount;
+  next();
 });
 
 courseSchema.methods.incrementStudents = async function () {

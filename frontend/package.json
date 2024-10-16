@@ -31,7 +31,8 @@
     "react-youtube": "^10.1.0",
     "redux": "^5.0.1",
     "swiper": "^11.1.4",
-    "tailwind-merge": "^2.3.0"
+    "tailwind-merge": "^2.3.0",
+    "use-debounce": "^10.0.4"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

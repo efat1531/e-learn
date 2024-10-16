@@ -19,6 +19,7 @@ const getCourses = asyncHandler(async (req, res) => {
   // Filter Options
   const filterOptions = dynamicFilter.process();
   const sortOptions = dynamicSort.process();
+  console.log(filterOptions, sortOptions);
 
   const totalResults = await courseModel.countDocuments({
     ...filterOptions,

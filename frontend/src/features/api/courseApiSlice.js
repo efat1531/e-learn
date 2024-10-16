@@ -4,12 +4,17 @@ import { COURSE_URL } from "./constants";
 const courseApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     fetchAllCourse: builder.query({
-      query: () => `${COURSE_URL}/`,
+      query: ({ title, sort }) => {
+        const params = new URLSearchParams();
+        if (title) params.append("title", title);
+        if (sort) params.append("sort", sort);
+        return `${COURSE_URL}?${params.toString()}`;
+      },
       keepUnusedDataFor: 5,
     }),
-     fetchCourse: builder.query({
+    fetchCourse: builder.query({
       query: (slug) => `${COURSE_URL}/${slug}`,
-      providesTags:["singleCourse"],
+      providesTags: ["singleCourse"],
       keepUnusedDataFor: 5,
     }),
     fetchTopCourse: builder.query({
