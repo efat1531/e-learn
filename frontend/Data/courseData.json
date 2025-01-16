@@ -1,0 +1,298 @@
+[
+  {
+    "id": "jkl567",
+    "title": "Advanced CSS Techniques: Mastering Flexbox and Grid",
+    "slug": "advanced-css-techniques-mastering-flexbox-and-grid",
+    "imageSrc": "https://picsum.photos/seed/picsum1/1200/1000.jpg",
+    "rating": 4.7,
+    "numOfRating": 100,
+    "students": 250,
+
+    "duration": 30,
+    "courseLevel": "Intermediate",
+    "courseLanguage": "English",
+    "price": 120,
+    "discount": 15,
+    "discountEnds": "2024-07-30T00:00:00.000Z",
+    "category": {
+      "name": "Web Design",
+      "color": "#00BFFF",
+      "backgroundColor": "#E0F7FA"
+    },
+    "createAt": "2024-05-15T00:00:00.000Z",
+    "introVideo": "https://www.youtube.com/watch?v=Jg3RO56gh3Y",
+    "instructor": "ins001",
+    "description": "This course is designed to take your CSS skills to the next level by diving deep into advanced CSS techniques, specifically focusing on Flexbox and Grid. You'll learn how to build responsive layouts with ease, creating complex layouts with simple, clean code. By the end of the course, you'll be able to use Flexbox and Grid to their full potential, making your web designs more flexible and efficient.",
+    "summary": "Master advanced CSS techniques with Flexbox and Grid in this comprehensive course.",
+    "requirements": [
+      "Basic understanding of HTML and CSS",
+      "A computer with internet connection",
+      "A modern web browser",
+      "A text editor"
+    ],
+    "whatYouWillLearn": [
+      "Advanced layout techniques using Flexbox",
+      "Creating complex grid-based designs with CSS Grid",
+      "Responsive design principles",
+      "Efficient use of CSS for flexible web layouts"
+    ],
+    "curriculum": [
+      {
+        "title": "Getting Started with Flexbox",
+        "lessons": [
+          {
+            "title": "Introduction to Flexbox",
+            "type": "video",
+            "duration": 10,
+            "link": "https://www.youtube.com/watch?v=Jg3RO56gh3Y"
+          },
+          {
+            "title": "Building a Flexbox Layout",
+            "type": "video",
+            "duration": 15,
+            "link": "https://www.youtube.com/watch?v=Jg3RO56gh3Y"
+          },
+          {
+            "title": "Flexbox Properties and Techniques",
+            "type": "resource",
+            "link": "https://www.youtube.com/watch?v=Jg3RO56gh3Y"
+          }
+        ]
+      },
+      {
+        "title": "Mastering CSS Grid",
+        "lessons": [
+          {
+            "title": "Introduction to CSS Grid",
+            "type": "video",
+            "duration": 12,
+            "link": "https://www.youtube.com/watch?v=Jg3RO56gh3Y"
+          },
+          {
+            "title": "Building Grid Layouts",
+            "type": "video",
+            "duration": 18,
+            "link": "https://www.youtube.com/watch?v=Jg3RO56gh3Y"
+          },
+          {
+            "title": "Advanced Grid Techniques",
+            "type": "resource",
+            "link": "https://www.youtube.com/watch?v=Jg3RO56gh3Y"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mno678",
+    "title": "Introduction to Python Programming",
+    "slug": "introduction-to-python-programming",
+    "imageSrc": "https://picsum.photos/seed/picsum2/1200/1000.jpg",
+    "rating": 4.8,
+    "students": 500,
+    "courseLevel": "Intermediate",
+    "courseLanguage": "English",
+    "introVideo": "https://www.youtube.com/watch?v=rfscVS0vtbw",
+    "duration": 80,
+    "numOfRating": 100,
+    "price": 90,
+    "discount": 25,
+    "discountEnds": "2024-08-15T00:00:00.000Z",
+    "category": {
+      "name": "Programming",
+      "color": "#306998",
+      "backgroundColor": "#E0F7FA"
+    },
+    "createAt": "2024-06-28T00:00:00.000Z",
+    "instructor": "ins002",
+    "description": "This course provides a comprehensive introduction to Python programming, one of the most popular and versatile programming languages today. Starting from the basics, you'll learn how to write simple programs, work with data structures, and handle files. By the end of the course, you'll be equipped with the skills needed to develop real-world applications and further your programming journey.",
+    "summary": "Learn the basics of Python programming in this comprehensive introductory course.",
+    "requirements": [
+      "No prior programming experience required",
+      "A computer with internet connection",
+      "Basic knowledge of using a computer",
+      "A willingness to learn"
+    ],
+    "whatYouWillLearn": [
+      "Basic syntax and structure of Python",
+      "Data types and variables",
+      "Control flow statements",
+      "Functions and modules",
+      "Working with files"
+    ],
+    "curriculum": [
+      {
+        "title": "Getting Started with Python",
+        "lessons": [
+          {
+            "title": "Introduction to Python",
+            "type": "video",
+            "duration": 8,
+            "link": "https://www.youtube.com/watch?v=rfscVS0vtbw"
+          },
+          {
+            "title": "Setting up Python Environment",
+            "type": "video",
+            "duration": 12,
+            "link": "https://www.youtube.com/watch?v=rfscVS0vtbw"
+          },
+          {
+            "title": "Writing Your First Python Program",
+            "type": "resource",
+            "link": "https://www.youtube.com/watch?v=rfscVS0vtbw"
+          }
+        ]
+      },
+      {
+        "title": "Understanding Data Types and Variables",
+        "lessons": [
+          {
+            "title": "Data Types in Python",
+            "type": "video",
+            "duration": 10,
+            "link": "https://www.youtube.com/watch?v=rfscVS0vtbw"
+          },
+          {
+            "title": "Working with Variables",
+            "type": "video",
+            "duration": 15,
+            "link": "https://www.youtube.com/watch?v=rfscVS0vtbw"
+          },
+          {
+            "title": "Type Conversion",
+            "type": "resource",
+            "link": "https://www.youtube.com/watch?v=rfscVS0vtbw"
+          }
+        ]
+      },
+      {
+        "title": "Control Flow in Python",
+        "lessons": [
+          {
+            "title": "Conditional Statements",
+            "type": "video",
+            "duration": 12,
+            "link": "https://www.youtube.com/watch?v=rfscVS0vtbw"
+          },
+          {
+            "title": "Loops in Python",
+            "type": "video",
+            "duration": 20,
+            "link": "https://www.youtube.com/watch?v=rfscVS0vtbw"
+          },
+          {
+            "title": "Break and Continue Statements",
+            "type": "resource",
+            "link": "https://www.youtube.com/watch?v=rfscVS0vtbw"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "xyz123",
+    "title": "Advanced Python Programming",
+    "slug": "advanced-python-programming",
+    "imageSrc": "https://picsum.photos/seed/picsum3/1200/1000.jpg",
+    "rating": 4.9,
+    "students": 800,
+    "courseLevel": "Beginner",
+    "courseLanguage": "English",
+    "introVideo": "https://www.youtube.com/watch?v=kqtD5dpn9C8",
+    "duration": 45,
+    "numOfRating": 100,
+    "price": 120,
+    "discount": 30,
+    "discountEnds": "2024-09-01T00:00:00.000Z",
+    "category": {
+      "name": "Programming",
+      "color": "#FF5733",
+      "backgroundColor": "#F0E68C"
+    },
+    "createAt": "2024-06-15",
+    "instructor": "ins003",
+    "description": "This advanced Python programming course offers a comprehensive exploration of complex data structures, algorithm optimization, and the development of sophisticated applications. Delve into advanced Python techniques beyond the basics, including in-depth studies of algorithm optimization principles and practical implementations. Master the art of designing scalable and maintainable code, explore frameworks for advanced application development, and engage in hands-on projects and case studies to enhance problem-solving skills. Additionally, delve into advanced Python topics like decorators, metaprogramming, and concurrency, while staying updated on the latest trends in the Python ecosystem for writing clean, efficient, and Pythonic code. Elevate your Python skills to the next level with this course designed for those seeking to expand their expertise in Python programming. ",
+    "summary": "Master advanced Python programming concepts and techniques.",
+    "requirements": [
+      "Basic understanding of Python programming",
+      "A computer with internet connection",
+      "Ability to read and understand code",
+      "Motivation to improve coding skills"
+    ],
+    "whatYouWillLearn": [
+      "Advanced data structures and algorithms",
+      "Object-oriented programming",
+      "Decorators and generators",
+      "Concurrency and parallelism",
+      "Advanced file handling"
+    ],
+    "curriculum": [
+      {
+        "title": "Advanced Data Structures",
+        "lessons": [
+          {
+            "title": "Linked Lists and Trees",
+            "type": "video",
+            "duration": 15,
+            "link": "https://www.youtube.com/watch?v=example"
+          },
+          {
+            "title": "Graph Algorithms",
+            "type": "video",
+            "duration": 18,
+            "link": "https://www.youtube.com/watch?v=example"
+          },
+          {
+            "title": "Hash Tables",
+            "type": "resource",
+            "link": "https://www.youtube.com/watch?v=example"
+          }
+        ]
+      },
+      {
+        "title": "Object-Oriented Programming",
+        "lessons": [
+          {
+            "title": "Classes and Objects",
+            "type": "video",
+            "duration": 12,
+            "link": "https://www.youtube.com/watch?v=example"
+          },
+          {
+            "title": "Inheritance and Polymorphism",
+            "type": "video",
+            "duration": 20,
+            "link": "https://www.youtube.com/watch?v=example"
+          },
+          {
+            "title": "Encapsulation and Abstraction",
+            "type": "resource",
+            "link": "https://www.youtube.com/watch?v=example"
+          }
+        ]
+      },
+      {
+        "title": "Concurrency in Python",
+        "lessons": [
+          {
+            "title": "Multithreading",
+            "type": "video",
+            "duration": 14,
+            "link": "https://www.youtube.com/watch?v=example"
+          },
+          {
+            "title": "Multiprocessing",
+            "type": "video",
+            "duration": 22,
+            "link": "https://www.youtube.com/watch?v=example"
+          },
+          {
+            "title": "Asyncio",
+            "type": "resource",
+            "link": "https://www.youtube.com/watch?v=example"
+          }
+        ]
+      }
+    ]
+  }
+]
