@@ -1,0 +1,146 @@
+[
+  {
+    "reviewID": "rev001",
+    "rating": 5,
+    "userID": "user001",
+    "feedback": "This course exceeded my expectations! The lessons were well-structured and the advanced topics were explained clearly. I feel much more confident in my Python skills now.",
+    "courseID": "xyz123",
+    "date": "2024-06-15T12:02:00.000Z"
+  },
+  {
+    "reviewID": "rev002",
+    "rating": 4,
+    "userID": "user002",
+    "feedback": "Great course with a lot of valuable content. The instructor was very knowledgeable. I would have liked a bit more hands-on exercises, though.",
+    "courseID": "xyz123",
+    "date": "2024-06-16T12:02:00.000Z"
+  },
+  {
+    "reviewID": "rev003",
+    "rating": 3,
+    "userID": "user003",
+    "feedback": "The course content was good, but some of the videos felt a bit rushed. More detailed examples would have been helpful.",
+    "courseID": "xyz123",
+    "date": "2024-06-17T12:02:00.000Z"
+  },
+  {
+    "reviewID": "rev004",
+    "rating": 5,
+    "userID": "user004",
+    "feedback": "Excellent course! I particularly enjoyed the sections on concurrency and advanced data structures. Highly recommended for anyone looking to advance their Python skills.",
+    "courseID": "xyz123",
+    "date": "2024-06-18T12:02:00.000Z"
+  },
+  {
+    "reviewID": "rev005",
+    "rating": 4,
+    "userID": "user005",
+    "feedback": "Very informative and well-presented. The instructor's explanations were clear and concise. A few more real-world applications would make this course perfect.",
+    "courseID": "xyz123",
+    "date": "2024-06-19T12:02:00.000Z"
+  },
+  {
+    "reviewID": "rev101",
+    "rating": 5,
+    "userID": "user001",
+    "feedback": "Fantastic course! As a complete beginner, I found the content easy to follow and very informative. The instructor did a great job explaining the basics.",
+    "courseID": "mno678",
+    "date": "2024-06-20T12:02:00.000Z"
+  },
+  {
+    "reviewID": "rev102",
+    "rating": 4,
+    "userID": "user002",
+    "feedback": "Great introduction to Python. The lessons are well-structured and engaging. I would have appreciated a few more hands-on exercises, but overall, a solid course.",
+    "courseID": "mno678",
+    "date": "2024-06-21T12:02:00.000Z"
+  },
+  {
+    "reviewID": "rev103",
+    "rating": 3,
+    "userID": "user003",
+    "feedback": "The course covers the basics well, but I felt that some topics were rushed. Additional resources for practice would be beneficial.",
+    "courseID": "mno678",
+    "date": "2024-06-22T12:02:00.000Z"
+  },
+  {
+    "reviewID": "rev104",
+    "rating": 5,
+    "userID": "user004",
+    "feedback": "Excellent course for beginners! The explanations are clear and concise, and the examples are very helpful. I feel confident to move on to more advanced topics.",
+    "courseID": "mno678",
+    "date": "2024-06-14T12:02:00.000Z"
+  },
+  {
+    "reviewID": "rev105",
+    "rating": 4,
+    "userID": "user005",
+    "feedback": "Very good course with detailed explanations. The instructor was very engaging. More interactive elements would have made it even better.",
+    "courseID": "mno678",
+    "date": "2024-06-13T12:02:00.000Z"
+  },
+  {
+    "reviewID": "rev201",
+    "rating": 5,
+    "userID": "user001",
+    "feedback": "This course was incredibly insightful! The instructor's explanations of Flexbox and Grid were clear and easy to follow. I can now build complex layouts with confidence.",
+    "courseID": "jkl567",
+    "date": "2024-06-12T12:02:00.000Z"
+  },
+  {
+    "reviewID": "rev202",
+    "rating": 4,
+    "userID": "user002",
+    "feedback": "Great course with a lot of practical examples. I would have liked a few more projects to work on, but overall, it's a fantastic resource for advanced CSS techniques.",
+    "courseID": "jkl567",
+    "date": "2024-06-11T12:02:00.000Z"
+  },
+  {
+    "reviewID": "rev203",
+    "rating": 3,
+    "userID": "user003",
+    "feedback": "The course content is good, but some parts felt rushed. More detailed explanations and slower pacing would have helped.",
+    "courseID": "jkl567",
+    "date": "2024-06-10T14:02:00.000Z"
+  },
+  {
+    "reviewID": "rev204",
+    "rating": 5,
+    "userID": "user004",
+    "feedback": "Excellent course! The sections on CSS Grid were particularly useful. The instructor made complex topics easy to understand. Highly recommended for anyone looking to improve their web design skills.",
+    "courseID": "jkl567",
+    "date": "2024-06-15T13:02:00.000Z"
+  },
+  {
+    "reviewID": "rev205",
+    "rating": 4,
+    "userID": "user005",
+    "feedback": "Very informative and well-structured. The lessons on Flexbox were especially helpful. Some additional real-world applications would make this course perfect.",
+    "courseID": "jkl567",
+    "date": "2024-06-15T19:54:25.000Z"
+  },
+  {
+    "reviewID": "rev206",
+    "rating": 5,
+    "userID": "user005",
+    "feedback": "Very informative and well-structured. The lessons on Flexbox were especially helpful. Some additional real-world applications would make this course perfect.",
+    "courseID": "jkl567",
+    "date": "2024-06-09T12:02:00.000Z"
+  },
+  {
+    "reviewID": "rev207",
+    "rating": 5,
+    "userID": "user005",
+    "feedback": "Very informative and well-structured. The lessons on Flexbox were especially helpful. Some additional real-world applications would make this course perfect.",
+    "courseID": "jkl567",
+    "date": "2024-06-15T08:02:00.000Z"
+  },
+  {
+    "reviewID": "rev208",
+    "rating": 5,
+    "userID": "user005",
+    "feedback": "Very informative and well-structured. The lessons on Flexbox were especially helpful. Some additional real-world applications would make this course perfect.",
+    "courseID": "jkl567",
+    "date": "2024-06-07T12:02:00.000Z"
+  }
+]

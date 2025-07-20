@@ -1,0 +1,77 @@
+[
+  {
+    "userID": "user001",
+    "name": "John Doe",
+    "email": "example@gmail.com",
+    "password": "password",
+    "role": "student",
+    "profileImg": "https://picsum.photos/seed/user001/1200/1000.jpg",
+    "bio": ""
+  },
+  {
+    "userID": "user002",
+    "name": "Jane Smith",
+    "email": "jane.smith@example.com",
+    "password": "password",
+    "role": "student",
+    "profileImg": "https://picsum.photos/seed/user002/1200/1000.jpg",
+    "bio": ""
+  },
+  {
+    "userID": "user003",
+    "name": "Michael Johnson",
+    "email": "michael.johnson@example.com",
+    "password": "password",
+    "role": "student",
+    "profileImg": "https://picsum.photos/seed/user003/1200/1000.jpg",
+    "bio": ""
+  },
+  {
+    "userID": "user004",
+    "name": "Emily Davis",
+    "email": "emily.davis@example.com",
+    "password": "password",
+    "role": "student",
+    "profileImg": "https://picsum.photos/seed/user004/1200/1000.jpg",
+    "bio": ""
+  },
+  {
+    "userID": "user005",
+    "name": "David Brown",
+    "email": "david.brown@example.com",
+    "password": "password",
+    "role": "student",
+    "profileImg": "https://picsum.photos/seed/user005/1200/1000.jpg",
+    "bio": ""
+  },
+  {
+    "userID": "ins001",
+    "name": "Alice Johnson",
+    "email": "alice.johnson@example.com",
+    "password": "password",
+    "role": "instructor",
+    "designation": "Senior Front-End Developer",
+    "profileImg": "https://picsum.photos/seed/ins001/1200/1000.jpg",
+    "bio": "Alice Johnson has been teaching web development and design for over 10 years. She specializes in front-end technologies and enjoys creating engaging learning experiences."
+  },
+  {
+    "userID": "ins002",
+    "name": "Mark Thompson",
+    "email": "mark.thompson@example.com",
+    "password": "password",
+    "role": "instructor",
+    "designation": "Lead Backend Developer",
+    "profileImg": "https://picsum.photos/seed/ins002/1200/1000.jpg",
+    "bio": "Mark Thompson is a seasoned software engineer with a passion for teaching. He focuses on backend development and has mentored numerous aspiring developers."
+  },
+  {
+    "userID": "ins003",
+    "name": "Sophia Brown",
+    "email": "sophia.brown@example.com",
+    "password": "password",
+    "role": "instructor",
+    "designation": "Data Science Specialist",
+    "profileImg": "https://picsum.photos/seed/ins003/1200/1000.jpg",
+    "bio": "Sophia Brown is a data science and machine learning whiz with a passion for making complex concepts approachable.  Leveraging her expertise, she empowers students to unlock the potential of data."
+  }
+]

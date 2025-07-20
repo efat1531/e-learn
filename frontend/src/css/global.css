@@ -1,0 +1,56 @@
+:root {
+  --primary-color: #ea580c;
+  --secondary-color: #3f3f46;
+  --secondary-text-color: #8c94a3;
+}
+
+/* Global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Utility */
+.container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-img {
+  height: 400px;
+  overflow: hidden;
+}
+
+/* Best Selling Courses */
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 0 2rem 0;
+}
+
+.section-header span {
+  width: 30px;
+  height: 2px;
+}
+
+.section-header .section-header-before {
+  background: aqua;
+}
+
+.section-header .section-header-after {
+  background: red;
+}
